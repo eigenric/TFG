@@ -1,0 +1,8 @@
+{
+
+    "triggerTaskOnSave.tasks": {
+          "Compile LaTeX": [
+                "*.tex", // <-- Glob pattern to specify which files should trigger the task
+          ],
+    }
+}

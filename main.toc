@@ -1,0 +1,8 @@
+\vspace {-\cftbeforepartskip }
+\babel@toc {spanish}{}\relax 
+\contentsline {part}{\numberline {\es@scroman {i}}\spacedlowsmallcaps {Parte de matemáticas}}{4}{part.1}%
+\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Sección primera}}{5}{chapter.1}%
+\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Sección segunda}}{6}{chapter.2}%
+\contentsline {part}{\numberline {\es@scroman {ii}}\spacedlowsmallcaps {Parte de informática}}{7}{part.2}%
+\contentsline {chapter}{\numberline {3}\spacedlowsmallcaps {Sección tercera}}{8}{chapter.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
