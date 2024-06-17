@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} From the GHC.Base library.}
+\PYG{k+kr}{class}\PYG{+w}{  }\PYG{k+kt}{Functor}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{  }\PYG{k+kr}{where}
+\PYG{+w}{    }\PYG{n}{fmap}\PYG{+w}{        }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{b}
+
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | Replace all locations in the input with the same value.}
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} The default definition is @\PYGZsq{}fmap\PYGZsq{} . \PYGZsq{}const\PYGZsq{}@, but this may be}
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} overridden with a more efficient version.}
+\PYG{+w}{    }\PYG{p}{(}\PYG{o}{\PYGZlt{}\PYGZdl{}}\PYG{p}{)}\PYG{+w}{        }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}
+\PYG{+w}{    }\PYG{p}{(}\PYG{o}{\PYGZlt{}\PYGZdl{}}\PYG{p}{)}\PYG{+w}{        }\PYG{o+ow}{=}\PYG{+w}{  }\PYG{n}{fmap}\PYG{+w}{ }\PYG{o}{.}\PYG{+w}{ }\PYG{n}{const}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | A variant of \PYGZsq{}\PYGZlt{}*\PYGZgt{}\PYGZsq{} with the arguments reversed.}
+\PYG{p}{(}\PYG{o}{\PYGZlt{}**\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Applicative}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o+ow}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{b}
+\PYG{p}{(}\PYG{o}{\PYGZlt{}**\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{liftA2}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{a}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Don\PYGZsq{}t use \PYGZbs{}\PYGZdl{} here, see the note at the top of the page}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | Lift a function to actions.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This function may be used as a value for `fmap` in a `Functor` instance.}
+\PYG{n+nf}{liftA}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Applicative}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o+ow}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{b}
+\PYG{n+nf}{liftA}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{pure}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o}{\PYGZlt{}*\PYGZgt{}}\PYG{+w}{ }\PYG{n}{a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Caution: since this may be used for `fmap`, we can\PYGZsq{}t use the obvious}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} definition of liftA = fmap.}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | Lift a ternary function to actions.}
+\PYG{n+nf}{liftA3}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Applicative}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o+ow}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{c}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{d}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{c}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{d}
+\PYG{n+nf}{liftA3}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{n}{c}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{liftA2}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{\PYGZlt{}*\PYGZgt{}}\PYG{+w}{ }\PYG{n}{c}
+
+
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} INLINABLE liftA \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} SPECIALISE liftA :: (a1\PYGZhy{}\PYGZgt{}r) \PYGZhy{}\PYGZgt{} IO a1 \PYGZhy{}\PYGZgt{} IO r \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} SPECIALISE liftA :: (a1\PYGZhy{}\PYGZgt{}r) \PYGZhy{}\PYGZgt{} Maybe a1 \PYGZhy{}\PYGZgt{} Maybe r \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} INLINABLE liftA3 \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} SPECIALISE liftA3 :: (a1\PYGZhy{}\PYGZgt{}a2\PYGZhy{}\PYGZgt{}a3\PYGZhy{}\PYGZgt{}r) \PYGZhy{}\PYGZgt{} IO a1 \PYGZhy{}\PYGZgt{} IO a2 \PYGZhy{}\PYGZgt{} IO a3 \PYGZhy{}\PYGZgt{} IO r \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} SPECIALISE liftA3 :: (a1\PYGZhy{}\PYGZgt{}a2\PYGZhy{}\PYGZgt{}a3\PYGZhy{}\PYGZgt{}r) \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{                                Maybe a1 \PYGZhy{}\PYGZgt{} Maybe a2 \PYGZhy{}\PYGZgt{} Maybe a3 \PYGZhy{}\PYGZgt{} Maybe r \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | The \PYGZsq{}join\PYGZsq{} function is the conventional monad join operator. It}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} is used to remove one level of monadic structure, projecting its}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} bound argument into the outer level.}
+\PYG{n+nf}{join}\PYG{+w}{              }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Monad}\PYG{+w}{ }\PYG{n}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{m}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{m}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{m}\PYG{+w}{ }\PYG{n}{a}
+\PYG{n+nf}{join}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{            }\PYG{o+ow}{=}\PYG{+w}{  }\PYG{n}{x}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}=}\PYG{+w}{ }\PYG{n}{id}
+\end{Verbatim}
