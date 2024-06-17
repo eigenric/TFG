@@ -5,4 +5,5 @@ Generación de datos sintética a partir de un sistema IoT de detección de veh�
 
 
 # License
-This project is licensed under GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+[GPLv3](LICENSE) para el código y [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) para las memorias
