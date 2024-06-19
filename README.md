@@ -6,4 +6,4 @@ Generación de datos sintética a partir de un sistema IoT de detección de veh�
 
 # License
 
-[GPLv3](LICENSE) para el código y [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) para las memorias
+[GPLv3](LICENSE) para el código y [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) para las memorias
