@@ -1,0 +1,134 @@
+\ctparttext{
+  \color{black}
+  \begin{center}
+   En este capítulo se presentará una introducción a los
+  fundamentos matemáticos y del aprendizaje automático necesarios para
+  comprender el trabajo realizado en este proyecto. Se comenzará con una
+  introducción a los conceptos básicos de análisis matemático y probabilidad,
+  para posteriormente adentrarse en la teoría del aprendizaje estadístico y la
+  optimización de modelos de machine learning.
+  \end{center}
+}
+
+\chapter{Fundamentos Matemáticos y del Aprendizaje Automático}
+
+\section{Fundamentos Matemáticos}
+\subsection{Fundamentos del Análisis}
+\subsubsection{Diferenciabilidad}
+\subsubsection{Regla de la Cadena y su Aplicación en Modelos de Machine Learning}
+\subsubsection{Teoría de la Medida}
+\subsubsection{Resultados sobre integración}
+
+\subsection{Fundamentos de Probabilidad}
+
+\subsubsection{Espacio de Probabilidad}
+\begin{definition}[$\sigma$-álgebra]
+Sea $\mathcal{P}$ partes de $\Omega$. Llamamos $\sigma$-álgebra a cualquier $\mathcal{A} \subset \mathcal{P}$ que cumpla:
+\begin{itemize}
+\item $ \mathcal{A} \neq \emptyset$.
+\item Si $A_1, A_2, \ldots, A_n \in \mathcal{A}$ entonces $\bigcup_{i=1}^n A_i \in \mathcal{A}$.
+\item Si $A \in \mathcal{A}$ entonces $A^c \in \mathcal{A}$.
+\end{itemize}
+\end{definition}
+
+A partir de las propiedades anteriores, deducimos que $\Omega \in \mathcal{A}$ y que $\mathcal{A}$ también es cerrado bajo intersecciones numerables.
+
+\begin{definition}[Función de probabilidad]
+$P: \mathcal{A} \rightarrow [0,1]$ es una función de probabilidad si satisface los tres axiomas:
+\begin{enumerate}
+  \item $P(A) \geq 0 \quad \forall A \in \mathcal{A}$.
+  \item $P(\Omega) = 1$.
+  \item $P$ es $\sigma$-aditiva, es decir: dada $\{A_n \}_{n \in \mathbb{N}} \subset \mathcal{A}$ es una sucesión de conjuntos disjuntos dos a dos entonces
+    $$
+    P\left( \bigcup_{i\in \mathbb{N}} A_i \right) = \sum_{i \in \mathbb{N}} P(A_i).
+    $$
+\end{enumerate}
+\end{definition}
+
+Identificaremos como suceso seguro al evento que siempre ocurre. La primera condición nos asegura que el suceso seguro tiene la probabilidad más alta posible. La segunda condición garantiza que la probabilidad es no negativa. Finalmente, la tercera condición establece que, para un conjunto de sucesos disjuntos, la probabilidad de que ocurra alguno de ellos es igual a la suma de las probabilidades individuales de cada suceso.
+
+\begin{proposition}
+Toda medida de probabilidad $P$, cumple:
+\begin{itemize}
+\item $P(\emptyset) = 0$.
+\item Dados $A, B \in \mathcal{A}$, entonces $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+  La primera propiedad se deduce de la $\sigma$-aditividad de $P$ y de que $\emptyset = \bigcup_{i=1}^\infty \emptyset$. La segunda propiedad se deduce de la $\sigma$-aditividad de $P$ y de que $A \cup B = A \cup (B \setminus A)$ disjuntos.
+\end{proof}
+
+\begin{definition}[Espacio de probabilidad]
+Definimos como \textit{espacio de medida} a la terna $(\Omega, \mathcal{A}, \mu)$, donde $\mu: \mathcal{A} \rightarrow R_0^+$ es una medida en $(\Omega, \mathcal{A})$ y \textit{espacio de probabilidad} a la tupla formada por $(\Omega, \mathcal{A}, P)$, donde $P$ es una medida de probabilidad en $(\Omega, \mathcal{A})$.
+\end{definition}
+
+\subsubsection{Variables Aleatorias}
+Una \textit{variable aleatoria} es una función que asigna un valor, generalmente numérico, al resultado de un experimento aleatorio. Aunque no se puede conocer el valor exacto de una variable aleatoria al ser medida, sí se dispone de una distribución de probabilidad que describe la probabilidad de los diferentes valores posibles. A continuación, formalizamos el concepto de variable aleatoria.
+
+\begin{definition}[Función medible]
+Sean $(\Omega_1, \mathcal{A})$ y $(\Omega_2, \mathcal{S})$ dos espacios de medida. Una \textit{función medible} de dimensión $n$ es una función $X \colon \Omega_1 \to \Omega_2$ que cumple: $$X^{-1}(S) = \{\omega \in \Omega_1 \ : \ X(\omega) \in S\} \in \mathcal{A}, \ \text{para todo} \ S \in \mathcal{S}.$$
+\end{definition}
+
+\begin{definition}[Variable aleatoria]
+Sea $(\Omega_1, \mathcal{A}, P)$ un espacio de probabilidad y $(\Omega_2, \mathcal{S})$ un espacio de medida. Una \textit{variable aleatoria} $\mathbf{X} = (X_1, \dots, X_n)$ es una función medible $\mathbf{X} \colon \Omega_1 \to \Omega_2$ que mapea del espacio de probabilidad al espacio de medida.
+\end{definition}
+
+Una variable aleatoria se denomina \textit{unidimensional} si $n=1$ y \textit{multivariante} cuando $n > 1$. En el caso de tener una variable aleatoria multivariante $\mathbf{X} = (X_1, \ldots, X_n)$, se la llamará variable aleatoria conjunta o \textit{vector aleatorio}, y cada $X_i$ con $i=1, \ldots, n$ se llamará variable aleatoria marginal.
+
+\begin{definition}[Probabilidad inducida]
+Sea $(\Omega_1, \mathcal{A},P)$ un espacio de probabilidad y $(\Omega_2, \mathcal{S})$ un espacio de medida. La \textit{probabilidad inducida} por una variable aleatoria $X$ viene dada por la función: $$P_X(S)=P(X^{-1}(S)), \ \text{para todo} \ S \in \mathcal{S}.$$
+\end{definition}
+
+Consideramos el lanzamiento de una moneda. Los posibles resultados del experimento serán cara o cruz, los cuales serán nuestros sucesos aleatorios. Definiremos nuestra variable aleatoria como: 
+
+$$X=
+\begin{cases}
+0 & \text{si sale cara}, \\
+1 & \text{si sale cruz}.
+\end{cases}
+$$
+
+\begin{definition}[Función de distribución]
+La \textit{función de distribución} acumulada de una variable aleatoria $X$ es una función $F: \mathbb{R} \to [0,1]$ definida como: $$F(x)=P[X\leq x].$$
+\end{definition}
+
+\begin{proposition} La función de distribución acumulada $F$ asociada a la variable aleatoria $X$ satisface las siguientes propiedades:
+
+\begin{itemize}
+    \item $\displaystyle \lim_{x\to +\infty} F(x)=1$.
+    \item $\displaystyle \lim_{x\to -\infty} F(x)=0$.
+    \item Es creciente, es decir, si $x_1 \leq x_2$, entonces $F(x_1) \leq F(x_2)$.
+    \item Es continua por la derecha, es decir, $\displaystyle \lim_{x\to a^+} F(x)=F(a^+)$.
+\end{itemize}
+\end{proposition}
+
+Si la imagen de la variable aleatoria $X$ es numerable, diremos que la variable aleatoria es \textit{discreta} y viene descrita por la función de probabilidad $p$ que devuelve la probabilidad de $X$ de ser igual a cierto valor $x$. 
+
+Si la imagen de la variable aleatoria $X$ es infinita no numerable, diremos que la variable aleatoria es \textit{continua} y viene descrita por la función de densidad $f$ que caracteriza la posibilidad relativa de que $X$ tome un valor cercano a $x$.
+
+\begin{definition}[Función de probabilidad]
+Sea $X$ una variable aleatoria discreta con posibles valores $\{x_1,\dots,x_n\}$ su \textit{función de probabilidad} se define como 
+
+$$f(x)= 
+\begin{cases}
+P(X=x), & \text{si } x\in \{x_1,\dots,x_n\}, \\
+0, & \text{en otro caso}.
+\end{cases}
+$$
+\end{definition}
+
+\section{Teoría del Aprendizaje Estadístico}
+\subsection{Introducción a la Teoría del Aprendizaje}
+\subsection{Paradigma ERM (Empirical Risk Minimization)}
+\subsection{Dimensión VC (Vapnik-Chervonenkis)}
+\subsubsection{Desigualdad VC}
+\subsubsection{Complejidad de Muestra y Generalización}
+\subsection{Teorema Fundamental del Aprendizaje Estadístico}
+
+\section{Optimización y Métodos de Entrenamiento}
+\subsection{Descenso de Gradiente Estocástico (SGD)}
+\subsection{Algoritmos de Optimización Avanzados}
+\subsubsection{Adam}
+\subsubsection{LAMB}
+\subsection{Regularización y Técnicas para Evitar el Sobreajuste}

@@ -44,6 +44,12 @@ cleardoublepage=empty,abstractoff,BCOR=5mm,paper=a4,fontsize=12pt,main=spanish]{
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
 
+\hypersetup{
+    unicode=true,  % Permite que los bookmarks sean unicode
+    pdftitle={Tu Título}, % Título del documento PDF
+    pdfauthor={Tu Nombre}, % Autor del PDF
+}
+
 % Plantilla classicthesis
 \usepackage[beramono,eulerchapternumbers,linedheaders,parts,a5paper,dottedtoc,
 manychapters,pdfspacing]{classicthesis}
@@ -68,6 +74,7 @@ manychapters,pdfspacing]{classicthesis}
 \setminted{fontsize=\small}
 \setminted[haskell]{linenos=false,fontsize=\small}
 \renewcommand{\theFancyVerbLine}{\sffamily\textcolor[rgb]{0.5,0.5,1.0}{\oldstylenums{\arabic{FancyVerbLine}}}}
+
 
 % Archivos de configuración.
 \input{macros}  % En macros.tex se almacenan las opciones y comandos para escribir matemáticas.
@@ -103,151 +110,16 @@ de vehículos utilizando \\ modelos Transformer con atención en Python}
 % Los artículos y libros incluidos en el archivo research.bib pueden
 % citarse desde cualquier punto del texto usando ~\cite.
 
-Nos basamos en el trabajo desarrollado en~\cite{vaswani_attention_2017}.
 
-Occaecati expedita cumque est. Aut odit vel nobis praesentium dolorem
-consequatur. Et cumque quia recusandae fugiat earum repellat
-porro. Earum et tempora vel voluptas. At sed animi qui hic eaque
+% Inclusión de capítulos
 
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+\include{chapters/chapter6}
 
-
-\ctparttext{
-  \color{black}
-  \begin{center}
-    En este capítulo se presentarán las definiciones y resultados fundamentales
-    de la teoría de probabilidad que servirán como base para el desarrollo
-    posterior del trabajo.  
-  \end{center}
-}
-\part{Fundamentos matemáticos elementales}
-
-\chapter{Sección primera}
-
-Estableceremos la teoría bajo la suposición de que hay un conjunto no vacío
-$\Omega$, que representa todos los posibles resultados de un experimento aleatorio.
-Definimos un \textit{evento} como cualquier subconjunto de $\Omega$.
-
-\begin{definition}[$\sigma$-álgebra]
-Sea $\mathcal{P}$ partes de $\Omega$. Llamamos $\sigma$-álgebra a cualquier $\mathcal{A} \subset \mathcal{P}$ que cumpla:
-
-\begin{itemize}
-\item $ \mathcal{A} \neq \emptyset$.
-\item Si $A_1, A_2, \ldots, A_n \in \mathcal{A}$ entonces $\bigcup_{i=1}^n A_i \in \mathcal{A}$.
-\item Si $A \in \mathcal{A}$ entonces $A^c \in \mathcal{A}$.
-\end{itemize}
-\end{definition}
-
-A partir de las propiedades anteriores, deducimos que $\Omega \in \mathcal{A}$ 
-y que $\mathcal{A}$ también es cerrado bajo intersecciones numerables.
-
-\begin{definition}[Función de probabilidad]
-$P: \mathcal{A} \rightarrow [0,1]$ es una función de probabilidad si satisface los tres axiomas:
-\begin{enumerate}
-  \item $P(A) \geq 0 \quad \forall A \in \mathcal{A}$.
-  \item $P(\Omega) = 1$
-  \item $P$ es $\sigma$-aditiva, es decir: dada $\{A_n \}_{n \in \mathbb{N}} \subset \mathcal{A}$ es una sucesión de conjuntos disjuntos dos a dos entonces
-    $$
-    P\left( \bigcup_{i\in \mathbb{N}} A_i \right) = \sum_{i \in \mathbb{N}} P(A_i).
-    $$
-\end{enumerate}
-\end{definition}
-
-Identificaremos como suceso seguro al evento que siempre ocurre. La primera
-condición nos asegura que el suceso seguro tiene la probabilidad más alta
-posible. La segunda condición garantiza que la probabilidad es no negativa.
-Finalmente, la tercera condición establece que, para un conjunto de sucesos
-disjuntos, la probabilidad de que ocurra alguno de ellos es igual a la suma de
-las probabilidades individuales de cada suceso.
-
-\newpage
-
-\begin{proposition}
-Toda medida de probabilidad $P$, cumple:
-  \begin{itemize}
-    \item $P(\emptyset) = 0$
-    \item Dados $A, B \in \mathcal{A}$, entonces $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
-  \end{itemize}
-\end{proposition}
-
-\begin{proof}
-  La primera propiedad se deduce de la $\sigma$-aditividad de $P$ y de que
-  $\emptyset = \bigcup_{i=1}^\infty \emptyset$. La segunda propiedad se deduce
-  de la $\sigma$-aditividad de $P$ y de que $A \cup B = A \cup (B \setminus A)$ disjuntos.
-
-\end{proof}
-
-\begin{definition}[Espacio de probabilidad]
-Definimos como \textit{espacio de medida} a la terna $(\Omega, \mathcal{A}, \mu)$, donde $\mu: \mathcal{A} \rightarrow R_0^+$ 
-es una medida en $(\Omega, \mathcal{A})$ y \textit{espacio de probabilidad} a la tupla formada por $(\Omega, \mathcal{A}, P)$, 
-donde $P$ es una medida de probabilidad en $(\Omega, \mathcal{A})$.
-\end{definition}
-
-
-\chapter{Sección segunda}
-
-Sección segunda.
-
-\ctparttext{\color{black}\begin{center}
-Esta es una descripción de la parte de informática.
-\end{center}}
-
-\part{Parte de informática}
-\chapter{Sección tercera}
-El siguiente código es un ejemplo de coloreado de sintaxis e inclusión
-directa de código fuente en el texto usando \texttt{minted}.
-
-\begin{minted}[frame=lines]{haskell}
--- From the GHC.Base library.
-class  Functor f  where
-    fmap        :: (a -> b) -> f a -> f b
-
-    -- | Replace all locations in the input with the same value.
-    -- The default definition is @'fmap' . 'const'@, but this may be
-    -- overridden with a more efficient version.
-    (<$)        :: a -> f b -> f a
-    (<$)        =  fmap . const
-
--- | A variant of '<*>' with the arguments reversed.
-(<**>) :: Applicative f => f a -> f (a -> b) -> f b
-(<**>) = liftA2 (\a f -> f a)
--- Don't use \$ here, see the note at the top of the page
-
--- | Lift a function to actions.
--- This function may be used as a value for `fmap` in a `Functor` instance.
-liftA :: Applicative f => (a -> b) -> f a -> f b
-liftA f a = pure f <*> a
--- Caution: since this may be used for `fmap`, we can't use the obvious
--- definition of liftA = fmap.
-
--- | Lift a ternary function to actions.
-liftA3 :: Applicative f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
-liftA3 f a b c = liftA2 f a b <*> c
-
-
-{-# INLINABLE liftA #-}
-{-# SPECIALISE liftA :: (a1->r) -> IO a1 -> IO r #-}
-{-# SPECIALISE liftA :: (a1->r) -> Maybe a1 -> Maybe r #-}
-{-# INLINABLE liftA3 #-}
-{-# SPECIALISE liftA3 :: (a1->a2->a3->r) -> IO a1 -> IO a2 -> IO a3 -> IO r #-}
-{-# SPECIALISE liftA3 :: (a1->a2->a3->r) ->
-                                Maybe a1 -> Maybe a2 -> Maybe a3 -> Maybe r #-}
-
--- | The 'join' function is the conventional monad join operator. It
--- is used to remove one level of monadic structure, projecting its
--- bound argument into the outer level.
-join              :: (Monad m) => m (m a) -> m a
-join x            =  x >>= id
-\end{minted}
-
-Vivamus fringilla egestas nulla ac lobortis. Etiam viverra est risus,
-in fermentum nibh euismod quis. Vivamus suscipit arcu sed quam dictum
-suscipit. Maecenas pulvinar massa pulvinar fermentum
-pellentesque. Morbi eleifend nec velit ut suscipit. Nam vitae
-vestibulum dui, vel mollis dolor. Integer quis nibh sapien.
-
-
-
-% Añade sección de referencias al final del documento.
 % Selecciona un estilo de cita.
 \bibliographystyle{alpha}
 % En research.bib están las entradas de los artículos que citamos.
