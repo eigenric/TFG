@@ -5,6 +5,9 @@
             "label": "Compile LaTeX",
             "type": "shell",
             "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/memoria"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
