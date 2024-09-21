@@ -1,2 +1,4 @@
 tfgs
 correos
+*.aux
+*.DS_Store
