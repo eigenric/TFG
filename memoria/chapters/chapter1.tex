@@ -1,12 +1,87 @@
 \chapter{Introducción y objetivos}
 
 \section{Introducción}
+
 \subsection{Contextualización}
+La generación de datos sintéticos ha emergido como una solución clave en el
+campo del aprendizaje automático y la inteligencia artificial. En un entorno
+donde la recopilación de datos reales puede ser complicada y costosa, esta
+técnica ofrece la posibilidad de crear conjuntos de datos artificiales que
+imitan patrones y características de datos reales. Esto resulta particularmente
+relevante en aplicaciones donde los datos son escasos o donde existen
+limitaciones éticas y legales para su obtención.
+
+El sector turístico se presenta como un área propicia para la aplicación de la
+generación de datos sintéticos. La capacidad de prever la ocupación hotelera se
+convierte en una herramienta fundamental para la gestión eficiente de recursos.
+Al utilizar datos recopilados de sistemas IoT de detección de vehículos, se
+puede obtener información valiosa sobre la afluencia de turistas en distintas
+áreas geográficas, permitiendo una mejor planificación en la oferta de servicios
+turísticos.
+
 \subsection{Descripción del problema}
+A pesar de la potencialidad de los datos provenientes de sistemas IoT, su uso
+presenta diversos desafíos. La heterogeneidad de los datos, la presencia de
+ruido y la dificultad para modelar adecuadamente los patrones de comportamiento
+de los turistas pueden afectar negativamente el rendimiento de los modelos de
+aprendizaje automático. Por ello, se plantea la necesidad de desarrollar modelos
+generativos que puedan crear datos sintéticos de alta calidad, reflejando las
+características de los datos reales y optimizando así la capacidad predictiva de
+los modelos.
+
 \subsection{Estructura del trabajo}
+Este trabajo se organiza en cinco partes bien diferenciadas, cada una de las
+cuales se divide en un conjunto de capítulos que abordan diferentes aspectos del
+problema y su solución. La estructura sigue las directrices establecidas para
+los trabajos de fin de grado.
+
+\begin{itemize}
+    \item \textbf{Primera parte:} Presenta la introducción y los objetivos del
+    proyecto. 
+    \item \textbf{Segunda parte:} Detalla los fundamentos matemáticos
+    y teóricos del aprendizaje automático que sustentan el trabajo. 
+    \item \textbf{Tercera parte:} Se centra en el análisis de los modelos Transformer
+    y perceptrones multicapa, explorando sus fundamentos, arquitecturas y
+    aplicaciones en la generación de datos sintéticos.
+    \item \textbf{Cuarta parte:} Describe el desarrollo del proyecto y los
+    experimentos realizados, incluyendo detalles sobre el problema, el software
+    utilizado, las métricas de evaluación y el preprocesamiento de datos. 
+    \item \textbf{Quinta parte:} Presenta las conclusiones y reflexiones finales sobre
+    el trabajo, así como recomendaciones para futuras investigaciones.
+\end{itemize}
+
 \subsection{Herramientas Matemáticas e Informáticas}
+Para llevar a cabo este trabajo se emplearán diversas herramientas matemáticas e
+informáticas. Las bases del aprendizaje automático, incluyendo algoritmos de
+optimización y técnicas de regularización, se abordarán utilizando Python como
+lenguaje de programación principal. Además, se hará uso de bibliotecas como NumPy,
+Pandas, Matplotlib y Huggingface para el entrenamiento con Transformers.
+
 \subsection{Bibliografía Fundamental}
 
 \section{Objetivos}
+
 \subsection{Objetivo General}
+El objetivo general de este trabajo es analizar los fundamentos matemáticos del
+aprendizaje automático y aplicar este conocimiento en la implementación de
+modelos generativos, específicamente utilizando arquitecturas Transformer y
+para la creación de datos sintéticos aplicables en la previsión de la ocupación a
+través de los datos recopilados por un sistema IoT de detección de vehículos.
+
 \subsection{Objetivos Específicos}
+\begin{enumerate}
+    \item \textbf{Estudiar las características de los datos recopilados:}
+    Realizar un análisis exhaustivo de los datos obtenidos del sistema IoT de
+    detección de vehículos, identificando sus limitaciones y patrones
+    significativos. 
+    \item \textbf{Implementar modelos generativos:} Desarrollar
+    modelos basados en arquitecturas de transformers y perceptrones multicapa
+    que permitan la creación de datos sintéticos representativos de los datos
+    reales.
+    \item \textbf{Evaluar la calidad de los datos generados:} Comparar los datos
+    sintéticos generados con los datos reales para evaluar su calidad y utilidad
+    en el entrenamiento de modelos de aprendizaje automático. 
+    \item \textbf{Resolver el problema computacional:} Aplicar el modelo Transformer
+    para abordar el problema de generación de datos sintéticos, analizando su
+    rendimiento y efectividad en comparación con otros enfoques.
+\end{enumerate}
