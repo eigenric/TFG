@@ -3,85 +3,115 @@
 \section{Introducción}
 
 \subsection{Contextualización}
-La generación de datos sintéticos ha emergido como una solución clave en el
-campo del aprendizaje automático y la inteligencia artificial. En un entorno
-donde la recopilación de datos reales puede ser complicada y costosa, esta
-técnica ofrece la posibilidad de crear conjuntos de datos artificiales que
-imitan patrones y características de datos reales. Esto resulta particularmente
-relevante en aplicaciones donde los datos son escasos o donde existen
-limitaciones éticas y legales para su obtención.
 
-El sector turístico se presenta como un área propicia para la aplicación de la
-generación de datos sintéticos. La capacidad de prever la ocupación hotelera se
-convierte en una herramienta fundamental para la gestión eficiente de recursos.
-Al utilizar datos recopilados de sistemas IoT de detección de vehículos, se
-puede obtener información valiosa sobre la afluencia de turistas en distintas
-áreas geográficas, permitiendo una mejor planificación en la oferta de servicios
-turísticos.
+La Inteligencia Artificial (IA), impulsada por el avance en algoritmos de
+aprendizaje automático ha experimentado un rápido desarrollo debido a su
+reciente viabilidad de ejecución en hardware y la creciente disponibilidad de
+datos. 
+
+Sus fundamentos matemáticos, incluyendo el análisis, la probabilidad
+y el álgebra lineal que conforman la teoría del aprendizaje estadístico
+son esenciales para construir modelos que aprenden de los datos y realizan predicciones. 
+
+Como aplicación particular se encuentra la capacidad de estos algoritmos para
+identificar patrones en datos generados por las tecnologías de Internet
+Industrial de las Cosas (IoT), basadas en redes de sensores y dispositivos
+conectados a Internet que recopilan y transmiten datos en tiempo real.
 
 \subsection{Descripción del problema}
-A pesar de la potencialidad de los datos provenientes de sistemas IoT, su uso
-presenta diversos desafíos. La heterogeneidad de los datos, la presencia de
-ruido y la dificultad para modelar adecuadamente los patrones de comportamiento
-de los turistas pueden afectar negativamente el rendimiento de los modelos de
-aprendizaje automático. Por ello, se plantea la necesidad de desarrollar modelos
-generativos que puedan crear datos sintéticos de alta calidad, reflejando las
-características de los datos reales y optimizando así la capacidad predictiva de
-los modelos.
+
+El marco de este trabajo está relacionado con un proyecto de investigación de un sistema IoT
+implementado en la región de Poqueira, en la Alpujarra granadina \cite{smartpoqueira}.
+El sistema IoT ha procesado la información recogida por los sensores visuales
+y la ha exportado a un conjunto de datos con múltiples características.
+
+El entrenamiento de modelos de Aprendizaje Automático a partir de estos datos podría
+predecir variables que mejorasen la gestión de la ocupación de la zona,
+promoviendo así una mayor sostenibilidad en la comunidad local.
+
+Sin embargo, la complejidad de la información obtenida, la presencia de ruido y
+la falta de datos etiquetados, dificultan la tarea. En este contexto, la
+generación de datos sintéticos se presenta como solución, pues 
+permite añadir al conjunto de datos original muestras generadas artificialmente que
+simulan las características de los datos reales. Esta
+técnica facilita el entrenamiento de modelos más robustos y precisos, abordando
+la escasez de etiquetas y mejorando la precisión de los modelos.
+
+Aunque la literatura existente ha utilizado diversos Modelos de Generación Profunda (DGMs), 
+incluyendo Redes Generativas Antagónicas (GANs) y Modelos de Autoencoders
+Variacionales (VAEs) \cite{de_deep_2022}, en este proyecto nos centraremos en los Modelos
+Transformers con atención, pues su capacidad de modelar dependencias a largo
+plazo en los datos, los presenta como una alternativa prometedora.
 
 \subsection{Estructura del trabajo}
-Este trabajo se organiza en cinco partes bien diferenciadas, cada una de las
-cuales se divide en un conjunto de capítulos que abordan diferentes aspectos del
-problema y su solución. La estructura sigue las directrices establecidas para
-los trabajos de fin de grado.
+
+Este trabajo se organiza en cinco partes, cada una de las cuales se divide en
+capítulos que abordan diferentes aspectos del problema y su solución. La
+estructura sigue las directrices establecidas para los trabajos de fin de grado.
 
 \begin{itemize}
     \item \textbf{Primera parte:} Presenta la introducción y los objetivos del
     proyecto. 
     \item \textbf{Segunda parte:} Detalla los fundamentos matemáticos
-    y teóricos del aprendizaje automático que sustentan el trabajo. 
-    \item \textbf{Tercera parte:} Se centra en el análisis de los modelos Transformer
-    y perceptrones multicapa, explorando sus fundamentos, arquitecturas y
-    aplicaciones en la generación de datos sintéticos.
+    y teóricos del aprendizaje automático que sustentan el trabajo.
+    
+    \item \textbf{Tercera parte:} Se centra en el análisis de los modelos
+    Transformer y perceptrones multicapa, explorando sus fundamentos,
+    arquitecturas y aplicaciones en la generación de datos sintéticos.
+    
     \item \textbf{Cuarta parte:} Describe el desarrollo del proyecto y los
     experimentos realizados, incluyendo detalles sobre el problema, el software
-    utilizado, las métricas de evaluación y el preprocesamiento de datos. 
-    \item \textbf{Quinta parte:} Presenta las conclusiones y reflexiones finales sobre
-    el trabajo, así como recomendaciones para futuras investigaciones.
-\end{itemize}
+    utilizado, las métricas de evaluación y el preprocesamiento de datos.
+    
+    \item \textbf{Quinta parte:} Presenta las conclusiones y reflexiones finales
+    sobre el trabajo, así como recomendaciones para futuras investigaciones.
+    \end{itemize}
 
 \subsection{Herramientas Matemáticas e Informáticas}
-Para llevar a cabo este trabajo se emplearán diversas herramientas matemáticas e
-informáticas. Las bases del aprendizaje automático, incluyendo algoritmos de
-optimización y técnicas de regularización, se abordarán utilizando Python como
-lenguaje de programación principal. Además, se hará uso de bibliotecas como NumPy,
-Pandas, Matplotlib y Huggingface para el entrenamiento con Transformers.
+
+Para el desarrollo de este trabajo se utilizarán herramientas matemáticas e
+informáticas clave. Los fundamentos matemáticos incluyen análisis
+(diferenciabilidad y reglas de la cadena), probabilidad y estadística para el
+manejo de la incertidumbre, y álgebra lineal, esenciales en el diseño y
+optimización de modelos de \textit{machine learning}. 
+
+La implementación se llevará a cabo en Python, utilizando bibliotecas como
+\textit{Numpy}, \textit{Pandas}, y \textit{Matplotlib} para el análisis de
+datos, y \textit{Sklearn} y \textit{Hugging Face} para el entrenamiento de los
+modelos \textit{Transformers}.
 
 \subsection{Bibliografía Fundamental}
 
 \section{Objetivos}
 
 \subsection{Objetivo General}
+
 El objetivo general de este trabajo es analizar los fundamentos matemáticos del
 aprendizaje automático y aplicar este conocimiento en la implementación de
-modelos generativos, específicamente utilizando arquitecturas Transformer y
-para la creación de datos sintéticos aplicables en la previsión de la ocupación a
-través de los datos recopilados por un sistema IoT de detección de vehículos.
+modelos generativos, específicamente utilizando arquitecturas Transformer, para
+la creación de datos sintéticos aplicables en la previsión de la ocupación a
+partir del conjunto de datos.
 
 \subsection{Objetivos Específicos}
+
 \begin{enumerate}
-    \item \textbf{Estudiar las características de los datos recopilados:}
-    Realizar un análisis exhaustivo de los datos obtenidos del sistema IoT de
-    detección de vehículos, identificando sus limitaciones y patrones
-    significativos. 
-    \item \textbf{Implementar modelos generativos:} Desarrollar
-    modelos basados en arquitecturas de transformers y perceptrones multicapa
-    que permitan la creación de datos sintéticos representativos de los datos
-    reales.
-    \item \textbf{Evaluar la calidad de los datos generados:} Comparar los datos
-    sintéticos generados con los datos reales para evaluar su calidad y utilidad
-    en el entrenamiento de modelos de aprendizaje automático. 
-    \item \textbf{Resolver el problema computacional:} Aplicar el modelo Transformer
-    para abordar el problema de generación de datos sintéticos, analizando su
-    rendimiento y efectividad en comparación con otros enfoques.
+    \item \textbf{Estudiar los fundamentos matemáticos del aprendizaje automático:}
+    Revisar los conceptos matemáticos y teóricos del aprendizaje automático incluyendo
+    teoría sobre cotas de generalización, optimización y regularización.   
+
+    \item \textbf{Analizar las características de los datos recopilados:} Llevar
+    a cabo un análisis del conjunto de datos obtenidos del sistema IoT de
+    detección de vehículos, identificando limitaciones y patrones
+    significativos.
+    
+    \item \textbf{Desarrollar modelos generativos:} Implementar modelos basados
+    en perceptrones multicapa y arquitecturas de transformers con atención, con
+    el fin de generar datos sintéticos representativos de los datos reales y que
+    contribuyan a la mejora del análisis predictivo.
+    
+    \item \textbf{Analizar el rendimiento del modelo Transformer:} Evaluar el
+    rendimiento y efectividad del modelo Transformer con atención a partir de
+    métricas de evaluación comparación con sotros enfoques de modelado
+    generativo. 
+
 \end{enumerate}
