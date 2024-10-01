@@ -56,12 +56,12 @@ estructura sigue las directrices establecidas para los trabajos de fin de grado.
     y teóricos del aprendizaje automático que sustentan el trabajo.
     
     \item \textbf{Tercera parte:} Se centra en el análisis de los modelos
-    Transformer y perceptrones multicapa, explorando sus fundamentos,
-    arquitecturas y aplicaciones en la generación de datos sintéticos.
+    Transformer y perceptrones multicapa, explorando sus fundamentos matemáticos y
+    arquitectura.
     
     \item \textbf{Cuarta parte:} Describe el desarrollo del proyecto y los
     experimentos realizados, incluyendo detalles sobre el problema, el software
-    utilizado, las métricas de evaluación y el preprocesamiento de datos.
+    utilizado, el preprocesamiento de datos y las métricas de evaluación.
     
     \item \textbf{Quinta parte:} Presenta las conclusiones y reflexiones finales
     sobre el trabajo, así como recomendaciones para futuras investigaciones.
@@ -71,8 +71,8 @@ estructura sigue las directrices establecidas para los trabajos de fin de grado.
 
 Para el desarrollo de este trabajo se utilizarán herramientas matemáticas e
 informáticas clave. Los fundamentos matemáticos incluyen análisis
-(diferenciabilidad y reglas de la cadena), probabilidad y estadística para el
-manejo de la incertidumbre, y álgebra lineal, esenciales en el diseño y
+(diferenciabilidad), probabilidad y estadística para el manejo de la
+incertidumbre, y álgebra lineal, esenciales en el diseño y
 optimización de modelos de \textit{machine learning}. 
 
 La implementación se llevará a cabo en Python, utilizando bibliotecas como
@@ -81,6 +81,9 @@ datos, y \textit{Sklearn} y \textit{Hugging Face} para el entrenamiento de los
 modelos \textit{Transformers}.
 
 \subsection{Bibliografía Fundamental}
+
+Para la elaboración del Capítulo 3, Teoría del Aprendizaje Estadístico se ha
+destacamos el uso del libro Learning from Data \cite{Mostafa2012}.
 
 \section{Objetivos}
 
@@ -92,26 +95,36 @@ modelos generativos, específicamente utilizando arquitecturas Transformer, para
 la creación de datos sintéticos aplicables en la previsión de la ocupación a
 partir del conjunto de datos.
 
-\subsection{Objetivos Específicos}
+\subsection{Parte de Matemáticas Específicos}
 
-\begin{enumerate}
-    \item \textbf{Estudiar los fundamentos matemáticos del aprendizaje automático:}
-    Revisar los conceptos matemáticos y teóricos del aprendizaje automático incluyendo
-    teoría sobre cotas de generalización, optimización y regularización.   
+    \begin{enumerate}
+        \item \textbf{Estudiar los fundamentos matemáticos del aprendizaje automático:} 
+        Revisar y comprender los conceptos matemáticos y teóricos que sustentan
+        el aprendizaje automático, incluyendo teoría sobre cotas de
+        generalización, optimización y regularización. 
+            
+    \end{enumerate}
 
-    \item \textbf{Analizar las características de los datos recopilados:} Llevar
-    a cabo un análisis del conjunto de datos obtenidos del sistema IoT de
-    detección de vehículos, identificando limitaciones y patrones
-    significativos.
+El objetivo 1 de matemáticas se abordará en el Capítulo 2.
+
+\subsection{Parte de Informática}
     
-    \item \textbf{Desarrollar modelos generativos:} Implementar modelos basados
-    en perceptrones multicapa y arquitecturas de transformers con atención, con
-    el fin de generar datos sintéticos representativos de los datos reales y que
-    contribuyan a la mejora del análisis predictivo.
-    
-    \item \textbf{Analizar el rendimiento del modelo Transformer:} Evaluar el
-    rendimiento y efectividad del modelo Transformer con atención a partir de
-    métricas de evaluación comparación con sotros enfoques de modelado
-    generativo. 
+    \begin{enumerate}
+        \item \textbf{Definir la arquitectura Transformer} 
+        Definir el modelo de perceptrones multicapa, el mecanismo de atención y
+        como la arquitectura transformers combina ambos.
 
-\end{enumerate}
+        \item \textbf{Analizar las características de los datos recopilados:} 
+        Llevar a cabo un análisis del conjunto de datos obtenidos del sistema
+        IoT de detección de vehículos, identificando limitaciones y patrones
+        significativos.
+        
+        \item \textbf{Analizar el rendimiento del modelo Transformer:} 
+        Evaluar el rendimiento y efectividad del modelo Transformer con atención
+        a partir de métricas de evaluación, comparándolo con otros enfoques de
+        modelado generativo.
+        
+    \end{enumerate}
+    
+El objetivos 1 de Informática se abordará en el Capítulo 3, el objetivo 2 en el Capítulo 4 y el objetivo 3 en el
+Capítulo 5. 
