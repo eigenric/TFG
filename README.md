@@ -8,6 +8,14 @@
 
 **Problema:** La generación de datos sintéticos es una tarea compleja que requiere la aplicación de técnicas avanzadas de aprendizaje profundo (Deep learning). En este caso, se propone la utilización de modelos Transformer. Estos modelos, basados en un mecanismo de atención, han demostrado ser muy eficaces en tareas de generación de texto y traducción automática. Sin embargo, su aplicación en Predicción de Series Temporales es aún un campo en desarrollo.
 
+## Historias de Usuario y Milestones
+
+En los siguientes documentos, se detallan las historias de usuario y milestones que se han definido para el
+desarrollo del proyecto:
+
+- [Historias de Usuario](docs/user-stories.md)
+- [Milestones](docs/milestones.md)
+
 # License
 
-[GPLv3](LICENSE) para el código y [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) para las memorias
+[GPLv3](LICENSE) para el código y [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) para las memoriasg
