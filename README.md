@@ -1,4 +1,4 @@
-# TFG: Generación de Datos Sintéticos a partir de un Sistema IoT de Vehiculos utilizando Modelos Transformer con Atención en Python
+# TFG: Generación de Datos Sintéticos a partir de un Sistema IoT de Detección de Vehiculos utilizando Modelos Transformer con Atención en Python
 
 ## Formulación del Problema
 
