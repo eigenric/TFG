@@ -1,0 +1,75 @@
+\vspace {-\cftbeforepartskip }
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Introducción y objetivos}}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introducción}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Contextualización}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Descripción del problema}{5}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Estructura del trabajo}{6}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Herramientas Matemáticas e Informáticas}{6}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Bibliografía Fundamental}{7}{subsection.1.1.5}%
+\contentsline {section}{\numberline {1.2}Objetivos}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Objetivo General}{7}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Parte de Matemáticas Específicos}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Parte de Informática}{7}{subsection.1.2.3}%
+\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Fundamentos Matemáticos y del Aprendizaje Automático}}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Fundamentos Matemáticos}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Fundamentos del Análisis}{8}{subsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1.1}Diferenciabilidad}{8}{subsubsection.2.1.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1.2}Regla de la Cadena y su Aplicación en Modelos de Machine Learning}{8}{subsubsection.2.1.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.1.3}Teoría de la Medida}{8}{subsubsection.2.1.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.1.4}Resultados sobre integración}{8}{subsubsection.2.1.1.4}%
+\contentsline {subsection}{\numberline {2.1.2}Fundamentos de Probabilidad}{8}{subsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.2.1}Espacio de Probabilidad}{8}{subsubsection.2.1.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.2.2}Variables Aleatorias}{9}{subsubsection.2.1.2.2}%
+\contentsline {section}{\numberline {2.2}Teoría del Aprendizaje Estadístico}{11}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Introducción a la Teoría del Aprendizaje}{11}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Paradigma ERM (Empirical Risk Minimization)}{11}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Dimensión VC (Vapnik-Chervonenkis)}{11}{subsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.3.1}Desigualdad VC}{11}{subsubsection.2.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.2.3.2}Complejidad de Muestra y Generalización}{11}{subsubsection.2.2.3.2}%
+\contentsline {subsection}{\numberline {2.2.4}Teorema Fundamental del Aprendizaje Estadístico}{11}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Optimización y Métodos de Entrenamiento}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Descenso de Gradiente Estocástico (SGD)}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Algoritmos de Optimización Avanzados}{11}{subsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2.1}Adam}{11}{subsubsection.2.3.2.1}%
+\contentsline {subsubsection}{\numberline {2.3.2.2}LAMB}{11}{subsubsection.2.3.2.2}%
+\contentsline {subsection}{\numberline {2.3.3}Regularización y Técnicas para Evitar el Sobreajuste}{11}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}\spacedlowsmallcaps {Modelos Transformer y Arquitectura}}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Modelos Transformer}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Introducción a los Modelos Transformer}{13}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Mecanismo de Atención Escalonada}{13}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}Matrices de Consulta, Clave y Valor}{13}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}Normalización y Softmax}{13}{subsubsection.3.1.2.2}%
+\contentsline {subsection}{\numberline {3.1.3}Estructura de Capas en un Transformer}{13}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Retropropagación en Modelos Transformer}{13}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Teorema de Aproximación Universal}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Introducción}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Teoremas Clave de Aproximación}{13}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Teorema de Hahn-Banach}{13}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Teorema de Representación de Riesz}{13}{subsubsection.3.2.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Aplicación del Teorema de Aproximación en Redes Neuronales}{13}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Aproximación en Modelos Transformer}{13}{subsection.3.2.4}%
+\contentsline {chapter}{\numberline {4}\spacedlowsmallcaps {Metodología y Generación de Datos Sintéticos}}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Análisis del problema de detección de Vehículos}{14}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Descripción del conjunto de datos}{14}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Preprocesamiento}{14}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Entrenamiento mediante el modelo Transformer}{14}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Evaluación de los Datos Sintéticos}{14}{subsection.4.1.4}%
+\contentsline {chapter}{\numberline {5}\spacedlowsmallcaps {Resultados y Evaluación}}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados de la Generación de Datos Sintéticos}{15}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Comparación entre Datos Sintéticos y Reales}{15}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Métricas de Evaluación: Similitud, Precisión y Varianza}{15}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Rendimiento del Modelo Transformer}{15}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Evaluación del Sistema IoT}{15}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Impacto de los Datos Sintéticos en la Detección de Vehículos}{15}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Comparación con Otros Enfoques de Generación de Datos}{15}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Análisis Comparativo de Rendimiento}{15}{subsection.5.2.3}%
+\contentsline {chapter}{\numberline {6}\spacedlowsmallcaps {Conclusiones y Trabajo Futuro}}{16}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusiones}{16}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Principales Contribuciones del Trabajo}{16}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Impacto del Uso de Datos Sintéticos en IoT}{16}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Trabajo Futuro}{16}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Mejora de los Modelos Transformer}{16}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Extensiones a Otros Sistemas IoT}{16}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Posibles Aplicaciones en Diferentes Dominios}{16}{subsection.6.2.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

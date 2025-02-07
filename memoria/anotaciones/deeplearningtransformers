@@ -1,0 +1,37 @@
+En el capítulo 5 vimos cómo crear modelos generativos con datos de texto utilizando redes neuronales recurrentes
+o RNN (Recurrent Neural Networks), como las redes LSTM y GRU.
+Estos modelos autorregresivos procesan datos secuenciales un toekn cada vez, actualizano constantemente un vector
+oculto que captura la acturla representación latente de la entrada. 
+
+La RNN se diseña para predecir la siguiente palabra de una secuencia, aplicando una capa densa y activación softmax
+al vector oculto. Esta fue considerada como la forma más sofistacada de producir texto de manera generativa hasta 2017,
+momento en el que la publiación de un artículo cambió el panorama de la generación de texto para siempre.
+
+## Introducción
+
+El artículo Google Brain, titulado familiarmente "Attention Is All You Need" es famoso por popularizar el concepto de la atención (un mecanismo que ahora impulsa la mayoría de los modelos de generación de textos de última generación).
+
+Sus autores muestran cómo es posible crear potentes redes neuronale para modelado secuencial llamadas Trransformers, que no 
+requiere complejas arquitecturas recurrentes o convulucionales, sino que únicamente se basan en mecanismos de atención.
+Este enfoque soluciona un inconveniente importante del método de las RNN, el cual resulta muy difícil de paralelizar, porque debe procesar secuencias un token cada vez. Las redes Transformers son altamentente paralelizables, lo cual les permite ser entenadas con un conjunto de datos de gran tamaño.
+
+En este capítulo profunfidzaremos en el modo en que los modelos de generación de texto modernos utilizan la arquitectura Transformer, para alcanzar un rendimiento puntero en desafíos de generación de textos. En particular, exploraremos un tipo de modelo autorregresivo denominado transformador generativo preeentrenado o GPT (Generative Pre-trained Transformer), que impulsa el modelo GPT-4 de OpenAI, considerado por todos como la actual vanguardia en la generación de textos.
+
+## GPT
+
+OpenAI presentó GPT en junio de 2018, en el artículo "Improving Language Understanding by Generative Pre-Training" casi exactamente un año después de la aparición del Artículo original sobre los Transformers.
+
+En él, los autores explican cómo una arquitectura de transformador se puede entrenar con una enorme cantidad de datos de texto para predecir la siguiente palabra de una secuencia, y después ajustar en consecuencia para otras tareas posteriores.
+
+El proceso previo al entrenamiento de GPT implica entrenar le modelo con un gran corpus de texto llamado BookCorpus (4.5 GB de textos tomados de 7000 libros no publicados de distintos géneros). Durante el entrenamiento previo, el modelo es entrenado para predecir la siguiente palabra de una secuencia dadas las palabras anteriores. Este proceso se conoce como modelado del lenguaje y se utiliza para enseñar al modelo a comprender la estructura y los patrones del lenguaje natural.
+
+Tras el entrenamiento previo, el modelo GPT se adapta a una determinada tarea mediante un conjunto de datos más pequeño y específico. Esta adaptación implica modificar los parámetros del modelo para que realice mejor la tarea en cuestión. Po ejemeplo, el modelo se puede ajustar para tareas como clasificación, valoración de similitudes o respuesta a preguntas.
+
+OpenAI ha mejorado la arquitectura GPT desde entonces, ampliándola con el lanzamiento posterior de modelos como GPT-2, GPT-3, GPT-3.5 y GPT-4. Estos modelos se han entrenada con grandes conjuntos de datos y tienen capacidades mayores, de modo que generan texto más complejo y coherente. Los modelos GPT han sido adoptados por la mayoría de los investigadores y profesionales del sector y han contribuido a avances significativos en tareas de procesamiento del lenguaje natural.
+
+En este capítulo, crearemos nuestra porpia variación del modelo GPT original, entrenado con menos datos, pero utiliznado en todo caso los mismos componentes y principios subyacentes.
+
+
+
+
+## Positional encoding
