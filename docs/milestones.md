@@ -28,3 +28,19 @@ Cada milestone representa un PMV (Producto Mínimamente Viable).
 
 - **Mínimo**: Evaluación de la calidad de los datos generados.
 - **Entregable**: Estudio matemático de las métricas de calidad de los datos generados.
+
+## [M5] Elaboración de los Fundamentos Matemáticos asociados.
+
+- **Mínimo**: Álgebra Lineal, Fundamentos de Probabilidad y Estadística, Fundamentos del Aprendizaje Automático.
+- **Entregable**: Documentos TeX.
+
+## [M6] Escritura de los capítulos de la memoria
+
+- **Mínimo**: Llegar a las 75 páginas de contenidos de memoria.
+- **Entregable**: Documento PDF
+
+## [M7] Elaboración de la presentación
+
+- **Mínimo**: No sobrepasar los 20 minutos de exposición.
+- **Entregable**: Documento PDF Beamer de Presentación LaTeX.
+  
