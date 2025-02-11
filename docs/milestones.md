@@ -19,7 +19,7 @@ Cada milestone representa un PMV (Producto Mínimamente Viable).
 - **Mínimo:** Implementación de un pipeline de preprocesamiento de datos funcional.
 - **Entregable:** Código fuente del pipeline en Notebook de Jupyter.
 
-## [M3] Construcción del Modelo
+## [M3] Estudio e Implementación del Modelo de Deep Learning para entrenar
 
 - **Mínimo**: Uso de un modelo Transformer con Atención para la generación de datos sintéticos.
 - **Entregable**: Código fuente del modelo, Documentación del modelo.
