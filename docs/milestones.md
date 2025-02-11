@@ -36,7 +36,7 @@ Cada milestone representa un PMV (Producto Mínimamente Viable).
 
 ## [M6] Escritura de los capítulos de la memoria
 
-- **Mínimo**: Llegar a las 75 páginas de contenidos de memoria.
+- **Mínimo**: Llegar a las 75 páginas de contenido de memoria.
 - **Entregable**: Documento PDF
 
 ## [M7] Elaboración de la presentación
