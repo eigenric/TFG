@@ -1,6 +1,6 @@
 # Milestones
 
-Se ha planificado el proyecto de forma incremental en una serie de cinco milestones
+Se ha planificado el proyecto de forma incremental en una serie de siete milestones
 
 Cada milestone representa un PMV (Producto Mínimamente Viable).
 
