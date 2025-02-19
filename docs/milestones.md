@@ -1,6 +1,6 @@
 # Milestones
 
-Se ha planificado el proyecto de forma incremental en una serie de seis milestones
+Se ha planificado el proyecto de forma incremental en una serie de seis milestones correspondientes a un Pipeline de Ciencia de Datos.
 
 Cada milestone representa un PMV (Producto Mínimamente Viable).
 
@@ -9,7 +9,7 @@ Cada milestone representa un PMV (Producto Mínimamente Viable).
 - **Mínimo**: Identificación de los periodos y días faltantes en los datos, análisis de la distribución de los datos y de la correlación entre las variables.
 - **Entregable**: Histogramas de variables, de valores nulos, Diagramas de cajas, Matrices de correlación.
 
-## [M1] Pipeline de Preprocesamiento de Datos
+## [M1] Preprocesamiento de Datos
 
 - **Mínimo:** Implementación de un pipeline de preprocesamiento de datos funcional.
 - **Entregable:** Código fuente del pipeline en Notebook de Jupyter.
