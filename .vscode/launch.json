@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Depurar TFG",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "",
+            "console": "integratedTerminal",
+            "subProcess": true
+        }
+    ]
+}
