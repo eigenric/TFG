@@ -1,0 +1,21 @@
+\begin{thebibliography}{AMMIL12}
+
+\bibitem[AMMIL12]{Mostafa2012}
+Yaser~S. Abu-Mostafa, Malik Magdon-Ismail, and Hsuan-Tien Lin.
+\newblock {\em Learning From Data}.
+\newblock AMLBook, 2012.
+
+\bibitem[SBEXC22]{de_deep_2022}
+De~Suparna, Maria Bermudez-Edo, Honghui Xu, and Zhipeng Cai.
+\newblock Deep generative models in the industrial internet of things: A
+  survey.
+\newblock {\em {IEEE} Transactions on Industrial Informatics},
+  18(9):5728--5737, 2022.
+
+\bibitem[Sma]{smartpoqueira}
+Smartpoqueira.
+\newblock Proyecto pionero en Europa en experimentación con tecnología
+  inteligente para gestión sostenible de visitas a zonas rurales y parques
+  nacionales.
+
+\end{thebibliography}
