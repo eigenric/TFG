@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2025.3.21)  27 MAR 2025 21:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2025.3.21)  30 MAR 2025 21:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1646,7 +1646,7 @@ LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
 
 (./chapters/chapter1.aux) (./chapters/chapter2.aux) (./chapters/chapter3.aux)
-(./chapters/chapter4.aux) (./chapters/chapter5.aux) (./chapters/chapter6.aux))
+(./chapters/chapter4.aux) (./chapters/chapter5.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
@@ -1859,13 +1859,13 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 10
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 55.
+(Font)              scaled to size 11.40997pt on input line 44.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 55.
+(Font)              scaled to size 6.25204pt on input line 44.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 55.
+(Font)              scaled to size 11.40997pt on input line 44.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 55.
+(Font)              scaled to size 6.25204pt on input line 44.
  [2
 
 ])
@@ -1899,70 +1899,232 @@ LaTeX Info: Redefining \% on input line 116.
 
  (./chapters/chapter2.tex
 chapter 2.
-[8
+) [8
 
 
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
-44.
- (/opt/local/share/texmf-texlive/tex/latex/psnfss/ufplmbb.fd
-File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
-)
-LaTeX Info: Redefining \. on input line 82.
-LaTeX Info: Redefining \% on input line 82.
- [9])
-LaTeX Info: Redefining \. on input line 117.
-LaTeX Info: Redefining \% on input line 117.
- [10]
-LaTeX Info: Redefining \. on input line 117.
-LaTeX Info: Redefining \% on input line 117.
-
-[11]
 \openout2 = `chapters/chapter3.aux'.
 
  (./chapters/chapter3.tex
 chapter 3.
-) [12
+) [9
 
 
 
 
 ]
-LaTeX Info: Redefining \. on input line 118.
-LaTeX Info: Redefining \% on input line 118.
- [13]
 \openout2 = `chapters/chapter4.aux'.
 
  (./chapters/chapter4.tex
 chapter 4.
-) [14
+<images/Pipeline/nb_cell_16_output_0.png, id=175, 620.7993pt x 379.4175pt>
+File: images/Pipeline/nb_cell_16_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_16_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_16_output_0.png  used on input
+ line 12.
+(pdftex.def)             Requested size: 362.37573pt x 221.48071pt.
+<images/Pipeline/nb_cell_19_output_0.png, id=177, 1187.3961pt x 605.6226pt>
+File: images/Pipeline/nb_cell_19_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_19_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_19_output_0.png  used on input
+ line 19.
+(pdftex.def)             Requested size: 362.37573pt x 184.82089pt.
+[10
 
 
 
 
-]
+ <./images/Pipeline/nb_cell_16_output_0.png>]
+<images/Pipeline/nb_cell_20_output_0.png, id=184, 1076.823pt x 354.123pt>
+File: images/Pipeline/nb_cell_20_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_20_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_20_output_0.png  used on input
+ line 26.
+(pdftex.def)             Requested size: 362.37573pt x 119.16823pt.
+<images/Pipeline/nb_cell_21_output_0.png, id=185, 615.0177pt x 339.669pt>
+File: images/Pipeline/nb_cell_21_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_21_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_21_output_0.png  used on input
+ line 33.
+(pdftex.def)             Requested size: 362.37573pt x 200.13864pt.
+<images/Pipeline/nb_cell_22_output_0.png, id=186, 611.4042pt x 339.669pt>
+File: images/Pipeline/nb_cell_22_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_22_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_22_output_0.png  used on input
+ line 40.
+(pdftex.def)             Requested size: 362.37573pt x 201.32553pt.
+LaTeX Info: Redefining \. on input line 44.
+LaTeX Info: Redefining \% on input line 44.
+ [11 <./images/Pipeline/nb_cell_19_output_0.png> <./images/Pipeline/nb_cell_20_
+output_0.png> <./images/Pipeline/nb_cell_21_output_0.png>]
+<images/Pipeline/nb_cell_23_output_0.png, id=197, 1076.823pt x 354.123pt>
+File: images/Pipeline/nb_cell_23_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_23_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_23_output_0.png  used on input
+ line 47.
+(pdftex.def)             Requested size: 362.37573pt x 119.16823pt.
+<images/Pipeline/nb_cell_25_output_0.png, id=198, 567.3195pt x 492.8814pt>
+File: images/Pipeline/nb_cell_25_output_0.png Graphic file (type png)
+<use images/Pipeline/nb_cell_25_output_0.png>
+Package pdftex.def Info: images/Pipeline/nb_cell_25_output_0.png  used on input
+ line 54.
+(pdftex.def)             Requested size: 362.37573pt x 314.82631pt.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+ [12 <./images/Pipeline/nb_cell_22_output_0.png> <./images/Pipeline/nb_cell_23_
+output_0.png>]
+<images/Pipeline3/nb_cell_33_output_0.png, id=207, 721.9773pt x 302.8113pt>
+File: images/Pipeline3/nb_cell_33_output_0.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_33_output_0.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_33_output_0.png  used on inpu
+t line 77.
+(pdftex.def)             Requested size: 362.37573pt x 151.98746pt.
+LaTeX Info: Redefining \. on input line 81.
+LaTeX Info: Redefining \% on input line 81.
+ [13 <./images/Pipeline/nb_cell_25_output_0.png>]
+<images/Pipeline3/nb_cell_34_output_1.png, id=215, 715.473pt x 289.08pt>
+File: images/Pipeline3/nb_cell_34_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_34_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_34_output_1.png  used on inpu
+t line 84.
+(pdftex.def)             Requested size: 362.37573pt x 146.4143pt.
+<images/Pipeline3/nb_cell_35_output_1.png, id=216, 712.5822pt x 289.08pt>
+File: images/Pipeline3/nb_cell_35_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_35_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_35_output_1.png  used on inpu
+t line 91.
+(pdftex.def)             Requested size: 362.37573pt x 147.0098pt.
+<images/Pipeline3/nb_cell_37_output_0.png, id=217, 721.9773pt x 289.8027pt>
+File: images/Pipeline3/nb_cell_37_output_0.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_37_output_0.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_37_output_0.png  used on inpu
+t line 98.
+(pdftex.def)             Requested size: 362.37573pt x 145.45816pt.
+LaTeX Info: Redefining \. on input line 102.
+LaTeX Info: Redefining \% on input line 102.
+ [14 <./images/Pipeline3/nb_cell_33_output_0.png> <./images/Pipeline3/nb_cell_3
+4_output_1.png> <./images/Pipeline3/nb_cell_35_output_1.png>]
+<images/Pipeline3/nb_cell_38_output_1.png, id=228, 712.5822pt x 289.8027pt>
+File: images/Pipeline3/nb_cell_38_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_38_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_38_output_1.png  used on inpu
+t line 105.
+(pdftex.def)             Requested size: 362.37573pt x 147.37732pt.
+<images/Pipeline3/nb_cell_39_output_1.png, id=229, 712.5822pt x 289.8027pt>
+File: images/Pipeline3/nb_cell_39_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_39_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_39_output_1.png  used on inpu
+t line 112.
+(pdftex.def)             Requested size: 362.37573pt x 147.37732pt.
+<images/Pipeline3/nb_cell_51_output_1.png, id=230, 715.473pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_51_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_51_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_51_output_1.png  used on inpu
+t line 122.
+(pdftex.def)             Requested size: 362.37573pt x 140.55774pt.
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
+
+[15 <./images/Pipeline3/nb_cell_37_output_0.png> <./images/Pipeline3/nb_cell_38
+_output_1.png> <./images/Pipeline3/nb_cell_39_output_1.png>]
+<images/Pipeline3/nb_cell_53_output_1.png, id=241, 708.246pt x 281.1303pt>
+File: images/Pipeline3/nb_cell_53_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_53_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_53_output_1.png  used on inpu
+t line 129.
+(pdftex.def)             Requested size: 362.37573pt x 143.84213pt.
+<images/Pipeline3/nb_cell_54_output_1.png, id=242, 715.473pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_54_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_54_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_54_output_1.png  used on inpu
+t line 136.
+(pdftex.def)             Requested size: 362.37573pt x 140.55774pt.
+<images/Pipeline3/nb_cell_56_output_1.png, id=243, 708.246pt x 281.1303pt>
+File: images/Pipeline3/nb_cell_56_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_56_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_56_output_1.png  used on inpu
+t line 143.
+(pdftex.def)             Requested size: 362.37573pt x 143.84213pt.
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
+ [16 <./images/Pipeline3/nb_cell_51_output_1.png> <./images/Pipeline3/nb_cell_5
+3_output_1.png> <./images/Pipeline3/nb_cell_54_output_1.png>]
+<images/Pipeline3/nb_cell_58_output_1.png, id=254, 706.0779pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_58_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_58_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_58_output_1.png  used on inpu
+t line 150.
+(pdftex.def)             Requested size: 362.37573pt x 142.42941pt.
+<images/Pipeline3/nb_cell_60_output_1.png, id=255, 717.6411pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_60_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_60_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_60_output_1.png  used on inpu
+t line 158.
+(pdftex.def)             Requested size: 362.37573pt x 140.13428pt.
+<images/Pipeline3/nb_cell_62_output_1.png, id=256, 706.0779pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_62_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_62_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_62_output_1.png  used on inpu
+t line 165.
+(pdftex.def)             Requested size: 362.37573pt x 142.42941pt.
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
+ [17 <./images/Pipeline3/nb_cell_56_output_1.png> <./images/Pipeline3/nb_cell_5
+8_output_1.png> <./images/Pipeline3/nb_cell_60_output_1.png>]
+<images/Pipeline3/nb_cell_64_output_1.png, id=267, 717.6411pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_64_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_64_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_64_output_1.png  used on inpu
+t line 172.
+(pdftex.def)             Requested size: 362.37573pt x 140.13428pt.
+<images/Pipeline3/nb_cell_66_output_1.png, id=268, 717.6411pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_66_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_66_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_66_output_1.png  used on inpu
+t line 179.
+(pdftex.def)             Requested size: 362.37573pt x 140.13428pt.
+<images/Pipeline3/nb_cell_68_output_1.png, id=269, 715.473pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_68_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_68_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_68_output_1.png  used on inpu
+t line 186.
+(pdftex.def)             Requested size: 362.37573pt x 140.55774pt.
+LaTeX Info: Redefining \. on input line 190.
+LaTeX Info: Redefining \% on input line 190.
+ [18 <./images/Pipeline3/nb_cell_62_output_1.png> <./images/Pipeline3/nb_cell_6
+4_output_1.png> <./images/Pipeline3/nb_cell_66_output_1.png>]
+<images/Pipeline3/nb_cell_70_output_1.png, id=280, 708.246pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_70_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_70_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_70_output_1.png  used on inpu
+t line 193.
+(pdftex.def)             Requested size: 362.37573pt x 141.99326pt.
+<images/Pipeline3/nb_cell_72_output_1.png, id=281, 708.246pt x 277.5168pt>
+File: images/Pipeline3/nb_cell_72_output_1.png Graphic file (type png)
+<use images/Pipeline3/nb_cell_72_output_1.png>
+Package pdftex.def Info: images/Pipeline3/nb_cell_72_output_1.png  used on inpu
+t line 200.
+(pdftex.def)             Requested size: 362.37573pt x 141.99326pt.
+LaTeX Info: Redefining \. on input line 225.
+LaTeX Info: Redefining \% on input line 225.
+ [19 <./images/Pipeline3/nb_cell_68_output_1.png> <./images/Pipeline3/nb_cell_7
+0_output_1.png> <./images/Pipeline3/nb_cell_72_output_1.png>])
+LaTeX Info: Redefining \. on input line 119.
+LaTeX Info: Redefining \% on input line 119.
+ [20]
 \openout2 = `chapters/chapter5.aux'.
 
- (./chapters/chapter5.tex
+
+(./chapters/chapter5.tex
 chapter 5.
-) [15
+) [21
 
 
 
 
-]
-\openout2 = `chapters/chapter6.aux'.
-
- (./chapters/chapter6.tex
-chapter 6.
-) [16
-
-
-
-
-] (./main.bbl) [17
+] (./main.bbl) [22
 
 
 
@@ -1971,7 +2133,7 @@ LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
  (./chapters/chapter1.aux)
 (./chapters/chapter2.aux) (./chapters/chapter3.aux) (./chapters/chapter4.aux)
-(./chapters/chapter5.aux) (./chapters/chapter6.aux))
+(./chapters/chapter5.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -2170,42 +2332,61 @@ bkm-pdftex.def    2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
    ugrA4.pdf    Graphic file (type pdf)
 chapters/chapter1.tex
 chapters/chapter2.tex
- ufplmbb.fd    2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 chapters/chapter3.tex
 chapters/chapter4.tex
+images/Pipeline/nb_cell_16_output_0.png
+images/Pipeline/nb_cell_19_output_0.png
+images/Pipeline/nb_cell_20_output_0.png
+images/Pipeline/nb_cell_21_output_0.png
+images/Pipeline/nb_cell_22_output_0.png
+images/Pipeline/nb_cell_23_output_0.png
+images/Pipeline/nb_cell_25_output_0.png
+images/Pipeline3/nb_cell_33_output_0.png
+images/Pipeline3/nb_cell_34_output_1.png
+images/Pipeline3/nb_cell_35_output_1.png
+images/Pipeline3/nb_cell_37_output_0.png
+images/Pipeline3/nb_cell_38_output_1.png
+images/Pipeline3/nb_cell_39_output_1.png
+images/Pipeline3/nb_cell_51_output_1.png
+images/Pipeline3/nb_cell_53_output_1.png
+images/Pipeline3/nb_cell_54_output_1.png
+images/Pipeline3/nb_cell_56_output_1.png
+images/Pipeline3/nb_cell_58_output_1.png
+images/Pipeline3/nb_cell_60_output_1.png
+images/Pipeline3/nb_cell_62_output_1.png
+images/Pipeline3/nb_cell_64_output_1.png
+images/Pipeline3/nb_cell_66_output_1.png
+images/Pipeline3/nb_cell_68_output_1.png
+images/Pipeline3/nb_cell_70_output_1.png
+images/Pipeline3/nb_cell_72_output_1.png
 chapters/chapter5.tex
-chapters/chapter6.tex
     main.bbl
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 41487 strings out of 476014
- 839869 string characters out of 5790998
+ 41629 strings out of 476014
+ 847638 string characters out of 5790998
  1946187 words of memory out of 5000000
- 62663 multiletter control sequences out of 15000+600000
- 640775 words of font info for 169 fonts, out of 8000000 for 9000
+ 62843 multiletter control sequences out of 15000+600000
+ 628218 words of font info for 137 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  108i,22n,127p,10899b,958s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></o
-pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/lo
-cal/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/t
-exmf-texlive/fonts/type1/public/amsfonts/euler/eurb10.pfb></opt/local/share/tex
-mf-texlive/fonts/type1/public/fpl/fplbj8a.pfb></opt/local/share/texmf-texlive/f
-onts/type1/public/mathpazo/fplmbb.pfb></opt/local/share/texmf-texlive/fonts/typ
-e1/public/mathpazo/fplmr.pfb></opt/local/share/texmf-texlive/fonts/type1/public
-/mathpazo/fplmri.pfb></opt/local/share/texmf-texlive/fonts/type1/public/fpl/fpl
-rc8a.pfb></opt/local/share/texmf-texlive/fonts/type1/public/fpl/fplrij8a.pfb></
-opt/local/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></opt/local/s
-hare/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></opt/local/share/texmf-
-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (17 pages, 322160 bytes).
+</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurb10.pfb>
+</opt/local/share/texmf-texlive/fonts/type1/public/fpl/fplrc8a.pfb></opt/local/
+share/texmf-texlive/fonts/type1/public/fpl/fplrij8a.pfb></opt/local/share/texmf
+-texlive/fonts/type1/urw/palatino/uplb8a.pfb></opt/local/share/texmf-texlive/fo
+nts/type1/urw/palatino/uplr8a.pfb></opt/local/share/texmf-texlive/fonts/type1/u
+rw/palatino/uplri8a.pfb>
+Output written on main.pdf (22 pages, 1286435 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 475 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
- 20962 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 490 PDF objects out of 1000 (max. 8388607)
+ 392 compressed objects within 4 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 16863 words of extra memory for PDF output out of 17280 (max. 10000000)
 
