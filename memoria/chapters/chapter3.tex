@@ -1,19 +1,200 @@
-\chapter{Arquitectura del Transformer. SAITS}
+\chapter{Del Transformer a SAITS: Arquitectura y Aplicación}
 
-\section{Modelos Transformer. Arquitectura}
 \subsection{Introducción a los Modelos Transformer}
-\subsection{Mecanismo de Atención Escalonada}
-\subsubsection{Matrices de Consulta, Clave y Valor}
-\subsubsection{Normalización y Softmax}
+
+Los modelos Transformer irrumpieron en el panorama del aprendizaje automático como una auténtica disrupción, marcando un antes y un después en el procesamiento de secuencias, especialmente en el ámbito del lenguaje natural (NLP). Su concepción representó un avance paradigmático, superando las limitaciones inherentes a las arquitecturas recurrentes (RNNs) y convolucionales (CNNs) que hasta entonces dominaban el campo. La esencia de su revolución reside en dos pilares fundamentales: su capacidad intrínseca para el \textbf{procesamiento en paralelo} y la introducción de un mecanismo de atención sumamente potente y flexible. Mientras que las RNNs procesaban la información de manera secuencial, limitando la eficiencia y la capacidad de capturar dependencias a largo alcance, los Transformers abordan la secuencia de entrada como un todo, operando simultáneamente sobre todos sus elementos. Este enfoque, orquestado por el mecanismo de atención, dota al modelo de la habilidad de discernir y ponderar la importancia relativa de cada parte de la entrada con respecto a las demás. En lugar de procesar la información paso a paso, el Transformer evalúa la relevancia contextual de cada elemento, optimizando el flujo de información y, en última instancia, potenciando significativamente su capacidad de aprendizaje y comprensión. Este capítulo se adentra en el corazón de la arquitectura Transformer, desglosando sus componentes esenciales y trazando un camino que culmina en SAITS (Self-Attention-based Imputation for Time Series), un modelo especializado que adapta la potencia del Transformer a la imputación de datos faltantes en series temporales. A través de este recorrido, demostraremos la versatilidad y el alcance de esta arquitectura, extendiéndose mucho más allá de sus orígenes en el procesamiento del lenguaje natural.
+
+\subsection{Mecanismo de Atención Escalonada (Scaled Dot-Product Attention)}
+
+El mecanismo de atención constituye el núcleo operativo y la innovación distintiva de los Transformers, siendo el principal artífice de su excepcional rendimiento. Dentro del espectro de mecanismos de atención existentes, la \textbf{atención escalonada por producto punto} (Scaled Dot-Product Attention) emerge como la piedra angular, el bloque constructivo esencial. Este ingenioso mecanismo habilita al modelo para discernir y cuantificar la similitud o relevancia entre diferentes posiciones dentro de la secuencia de entrada. De esta forma, determina con precisión qué fragmentos de la información entrante merecen una mayor ponderación al procesar cada elemento en particular. En términos prácticos, la atención confiere al modelo la capacidad de enfocar su "mirada" selectivamente sobre la información más crucial y pertinente en cada instante del procesamiento, emulando, en cierto modo, la atención selectiva humana.
+
+\subsubsection{Matrices de Consulta, Clave y Valor (Query, Key, Value)}
+
+La orquestación de la atención escalonada se basa en la interacción estratégica de tres matrices fundamentales: \textbf{Consulta (Query)}, \textbf{Clave (Key)} y \textbf{Valor (Value)}. Estas matrices, representadas convencionalmente como $Q$, $K$ y $V$ respectivamente, no son entidades independientes, sino que se derivan de la secuencia de entrada original a través de proyecciones lineales individuales y dedicadas. Para comprender mejor su función, podemos recurrir a una analogía conceptual:
+
+\begin{itemize}
+    \item \textbf{Consulta (Q):} La matriz de Consulta ($Q$) personifica la pregunta o la necesidad de información del elemento que se está procesando en un momento dado. Cada fila de $Q$ representa un elemento de la secuencia de entrada y encapsula la "consulta" o la búsqueda de información relevante en el resto de la secuencia que emana de dicho elemento. Imaginemos que cada palabra en una frase es una "consulta" buscando entender su contexto.
+    \item \textbf{Clave (K):} La matriz de Clave ($K$) actúa como un catálogo de "claves" o etiquetas descriptivas que identifican las diferentes partes de la secuencia de entrada. Al igual que $Q$, cada fila de $K$ corresponde a un elemento de la secuencia de entrada, pero en este caso, representa la "clave" que describe la información contenida en ese elemento y que podría ser relevante para responder a las consultas. Siguiendo con la analogía, cada palabra en la frase también proporciona una "clave" que describe su propio significado y rol en la oración.
+    \item \textbf{Valor (V):} La matriz de Valor ($V$) almacena la información concreta o el "valor" asociado a cada "clave". De nuevo, cada fila de $V$ se corresponde con un elemento de la secuencia de entrada y contiene la información que realmente se utilizará para construir la salida final, una vez ponderada por la atención. En nuestra analogía, la matriz de "valor" contendría la representación vectorial del significado de cada palabra, lista para ser combinada y ponderada para formar una representación contextualizada de la frase.
+\end{itemize}
+
+La esencia matemática del mecanismo de atención escalonada se encapsula en la Ecuación \ref{eq:scaled_dot_product_attention}:
+
+\begin{equation}
+    \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+    \label{eq:scaled_dot_product_attention}
+\end{equation}
+
+donde:
+
+\begin{itemize}
+    \item $Q \in \mathbb{R}^{n \times d_k}$ representa la matriz de Consulta, con $n$ siendo la longitud de la secuencia y $d_k$ la dimensión de las consultas y claves.
+    \item $K \in \mathbb{R}^{m \times d_k}$ es la matriz de Clave, con $m$ siendo la longitud de la secuencia (que puede ser diferente de $n$ en algunos casos, como la atención Encoder-Decoder) y $d_k$ la dimensión de las claves.
+    \item $V \in \mathbb{R}^{m \times d_v}$ denota la matriz de Valor, con $m$ siendo la longitud de la secuencia de valores y $d_v$ la dimensión de los valores.
+    \item $d_k$ es el factor de escala, específicamente la raíz cuadrada de la dimensión de las claves ($d_k$), que se utiliza para mitigar el problema del desvanecimiento del gradiente, especialmente con dimensiones elevadas.
+    \item $\text{softmax}$ es la función softmax, encargada de normalizar las puntuaciones de similitud, transformándolas en una distribución de probabilidad que representa los pesos de atención.
+\end{itemize}
+
+El proceso computacional que subyace a la atención escalonada se desarrolla en los siguientes pasos:
+
+\begin{enumerate}
+    \item \textbf{Cálculo de Similitud (Producto Punto):} Inicialmente, se evalúa la similitud entre cada consulta y cada clave mediante el \textbf{producto punto matricial} $QK^T$. Este producto punto cuantifica el grado de correspondencia o alineamiento entre las consultas y las claves, generando una matriz de \textbf{puntuaciones de similitud}.
+    \item \textbf{Escalado:} Las puntuaciones de similitud obtenidas se someten a un proceso de \textbf{escalado}, dividiéndolas por $\sqrt{d_k}$. Este paso de escalado es de vital importancia para la \textbf{estabilidad del entrenamiento}, ya que previene que las puntuaciones se disparen a valores excesivamente grandes, lo cual podría conducir a \textbf{gradientes extremadamente pequeños} tras la aplicación de la función softmax, dificultando el \textbf{aprendizaje efectivo}.
+    \item \textbf{Normalización (Softmax):} A continuación, la \textbf{función softmax} entra en juego para \textbf{normalizar} las puntuaciones escaladas. La softmax transforma estas puntuaciones en \textbf{pesos de atención probabilísticos}, que oscilan entre 0 y 1 y suman 1 para cada consulta. Estos \textbf{pesos de atención} reflejan la \textbf{importancia relativa} de cada valor con respecto a cada consulta, indicando en qué medida cada valor debe contribuir a la representación final.
+    \item \textbf{Ponderación y Agregación (Ponderación por Valores):} Finalmente, los pesos de atención normalizados se utilizan para \textbf{ponderar} la matriz de Valor $V$. Esta ponderación se materializa multiplicando los pesos de atención por los valores correspondientes y agregando los resultados mediante una \textbf{suma ponderada}. La \textbf{salida resultante} de este proceso es una matriz que representa la secuencia de entrada, pero ahora \textbf{enriquecida con información contextualizada}, donde cada elemento se ha refinado y ajustado en función de su relevancia con respecto a los demás elementos de la secuencia, guiado por el mecanismo de atención.
+\end{enumerate}
+
 \subsection{Estructura de Capas en un Transformer}
+
+Un Transformer típico se compone de varias capas de codificación (\textbf{Encoder}) y decodificación (\textbf{Decoder}). Estas capas se apilan secuencialmente, creando una arquitectura profunda capaz de aprender representaciones complejas de los datos. Cada capa, tanto en el Encoder como en el Decoder, está construida con un conjunto específico de subcapas interconectadas, diseñadas para extraer información relevante y transformar los datos de entrada. Las subcapas fundamentales incluyen la \textbf{atención multi-cabeza} (Multi-Head Attention), \textbf{redes neuronales feed-forward}, \textbf{normalización de capas} (Layer Normalization) y \textbf{conexiones residuales}. A continuación, se detalla la estructura y función de cada componente.
+
+\subsubsection{Capas del Encoder}
+
+Cada capa del Encoder está diseñada para procesar la secuencia de entrada y extraer características relevantes. Típicamente, una capa de Encoder consta de las siguientes subcapas principales:
+
+\begin{enumerate}
+    \item \textbf{Atención Multi-Cabeza (Multi-Head Attention):} Esta es la subcapa central del Transformer. Permite al modelo ponderar la importancia de diferentes partes de la secuencia de entrada al procesar cada posición. En lugar de una única atención, la atención multi-cabeza utiliza múltiples "cabezas" de atención en paralelo. Cada cabeza aprende a atender a diferentes aspectos de la información, capturando una variedad más rica de relaciones y dependencias dentro de la secuencia. La salida de todas las cabezas se concatena y se proyecta linealmente para producir la salida final de esta subcapa.
+    \item \textbf{Añadir y Normalizar (Add \& Norm) - Conexión Residual y Normalización de Capas:} Después de la subcapa de atención multi-cabeza, se aplica una \textbf{conexión residual}. Esto significa que la entrada original a la subcapa de atención se suma a la salida de la atención multi-cabeza. Esta conexión residual ayuda a mitigar el problema del desvanecimiento del gradiente en redes profundas, facilitando el entrenamiento de modelos más profundos. A continuación, se aplica la \textbf{normalización de capas} (Layer Normalization). La normalización de capas ayuda a estabilizar el aprendizaje normalizando las salidas de las subcapas, lo que acelera el entrenamiento y mejora la generalización.
+    \item \textbf{Red Neuronal Feed-Forward (Feed-Forward Network):} Tras la subcapa de atención y la normalización, la salida se pasa a través de una \textbf{red neuronal feed-forward}. Esta red es aplicada de forma idéntica e independiente a cada posición en la secuencia. Consiste típicamente en dos capas lineales con una función de activación no lineal (como ReLU) entre ellas. La red feed-forward ayuda a procesar la información aprendida por la atención, proporcionando no linealidad y permitiendo al modelo aprender transformaciones más complejas.
+  \item \textbf{Añadir y Normalizar (Add \& Norm) - Conexión Residual y Normalización de Capas:} Similar al paso anterior, se aplica otra conexión residual y normalización de capas después de la red neuronal feed-forward. La entrada a la red feed-forward se suma a su salida, y el resultado se normaliza.
+\end{enumerate}
+
+\subsubsection{Capas del Decoder}
+
+Las capas del Decoder tienen la función de generar la secuencia de salida, utilizando la información codificada por el Encoder. Una capa de Decoder es similar a una capa de Encoder, pero incluye una subcapa de atención adicional para interactuar con la salida del Encoder. Las subcapas típicas de una capa de Decoder son:
+
+\begin{enumerate}
+    \item \textbf{Atención Multi-Cabeza Enmascarada (Masked Multi-Head Attention):} Similar a la atención multi-cabeza del Encoder, pero con una modificación crucial: el \textbf{enmascaramiento}. En el contexto del Decoder, especialmente en tareas de generación secuencial, es importante que al predecir la salida en una posición dada, el modelo solo pueda atender a las posiciones \textit{anteriores} en la secuencia de salida (ya generada) y no a las posiciones futuras. El enmascaramiento se implementa para evitar que el modelo "vea" la respuesta durante el entrenamiento, asegurando que aprenda a generar la secuencia de forma autoregresiva.
+    \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la atención multi-cabeza enmascarada, de la misma manera que en el Encoder.
+\item \textbf{Atención Encoder-Decoder (Encoder-Decoder Attention o Multi-Head Attention):} Esta subcapa es específica del Decoder y es fundamental para la interacción entre el Encoder y el Decoder. En esta subcapa, el Decoder atiende a la salida del \textit{Encoder}. Las "queries" provienen de la salida de la subcapa de atención enmascarada del Decoder, mientras que las "keys" y "values" provienen de la salida del \textit{Encoder}. Esto permite al Decoder enfocar su atención en las partes relevantes de la secuencia de entrada codificada por el Encoder al generar cada elemento de la secuencia de salida.
+     \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la atención Encoder-Decoder.
+    \item \textbf{Red Neuronal Feed-Forward (Feed-Forward Network):} Idéntica a la red neuronal feed-forward utilizada en las capas del Encoder.
+    \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la red neuronal feed-forward.
+\end{enumerate}
+
+\subsubsection{Diagrama Conceptual de un Bloque Transformer}
+
+Un diagrama de un bloque Transformer típico mostraría:
+
+\begin{itemize}
+    \item \textbf{Para un bloque Encoder:}
+        \begin{itemize}
+            \item Un bloque etiquetado "Entrada" que representa la secuencia de entrada (o la salida de la capa Encoder anterior).
+            \item Una flecha que lleva a un bloque etiquetado "Multi-Head Attention".
+            \item Una conexión residual que salta la subcapa "Multi-Head Attention" y se suma a la salida de esta subcapa.
+            \item Un bloque etiquetado "Add \& Norm" después de la suma de la conexión residual.
+            \item Una flecha desde "Add \& Norm" a un bloque etiquetado "Feed-Forward Network".
+            \item Otra conexión residual que salta la subcapa "Feed-Forward Network" y se suma a la salida de esta subcapa.
+            \item Un bloque etiquetado "Add \& Norm" después de la segunda suma de la conexión residual, representando la salida de la capa Encoder.
+        \end{itemize}
+    \item \textbf{Para un bloque Decoder:}
+        \begin{itemize}
+            \item Un bloque etiquetado "Entrada" que representa la secuencia de entrada al Decoder (o la salida de la capa Decoder anterior).
+          \item Una flecha que lleva a un bloque etiquetado "Masked Multi-Head Attention".
+            \item Una conexión residual y "Add \& Norm" después de la atención enmascarada.
+        \item Una flecha a un bloque etiquetado "Encoder-Decoder Attention" (o simplemente "Multi-Head Attention" si se entiende el contexto). Este bloque también recibiría una conexión de la salida del Encoder (en un diagrama para la arquitectura completa).
+           \item Una conexión residual y "Add \& Norm" después de la atención Encoder-Decoder.
+            \item Una flecha a un bloque etiquetado "Feed-Forward Network".
+        \item Una conexión residual y "Add \& Norm" después de la red feed-forward, representando la salida de la capa Decoder.
+        \end{itemize}
+\end{itemize}
+
+
+En resumen, la estructura de capas de un Transformer, con sus componentes de atención multi-cabeza, redes feed-forward, normalización de capas y conexiones residuales, proporciona un marco robusto y eficiente para el modelado de secuencias complejas, tanto en tareas de codificación como de decodificación. La atención multi-cabeza es el mecanismo central que permite al modelo capturar dependencias ricas, mientras que las otras subcapas facilitan el entrenamiento y mejoran la capacidad de aprendizaje de la red.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{images/transformer_architecture.png} % Replace with the actual path
+\caption{Diagrama conceptual de un bloque Transformer típico (Encoder y Decoder).}
+\label{fig:transformer_block_diagram}
+\end{figure}
+
+
 \subsection{Retropropagación en Modelos Transformer}
+
+El entrenamiento de los modelos Transformer se realiza mediante el algoritmo de \textbf{retropropagación} (Backpropagation), que ajusta los pesos del modelo iterativamente para minimizar una función de pérdida. En esencia, la retropropagación es un método para calcular eficientemente el gradiente de la función de pérdida con respecto a los parámetros del modelo (pesos y biases). Este gradiente indica la dirección en la que se deben ajustar los parámetros para reducir la pérdida y, por lo tanto, mejorar el rendimiento del modelo.
+
+El proceso de retropropagación en un Transformer sigue los principios generales de este algoritmo, pero con consideraciones específicas para las capas de atención y las redes feed-forward que componen su arquitectura. A grandes rasgos, el proceso se puede describir en los siguientes pasos:
+
+
+\begin{enumerate}
+    \item \textbf{Paso Forward (Paso hacia adelante):} Se propaga la secuencia de entrada a través de la red Transformer, desde la capa de entrada hasta la capa de salida. En este paso, se calculan las salidas de cada subcapa (atención multi-cabeza, redes feed-forward, normalización, etc.) secuencialmente. Específicamente, en la subcapa de atención, se calculan las matrices de Consulta (Q), Clave (K) y Valor (V), se realiza el producto punto escalado, se aplica la función Softmax para obtener los pesos de atención y finalmente se calcula la salida ponderada por los valores. Las redes feed-forward aplican transformaciones lineales y no lineales a la salida de la atención.
+
+    \item \textbf{Cálculo de la Pérdida:} Una vez obtenida la salida del modelo para la secuencia de entrada, se compara con la salida deseada (la "verdad ground") utilizando una función de pérdida adecuada para la tarea en cuestión (e.g., cross-entropy para clasificación, error cuadrático medio para regresión). Esta función de pérdida cuantifica la discrepancia entre la predicción del modelo y el valor real.
+\item \textbf{Paso Backward (Paso hacia atrás):} Se inicia el proceso de retropropagación propiamente dicho. El gradiente de la función de pérdida se calcula con respecto a la salida del modelo. Luego, utilizando la \textbf{regla de la cadena del cálculo diferencial}, este gradiente se propaga hacia atrás a través de cada capa de la red, desde la capa de salida hasta la capa de entrada.
+    \begin{itemize}
+        \item \textbf{Retropropagación a través de la Atención Multi-Cabeza:} La retropropagación a través de la atención es un poco más compleja que en las capas lineales tradicionales. El gradiente se propaga a través de la función Softmax, el escalado, el producto punto, y de vuelta a través de las matrices de Consulta, Clave y Valor. Esto implica calcular los gradientes con respecto a los pesos de proyección que generaron Q, K y V, así como con respecto a las entradas a la capa de atención. Es importante tener en cuenta que el gradiente también se propaga a través de los pesos de atención, afectando a todas las partes de la secuencia de entrada que contribuyeron a la salida actual.
+
+        \item \textbf{Retropropagación a través de Redes Feed-Forward:} La retropropagación a través de las redes feed-forward es similar a la de las redes neuronales multicapa estándar. El gradiente se propaga a través de la función de activación no lineal (e.g., ReLU) y las capas lineales, calculando los gradientes con respecto a los pesos y biases de estas capas.
+
+
+        \item \textbf{Retropropagación a través de Add \& Norm y Conexiones Residuales:} La retropropagación a través de las \textbf{conexiones residuales} es sencilla: el gradiente se divide y se suma tanto al camino principal como al camino de la conexión residual. En las capas de normalización, la retropropagación implica calcular los gradientes a través de las operaciones de normalización (media, varianza) y los parámetros aprendibles de la normalización (si los hay, como en Layer Normalization con parámetros gamma y beta).
+    \end{itemize}
+
+    \item \textbf{Actualización de Pesos:} Una vez calculados los gradientes para todos los parámetros del modelo, se utilizan para actualizar los pesos y biases en la dirección opuesta al gradiente, utilizando un algoritmo de optimización como el descenso de gradiente (Gradient Descent) o sus variantes (e.g., Adam, SGD con momentum). La tasa de aprendizaje (learning rate) controla el tamaño del paso en la dirección del gradiente.
+\end{enumerate}
+
+
+\subsubsection{Consideraciones Específicas para Transformers en Retropropagación}
+
+
+\begin{itemize}
+  \item \textbf{Costo Computacional de la Atención:} El cálculo de la atención, especialmente en secuencias largas, puede ser computacionalmente costoso tanto en el paso forward como en el backward. La complejidad de la atención escalonada es cuadrática con respecto a la longitud de la secuencia ($O(L^2)$, donde $L$ es la longitud de la secuencia). Esto puede ser un cuello de botella durante el entrenamiento, especialmente para secuencias muy largas. Técnicas como la atención dispersa (sparse attention) o la atención lineal se han propuesto para mitigar este problema.
+    \item \textbf{Estabilidad del Gradiente:} Las conexiones residuales y la normalización de capas en los Transformers ayudan a mejorar la estabilidad del gradiente durante la retropropagación, facilitando el entrenamiento de redes profundas y reduciendo problemas como el desvanecimiento o la explosión del gradiente.
+
+
+    \item \textbf{Paralelización:} Aunque el mecanismo de atención permite la paralelización en el paso forward, la retropropagación también se puede paralelizar en gran medida, especialmente en hardware como GPUs, lo que acelera significativamente el entrenamiento de los Transformers.
+\end{itemize}
+
+
+En resumen, la retropropagación en los modelos Transformer es una aplicación del algoritmo estándar, adaptada a la estructura específica de la red, con especial atención al cálculo de gradientes a través del mecanismo de atención. La eficiencia y estabilidad del entrenamiento se ven favorecidas por las características arquitectónicas de los Transformers, como la atención multi-cabeza, las conexiones residuales y la normalización de capas.
+
 
 \section{Self-Attention-based Imputation for Time Series (SAITS)}
 
-% \section{Teorema de Aproximación Universal}
-% \subsection{Introducción}
-% \subsection{Teoremas Clave de Aproximación}
-% \subsubsection{Teorema de Hahn-Banach}
-% \subsubsection{Teorema de Representación de Riesz}
-% \subsection{Aplicación del Teorema de Aproximación en Redes Neuronales}
-% \subsection{Aproximación en Modelos Transformer}
+SAITS (Self-Attention-based Imputation for Time Series) es un modelo Transformer específicamente diseñado para la imputación de datos faltantes en series temporales. Aprovecha el mecanismo de auto-atención para capturar dependencias temporales y espaciales en los datos de series temporales, lo que permite una imputación más precisa en comparación con los métodos tradicionales. A diferencia de los modelos de imputación clásicos que a menudo se basan en suposiciones simplificadas sobre la estructura temporal de los datos, SAITS aprende directamente estas dependencias de los propios datos, ofreciendo una solución más flexible y robusta.
+
+
+\subsection{Arquitectura del Modelo SAITS}
+
+SAITS adapta la arquitectura Transformer estándar para la tarea de imputación de series temporales, principalmente utilizando una estructura de \textbf{Encoder Transformer}. Dado que el objetivo principal es la imputación y no la generación secuencial, la arquitectura Decoder no es estrictamente necesaria en este contexto, aunque variaciones podrían incluirla. Las adaptaciones clave en la arquitectura de SAITS para la imputación de series temporales son:
+
+
+\begin{itemize}
+    \item \textbf{Entrada de Series Temporales:} SAITS toma como entrada series temporales con posibles valores faltantes. Típicamente, la serie temporal se representa como una secuencia de vectores, donde cada vector representa un punto de tiempo y contiene las mediciones de diferentes variables en ese instante. Para manejar los valores faltantes, se pueden emplear \textbf{máscaras de entrada} que indican las posiciones donde los datos son desconocidos. Estas máscaras pueden ser utilizadas por el modelo para enfocar la atención en las partes observadas de la serie temporal durante la imputación.
+    \item \textbf{Encoder Transformer para Imputación:} SAITS utiliza un stack de capas Encoder Transformer. Cada capa Encoder, como se describió anteriormente, contiene subcapas de atención multi-cabeza, redes feed-forward, normalización de capas y conexiones residuales. Estas capas procesan la serie temporal de entrada para aprender representaciones latentes que capturan las dependencias temporales y las relaciones entre las variables. La \textbf{auto-atención} dentro del Encoder permite que cada punto de tiempo en la serie temporal atienda a todos los demás puntos, ponderando su importancia relativa para la imputación en la posición actual.
+
+
+    \item \textbf{Codificación Posicional Adaptada (Opcional):} Si bien la codificación posicional es crucial en NLP para indicar el orden secuencial de las palabras, su uso en series temporales puede ser adaptado. En algunos casos, la posición temporal relativa ya está implícita en la secuencia de entrada. Sin embargo, se pueden utilizar codificaciones posicionales para explicitar la posición temporal y potencialmente codificar información adicional como el tiempo transcurrido desde el inicio de la serie o patrones temporales cíclicos (e.g., día de la semana, mes del año). La decisión de incluir o adaptar la codificación posicional puede depender de las características específicas del conjunto de datos de series temporales.
+    \item \textbf{Capa de Salida para Imputación:} La salida del Encoder Transformer, tras pasar por las capas Encoder, se utiliza para generar los valores imputados. Típicamente, esto se realiza mediante una \textbf{capa lineal} final que proyecta la representación latente de cada punto de tiempo a la dimensión del espacio de características original. Esta capa lineal aprende a mapear las representaciones aprendidas por el Transformer a los valores imputados para cada variable en cada punto de tiempo donde falta información.
+\end{itemize}
+
+
+\subsection{Función de Pérdida para SAITS}
+
+
+La función de pérdida comúnmente utilizada para entrenar SAITS en tareas de imputación es el \textbf{Error Cuadrático Medio (MSE)} o variantes del mismo, aplicadas \textbf{solo a las posiciones donde los datos estaban originalmente faltantes}. Esto se debe a que el objetivo es minimizar el error en la predicción de los valores faltantes, sin penalizar al modelo por los valores ya observados. Formalmente, si $Y$ es la serie temporal original (con valores faltantes), $\hat{Y}$ es la serie temporal imputada por SAITS y $M$ es una matriz máscara binaria donde $M_{ij} = 1$ si el valor $Y_{ij}$ estaba faltante y $M_{ij} = 0$ si estaba observado, la función de pérdida MSE puede definirse como:
+
+
+\begin{equation}
+\mathcal{L}_{MSE} = \frac{1}{\sum_{i,j} M_{ij}} \sum_{i,j} M_{ij} (Y_{ij} - \hat{Y}_{ij})^2
+\end{equation}
+
+
+Esta función de pérdida asegura que el modelo se centre en aprender a imputar los valores faltantes con precisión, ignorando el error en las posiciones donde ya se disponía de información. Otras funciones de pérdida robustas, como el Mean Absolute Error (MAE) o funciones de pérdida basadas en cuantiles, también podrían ser consideradas dependiendo de las características de los datos y los objetivos específicos de la imputación.
+
+
+\subsection{Ventajas de Self-Attention para Imputación de Series Temporales}
+
+El uso del mecanismo de auto-atención en SAITS ofrece varias ventajas significativas para la imputación de series temporales en comparación con métodos tradicionales:
+
+\begin{itemize}
+\item \textbf{Modelado de Dependencias a Largo Plazo:} La auto-atención permite a SAITS capturar dependencias temporales a largo plazo de manera efectiva. A diferencia de métodos como ARIMA o RNNs que pueden tener dificultades para recordar información a través de largos periodos de tiempo, la atención permite a SAITS acceder directamente a cualquier punto en la serie temporal al imputar un valor, sin importar la distancia temporal. Esto es crucial para series temporales con patrones complejos y dependencias que se extienden a lo largo del tiempo.
+    \item \textbf{Captura de Dependencias Espaciales y Temporales Conjuntas:} En series temporales multivariadas, donde se miden múltiples variables a lo largo del tiempo, la auto-atención puede capturar tanto las dependencias temporales dentro de cada variable como las dependencias espaciales (correlaciones) entre diferentes variables en diferentes puntos de tiempo. El modelo aprende a imputar un valor faltante considerando la información de todas las variables en todos los puntos de tiempo relevantes.
+    \item \textbf{Flexibilidad y Adaptabilidad:} La arquitectura Transformer es inherentemente flexible y adaptable a diferentes tipos de series temporales y patrones de datos faltantes. SAITS no requiere suposiciones fuertes sobre la estacionariedad de la serie temporal o la naturaleza de las dependencias temporales. Puede aprender patrones complejos directamente de los datos y adaptarse a diferentes tipos de series temporales sin necesidad de ingeniería de características manual extensiva.
+ \item \textbf{Robustez ante Datos Irregulares y Valores Atípicos:} La atención puede ayudar a SAITS a ser más robusto ante datos irregulares y valores atípicos en las series temporales. Al ponderar la importancia de diferentes partes de la secuencia, la atención puede dar menos peso a los valores atípicos o a las regiones ruidosas de la serie temporal durante la imputación, enfocándose en la información más consistente y relevante.
+\end{itemize}
+
+
+En resumen, SAITS representa un avance significativo en la imputación de series temporales al aplicar la poderosa arquitectura Transformer y el mecanismo de auto-atención. Su capacidad para modelar dependencias complejas, su flexibilidad y robustez lo convierten en una herramienta valiosa para el análisis de datos de series temporales con valores faltantes en diversos dominios.
