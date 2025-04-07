@@ -43,6 +43,7 @@ cleardoublepage=empty,abstractoff,BCOR=5mm,paper=a4,fontsize=12pt,main=spanish]{
 \usepackage{minted} % Código fuente.
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
+\usepackage{pdfpages}
 
 \hypersetup{
     unicode=true,  % Permite que los bookmarks sean unicode
@@ -118,6 +119,18 @@ de vehículos utilizando \\ modelos Transformer con atención en Python}
 \include{chapters/chapter3}
 \include{chapters/chapter4}
 \include{chapters/chapter5}
+
+\appendix
+% Insert entire PDF
+
+\section*{Appendix A: Supplementary Material}
+\addcontentsline{toc}{section}{Appendix A: Supplementary Material}
+
+% Insert entire PDF
+\includepdf[pages=-]{pampaneira_imputation.pdf}
+
+% Or insert specific pages (e.g., 1 to 3)
+% \includepdf[pages=1-3]{yourfile.pdf}
 
 % Selecciona un estilo de cita.
 \bibliographystyle{alpha}

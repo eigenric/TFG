@@ -1,0 +1,92 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{add\_period1\_padding()}\spxextra{in module pampaneira\_imputation.data\_preprocessor}, 
+		\hyperpage{5}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{calculate\_imputation\_metrics()}\spxextra{in module pampaneira\_imputation.evaluation}, 
+		\hyperpage{9}
+  \item \spxentry{create\_missingness()}\spxextra{in module pampaneira\_imputation.utils}, 
+		\hyperpage{11}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{evaluate\_all\_methods()}\spxextra{in module pampaneira\_imputation.evaluation}, 
+		\hyperpage{9}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{fill\_missing\_timestamps()}\spxextra{in module pampaneira\_imputation.data\_preprocessor}, 
+		\hyperpage{5}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{impute\_forward\_backward()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{9}
+  \item \spxentry{impute\_linear()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{10}
+  \item \spxentry{impute\_mean()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{10}
+  \item \spxentry{impute\_mean\_sample\_wise()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{10}
+  \item \spxentry{impute\_median()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{10}
+  \item \spxentry{impute\_median\_sample\_wise()}\spxextra{in module pampaneira\_imputation.imputation\_methods}, 
+		\hyperpage{11}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{load\_intersection\_data()}\spxextra{in module pampaneira\_imputation.data\_loader}, 
+		\hyperpage{3}
+  \item \spxentry{load\_traffic\_data()}\spxextra{in module pampaneira\_imputation.data\_loader}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{module}
+    \subitem \spxentry{pampaneira\_imputation}, \hyperpage{12}
+    \subitem \spxentry{pampaneira\_imputation.config}, \hyperpage{3}
+    \subitem \spxentry{pampaneira\_imputation.data\_loader}, \hyperpage{3}
+    \subitem \spxentry{pampaneira\_imputation.data\_preprocessor}, \hyperpage{5}
+    \subitem \spxentry{pampaneira\_imputation.evaluation}, \hyperpage{9}
+    \subitem \spxentry{pampaneira\_imputation.imputation\_methods}, \hyperpage{9}
+    \subitem \spxentry{pampaneira\_imputation.utils}, \hyperpage{11}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{pampaneira\_imputation}
+    \subitem \spxentry{module}, \hyperpage{12}
+  \item \spxentry{pampaneira\_imputation.config}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{pampaneira\_imputation.data\_loader}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{pampaneira\_imputation.data\_preprocessor}
+    \subitem \spxentry{module}, \hyperpage{5}
+  \item \spxentry{pampaneira\_imputation.evaluation}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{pampaneira\_imputation.imputation\_methods}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{pampaneira\_imputation.utils}
+    \subitem \spxentry{module}, \hyperpage{11}
+  \item \spxentry{preprocess\_for\_imputation()}\spxextra{in module pampaneira\_imputation.data\_preprocessor}, 
+		\hyperpage{6}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{reshape\_imputed\_to\_df()}\spxextra{in module pampaneira\_imputation.utils}, 
+		\hyperpage{11}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{sliding\_window()}\spxextra{in module pampaneira\_imputation.utils}, 
+		\hyperpage{11}
+  \item \spxentry{split\_by\_period()}\spxextra{in module pampaneira\_imputation.data\_preprocessor}, 
+		\hyperpage{8}
+
+\end{sphinxtheindex}

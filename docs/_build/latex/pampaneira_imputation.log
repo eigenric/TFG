@@ -1,0 +1,1360 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.13)  7 APR 2025 21:16
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**pampaneira_imputation.tex
+(./pampaneira_imputation.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-09-10>
+(./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2024/02/08 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count194
+\c@chapter=\count195
+\c@section=\count196
+\c@subsection=\count197
+\c@subsubsection=\count198
+\c@paragraph=\count199
+\c@subparagraph=\count266
+\c@figure=\count267
+\c@table=\count268
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+)
+LaTeX Info: Redefining \and on input line 35.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+2500 (decimal 9472)
+   defining Unicode char U+2502 (decimal 9474)
+   defining Unicode char U+2514 (decimal 9492)
+   defining Unicode char U+251C (decimal 9500)
+   defining Unicode char U+2572 (decimal 9586)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2021/02/06 v1.0j CMap support: searchable PDF
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+<<t1.cmap>>)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/05/23 v2.17q AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen142
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen143
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count269
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count270
+\leftroot@=\count271
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count272
+\DOTSCASE@=\count273
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box52
+\strutbox@=\box53
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen144
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count274
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count275
+\dotsspace@=\muskip17
+\c@parentequation=\count276
+\dspbrk@lvl=\count277
+\tag@help=\toks20
+\row@=\count278
+\column@=\count279
+\maxfields@=\count280
+\andhelp@=\toks21
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/09/18 v24.10 The Babel package
+\babel@savecnt=\count281
+\U@D=\dimen151
+\l@unhyphenated=\language25
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count282
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language9). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language9). Reported on input line 108.
+))
+(/usr/local/texlive/2024/texmf-dist/tex/generic/babel/locale/en/babel-english.t
+ex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/tgtermes.sty
+Package: tgtermes 2009/09/27 v1.2 TeX Gyre Termes as default roman family
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/tgheros.sty
+Package: tgheros 2009/09/27 v1.2 TeX Gyre Heros as default sans serif family
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fncychap/fncychap.sty
+Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
+\RW=\skip54
+\mylen=\skip55
+\myhi=\skip56
+\px=\skip57
+\py=\skip58
+\pyy=\skip59
+\pxx=\skip60
+\c@AlphaCnt=\count283
+\c@AlphaDecCnt=\count284
+)
+(./sphinx.sty
+Package: sphinx 2024/11/23 v8.2.0 Sphinx LaTeX package (sphinx-doc)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(./sphinxoptionshyperref.sty
+Package: sphinxoptionshyperref 2021/01/27 hyperref
+) (./sphinxoptionsgeometry.sty
+Package: sphinxoptionsgeometry 2021/01/27 geometry
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count285
+\float@exts=\toks25
+\float@box=\box54
+\@float@everytoks=\toks26
+\@floatcapt=\box55
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen152
+\WF@size=\dimen153
+\c@WF@wrappedlines=\count286
+\WF@box=\box56
+\WF@everypar=\toks27
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2024/05/23 v1.9h multicolumn formatting (FMi)
+\c@tracingmulticols=\count287
+\mult@box=\box57
+\multicol@leftmargin=\dimen154
+\c@unbalance=\count288
+\c@collectmore=\count289
+\doublecol@number=\count290
+\multicoltolerance=\count291
+\multicolpretolerance=\count292
+\full@width=\dimen155
+\page@free=\dimen156
+\premulticols=\dimen157
+\postmulticols=\dimen158
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
+\partial@page=\box58
+\last@line=\box59
+\mc@boxedresult=\box60
+\maxbalancingoverflow=\dimen159
+\mult@rightbox=\box61
+\mult@grightbox=\box62
+\mult@firstbox=\box63
+\mult@gfirstbox=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\c@minrows=\count293
+\c@columnbadness=\count294
+\c@finalcolumnbadness=\count295
+\last@try=\dimen160
+\multicolovershoot=\dimen161
+\multicolundershoot=\dimen162
+\mult@nat@firstbox=\box101
+\colbreak@box=\box102
+\mc@col@check@num=\count296
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
+)
+(./sphinxlatexgraphics.sty
+Package: sphinxlatexgraphics 2024/08/13 v8.1.0 graphics
+\spx@image@maxheight=\dimen165
+\spx@image@box=\box103
+) (./sphinxpackageboxes.sty
+Package: sphinxpackageboxes 2024/07/01 v7.4.0 advanced colored boxes
+
+
+Package sphinx Warning: The package pict2e is required for rounded boxes.
+(sphinx)                It does not seem to be available on your system.
+(sphinx)                Options for setting radii will be ignored.
+
+
+Package sphinx Warning: The package ellipse is required for elliptical corners.
+
+(sphinx)                It does not seem to be available on your system.
+(sphinx)                All non-straight corners will use circle arcs..
+
+\spx@tempboxa=\box104
+\spx@tempboxb=\box105
+\spx@boxes@border@top=\dimen166
+\spx@boxes@border@right=\dimen167
+\spx@boxes@border@bottom=\dimen168
+\spx@boxes@border@left=\dimen169
+\spx@boxes@padding@top=\dimen170
+\spx@boxes@padding@right=\dimen171
+\spx@boxes@padding@bottom=\dimen172
+\spx@boxes@padding@left=\dimen173
+\spx@boxes@shadow@xoffset=\dimen174
+\spx@boxes@shadow@yoffset=\dimen175
+\spx@boxes@radius@topleft@x=\dimen176
+\spx@boxes@radius@topright@x=\dimen177
+\spx@boxes@radius@bottomright@x=\dimen178
+\spx@boxes@radius@bottomleft@x=\dimen179
+\spx@boxes@radius@topleft@y=\dimen180
+\spx@boxes@radius@topright@y=\dimen181
+\spx@boxes@radius@bottomright@y=\dimen182
+\spx@boxes@radius@bottomleft@y=\dimen183
+) (./sphinxlatexadmonitions.sty
+Package: sphinxlatexadmonitions 2024/10/11 v8.1.1 admonitions
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip63
+\fb@frw=\dimen184
+\fb@frh=\dimen185
+\FrameRule=\dimen186
+\FrameSep=\dimen187
+)
+(./sphinxpackagefootnote.sty
+Package: sphinxpackagefootnote 2024/05/17 v7.3.x Sphinx custom footnotehyper pa
+ckage (Sphinx team)
+\FNH@notes=\box106
+\FNH@toks=\toks28
+\FNH@width=\dimen188
+\c@sphinxfootnotemark=\count297
+)
+\spx@notice@border=\dimen189
+\c@sphinxtodo=\count298
+) (./sphinxlatexliterals.sty
+Package: sphinxlatexliterals 2024/07/01 v7.4.0 code-blocks and parsed literals
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
+\FV@CodeLineNo=\count299
+\FV@InFile=\read3
+\FV@TabBox=\box107
+\c@FancyVerbLine=\count300
+\FV@StepNumber=\count301
+\FV@OutFile=\write3
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2024/02/08 v2.0g defines alltt environment
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\sphinxcontinuationbox=\box108
+\sphinxvisiblespacebox=\box109
+\sphinxVerbatim@TitleBox=\box110
+\sphinxVerbatim@ContentsBox=\box111
+)
+(./sphinxlatexshadowbox.sty
+Package: sphinxlatexshadowbox 2024/07/28 v8.1.0 sphinxShadowBox
+) (./sphinxlatexcontainers.sty
+Package: sphinxlatexcontainers 2021/05/03 containers
+)
+(./sphinxhighlight.sty
+Package: sphinxhighlight 2022/06/30 stylesheet for highlighting with pygments
+) (./sphinxlatextables.sty
+Package: sphinxlatextables 2024/07/01 v7.4.0 tables
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tabulary/tabulary.sty
+Package: tabulary 2024/06/04 v0.11 tabulary package (DPC)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
+\col@sep=\dimen190
+\ar@mcellbox=\box112
+\extrarowheight=\dimen191
+\NC@list=\toks29
+\extratabsurround=\skip64
+\backup@length=\skip65
+\ar@cellbox=\box113
+)
+\TY@count=\count302
+\TY@linewidth=\dimen192
+\tymin=\dimen193
+\tymax=\dimen194
+\TY@tablewidth=\dimen195
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
+\LTleft=\skip66
+\LTright=\skip67
+\LTpre=\skip68
+\LTpost=\skip69
+\LTchunksize=\count303
+\LTcapwidth=\dimen196
+\LT@head=\box114
+\LT@firsthead=\box115
+\LT@foot=\box116
+\LT@lastfoot=\box117
+\LT@gbox=\box118
+\LT@cols=\count304
+\LT@rows=\count305
+\c@LT@tables=\count306
+\c@LT@chunks=\count307
+\LT@p@ftn=\toks30
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box119
+\sift@deathcycles=\count308
+\@vwid@loff=\dimen197
+\@vwid@roff=\dimen198
+)
+\sphinx@TY@tablewidth=\dimen199
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+\everycr=\toks31
+\minrowclearance=\skip70
+\rownum=\count309
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen256
+\lightrulewidth=\dimen257
+\cmidrulewidth=\dimen258
+\belowrulesep=\dimen259
+\belowbottomsep=\dimen260
+\aboverulesep=\dimen261
+\abovetopsep=\dimen262
+\cmidrulesep=\dimen263
+\cmidrulekern=\dimen264
+\defaultaddspace=\dimen265
+\@cmidla=\count310
+\@cmidlb=\count311
+\@aboverulesep=\dimen266
+\@belowrulesep=\dimen267
+\@thisruleclass=\count312
+\@lastruleclass=\count313
+\@thisrulewidth=\dimen268
+))
+(./sphinxlatexnumfig.sty
+Package: sphinxlatexnumfig 2024/07/31 v8.1.0 numbering
+) (./sphinxlatexlists.sty
+Package: sphinxlatexlists 2021/12/20 lists
+\spx@lineitemlabel=\toks32
+)
+\c@sphinxscope=\count314
+ (./sphinxlatexindbibtoc.sty
+Package: sphinxlatexindbibtoc 2021/01/27 index, bib., toc
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+))
+(./sphinxlatexstylepage.sty
+Package: sphinxlatexstylepage 2021/01/27 page styling
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count315
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip71
+\f@nch@O@elh=\skip72
+\f@nch@O@erh=\skip73
+\f@nch@O@olh=\skip74
+\f@nch@O@orh=\skip75
+\f@nch@O@elf=\skip76
+\f@nch@O@erf=\skip77
+\f@nch@O@olf=\skip78
+\f@nch@O@orf=\skip79
+))
+(./sphinxlatexstyleheadings.sty
+Package: sphinxlatexstyleheadings 2023/02/11 headings
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box120
+\beforetitleunit=\skip80
+\aftertitleunit=\skip81
+\ttl@plus=\dimen269
+\ttl@minus=\dimen270
+\ttl@toksa=\toks33
+\titlewidth=\dimen271
+\titlewidthlast=\dimen272
+\titlewidthfirst=\dimen273
+))
+(./sphinxlatexstyletext.sty
+Package: sphinxlatexstyletext 2024/07/28 v8.1.0 text styling
+) (./sphinxlatexobjects.sty
+Package: sphinxlatexobjects 2025/02/11 documentation environments
+\sphinxsignaturesep=\skip82
+\sphinxsignaturelistskip=\skip83
+\py@argswidth=\skip84
+\lineblockindentation=\skip85
+\DUlineblockindent=\skip86
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count316
+\Gm@cntv=\count317
+\c@Gm@tempcnt=\count318
+\Gm@bindingoffset=\dimen274
+\Gm@wd@mp=\dimen275
+\Gm@odd@mp=\dimen276
+\Gm@even@mp=\dimen277
+\Gm@layoutwidth=\dimen278
+\Gm@layoutheight=\dimen279
+\Gm@layouthoffset=\dimen280
+\Gm@layoutvoffset=\dimen281
+\Gm@dimlist=\toks34
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-07-10 v7.01j Hypertext links for LaTeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count319
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen282
+\Hy@linkcounter=\count320
+\Hy@pagecounter=\count321
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count322
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4040.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4040.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count323
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen283
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count324
+\Field@Width=\dimen284
+\Fld@charsize=\dimen285
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring ON on input line 6060.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count325
+\c@Item=\count326
+\c@Hfootnote=\count327
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-07-10 v7.01j Hyperref driver for pdfTeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count328
+\c@bookmark@seq@number=\count329
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip87
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/hypcap/hypcap.sty
+Package: hypcap 2024-07-26 v1.13 Adjusting the anchors of captions (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+))
+(./sphinxmessages.sty
+Package: sphinxmessages 2019/01/04 v2.0 Localized LaTeX macros (Sphinx team)
+)
+\@indexfile=\write4
+\openout4 = `pampaneira_imputation.idx'.
+
+
+Writing index file pampaneira_imputation.idx
+LaTeX Font Info:    Trying to load font information for T1+qtm on input line 73
+.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/t1qtm.fd
+File: t1qtm.fd 2009/09/25 v1.2 font definition file for T1/qtm
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count330
+\l__pdf_internal_box=\box121
+)
+(./pampaneira_imputation.aux)
+\openout1 = `pampaneira_imputation.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count331
+\scratchdimen=\dimen286
+\scratchbox=\box122
+\nofMPsegments=\count332
+\nofMParguments=\count333
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count334
+\MPscratchDim=\dimen287
+\MPnumerator=\count335
+\makeMPintoPDFobject=\count336
+\everyMPtoPDFconversion=\toks36
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@literalblock=\count337
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=36.135pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 73.
+(./pampaneira_imputation.out) (./pampaneira_imputation.out)
+\@outlinefile=\write5
+\openout5 = `pampaneira_imputation.out'.
+
+Package hyperref Info: Option `pageanchor' set `false' on input line 81.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 81
+.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)<<ot1.cmap>>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 81.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 81.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+[1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}]
+
+[2
+
+
+] (./pampaneira_imputation.toc)
+\tf@toc=\write6
+\openout6 = `pampaneira_imputation.toc'.
+
+
+
+[1
+
+]
+
+[2
+
+]
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 8
+9.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+
+[1]
+
+[2
+
+]
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 114.
+LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
+14.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/ts1qtm.fd
+File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
+)
+Overfull \hbox (7.0941pt too wide) in paragraph at lines 114--114
+\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 ../data/trafico_contamina_intersección.csv\TS
+1/qtm/m/it/10 '\T1/qtm/m/n/10 , 
+ []
+
+
+Overfull \hbox (9.85417pt too wide) in paragraph at lines 149--149
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (2.93416pt too wide) in paragraph at lines 149--149
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (9.85417pt too wide) in paragraph at lines 149--149
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (2.93416pt too wide) in paragraph at lines 149--149
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+
+[3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
+Overfull \vbox (695.17003pt too high) has occurred while \output is active []
+
+
+
+[4]
+
+[5]
+Overfull \hbox (23.14395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+
+ []
+
+
+Overfull \hbox (64.26395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/
+m/it/10 , 
+ []
+
+
+Overfull \hbox (61.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/
+it/10 , 
+ []
+
+
+Overfull \hbox (4.55396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Extranjero\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (83.39395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (76.47394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (9.81395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_Zona_Otras\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (1.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_nan_seats\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (7.16396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_OUT_+300_CO2\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (13.14395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_IN_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (54.26395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_IN_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/m
+/it/10 , 
+ []
+
+
+Overfull \hbox (51.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_IN_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/i
+t/10 , 
+ []
+
+
+Overfull \hbox (73.39395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_IN_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qtm
+/m/it/10 , 
+ []
+
+
+Overfull \hbox (66.47394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_1_IN_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qtm
+/m/it/10 , 
+ []
+
+
+Overfull \hbox (23.14395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+
+ []
+
+
+Overfull \hbox (64.26395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/
+m/it/10 , 
+ []
+
+
+Overfull \hbox (61.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/
+it/10 , 
+ []
+
+
+Overfull \hbox (4.55396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Extranjero\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (83.39395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (76.47394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qt
+m/m/it/10 , 
+ []
+
+
+Overfull \hbox (9.81395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_Zona_Otras\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (1.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_nan_seats\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (7.16396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_OUT_+300_CO2\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (13.14395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_IN_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (54.26395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_IN_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/m
+/it/10 , 
+ []
+
+
+Overfull \hbox (51.72395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_IN_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/i
+t/10 , 
+ []
+
+
+Overfull \hbox (73.39395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_IN_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qtm
+/m/it/10 , 
+ []
+
+
+Overfull \hbox (66.47394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_PAM_2_IN_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qtm
+/m/it/10 , 
+ []
+
+
+Overfull \hbox (12.83395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_OUT_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (53.95395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_OUT_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/m/
+it/10 , 
+ []
+
+
+Overfull \hbox (51.41396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_OUT_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/it
+/10 , 
+ []
+
+
+Overfull \hbox (73.08395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_OUT_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qtm/
+m/it/10 , 
+ []
+
+
+Overfull \hbox (66.16394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_OUT_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/
+m/it/10 , 
+ []
+
+
+Overfull \hbox (2.83395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_IN_Zona_Granada\TS1/qtm/m/it/10 '\T1/qtm/m/it/10 , 
+ []
+
+
+Overfull \hbox (43.95395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_IN_Zona_Catalunia_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/m/i
+t/10 , 
+ []
+
+
+Overfull \hbox (41.41396pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_IN_Zona_Andalucia_no_GR\TS1/qtm/m/it/10 '\T1/qtm/m/it/
+10 , 
+ []
+
+
+Overfull \hbox (63.08395pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_IN_Zona_Comunidad_de_Madrid\TS1/qtm/m/it/10 '\T1/qtm/m
+/it/10 , 
+ []
+
+
+Overfull \hbox (56.16394pt too wide) in paragraph at lines 261--261
+\T1/qtm/m/it/10 cles_BUB_IN_Zona_Extremadura_y_Otras\TS1/qtm/m/it/10 '\T1/qtm/m
+/it/10 , 
+ []
+
+
+
+[6]
+Overfull \vbox (1775.17003pt too high) has occurred while \output is active []
+
+
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+
+[12]
+Chapter 2.
+
+
+[13
+
+]
+
+[14
+
+]
+
+
+
+[15
+
+
+] (./pampaneira_imputation.ind
+
+[16
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+[]\T1/txtt/m/n/10 add_period1_padding() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-
+ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+\T1/qtm/m/it/10 paneira_imputation.data_preprocessor\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
+[]\T1/txtt/m/n/10 create_missingness() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-u
+le pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--22
+[]\T1/txtt/m/n/10 evaluate_all_methods() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod
+-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
+[]\T1/txtt/m/n/10 fill_missing_timestamps() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in 
+mod-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+[]\T1/txtt/m/n/10 impute_forward_backward() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in 
+mod-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
+[]\T1/txtt/m/n/10 impute_linear() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule pa
+m-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+[]\T1/txtt/m/n/10 impute_mean() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule pam-
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+[]\T1/txtt/m/n/10 impute_mean_sample_wise() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in 
+mod-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+[]\T1/txtt/m/n/10 impute_median() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule pa
+m-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--42
+[]\T1/txtt/m/n/10 impute_median_sample_wise() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 i
+n mod-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--42
+\T1/qtm/m/it/10 paneira_imputation.imputation_methods\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
+[]\T1/txtt/m/n/10 load_intersection_data() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in m
+od-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
+[]\T1/txtt/m/n/10 load_traffic_data() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ul
+e pam-
+ []
+
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+[]| \T1/txtt/m/n/10 pampaneira_imputation.data_preprocessor\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (2.62189pt too wide) in paragraph at lines 58--59
+[]| \T1/txtt/m/n/10 pampaneira_imputation.imputation_methods\T1/qtm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
+[]\T1/txtt/m/n/10 preprocess_for_imputation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 i
+n mod-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--84
+[]\T1/txtt/m/n/10 reshape_imputed_to_df() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mo
+d-ule pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
+[]\T1/txtt/m/n/10 sliding_window() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule p
+am-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
+[]\T1/txtt/m/n/10 split_by_period() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule 
+pam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
+\T1/qtm/m/it/10 paneira_imputation.data_preprocessor\T1/qtm/m/n/10 ),
+ []
+
+
+
+[17
+
+]
+
+
+
+[18
+
+])
+
+Package sphinx Warning: The package pict2e is required for rounded boxes.
+(sphinx)                As it does not seem to be available on your system,
+(sphinx)                options setting radii have all been ignored.
+
+
+Package sphinx Warning: The package ellipse is required for elliptical corners.
+
+(sphinx)                As it does not seem to be available on your system,
+(sphinx)                all non-straight corners have used circle arcs..
+
+(./pampaneira_imputation.aux)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-09-10>
+ ***********
+Package rerunfilecheck Info: File `pampaneira_imputation.out' has not changed.
+(rerunfilecheck)             Checksum: 51E8F3E517D49845E758B030FE098EC0;4275.
+ ) 
+Here is how much of TeX's memory you used:
+ 16691 strings out of 475030
+ 286317 string characters out of 5763454
+ 717580 words of memory out of 5000000
+ 38971 multiletter control sequences out of 15000+600000
+ 603202 words of font info for 74 fonts, out of 8000000 for 9000
+ 320 hyphenation exceptions out of 8191
+ 72i,11n,83p,10497b,675s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/txfonts/t1xtt.pfb>
+Output written on pampaneira_imputation.pdf (22 pages, 198692 bytes).
+PDF statistics:
+ 330 PDF objects out of 1000 (max. 8388607)
+ 289 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+
