@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.13)  7 APR 2025 21:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.13)  7 APR 2025 21:42
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1665,14 +1665,6 @@ LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
  (./chapters/chapter1.aux) (./chapters/chapter2.aux)
 (./chapters/chapter3.aux) (./chapters/chapter4.aux) (./chapters/chapter5.aux))
-Runaway argument?
-{5C3337365C3337375C303030355C3030302E5C303030325C3030302E5C303030325C\ETC.
-! File ended while scanning use of \BKM@entry.
-<inserted text> 
-                \par 
-l.102 \begin{document}
-                      
-? 
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
@@ -1693,6 +1685,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
 LaTeX Font Info:    ... okay on input line 102.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
 LaTeX Font Info:    ... okay on input line 102.
+
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count431
@@ -1908,7 +1901,10 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 Package tocbasic Info: character protrusion at toc deactivated on input line 10
 6.
 
-(./main.toc)
+(./main.toc
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
@@ -1937,24 +1933,11 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplj/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Package natbib Warning: Citation `smartpoqueira' on page 4 undefined on input l
-ine 24.
-
-
 
 [4
 
 
 ]
-
-Package natbib Warning: Citation `de_deep_2022' on page 5 undefined on input li
-ne 42.
-
-
-Package natbib Warning: Citation `Mostafa2012' on page 5 undefined on input lin
-e 85.
-
-
 
 LaTeX Info: Redefining \. on input line 87.
 LaTeX Info: Redefining \% on input line 87.
@@ -2008,11 +1991,6 @@ LaTeX Info: Redefining \. on input line 45.
 LaTeX Info: Redefining \% on input line 45.
 [10]
 
-Package natbib Warning: Citation `ba_layer_2016' on page 11 undefined on input 
-line 57.
-
-
-
 LaTeX Info: Redefining \. on input line 59.
 LaTeX Info: Redefining \% on input line 59.
 [11]
@@ -2025,17 +2003,12 @@ LaTeX Font Info:    Trying to load font information for TS1+pplj on input line
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1pplj.fd
 File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
 )
-<images/transformer_architecture.png, id=132, 770.88pt x 1086.0575pt>
+<images/transformer_architecture.png, id=192, 770.88pt x 1086.0575pt>
 File: images/transformer_architecture.png Graphic file (type png)
 <use images/transformer_architecture.png>
 Package pdftex.def Info: images/transformer_architecture.png  used on input lin
 e 108.
 (pdftex.def)             Requested size: 362.37573pt x 510.52995pt.
-
-
-Package natbib Warning: Citation `he_deep_2016' on page 13 undefined on input l
-ine 116.
-
 
 
 LaTeX Info: Redefining \. on input line 117.
@@ -2070,102 +2043,6 @@ LaTeX Info: Redefining \% on input line 119.
  (./chapters/chapter4.tex
 chapter 4.
 
-Package natbib Warning: Citation `Qin_glima_2020' on page 20 undefined on input
- line 9.
-
-
-Package natbib Warning: Citation `Lu_missing_2024' on page 20 undefined on inpu
-t line 9.
-
-
-Package natbib Warning: Citation `Gao_contextaware_2022' on page 20 undefined o
-n input line 9.
-
-
-Package natbib Warning: Citation `Gao_contextaware_2022' on page 20 undefined o
-n input line 11.
-
-
-Package natbib Warning: Citation `LocalAverageNearestNeighbors_nodate' on page 
-20 undefined on input line 16.
-
-
-Package natbib Warning: Citation `imputeTS_package_nodate' on page 20 undefined
- on input line 18.
-
-
-Package natbib Warning: Citation `NewDigitals_timeseriesimputation_2024' on pag
-e 20 undefined on input line 18.
-
-
-Package natbib Warning: Citation `Abdulhamid_dataimputation_nodate' on page 20 
-undefined on input line 19.
-
-
-Package natbib Warning: Citation `StatisticsSolutions_stationarydata_nodate' on
- page 20 undefined on input line 23.
-
-
-Package natbib Warning: Citation `SeasonalMeanImputation_2023' on page 20 undef
-ined on input line 23.
-
-
-Package natbib Warning: Citation `Wikipedia_expectationmaximization_nodate' on 
-page 20 undefined on input line 24.
-
-
-Package natbib Warning: Citation `Jones_imputingmissing_nodate' on page 20 unde
-fined on input line 26.
-
-
-Package natbib Warning: Citation `Qin_glima_2020' on page 20 undefined on input
- line 31.
-
-
-Package natbib Warning: Citation `Yildirim_performancedeep_2023' on page 20 und
-efined on input line 31.
-
-
-Package natbib Warning: Citation `Lu_missing_2024' on page 20 undefined on inpu
-t line 33.
-
-
-Package natbib Warning: Citation `Abdulhamid_dataimputation_nodate' on page 20 
-undefined on input line 37.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 20 undefined o
-n input line 39.
-
-
-Package natbib Warning: Citation `Fortuin_probabilisticimputation_2023' on page
- 20 undefined on input line 39.
-
-
-Package natbib Warning: Citation `Cui_deeplearningmultivariate_2024' on page 20
- undefined on input line 39.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 20 undefined o
-n input line 41.
-
-
-Package natbib Warning: Citation `MoSPI_comparisonimputation_nodate' on page 20
- undefined on input line 41.
-
-
-Package natbib Warning: Citation `Schlegel_evaluationmissing_2024' on page 20 u
-ndefined on input line 41.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 20 undefined o
-n input line 43.
-
-
-Package natbib Warning: Citation `Rahman_reviewcurrent_2021' on page 20 undefin
-ed on input line 43.
-
-
 
 [20
 
@@ -2189,7 +2066,7 @@ chapter 5.
 
 
 ]
-<pampaneira_imputation.pdf, id=202, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=289, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf>
 Package pdftex.def Info: pampaneira_imputation.pdf  used on input line 130.
@@ -2198,7 +2075,7 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf>
 Package pdftex.def Info: pampaneira_imputation.pdf  used on input line 130.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<pampaneira_imputation.pdf, id=205, page=1, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=292, page=1, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 1>
 Package pdftex.def Info: pampaneira_imputation.pdf , page1 used on input line 1
@@ -2237,7 +2114,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page1 used on input line 1
 [24
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=226, page=2, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=313, page=2, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 2>
 Package pdftex.def Info: pampaneira_imputation.pdf , page2 used on input line 1
@@ -2258,7 +2135,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page2 used on input line 1
 [25
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=232, page=3, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=319, page=3, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 3>
 Package pdftex.def Info: pampaneira_imputation.pdf , page3 used on input line 1
@@ -2279,7 +2156,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page3 used on input line 1
 [26
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=247, page=4, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=334, page=4, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 4>
 Package pdftex.def Info: pampaneira_imputation.pdf , page4 used on input line 1
@@ -2300,7 +2177,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page4 used on input line 1
 [27
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=252, page=5, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=339, page=5, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 5>
 Package pdftex.def Info: pampaneira_imputation.pdf , page5 used on input line 1
@@ -2321,7 +2198,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page5 used on input line 1
 [28
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=262, page=6, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=349, page=6, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 6>
 Package pdftex.def Info: pampaneira_imputation.pdf , page6 used on input line 1
@@ -2342,7 +2219,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page6 used on input line 1
 [29
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=267, page=7, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=354, page=7, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 7>
 Package pdftex.def Info: pampaneira_imputation.pdf , page7 used on input line 1
@@ -2363,7 +2240,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page7 used on input line 1
 [30
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=293, page=8, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=379, page=8, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 8>
 Package pdftex.def Info: pampaneira_imputation.pdf , page8 used on input line 1
@@ -2384,7 +2261,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page8 used on input line 1
 [31
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=299, page=9, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=385, page=9, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 9>
 Package pdftex.def Info: pampaneira_imputation.pdf , page9 used on input line 1
@@ -2405,7 +2282,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page9 used on input line 1
 [32
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=304, page=10, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=390, page=10, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 10>
 Package pdftex.def Info: pampaneira_imputation.pdf , page10 used on input line 
@@ -2426,7 +2303,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page10 used on input line
 [33
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=309, page=11, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=395, page=11, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 11>
 Package pdftex.def Info: pampaneira_imputation.pdf , page11 used on input line 
@@ -2447,7 +2324,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page11 used on input line
 [34
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=314, page=12, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=400, page=12, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 12>
 Package pdftex.def Info: pampaneira_imputation.pdf , page12 used on input line 
@@ -2468,7 +2345,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page12 used on input line
 [35
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=319, page=13, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=405, page=13, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 13>
 Package pdftex.def Info: pampaneira_imputation.pdf , page13 used on input line 
@@ -2489,7 +2366,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page13 used on input line
 [36
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=324, page=14, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=410, page=14, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 14>
 Package pdftex.def Info: pampaneira_imputation.pdf , page14 used on input line 
@@ -2510,7 +2387,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page14 used on input line
 [37
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=334, page=15, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=420, page=15, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 15>
 Package pdftex.def Info: pampaneira_imputation.pdf , page15 used on input line 
@@ -2531,7 +2408,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page15 used on input line
 [38
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=339, page=16, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=425, page=16, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 16>
 Package pdftex.def Info: pampaneira_imputation.pdf , page16 used on input line 
@@ -2552,7 +2429,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page16 used on input line
 [39
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=344, page=17, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=430, page=17, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 17>
 Package pdftex.def Info: pampaneira_imputation.pdf , page17 used on input line 
@@ -2573,7 +2450,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page17 used on input line
 [40
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=349, page=18, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=435, page=18, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 18>
 Package pdftex.def Info: pampaneira_imputation.pdf , page18 used on input line 
@@ -2594,7 +2471,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page18 used on input line
 [41
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=354, page=19, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=440, page=19, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 19>
 Package pdftex.def Info: pampaneira_imputation.pdf , page19 used on input line 
@@ -2615,7 +2492,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page19 used on input line
 [42
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=364, page=20, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=451, page=20, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 20>
 Package pdftex.def Info: pampaneira_imputation.pdf , page20 used on input line 
@@ -2636,7 +2513,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page20 used on input line
 [43
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=370, page=21, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=457, page=21, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 21>
 Package pdftex.def Info: pampaneira_imputation.pdf , page21 used on input line 
@@ -2657,7 +2534,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page21 used on input line
 [44
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=375, page=22, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=462, page=22, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 22>
 Package pdftex.def Info: pampaneira_imputation.pdf , page22 used on input line 
@@ -2677,21 +2554,19 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page22 used on input line
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 [45
 
- <./pampaneira_imputation.pdf>]
-No file main.bbl.
+ <./pampaneira_imputation.pdf>] (./main.bbl
 
-Package natbib Warning: There were undefined citations.
+[46
 
-(./main.aux
+])
+
+LaTeX Info: Redefining \. on input line 141.
+LaTeX Info: Redefining \% on input line 141.
+[47] (./main.aux
 LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
  (./chapters/chapter1.aux) (./chapters/chapter2.aux)
-(./chapters/chapter3.aux) (./chapters/chapter4.aux) (./chapters/chapter5.aux)
-
-Package mparhack Warning: Marginpars may have changed.
-(mparhack)                Rerun to get them right.
-
-)
+(./chapters/chapter3.aux) (./chapters/chapter4.aux) (./chapters/chapter5.aux))
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -2932,17 +2807,18 @@ pampaneira_imputation.pdf    Graphic file (type pdf)
 pampaneira_imputation.pdf    Graphic file (type pdf)
 pampaneira_imputation.pdf    Graphic file (type pdf)
 pampaneira_imputation.pdf    Graphic file (type pdf)
+    main.bbl
  ***********
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 43916 strings out of 475030
- 906335 string characters out of 5763454
- 1695971 words of memory out of 5000000
- 65609 multiletter control sequences out of 15000+600000
- 650820 words of font info for 202 fonts, out of 8000000 for 9000
+ 44031 strings out of 475030
+ 909746 string characters out of 5763454
+ 1698577 words of memory out of 5000000
+ 65694 multiletter control sequences out of 15000+600000
+ 651120 words of font info for 203 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  108i,23n,135p,10899b,1014s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -2963,10 +2839,10 @@ onts/t1xbtt.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/
 t1xtt.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.p
 fb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (45 pages, 543936 bytes).
+Output written on main.pdf (47 pages, 555637 bytes).
 PDF statistics:
- 567 PDF objects out of 1000 (max. 8388607)
- 446 compressed objects within 5 object streams
- 111 named destinations out of 1000 (max. 500000)
+ 667 PDF objects out of 1000 (max. 8388607)
+ 543 compressed objects within 6 object streams
+ 137 named destinations out of 1000 (max. 500000)
  32164 words of extra memory for PDF output out of 35830 (max. 10000000)
 
