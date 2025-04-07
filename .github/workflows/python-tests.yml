@@ -30,10 +30,17 @@ jobs: # Define the jobs to run
           python -m pip install --upgrade pip
           pip install uv
 
+      - name: Create uv virtual environment # Step 4: Create a uv virtual environment
+        run: python -m uv venv .venv
+
+      - name: Activate uv virtual environment # Step 5: Activate the virtual environment
+        shell: bash # Or appropriate shell for your runner
+        run: source .venv/bin/activate
+
       # Optional: Cache uv dependencies (might speed up subsequent runs)
       # Note: Adjust the path based on where uv caches on the runner if needed.
       # ~/.cache/uv is a common location.
-      - name: Cache uv dependencies
+      - name: Cache uv dependencies # Step 6: Cache uv dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/uv
@@ -41,8 +48,8 @@ jobs: # Define the jobs to run
           restore-keys: |
             ${{ runner.os }}-uv-${{ matrix.python-version }}-
 
-      - name: Install project dependencies # Step 4: Install project + test dependencies using uv
+      - name: Install project dependencies # Step 7: Install project + test dependencies using uv (in the venv)
         run: uv pip install -e ".[test]"
 
-      - name: Run tests with pytest # Step 5: Execute pytest
+      - name: Run tests with pytest # Step 8: Execute pytest (in the venv)
         run: pytest # Or use 'python -m pytest' if preferred
