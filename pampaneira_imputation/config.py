@@ -1,14 +1,14 @@
 # pampaneira_imputation/config.py
 import pandas as pd
 
-# --- File Paths ---
+# --- Rutas de archivos ---
 DATA_DIR = "../data"
 RESULTS_DIR = "../results"
 TRAFFIC_FILE = f"{DATA_DIR}/trafico_feb22_ago23.csv"
 INTERSECTION_FILE = f"{DATA_DIR}/trafico_contamina_intersección.csv"
 SAITS_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/saits"
 
-# --- Column Names ---
+# --- Nombres de columnas ---
 PAM_BUB_TRAFFIC_COLS = [
     'vehicles_PAM_1_OUT', 'vehicles_PAM_1_OUT_Zona_Granada', 'vehicles_PAM_1_OUT_Zona_Catalunia_y_Otras',
     'vehicles_PAM_1_OUT_Zona_Andalucia_no_GR', 'vehicles_PAM_1_OUT_Extranjero', 'vehicles_PAM_1_OUT_Zona_Comunidad_de_Madrid',
@@ -53,46 +53,46 @@ INTERSECTION_POLLUTION_COLS = [
     "TEMP", "RH", "WS", "WD", "PRES"
 ]
 
-# Combine traffic and pollution columns for the final feature set
+# Combina columnas de tráfico y contaminación para el conjunto de características final
 FEATURE_COLUMNS = PAM_BUB_TRAFFIC_COLS + INTERSECTION_POLLUTION_COLS
 
-# Columns potentially dropped for some baseline methods or analyses
+# Columnas potencialmente eliminadas para algunos métodos base o análisis
 COLS_TO_DROP_FOR_BASELINE = ["WS", "WD"]
 
-# --- Date Ranges & Periods ---
+# --- Rangos de fechas y periodos ---
 DATE_COL = "date"
 TRUCK_POS_COL = "truck_pos"
 TARGET_TRUCK_POS = "PAM_2"
 TIMEZONE = "UTC"
 
-# Period 1 dates for the truck data
+# Fechas del Periodo 1 para los datos de camiones
 PERIOD_1_START = pd.to_datetime("2023-01-17 17:00:00+00:00", utc=True)
 PERIOD_1_END = pd.to_datetime("2023-03-14 11:00:00+00:00", utc=True)
 PERIOD_1_PADDING_START = pd.to_datetime("2023-01-17 00:00:00", utc=True)
 PERIOD_1_PADDING_END = pd.to_datetime("2023-03-14 23:00:00", utc=True)
 
 
-# Period 2 dates for the truck data
+# Fechas del Periodo 2 para los datos de camiones
 PERIOD_2_START = pd.to_datetime("2023-06-06 13:00:00+00:00", utc=True)
 PERIOD_2_END = pd.to_datetime("2023-06-27 00:00:00+00:00", utc=True)
 
-# Train/Val/Test Split Dates for Period 1
+# Fechas de división Entrenamiento/Validación/Prueba para el Periodo 1
 TRAIN_START_DATE = "2023-01-17"
-TRAIN_END_DATE = "2023-02-22" # Exclusive
+TRAIN_END_DATE = "2023-02-22"  # Exclusivo
 VAL_START_DATE = "2023-02-22"
-VAL_END_DATE = "2023-03-03"   # Exclusive
+VAL_END_DATE = "2023-03-03"    # Exclusivo
 TEST_START_DATE = "2023-03-03"
-TEST_END_DATE = "2023-03-15"   # Exclusive (covers up to 2023-03-14 23:00)
+TEST_END_DATE = "2023-03-15"    # Exclusivo (cubre hasta 2023-03-14 23:00)
 
-# --- Preprocessing Parameters ---
-N_STEPS = 24 # Sliding window size
+# --- Parámetros de preprocesamiento ---
+N_STEPS = 24  # Tamaño de la ventana deslizante
 MISSING_RATE = 0.1
-MISSING_PATTERN = "point" # or "subseq", "block"
+MISSING_PATTERN = "point"  # o "subseq", "block"
 
-# --- SAITS Model Parameters ---
+# --- Parámetros del modelo SAITS ---
 SAITS_PARAMS = {
     "n_steps": N_STEPS,
-    # n_features will be set dynamically
+    # n_features se establecerá dinámicamente
     "n_layers": 3,
     "d_model": 128,
     "d_ffn": 256,
@@ -105,15 +105,15 @@ SAITS_PARAMS = {
     "ORT_weight": 1,
     "MIT_weight": 1,
     "batch_size": 64,
-    "epochs": 200, # Consider reducing for faster testing/debugging
+    "epochs": 200,  # Considera reducir para pruebas/depuración más rápidas
     "patience": 20,
     "num_workers": 0,
-    "device": None, # Autodetect (CPU or GPU if available)
+    "device": None,  # Autodetecta (CPU o GPU si disponible)
     "saving_path": SAITS_MODEL_SAVE_PATH,
     "model_saving_strategy": "best",
 }
 
-# --- SAITS Training Parameters ---
+# --- Parámetros de entrenamiento SAITS ---
 SAITS_OPTIMIZER_PARAMS = {"lr": 5e-5, "weight_decay": 1e-4}
 SAITS_SCHEDULER_PARAMS = {"mode": "min", "factor": 0.5, "patience": 5}
-SAITS_LOSS_PARAMS = {"beta": 0.1} # For SmoothL1Loss
+SAITS_LOSS_PARAMS = {"beta": 0.1}  # Para SmoothL1Loss

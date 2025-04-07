@@ -2,57 +2,57 @@
 import numpy as np
 import pandas as pd
 from pypots.nn.functional import calc_mae, calc_mse, calc_rmse, calc_mre
-from typing import Dict, Tuple, List 
-from . import config # <-- Added config import
+from typing import Dict, Tuple, List
+from . import config
 
 def calculate_imputation_metrics(y_true: np.ndarray,
                                  y_pred: np.ndarray,
                                  indicating_mask: np.ndarray) -> Dict[str, float]:
     """
-    Calculates MAE, MSE, RMSE, MRE for imputed values where mask is 1.
+    Calcula MAE, MSE, RMSE, MRE para valores imputados donde la máscara es 1.
 
     Args:
-        y_true: Ground truth data (potentially with NaNs where originally missing).
-        y_pred: Imputed data.
-        indicating_mask: Mask where 1 indicates a missing value that was imputed,
-                         0 indicates an observed value.
+        y_true (np.ndarray): Datos verdaderos (potencialmente con NaNs donde faltaban originalmente).
+        y_pred (np.ndarray): Datos imputados.
+        indicating_mask (np.ndarray): Máscara donde 1 indica un valor faltante que fue imputado,
+                                     0 indica un valor observado.
 
     Returns:
-        Dictionary containing 'mae', 'mse', 'rmse', 'mre'.
+        Dict[str, float]: Diccionario que contiene 'mae', 'mse', 'rmse', 'mre'.
     """
-    # Ensure inputs are numpy arrays
+    # Asegura que las entradas sean arrays numpy
     y_true = np.asarray(y_true)
     y_pred = np.asarray(y_pred)
     indicating_mask = np.asarray(indicating_mask)
 
-    # Replace NaNs in ground truth with 0 for calculation where mask is 1
-    # This is necessary because pypots functions expect non-NaN ground truth
-    # We only evaluate where indicating_mask is 1, so this replacement is safe.
+    # Reemplaza NaNs en la verdad fundamental con 0 para el cálculo donde la máscara es 1
+    # Esto es necesario porque las funciones pypots esperan una verdad fundamental sin NaN
+    # Solo evaluamos donde indicating_mask es 1, por lo que este reemplazo es seguro.
     y_true_filled = np.nan_to_num(y_true, nan=0.0)
 
     if y_true.shape != y_pred.shape or y_true.shape != indicating_mask.shape:
-        raise ValueError(f"Shape mismatch: y_true={y_true.shape}, "
+        raise ValueError(f"Desajuste de forma: y_true={y_true.shape}, "
                          f"y_pred={y_pred.shape}, mask={indicating_mask.shape}")
 
-    # Check if mask sum is zero (no values to evaluate)
+    # Verifica si la suma de la máscara es cero (no hay valores para evaluar)
     if indicating_mask.sum() == 0:
-        print("Warning: Indicating mask sum is 0. No imputed values to evaluate.")
+        print("Advertencia: La suma de la máscara indicadora es 0. No hay valores imputados para evaluar.")
         return {'mae': np.nan, 'mse': np.nan, 'rmse': np.nan, 'mre': np.nan}
 
     try:
         mae = calc_mae(y_pred, y_true_filled, indicating_mask)
         mse = calc_mse(y_pred, y_true_filled, indicating_mask)
         rmse = calc_rmse(y_pred, y_true_filled, indicating_mask)
-        mre = calc_mre(y_pred, y_true_filled, indicating_mask) # Be cautious with MRE if true values are near zero
+        mre = calc_mre(y_pred, y_true_filled, indicating_mask)  # Precaución con MRE si los valores verdaderos están cerca de cero
 
         return {'mae': mae, 'mse': mse, 'rmse': rmse, 'mre': mre}
     except Exception as e:
-         print(f"Error during metric calculation: {e}")
-         # Add more debug info if needed
-         print(f"Shapes: y_pred={y_pred.shape}, y_true_filled={y_true_filled.shape}, mask={indicating_mask.shape}")
-         print(f"Mask sum: {indicating_mask.sum()}")
-         print(f"NaN counts: pred={np.isnan(y_pred).sum()}, true_filled={np.isnan(y_true_filled).sum()}, mask={np.isnan(indicating_mask).sum()}")
-         # Consider checking for infinities as well
+         print(f"Error durante el cálculo de métricas: {e}")
+         # Añade más información de depuración si es necesario
+         print(f"Formas: y_pred={y_pred.shape}, y_true_filled={y_true_filled.shape}, mask={indicating_mask.shape}")
+         print(f"Suma de máscara: {indicating_mask.sum()}")
+         print(f"Conteo de NaN: pred={np.isnan(y_pred).sum()}, true_filled={np.isnan(y_true_filled).sum()}, mask={np.isnan(indicating_mask).sum()}")
+         # Considera verificar también por infinitos
          return {'mae': np.nan, 'mse': np.nan, 'rmse': np.nan, 'mre': np.nan}
 
 
@@ -60,45 +60,46 @@ def evaluate_all_methods(preprocessed_data: Dict,
                          imputed_results: Dict[str, np.ndarray],
                          methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill_bfill', 'bfill_ffill', 'saits']) -> pd.DataFrame:
     """
-    Evaluates multiple imputation methods using the test set results.
+    Evalúa múltiples métodos de imputación usando los resultados del conjunto de prueba.
 
     Args:
-        preprocessed_data: Dictionary from preprocess_for_imputation.
-        imputed_results: Dictionary mapping method names to imputed numpy arrays (test set).
-        methods_to_evaluate: List of keys in imputed_results to evaluate.
+        preprocessed_data (Dict): Diccionario de preprocess_for_imputation.
+        imputed_results (Dict[str, np.ndarray]): Diccionario que mapea nombres de métodos a arrays NumPy imputados (conjunto de prueba).
+        methods_to_evaluate (list, optional): Lista de claves en imputed_results para evaluar.
+                                              (por defecto: ['median', 'mean', 'linear', 'ffill_bfill', 'bfill_ffill', 'saits'])
 
     Returns:
-        Pandas DataFrame summarizing MAE, MSE, RMSE, MRE for each method.
+        pd.DataFrame: DataFrame de Pandas que resume MAE, MSE, RMSE, MRE para cada método.
     """
     results = []
     y_true = preprocessed_data['test_X_ori']
     indicating_mask = preprocessed_data['test_indicating_mask']
 
-    # Handle potential dropping of columns for ffill/bfill if necessary
-    # This logic assumes WS/WD were dropped *before* imputation for ffill/bfill
+    # Maneja la posible eliminación de columnas para ffill/bfill si es necesario
+    # Esta lógica asume que WS/WD se eliminaron *antes* de la imputación para ffill/bfill
     cols_to_drop_indices = [config.FEATURE_COLUMNS.index(col) for col in config.COLS_TO_DROP_FOR_BASELINE if col in config.FEATURE_COLUMNS]
 
     for method_name in methods_to_evaluate:
         if method_name not in imputed_results:
-            print(f"Warning: Imputed results for method '{method_name}' not found. Skipping.")
+            print(f"Advertencia: No se encontraron resultados imputados para el método '{method_name}'. Saltando.")
             continue
 
         y_pred = imputed_results[method_name]
         current_y_true = y_true
         current_mask = indicating_mask
 
-        # Specific handling for methods where columns might have been dropped
+        # Manejo específico para métodos donde las columnas podrían haberse eliminado
         if method_name in ['ffill_bfill', 'bfill_ffill'] and cols_to_drop_indices:
-             print(f"Adjusting true data and mask for {method_name} due to dropped columns.")
+             print(f"Ajustando datos verdaderos y máscara para {method_name} debido a columnas eliminadas.")
              current_y_true = np.delete(y_true, cols_to_drop_indices, axis=2)
              current_mask = np.delete(indicating_mask, cols_to_drop_indices, axis=2)
-             # y_pred for these methods should already have columns dropped
+             # y_pred para estos métodos ya debería tener las columnas eliminadas
 
-        print(f"\nCalculating metrics for: {method_name}")
+        print(f"\nCalculando métricas para: {method_name}")
         metrics = calculate_imputation_metrics(current_y_true, y_pred, current_mask)
 
         results.append({
-            "Method": method_name.replace('_', ' ').title(), # Nicer name
+            "Method": method_name.replace('_', ' ').title(),  # Nombre más bonito
             "RMSE": metrics.get('rmse', np.nan),
             "MSE": metrics.get('mse', np.nan),
             "MAE": metrics.get('mae', np.nan),

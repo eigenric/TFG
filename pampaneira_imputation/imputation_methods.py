@@ -6,154 +6,193 @@ from typing import Optional, Tuple
 
 
 def impute_median(X_missing: np.ndarray) -> np.ndarray:
+    """
+    Imputa los valores faltantes en un array 3D usando la mediana por característica.
+
+    Calcula la mediana de cada característica (a través de muestras y pasos de tiempo) y
+    reemplaza los valores NaN con la mediana calculada para esa característica.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+
+    Returns:
+        np.ndarray: Array NumPy 3D con valores faltantes imputados.
+    """
     X_imputed = X_missing.copy()
     n_samples, n_steps, n_features = X_imputed.shape
 
     for k in range(n_features):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=RuntimeWarning)
-            median_val = np.nanmedian(X_missing[:, :, k]) # Calculate on ORIGINAL
+            median_val = np.nanmedian(X_missing[:, :, k])  # Calcula sobre el ORIGINAL
 
-        # --- Explicit Handling for All-NaN ---
+        # --- Manejo explícito para todos NaN ---
         if np.isnan(median_val):
-            print(f"Warning: Feature {k} is all NaN. Imputing with 0.")
-            # Directly impute 0 for this specific feature where it's NaN
+            print(f"Advertencia: La característica {k} es toda NaN. Imputando con 0.")
+            # Imputa directamente 0 para esta característica específica donde es NaN
             current_nan_mask = np.isnan(X_imputed[:, :, k])
             X_imputed[:, :, k][current_nan_mask] = 0.0
         else:
-            # Impute the calculated median for non-all-NaN features
+            # Imputa la mediana calculada para características que no son todas NaN
             current_nan_mask = np.isnan(X_imputed[:, :, k])
             X_imputed[:, :, k][current_nan_mask] = median_val
-        # --- End Explicit Handling ---
+        # --- Fin del manejo explícito ---
 
     return X_imputed
 
 def impute_mean(X_missing: np.ndarray) -> np.ndarray:
+    """
+    Imputa los valores faltantes en un array 3D usando la media por característica.
+
+    Calcula la media de cada característica (a través de muestras y pasos de tiempo) y
+    reemplaza los valores NaN con la media calculada para esa característica.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+
+    Returns:
+        np.ndarray: Array NumPy 3D con valores faltantes imputados.
+    """
     X_imputed = X_missing.copy()
     n_samples, n_steps, n_features = X_imputed.shape
 
     for k in range(n_features):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=RuntimeWarning)
-            mean_val = np.nanmean(X_missing[:, :, k]) # Calculate on ORIGINAL
+            mean_val = np.nanmean(X_missing[:, :, k])  # Calcula sobre el ORIGINAL
 
-        # --- Explicit Handling for All-NaN ---
+        # --- Manejo explícito para todos NaN ---
         if np.isnan(mean_val):
-            print(f"Warning: Feature {k} is all NaN. Imputing with 0.")
+            print(f"Advertencia: La característica {k} es toda NaN. Imputando con 0.")
             current_nan_mask = np.isnan(X_imputed[:, :, k])
             X_imputed[:, :, k][current_nan_mask] = 0.0
         else:
             current_nan_mask = np.isnan(X_imputed[:, :, k])
             X_imputed[:, :, k][current_nan_mask] = mean_val
-        # --- End Explicit Handling ---
+        # --- Fin del manejo explícito ---
 
     return X_imputed
 
 def impute_median_sample_wise(data):
     """
-    Impute missing values using the median of each sample (across time).
-    If an entire feature for a sample is NaN, use a fallback value.
-    
-    Parameters:
-    -----------
-    data : ndarray of shape (n_samples, n_timestamps, n_features)
-        Input data with NaN values to be imputed.
-        
+    Imputa los valores faltantes usando la mediana de cada muestra (a través del tiempo).
+
+    Si toda una característica para una muestra es NaN, usa un valor de reserva.
+
+    Args:
+        data (ndarray): Array NumPy de forma (n_samples, n_timestamps, n_features)
+                        Datos de entrada con valores NaN para ser imputados.
+
     Returns:
-    --------
-    ndarray of shape (n_samples, n_timestamps, n_features)
-        Data with NaN values imputed.
+        ndarray: Array NumPy de forma (n_samples, n_timestamps, n_features)
+                 Datos con valores NaN imputados.
     """
     imputed_data = data.copy()
     n_samples, n_timestamps, n_features = data.shape
-    
+
     for feat_idx in range(n_features):
         for sample_idx in range(n_samples):
-            # Extract the feature slice for this sample
+            # Extrae el slice de característica para esta muestra
             feature_slice = data[sample_idx, :, feat_idx]
-            
-            # Check if the slice contains any non-NaN values
+
+            # Verifica si el slice contiene algún valor no NaN
             if not np.isnan(feature_slice).all():
-                # Calculate median only if there are non-NaN values
+                # Calcula la mediana solo si hay valores no NaN
                 median_val = np.nanmedian(feature_slice)
-                
-                # Apply the median to NaN values in this sample's feature
+
+                # Aplica la mediana a los valores NaN en la característica de esta muestra
                 nan_indices = np.isnan(imputed_data[sample_idx, :, feat_idx])
                 imputed_data[sample_idx, nan_indices, feat_idx] = median_val
             else:
-                # If all values are NaN, apply fallback strategy
-                # Option 1: Use median of this feature across all other samples
+                # Si todos los valores son NaN, aplica la estrategia de reserva
+                # Opción 1: Usa la mediana de esta característica a través de todas las otras muestras
                 global_feature_median = np.nanmedian(data[:, :, feat_idx])
                 if not np.isnan(global_feature_median):
                     imputed_data[sample_idx, :, feat_idx] = global_feature_median
                 else:
-                    # Option 2: Use a default value (e.g., 0 or the global median of all data)
+                    # Opción 2: Usa un valor por defecto (ej., 0 o la mediana global de todos los datos)
                     imputed_data[sample_idx, :, feat_idx] = np.nanmedian(data) if not np.isnan(data).all() else 0
-    
+
     return imputed_data
-    
+
 def impute_mean_sample_wise(data):
     """
-    Impute missing values using the mean of each sample (across time).
-    If an entire feature for a sample is NaN, use a fallback value.
-    
-    Parameters:
-    -----------
-    data : ndarray of shape (n_samples, n_timestamps, n_features)
-        Input data with NaN values to be imputed.
-        
+    Imputa los valores faltantes usando la media de cada muestra (a través del tiempo).
+
+    Si toda una característica para una muestra es NaN, usa un valor de reserva.
+
+    Args:
+        data (ndarray): Array NumPy de forma (n_samples, n_timestamps, n_features)
+                        Datos de entrada con valores NaN para ser imputados.
+
     Returns:
-    --------
-    ndarray of shape (n_samples, n_timestamps, n_features)
-        Data with NaN values imputed.
+        ndarray: Array NumPy de forma (n_samples, n_timestamps, n_features)
+                 Datos con valores NaN imputados.
     """
     imputed_data = data.copy()
     n_samples, n_timestamps, n_features = data.shape
-    
+
     for feat_idx in range(n_features):
         for sample_idx in range(n_samples):
-            # Extract the feature slice for this sample
+            # Extrae el slice de característica para esta muestra
             feature_slice = data[sample_idx, :, feat_idx]
-            
-            # Check if the slice contains any non-NaN values
+
+            # Verifica si el slice contiene algún valor no NaN
             if not np.isnan(feature_slice).all():
-                # Calculate mean only if there are non-NaN values
+                # Calcula la media solo si hay valores no NaN
                 mean_val = np.nanmean(feature_slice)
-                
-                # Apply the mean to NaN values in this sample's feature
+
+                # Aplica la media a los valores NaN en la característica de esta muestra
                 nan_indices = np.isnan(imputed_data[sample_idx, :, feat_idx])
                 imputed_data[sample_idx, nan_indices, feat_idx] = mean_val
             else:
-                # If all values are NaN, apply fallback strategy
-                # Option 1: Use mean of this feature across all other samples
+                # Si todos los valores son NaN, aplica la estrategia de reserva
+                # Opción 1: Usa la media de esta característica a través de todas las otras muestras
                 global_feature_mean = np.nanmean(data[:, :, feat_idx])
                 if not np.isnan(global_feature_mean):
                     imputed_data[sample_idx, :, feat_idx] = global_feature_mean
                 else:
-                    # Option 2: Use a default value (e.g., 0 or the global mean of all data)
+                    # Opción 2: Usa un valor por defecto (ej., 0 o la media global de todos los datos)
                     imputed_data[sample_idx, :, feat_idx] = np.nanmean(data) if not np.isnan(data).all() else 0
-    
-    return imputed_data   
+
+    return imputed_data
 
 def impute_forward_backward(X_missing: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Realiza la imputación forward-fill y backward-fill en un array 3D.
+
+    Aplica forward-fill seguido de backward-fill, y backward-fill seguido de forward-fill,
+    para imputar valores faltantes en cada muestra del array de entrada.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: Tupla que contiene dos arrays NumPy 3D:
+                                        - El primero es el resultado de forward-fill seguido de backward-fill.
+                                        - El segundo es el resultado de backward-fill seguido de forward-fill.
+    """
     X_filled_forward_then_backward = X_missing.copy()
     X_filled_backward_then_forward = X_missing.copy()
     n_samples, n_steps, n_features = X_missing.shape
 
     for i in range(n_samples):
-        sample_df = pd.DataFrame(X_missing[i, :, :]) # Convert step x feature slice to DataFrame
+        sample_df = pd.DataFrame(X_missing[i, :, :])  # Convierte el slice paso x característica a DataFrame
 
-        # Forward fill then backward fill
+        # Forward fill luego backward fill
         filled_fb = sample_df.ffill(axis=0).bfill(axis=0)
-        # Fallback for remaining NaNs (all-NaN columns)
+        # Reserva para NaNs restantes (columnas totalmente NaN)
         if filled_fb.isnull().any().any():
             filled_fb.fillna(0.0, inplace=True)
         X_filled_forward_then_backward[i, :, :] = filled_fb.to_numpy()
 
 
-        # Backward fill then forward fill
+        # Backward fill luego forward fill
         filled_bf = sample_df.bfill(axis=0).ffill(axis=0)
-        # Fallback for remaining NaNs (all-NaN columns)
+        # Reserva para NaNs restantes (columnas totalmente NaN)
         if filled_bf.isnull().any().any():
             filled_bf.fillna(0.0, inplace=True)
         X_filled_backward_then_forward[i, :, :] = filled_bf.to_numpy()
@@ -161,23 +200,35 @@ def impute_forward_backward(X_missing: np.ndarray) -> Tuple[np.ndarray, np.ndarr
 
     return X_filled_forward_then_backward, X_filled_backward_then_forward
 
-# pampaneira_imputation/imputation_methods.py
+
 def impute_linear(X_missing: np.ndarray) -> np.ndarray:
+    """
+    Realiza la interpolación lineal para imputar valores faltantes en un array 3D.
+
+    Aplica la interpolación lineal a lo largo del eje del tiempo (axis=0) para cada muestra
+    en el array de entrada.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+
+    Returns:
+        np.ndarray: Array NumPy 3D con valores faltantes imputados usando interpolación lineal.
+    """
     X_interpolated = X_missing.copy()
     n_samples, n_steps, n_features = X_missing.shape
 
     for i in range(n_samples):
         sample_df = pd.DataFrame(X_missing[i, :, :])
         interpolated_df = sample_df.interpolate(method='linear', axis=0, limit_direction='both')
-        # Check if any NaNs remain (e.g., if start/end are NaN OR if whole col was NaN)
-        # Fallback: fill remaining NaNs (e.g., with 0 or ffill/bfill)
+        # Verifica si quedan NaNs (ej., si inicio/fin son NaN O si toda la columna era NaN)
+        # Reserva: rellena los NaNs restantes (ej., con 0 o ffill/bfill)
         if interpolated_df.isnull().any().any():
-             # Option 1: Use ffill/bfill (might still fail if whole column is NaN)
+             # Opción 1: Usa ffill/bfill (aún podría fallar si toda la columna es NaN)
              # interpolated_df = interpolated_df.ffill(axis=0).bfill(axis=0)
-             # Option 2: Fill with a constant (like 0)
+             # Opción 2: Rellena con una constante (como 0)
              interpolated_df.fillna(0.0, inplace=True)
 
         X_interpolated[i, :, :] = interpolated_df.to_numpy()
 
     return X_interpolated
-
