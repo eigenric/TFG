@@ -29,12 +29,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install uv
 
-      - name: Create uv virtual environment
-        run: python -m uv venv .venv
-
-      - name: Activate uv virtual environment
-        shell: bash
-        run: source .venv/bin/activate
+      - name: Set up virtual environment, install dependencies, and run tests
+        shell: bash # Ensure bash shell for activation
+        run: |
+          python -m uv venv .venv
+          source .venv/bin/activate  # Activate the virtual environment
+          uv pip install -e ".[test]" # Install dependencies in the venv
+          python -m pytest          # Run pytest in the venv
 
       - name: Cache uv dependencies
         uses: actions/cache@v3
@@ -43,9 +44,3 @@ jobs:
           key: ${{ runner.os }}-uv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-uv-${{ matrix.python-version }}-
-
-      - name: Install project dependencies
-        run: uv pip install -e ".[test]"
-
-      - name: Run tests with pytest
-        run: python -m pytest # Use python -m pytest for robustness
