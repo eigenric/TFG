@@ -3,3 +3,9 @@ correos
 *.aux
 .DS_Store
 links
+.venv
+.pytest_cache
+*.egg-info
+results
+pampaneira_imputation/__pycache__
+tests/__pycache__
