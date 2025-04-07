@@ -8,44 +8,54 @@ A level-1 auxiliary file: chapters/chapter4.aux
 A level-1 auxiliary file: chapters/chapter5.aux
 The style file: alpha.bst
 Database file #1: research.bib
-You've used 3 entries,
+Warning--I didn't find a database entry for "smartpoqueira"
+Warning--I didn't find a database entry for "Mostafa2012"
+Warning--to sort, need author or key in LocalAverageNearestNeighbors_nodate
+Warning--to sort, need author or key in imputeTS_package_nodate
+Warning--to sort, need author or key in NewDigitals_timeseriesimputation_2024
+Warning--to sort, need author or key in StatisticsSolutions_stationarydata_nodate
+Warning--to sort, need author or key in SeasonalMeanImputation_2023
+Warning--to sort, need author or key in Wikipedia_expectationmaximization_nodate
+Warning--to sort, need author or key in MoSPI_comparisonimputation_nodate
+You've used 21 entries,
             2543 wiz_defined-function locations,
-            581 strings with 5060 characters,
-and the built_in function-call counts, 1113 in all, are:
-= -- 104
-> -- 57
-< -- 0
-+ -- 21
-- -- 21
-* -- 82
-:= -- 188
-add.period$ -- 8
-call.type$ -- 3
-change.case$ -- 19
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 39
-empty$ -- 85
-format.name$ -- 23
-if$ -- 222
+            665 strings with 8586 characters,
+and the built_in function-call counts, 7380 in all, are:
+= -- 681
+> -- 439
+< -- 3
++ -- 160
+- -- 159
+* -- 531
+:= -- 1208
+add.period$ -- 47
+call.type$ -- 21
+change.case$ -- 148
+chr.to.int$ -- 21
+cite$ -- 35
+duplicate$ -- 261
+empty$ -- 530
+format.name$ -- 168
+if$ -- 1480
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 3
-newline$ -- 17
-num.names$ -- 6
-pop$ -- 27
+missing$ -- 9
+newline$ -- 93
+num.names$ -- 42
+pop$ -- 185
 preamble$ -- 1
-purify$ -- 23
+purify$ -- 166
 quote$ -- 0
-skip$ -- 31
+skip$ -- 250
 stack$ -- 0
-substring$ -- 52
-swap$ -- 3
-text.length$ -- 0
-text.prefix$ -- 1
+substring$ -- 239
+swap$ -- 29
+text.length$ -- 3
+text.prefix$ -- 2
 top$ -- 0
-type$ -- 20
-warning$ -- 0
-while$ -- 8
-width$ -- 6
-write$ -- 36
+type$ -- 168
+warning$ -- 7
+while$ -- 46
+width$ -- 25
+write$ -- 222
+(There were 9 warnings)

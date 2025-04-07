@@ -1,62 +1,52 @@
 \chapter{Análisis Exploratorio de los datos y Pipeline de Preprocesamiento e Imputación} 
 \label{chap:eda}
 
-\section{Análisis Exploratorio de Datos}
-\label{sec:generacion_datos_analisis}
 
-Este notebook realiza un análisis exploratorio de los datos de tráfico y
-emisiones contaminantes
+\section*{Taxonomía de Imputación para Valores Faltantes en Series Temporales:
+Enfoques de Modelos Locales, Estacionarios y Predictivos}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_16_output_0.png}
-    \caption{Visualización de datos (Celda 16). .}
-    \label{fig:cell_16}
-\end{figure}
+Los valores faltantes en series temporales representan un desafío significativo
+en diversas disciplinas \cite{Qin_glima_2020, Lu_missing_2024, Gao_contextaware_2022}. La imputación, el proceso de
+rellenar estos valores, es crucial para análisis posteriores como la predicción
+y detección de anomalías \cite{Gao_contextaware_2022}. Este trabajo presenta una taxonomía de
+imputación dividida en tres categorías principales: Imputación con Información
+Local, Imputación Estacionaria e Imputación con Modelos Predictivos.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_19_output_0.png}
-    \caption{Visualización de datos (Celda 19). .}
-    \label{fig:cell_19}
-\end{figure}
+La Imputación con Información Local utiliza puntos de datos temporalmente
+cercanos, asumiendo similitud temporal \cite{LocalAverageNearestNeighbors_nodate}. Técnicas comunes incluyen
+LOCF/NOCB, interpolación lineal y spline, promedios móviles e imputación por
+vecinos más cercanos \cite{imputeTS_package_nodate, NewDigitals_timeseriesimputation_2024}. Estos métodos son simples y útiles
+para brechas cortas, pero pueden introducir sesgos \cite{Abdulhamid_dataimputation_nodate}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_20_output_0.png}
-    \caption{Visualización de datos (Celda 20). .}
-    \label{fig:cell_20}
-\end{figure}
+La Imputación Estacionaria se basa en la estacionariedad de la serie temporal,
+reemplazando valores faltantes con estadísticas como la media, mediana, moda o
+medias estacionales \cite{StatisticsSolutions_stationarydata_nodate, SeasonalMeanImputation_2023}. El algoritmo Expectation-Maximization
+(EM) también puede aplicarse bajo este supuesto \cite{Wikipedia_expectationmaximization_nodate}. Estos métodos son
+sencillos pero asumen propiedades estadísticas constantes y pueden sesgar si la
+estacionariedad no se cumple \cite{Jones_imputingmissing_nodate}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_21_output_0.png}
-    \caption{Visualización de datos (Celda 21). .}
-    \label{fig:cell_21}
-\end{figure}
+La Imputación con Modelos Predictivos emplea modelos estadísticos o de
+aprendizaje automático para predecir valores faltantes, abarcando desde
+regresión lineal hasta redes neuronales profundas como RNNs y Transformers
+\cite{Qin_glima_2020, Yildirim_performancedeep_2023}. Estos modelos capturan dependencias temporales complejas y
+son más adaptables, aunque requieren mayor complejidad computacional y
+validación cuidadosa para evitar el sobreajuste \cite{Lu_missing_2024}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_22_output_0.png}
-    \caption{Visualización de datos (Celda 22). .}
-    \label{fig:cell_22}
-\end{figure}
+La selección del método de imputación depende de las características de la serie
+temporal (estacionariedad, estacionalidad, ruido), la naturaleza de los datos
+faltantes y los objetivos del análisis \cite{Abdulhamid_dataimputation_nodate}.  Las tendencias emergentes
+incluyen métodos híbridos, avances en aprendizaje profundo, imputación
+probabilística e integración de la imputación con tareas posteriores \cite{Ahmad_reviewdata_2024, Fortuin_probabilisticimputation_2023, Cui_deeplearningmultivariate_2024}. Los desafíos abiertos persisten en el manejo de datos MNAR, la
+evaluación de la calidad de la imputación sin verdad fundamental y la necesidad
+de conjuntos de datos de referencia estandarizados \cite{Ahmad_reviewdata_2024, MoSPI_comparisonimputation_nodate, Schlegel_evaluationmissing_2024}. La
+investigación futura se dirige a modelos generativos profundos, métodos robustos
+para datos MNAR e imputación adaptativa \cite{Ahmad_reviewdata_2024, Rahman_reviewcurrent_2021}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_23_output_0.png}
-    \caption{Visualización de datos (Celda 23). .}
-    \label{fig:cell_23}
-\end{figure}
+En conclusión, la elección del método de imputación en series temporales
+requiere una evaluación cuidadosa de las características de los datos y los
+objetivos del análisis, con un campo en evolución constante hacia técnicas más
+vanzadas y adaptativas.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline/nb_cell_25_output_0.png}
-    \caption{Visualización de datos (Celda 25). .}
-    \label{fig:cell_25}
-\end{figure}
-
-% --- Sección de Preprocesamiento e Imputación (Puede incluir gráficos de Pipeline3) ---
 \section{Preprocesamiento e Imputación}
 \label{sec:preprocesamiento}
 
@@ -71,155 +61,3 @@ Se realizó una imputación inicial utilizando la mediana...
 \label{subsec:imputacion_saits}
 Posteriormente, se aplicó el modelo SAITS...
 % (Texto descriptivo aquí)
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_33_output_0.png}
-    \caption{Visualización relacionada con SAITS (Celda 33). .}
-    \label{fig:cell_33}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_34_output_1.png}
-    \caption{Visualización relacionada con SAITS (Celda 34). .}
-    \label{fig:cell_34}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_35_output_1.png}
-    \caption{Visualización relacionada con SAITS (Celda 35). .}
-    \label{fig:cell_35}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_37_output_0.png}
-    \caption{Visualización relacionada con SAITS (Celda 37). .}
-    \label{fig:cell_37}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_38_output_1.png}
-    \caption{Visualización relacionada con SAITS (Celda 38). .}
-    \label{fig:cell_38}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_39_output_1.png}
-    \caption{Visualización relacionada con SAITS (Celda 39). .}
-    \label{fig:cell_39}
-\end{figure}
-
-
-
-% Gráficos de evaluación de Pipeline3
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_51_output_1.png}
-    \caption{Gráfico de evaluación (Celda 51). .}
-    \label{fig:cell_51}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_53_output_1.png}
-    \caption{Gráfico de evaluación (Celda 53). .}
-    \label{fig:cell_53}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_54_output_1.png}
-    \caption{Gráfico de evaluación (Celda 54). .}
-    \label{fig:cell_54}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_56_output_1.png}
-    \caption{Gráfico de evaluación (Celda 56). .}
-    \label{fig:cell_56}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_58_output_1.png}
-    \caption{Gráfico de evaluación (Celda 58). .}
-    \label{fig:cell_58}
-\end{figure}
-
-% Continuación de gráficos de evaluación de Pipeline3
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_60_output_1.png} % Nota: Hay dos cell_60
-    \caption{Gráfico de evaluación (Celda 60 - Pipeline 3). .}
-    \label{fig:cell_60_p3}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_62_output_1.png}
-    \caption{Gráfico de evaluación (Celda 62). .}
-    \label{fig:cell_62}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_64_output_1.png}
-    \caption{Gráfico de evaluación (Celda 64). .}
-    \label{fig:cell_64}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_66_output_1.png}
-    \caption{Gráfico de evaluación (Celda 66). .}
-    \label{fig:cell_66}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_68_output_1.png}
-    \caption{Gráfico de evaluación (Celda 68). .}
-    \label{fig:cell_68}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_70_output_1.png}
-    \caption{Gráfico de evaluación (Celda 70). .}
-    \label{fig:cell_70}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Pipeline3/nb_cell_72_output_1.png}
-    \caption{Gráfico de evaluación (Celda 72). .}
-    \label{fig:cell_72}
-\end{figure}
-
-\section{Evaluación de Métodos de Imputación}
-\label{sec:evaluacion}
-
-Se compararon los resultados de la imputación por mediana y la imputación mediante SAITS utilizando diversas métricas de error estándar: Error Cuadrático Medio Raíz (RMSE), Error Cuadrático Medio (MSE), Error Absoluto Medio (MAE) y Error Relativo Medio (MRE). Los valores obtenidos para el conjunto de test se resumen detalladamente en la Tabla~\ref{tab:error_comparison}. Adicionalmente, se visualizaron los resultados de la imputación en diversos gráficos (Figuras \ref{fig:cell_51} a \ref{fig:cell_72}).
-
-% Tabla comparativa de errores (Valores correctos de la captura de pantalla)
-\begin{table}[H]
-    \centering
-    \caption{Comparación de Errores de Imputación en el conjunto de test.}
-    \label{tab:error_comparison}
-    \begin{tabular}{lrr} % Alineación: Izquierda para texto, Derecha para números
-        \toprule
-        Tipo de Error                  & Imputación por Mediana & Imputación SAITS \\
-        \midrule
-        Root Mean Squared Error (RMSE) & 0.573211               & 0.411882         \\
-        Mean Squared Error (MSE)       & 0.328571               & 0.169647         \\
-        Mean Absolute Error (MAE)      & 0.440679               & 0.369306         \\
-        Mean Relative Error (MRE)      & 432.648363             & 362.576086       \\
-        \bottomrule
-    \end{tabular}
-\end{table}

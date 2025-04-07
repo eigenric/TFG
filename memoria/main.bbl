@@ -1,21 +1,108 @@
-\begin{thebibliography}{AMMIL12}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{FBDC{\etalchar{+}}23}
 
-\bibitem[AMMIL12]{Mostafa2012}
-Yaser~S. Abu-Mostafa, Malik Magdon-Ismail, and Hsuan-Tien Lin.
-\newblock {\em Learning From Data}.
-\newblock AMLBook, 2012.
+\bibitem[Abd]{Abdulhamid_dataimputation_nodate}
+Ahmed Abdulhamid.
+\newblock Data imputation demystified | time series data - kaggle.
 
-\bibitem[SBEXC22]{de_deep_2022}
-De~Suparna, Maria Bermudez-Edo, Honghui Xu, and Zhipeng Cai.
+\bibitem[AUI{\etalchar{+}}24]{Ahmad_reviewdata_2024}
+Asif Ahmad, Faeem Ullah, Muhammad~Zeeshan Iqbal, Imran Ashraf, Noman Ahmad,
+  Hamid Khan, and Naveed Iqbal.
+\newblock (pdf) review of data imputation techniques in time series data ...
+\newblock Technical report, ResearchGate, 2024.
+
+\bibitem[BKH16]{ba_layer_2016}
+Jimmy~Lei Ba, Jamie~Ryan Kiros, and Geoffrey~E Hinton.
+\newblock Layer normalization.
+\newblock {\em arXiv preprint arXiv:1607.06450}, 2016.
+
+\bibitem[CZZ{\etalchar{+}}24]{Cui_deeplearningmultivariate_2024}
+Pengfei Cui, Chen Zhao, Yong Zhang, Guiguang Ding, Kun Zhou, and Pan Hui.
+\newblock Deep learning for multivariate time series imputation: A survey.
+\newblock {\em arXiv preprint arXiv:2402.04059}, 2024.
+
+\bibitem[DBEXC22]{de_deep_2022}
+Suparna De, Maria Bermudez-Edo, Honghui Xu, and Zhipeng Cai.
 \newblock Deep generative models in the industrial internet of things: A
   survey.
 \newblock {\em {IEEE} Transactions on Industrial Informatics},
   18(9):5728--5737, 2022.
 
-\bibitem[Sma]{smartpoqueira}
-Smartpoqueira.
-\newblock Proyecto pionero en Europa en experimentación con tecnología
-  inteligente para gestión sostenible de visitas a zonas rurales y parques
-  nacionales.
+\bibitem[FBDC{\etalchar{+}}23]{Fortuin_probabilisticimputation_2023}
+Vincent Fortuin, Ben Barrett, Nicola De~Cao, Mark van~der Wilk, and Tom
+  Rainforth.
+\newblock Probabilistic imputation for time-series classification with missing
+  data.
+\newblock {\em arXiv preprint arXiv:2308.06738}, 2023.
+
+\bibitem[GDM{\etalchar{+}}22]{Gao_contextaware_2022}
+Jiarui Gao, Hao Dong, Jinfeng Ma, Yang Li, Ge~Nan, and Zhihua Zhou.
+\newblock Context-aware time series imputation for multi-analyte clinical data.
+\newblock {\em BioMed Research International}, 2022:9813594, 2022.
+
+\bibitem[HZRS16]{he_deep_2016}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem[imp]{imputeTS_package_nodate}
+imputets package vignette - cran.r-project.org.
+
+\bibitem[Jon]{Jones_imputingmissing_nodate}
+Kyle Jones.
+\newblock Imputing missing values in time series data for business analytics
+  with python - medium.
+
+\bibitem[LLL{\etalchar{+}}24]{Lu_missing_2024}
+Siyu Lu, Jiahao Liu, Xiang Li, Haoran Chen, Wei Zhang, Jianmin Wang, and Kai
+  Zheng.
+\newblock Missing data imputation for noisy time-series data and applications
+  in healthcare.
+\newblock {\em arXiv preprint arXiv:2412.11164}, 2024.
+
+\bibitem[Loc]{LocalAverageNearestNeighbors_nodate}
+Local average of nearest neighbors - thesai.org.
+
+\bibitem[MoS]{MoSPI_comparisonimputation_nodate}
+Comparison of imputation methods for univariate time series - mospi.
+
+\bibitem[New24]{NewDigitals_timeseriesimputation_2024}
+Time series data imputation, interpolation \& anomaly detection - our blogs,
+  Mar 2024.
+
+\bibitem[QWC{\etalchar{+}}20]{Qin_glima_2020}
+Yaqing Qin, Dongjin Wang, Chang Chen, Qing Lin, Yusen Yu, Shiyu Chang, and
+  Guoxing Xu.
+\newblock Glima: Global and local time series imputation with multi-directional
+  attention learning.
+\newblock In {\em NeurIPS Workshop on ML for Time Series Analysis}, 2020.
+
+\bibitem[RI21]{Rahman_reviewcurrent_2021}
+Md~Shafiqur Rahman and Md~Rafiul Islam.
+\newblock (pdf) a review of current publications trend on missing data
+  imputation over three decades: Direction and future research.
+\newblock Technical report, ResearchGate, 2021.
+
+\bibitem[Sea23]{SeasonalMeanImputation_2023}
+Seasonal mean imputation algorithm - svedbergopen, 2023.
+
+\bibitem[SFK{\etalchar{+}}24]{Schlegel_evaluationmissing_2024}
+Timo Schlegel, Till Fietkau, Julian Keilwagen, Claus Kern, and Rainer Stenzel.
+\newblock Evaluation of missing data imputation for time series without ground
+  truth.
+\newblock Technical report, ResearchGate, 2024.
+
+\bibitem[Sta]{StatisticsSolutions_stationarydata_nodate}
+The stationary data assumption in time series analysis - statistics solutions.
+
+\bibitem[Wik]{Wikipedia_expectationmaximization_nodate}
+Expectation–maximization algorithm - wikipedia.
+
+\bibitem[YDY23]{Yildirim_performancedeep_2023}
+Volkan Yildirim, Yasin Demir, and Burcu Yıldırım.
+\newblock Performance of deep learning models on imputed time series data.
+\newblock {\em Journal of the Faculty of Engineering and Architecture of Gazi
+  University}, 2023.
 
 \end{thebibliography}

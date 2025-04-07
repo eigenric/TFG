@@ -27,17 +27,15 @@
 \contentsline {subsection}{\numberline {3.1.2}Función de Pérdida para SAITS}{17}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Ventajas de Self-Attention para Imputación de Series Temporales}{18}{subsection.3.1.3}%
 \contentsline {chapter}{\numberline {4}\spacedlowsmallcaps {Análisis Exploratorio de los datos y Pipeline de Preprocesamiento e Imputación}}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Análisis Exploratorio de Datos}{20}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Preprocesamiento e Imputación}{23}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Imputación por Mediana}{23}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Imputación con SAITS}{23}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Evaluación de Métodos de Imputación}{29}{section.4.3}%
-\contentsline {chapter}{\numberline {5}\spacedlowsmallcaps {Conclusiones y Trabajo Futuro}}{31}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusiones}{31}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Principales Contribuciones del Trabajo}{31}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Impacto del Uso de Datos Sintéticos en IoT}{31}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Trabajo Futuro}{31}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Mejora de los Modelos Transformer}{31}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Extensiones a Otros Sistemas IoT}{31}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Posibles Aplicaciones en Diferentes Dominios}{31}{subsection.5.2.3}%
+\contentsline {section}{\numberline {4.1}Preprocesamiento e Imputación}{21}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Imputación por Mediana}{21}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Imputación con SAITS}{21}{subsection.4.1.2}%
+\contentsline {chapter}{\numberline {5}\spacedlowsmallcaps {Conclusiones y Trabajo Futuro}}{22}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusiones}{22}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Principales Contribuciones del Trabajo}{22}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Impacto del Uso de Datos Sintéticos en IoT}{22}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Trabajo Futuro}{22}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Mejora de los Modelos Transformer}{22}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Extensiones a Otros Sistemas IoT}{22}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Posibles Aplicaciones en Diferentes Dominios}{22}{subsection.5.2.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
