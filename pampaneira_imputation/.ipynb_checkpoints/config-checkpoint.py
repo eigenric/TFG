@@ -67,8 +67,8 @@ TARGET_TRUCK_POS = "PAM_2"
 TIMEZONE = "UTC"
 
 # Fechas del Periodo 1 para los datos de camiones
-PERIOD_1_START = pd.to_datetime("2023-01-17 17:00:00+00:00", utc=True)
-PERIOD_1_END = pd.to_datetime("2023-03-14 11:00:00+00:00", utc=True)
+PERIOD_1_START = pd.to_datetime("2023-01-17 00:00:00+00:00", utc=True)
+PERIOD_1_END = pd.to_datetime("2023-03-14 23:00:00+00:00", utc=True)
 PERIOD_1_PADDING_START = pd.to_datetime("2023-01-17 00:00:00", utc=True)
 PERIOD_1_PADDING_END = pd.to_datetime("2023-03-14 23:00:00", utc=True)
 
@@ -106,8 +106,8 @@ MISSING_PATTERN = "point"  # o "subseq", "block"
 SAITS_PARAMS = {
     "n_steps": N_STEPS,
     # n_features se establecerá dinámicamente
-    "n_layers": 3,
-    "d_model": 128,
+    "n_layers": 4,
+    "d_model": 192,
     "d_ffn": 256,
     "n_heads": 4,
     "d_k": 32,
@@ -115,10 +115,10 @@ SAITS_PARAMS = {
     "dropout": 0.3,
     "attn_dropout": 0.2,
     "diagonal_attention_mask": True,
-    "ORT_weight": 1,
-    "MIT_weight": 1,
+    "ORT_weight": 0.8,
+    "MIT_weight": 1.2,
     "batch_size": 64,
-    "epochs": 10,  # Considera reducir para pruebas/depuración más rápidas
+    "epochs": 50,  # Considera reducir para pruebas/depuración más rápidas
     "patience": 5,
     "num_workers": 0,
     "device": None,  # Autodetecta (CPU o GPU si disponible)
@@ -149,7 +149,7 @@ TRANSFORMER_PARAMS = {
     'ORT_weight': 1.0,           # Weight for ORT (Observed Reconstruction Term)
     'MIT_weight': 1.0,           # Weight for MIT (Missing Imputation Term)
     'batch_size': 64,            # Batch size for training
-    'epochs': 10,               # Maximum epochs for training
+    'epochs': 50,               # Maximum epochs for training
     'patience': 5,              # Early stopping patience
     'num_workers': 0,            # Number of workers for data loading
     'device': None,              # Device to use (None for auto-detection)

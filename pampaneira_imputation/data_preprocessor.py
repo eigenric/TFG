@@ -16,39 +16,22 @@ def fill_missing_timestamps(
 ) -> pd.DataFrame:
     """
     Rellena las marcas de tiempo horarias faltantes en un DataFrame con NaNs.
-
-    Args:
-        df (pd.DataFrame): DataFrame de entrada con una columna de fecha.
-        start_date (pd.Timestamp): Fecha de inicio del rango completo.
-        end_date (pd.Timestamp): Fecha de fin del rango completo.
-        freq (str, optional): Frecuencia para el rango de fechas (por defecto: 'h').
-        date_col (str, optional): Nombre de la columna de fecha (por defecto: config.DATE_COL).
-
-    Returns:
-        pd.DataFrame: DataFrame con marcas de tiempo horarias completas y NaNs
-                      para los datos faltantes.
     """
-    if not pd.api.types.is_datetime64_any_dtype(df[date_col]):
-        df[date_col] = pd.to_datetime(df[date_col])
-    if df[date_col].dt.tz is None:
-        df[date_col] = df[date_col].dt.tz_localize(
-            config.TIMEZONE
-        )  # Asegura la zona horaria
-    df = df.set_index(date_col)
+    
     full_date_range = pd.date_range(
         start=start_date, end=end_date, freq=freq, tz=config.TIMEZONE
     )
-    df_reindexed = df.reindex(full_date_range)
-    # No reinicies el índice si quieres preservar el DatetimeIndex
-    return df_reindexed
+    df_reindexed = df.set_index(date_col).reindex(full_date_range) # Removed reset_index()
+    df_reindexed.index.name = None  # Set index name to None
 
+    return df_reindexed
 
 def split_by_period(
     df: pd.DataFrame,
-    period_1_start: pd.Timestamp = config.PERIOD_1_START,
-    period_1_end: pd.Timestamp = config.PERIOD_1_END,
-    period_2_start: pd.Timestamp = config.PERIOD_2_START,
-    period_2_end: pd.Timestamp = config.PERIOD_2_END,
+    period_1_start: pd.Timestamp = config.PERIOD_1_PADDING_START,
+    period_1_end: pd.Timestamp = config.PERIOD_1_PADDING_END,
+    period_2_start: pd.Timestamp = config.PERIOD_2_PADDING_START,
+    period_2_end: pd.Timestamp = config.PERIOD_2_PADDING_END,
     date_col: str = config.DATE_COL,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """

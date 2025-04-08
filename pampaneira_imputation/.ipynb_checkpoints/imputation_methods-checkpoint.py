@@ -27,6 +27,7 @@ def impute_median(X_missing: np.ndarray) -> np.ndarray:
             warnings.simplefilter("ignore", category=RuntimeWarning)
             median_val = np.nanmedian(X_missing[:, :, k])  # Calcula sobre el ORIGINAL
 
+        # --- Manejo explícito para todos NaN ---
         if np.isnan(median_val):
             print(f"Advertencia: La característica {k} es toda NaN. Imputando con 0.")
             # Imputa directamente 0 para esta característica específica donde es NaN
@@ -36,6 +37,7 @@ def impute_median(X_missing: np.ndarray) -> np.ndarray:
             # Imputa la mediana calculada para características que no son todas NaN
             current_nan_mask = np.isnan(X_imputed[:, :, k])
             X_imputed[:, :, k][current_nan_mask] = median_val
+        # --- Fin del manejo explícito ---
 
     return X_imputed
 
