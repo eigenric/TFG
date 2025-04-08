@@ -7,6 +7,7 @@ RESULTS_DIR = "../results"
 TRAFFIC_FILE = f"{DATA_DIR}/trafico_feb22_ago23.csv"
 INTERSECTION_FILE = f"{DATA_DIR}/trafico_contamina_intersección.csv"
 SAITS_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/saits"
+TRANSFORMER_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/transformer"
 
 # --- Nombres de columnas ---
 PAM_BUB_TRAFFIC_COLS = [
@@ -117,8 +118,8 @@ SAITS_PARAMS = {
     "ORT_weight": 1,
     "MIT_weight": 1,
     "batch_size": 64,
-    "epochs": 200,  # Considera reducir para pruebas/depuración más rápidas
-    "patience": 20,
+    "epochs": 10,  # Considera reducir para pruebas/depuración más rápidas
+    "patience": 5,
     "num_workers": 0,
     "device": None,  # Autodetecta (CPU o GPU si disponible)
     "saving_path": SAITS_MODEL_SAVE_PATH,
@@ -129,3 +130,47 @@ SAITS_PARAMS = {
 SAITS_OPTIMIZER_PARAMS = {"lr": 5e-5, "weight_decay": 1e-4}
 SAITS_SCHEDULER_PARAMS = {"mode": "min", "factor": 0.5, "patience": 5}
 SAITS_LOSS_PARAMS = {"beta": 0.1}  # Para SmoothL1Loss
+
+
+from pypots.nn.modules.loss import MAE, MSE
+from pypots.optim import Adam
+
+TRANSFORMER_PARAMS = {
+    'n_steps': 24,               # Number of time steps in the time series
+    'n_features': None,          # Will be set dynamically
+    'n_layers': 3,               # Number of transformer layers
+    'd_model': 128,              # Dimension of model
+    'n_heads': 4,                # Number of attention heads
+    'd_k': 32,                   # Dimension of key
+    'd_v': 32,                   # Dimension of value
+    'd_ffn': 256,                # Dimension of feed-forward network
+    'dropout': 0.3,              # Dropout rate
+    'attn_dropout': 0.2,         # Attention dropout rate
+    'ORT_weight': 1.0,           # Weight for ORT (Observed Reconstruction Term)
+    'MIT_weight': 1.0,           # Weight for MIT (Missing Imputation Term)
+    'batch_size': 64,            # Batch size for training
+    'epochs': 10,               # Maximum epochs for training
+    'patience': 5,              # Early stopping patience
+    'num_workers': 0,            # Number of workers for data loading
+    'device': None,              # Device to use (None for auto-detection)
+    'saving_path': TRANSFORMER_MODEL_SAVE_PATH,   # Path to save the model
+    'model_saving_strategy': 'best', # Model saving strategy
+    'verbose': True              # Verbose output
+}
+
+# --- Parámetros de entrenamiento TRANSFORMER igualados a SAITS ---
+TRANSFORMER_OPTIMIZER_PARAMS = {
+    'lr': 5e-5,
+    'weight_decay': 1e-4
+}
+
+TRANSFORMER_SCHEDULER_PARAMS = {
+    'mode': 'min',
+    'factor': 0.5,
+    'patience': 5,
+    'verbose': True
+}
+
+TRANSFORMER_LOSS_PARAMS = {
+    'beta': 0.1  # Igual que SAITS
+}
