@@ -67,21 +67,17 @@ TARGET_TRUCK_POS = "PAM_2"
 TIMEZONE = "UTC"
 
 # Fechas del Periodo 1 para los datos de camiones
-PERIOD_1_START = pd.to_datetime("2023-01-17 17:00:00+00:00", utc=True)
+PERIOD_1_START = pd.to_datetime("2023-01-18 00:00:00+00:00", utc=True)
 PERIOD_1_END = pd.to_datetime("2023-03-14 11:00:00+00:00", utc=True)
-PERIOD_1_PADDING_START = pd.to_datetime("2023-01-17 00:00:00", utc=True)
-PERIOD_1_PADDING_END = pd.to_datetime("2023-03-14 23:00:00", utc=True)
 
 
 # Fechas del Periodo 2 para los datos de camiones
-PERIOD_2_START = pd.to_datetime("2023-06-06 13:00:00+00:00", utc=True)
-PERIOD_2_END = pd.to_datetime("2023-06-27 00:00:00+00:00", utc=True)
-PERIOD_2_PADDING_START = pd.to_datetime("2023-06-06 00:00:00", utc=True)
-PERIOD_2_PADDING_END = pd.to_datetime("2023-06-27 23:00:00", utc=True)
+PERIOD_2_START = pd.to_datetime("2023-06-07 00:00:00+00:00", utc=True)
+PERIOD_2_END = pd.to_datetime("2023-06-26 23:00:00+00:00", utc=True)
 
 
 # Fechas de división Entrenamiento/Validación/Prueba para el Periodo 1
-TRAIN_START_DATE = "2023-01-17"
+TRAIN_START_DATE = "2023-01-18"
 TRAIN_END_DATE = "2023-02-22"  # Exclusivo
 VAL_START_DATE = "2023-02-22"
 VAL_END_DATE = "2023-03-03"    # Exclusivo
@@ -89,12 +85,12 @@ TEST_START_DATE = "2023-03-03"
 TEST_END_DATE = "2023-03-15"    # Exclusivo (cubre hasta 2023-03-14 23:00)
 
 # Fechas de división Entrenamiento/Validación/Prueba para el Periodo 2
-TRAIN_2_START_DATE = "2023-06-06"
+TRAIN_2_START_DATE = "2023-06-07"
 TRAIN_2_END_DATE = "2023-06-20"  # Exclusivo
 VAL_2_START_DATE = "2023-06-20"
-VAL_2_END_DATE = "2023-06-24"    # Exclusivo
-TEST_2_START_DATE = "2023-06-24"
-TEST_2_END_DATE = "2023-06-28"    # Exclusivo (cubre hasta 2023-06-27 23:00)
+VAL_2_END_DATE = "2023-06-23"    # Exclusivo
+TEST_2_START_DATE = "2023-06-23"
+TEST_2_END_DATE = "2023-06-27"    # Exclusivo (cubre hasta 2023-06-26 23:00)
 
 
 # --- Parámetros de preprocesamiento ---
@@ -110,7 +106,7 @@ SAITS_PARAMS = {
     "d_model": 192,
     "d_ffn": 256,
     "n_heads": 4,
-    "d_k": 32,
+    "d_k": 48,
     "d_v": 32,
     "dropout": 0.3,
     "attn_dropout": 0.2,

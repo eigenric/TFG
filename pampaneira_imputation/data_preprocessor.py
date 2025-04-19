@@ -28,10 +28,10 @@ def fill_missing_timestamps(
 
 def split_by_period(
     df: pd.DataFrame,
-    period_1_start: pd.Timestamp = config.PERIOD_1_PADDING_START,
-    period_1_end: pd.Timestamp = config.PERIOD_1_PADDING_END,
-    period_2_start: pd.Timestamp = config.PERIOD_2_PADDING_START,
-    period_2_end: pd.Timestamp = config.PERIOD_2_PADDING_END,
+    period_1_start: pd.Timestamp = config.PERIOD_1_START,
+    period_1_end: pd.Timestamp = config.PERIOD_1_END,
+    period_2_start: pd.Timestamp = config.PERIOD_2_START,
+    period_2_end: pd.Timestamp = config.PERIOD_2_END,
     date_col: str = config.DATE_COL,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -67,107 +67,6 @@ def split_by_period(
     periodo_1 = df.loc[period_1_start:period_1_end].copy()
     periodo_2 = df.loc[period_2_start:period_2_end].copy()
     return periodo_1, periodo_2
-
-
-def add_period1_padding(
-    df_period1: pd.DataFrame,
-    start_pad: pd.Timestamp = config.PERIOD_1_PADDING_START,
-    end_pad: pd.Timestamp = config.PERIOD_1_PADDING_END,
-    freq: str = 'h',
-) -> pd.DataFrame:
-    """
-    Añade relleno de NaNs al inicio y al final de los datos del Periodo 1.
-
-    Args:
-        df_period1 (pd.DataFrame): DataFrame del Periodo 1 con DatetimeIndex.
-        start_pad (pd.Timestamp, optional): Fecha de inicio para el relleno inicial
-                                           (por defecto: config.PERIOD_1_PADDING_START).
-        end_pad (pd.Timestamp, optional): Fecha de fin para el relleno final
-                                         (por defecto: config.PERIOD_1_PADDING_END).
-        freq (str, optional): Frecuencia para el rango de fechas de relleno
-                              (por defecto: 'h').
-
-    Returns:
-        pd.DataFrame: DataFrame del Periodo 1 con relleno de NaNs añadido al
-                      inicio y al final.
-    """
-    if not isinstance(df_period1.index, pd.DatetimeIndex):
-        raise ValueError("El índice del DataFrame debe ser un DatetimeIndex para el relleno.")
-
-    # Crea DataFrames de relleno
-    start_range = pd.date_range(
-        start=start_pad,
-        end=df_period1.index.min() - pd.Timedelta(hours=1),
-        freq=freq,
-        tz=config.TIMEZONE,
-    )
-    end_range = pd.date_range(
-        start=df_period1.index.max() + pd.Timedelta(hours=1),
-        end=end_pad,
-        freq=freq,
-        tz=config.TIMEZONE,
-    )
-
-    df_start_pad = pd.DataFrame(np.nan, index=start_range, columns=df_period1.columns)
-    df_end_pad = pd.DataFrame(np.nan, index=end_range, columns=df_period1.columns)
-
-    # Concatena
-    df_padded = pd.concat([df_start_pad, df_period1, df_end_pad], axis=0)
-    # Asegura que el índice esté ordenado si la concatenación desordena
-    # (poco probable con rangos de fechas)
-    df_padded = df_padded.sort_index()
-
-    return df_padded
-
-def add_period2_padding(
-    df_period2: pd.DataFrame,
-    start_pad: pd.Timestamp = config.PERIOD_2_PADDING_START,
-    end_pad: pd.Timestamp = config.PERIOD_2_PADDING_END,
-    freq: str = 'h',
-) -> pd.DataFrame:
-    """
-    Añade relleno de NaNs al inicio y al final de los datos del Periodo 2.
-
-    Args:
-        df_period2 (pd.DataFrame): DataFrame del Periodo 2 con DatetimeIndex.
-        start_pad (pd.Timestamp, optional): Fecha de inicio para el relleno inicial
-                                           (por defecto: config.PERIOD_2_PADDING_START).
-        end_pad (pd.Timestamp, optional): Fecha de fin para el relleno final
-                                         (por defecto: config.PERIOD_2_PADDING_END).
-        freq (str, optional): Frecuencia para el rango de fechas de relleno
-                              (por defecto: 'h').
-
-    Returns:
-        pd.DataFrame: DataFrame del Periodo 2 con relleno de NaNs añadido al
-                      inicio y al final.
-    """
-    if not isinstance(df_period2.index, pd.DatetimeIndex):
-        raise ValueError("El índice del DataFrame debe ser un DatetimeIndex para el relleno.")
-
-    # Crea DataFrames de relleno
-    start_range = pd.date_range(
-        start=start_pad,
-        end=df_period2.index.min() - pd.Timedelta(hours=1),
-        freq=freq,
-        tz=config.TIMEZONE,
-    )
-    end_range = pd.date_range(
-        start=df_period2.index.max() + pd.Timedelta(hours=1),
-        end=end_pad,
-        freq=freq,
-        tz=config.TIMEZONE,
-    )
-
-    df_start_pad = pd.DataFrame(np.nan, index=start_range, columns=df_period2.columns)
-    df_end_pad = pd.DataFrame(np.nan, index=end_range, columns=df_period2.columns)
-
-    # Concatena
-    df_padded = pd.concat([df_start_pad, df_period2, df_end_pad], axis=0)
-    # Asegura que el índice esté ordenado si la concatenación desordena
-    # (poco probable con rangos de fechas)
-    df_padded = df_padded.sort_index()
-
-    return df_padded
 
 
 def preprocess_for_imputation(
@@ -251,12 +150,12 @@ def preprocess_for_imputation(
 
     # Convierte de nuevo a DataFrame para preservar el índice para la alineación
     # de ventanas (opcional pero más seguro)
-    # train_X_scaled_df = pd.DataFrame(train_X_scaled, index=train_index,
-    #                                  columns=feature_cols)
-    # val_X_scaled_df = pd.DataFrame(val_X_scaled, index=val_index,
-    #                                  columns=feature_cols)
-    # test_X_scaled_df = pd.DataFrame(test_X_scaled, index=test_index,
-    #                                   columns=feature_cols)
+    train_X_scaled_df = pd.DataFrame(train_X_scaled, index=train_index,
+                                      columns=feature_cols)
+    val_X_scaled_df = pd.DataFrame(val_X_scaled, index=val_index,
+                                      columns=feature_cols)
+    test_X_scaled_df = pd.DataFrame(test_X_scaled, index=test_index,
+                                      columns=feature_cols)
     # Nota: Usar sliding_window directamente en arrays numpy es más estándar
 
     # 3. Aplica ventana deslizante
@@ -295,6 +194,9 @@ def preprocess_for_imputation(
         "train_X": train_X_win,
         "val_X": val_X_win,
         "test_X": test_X_win,
+        "train_X_df": train_X_scaled_df,
+        "val_X_df": val_X_scaled_df,
+        "test_X_df": test_X_scaled_df
     }
 
     # 4. Introduce datos faltantes (Opcional)
@@ -308,6 +210,8 @@ def preprocess_for_imputation(
         processed_data["train_missing_mask"] = np.isnan(processed_data["train_X_ori"])
         processed_data["val_missing_mask"] = np.isnan(processed_data["val_X_ori"])
         processed_data["test_missing_mask"] = np.isnan(processed_data["test_X_ori"])
+
+        np.random.seed(42)  # Fija la semilla para reproducibilidad y consistencia
 
         # Aplica datos faltantes
         train_X_missing = create_missingness(

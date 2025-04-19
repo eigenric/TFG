@@ -55,10 +55,9 @@ def calculate_imputation_metrics(y_true: np.ndarray,
          # Considera verificar también por infinitos
          return {'mae': np.nan, 'mse': np.nan, 'rmse': np.nan, 'mre': np.nan}
 
-
 def evaluate_all_methods(preprocessed_data: Dict,
                          imputed_results: Dict[str, np.ndarray],
-                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill_bfill', 'bfill_ffill', 'saits']) -> pd.DataFrame:
+                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill', 'bfill', 'saits']) -> pd.DataFrame:
     """
     Evalúa múltiples métodos de imputación usando los resultados del conjunto de prueba.
 
@@ -66,7 +65,7 @@ def evaluate_all_methods(preprocessed_data: Dict,
         preprocessed_data (Dict): Diccionario de preprocess_for_imputation.
         imputed_results (Dict[str, np.ndarray]): Diccionario que mapea nombres de métodos a arrays NumPy imputados (conjunto de prueba).
         methods_to_evaluate (list, optional): Lista de claves en imputed_results para evaluar.
-                                              (por defecto: ['median', 'mean', 'linear', 'ffill_bfill', 'bfill_ffill', 'saits'])
+                                              (por defecto: ['median', 'mean', 'linear', 'ffill', 'bfill', 'saits'])
 
     Returns:
         pd.DataFrame: DataFrame de Pandas que resume MAE, MSE, RMSE, MRE para cada método.
@@ -89,8 +88,8 @@ def evaluate_all_methods(preprocessed_data: Dict,
         current_mask = indicating_mask
 
         # Manejo específico para métodos donde las columnas podrían haberse eliminado
-        if method_name in ['ffill_bfill', 'bfill_ffill'] and cols_to_drop_indices:
-             print(f"Ajustando datos verdaderos y máscara para {method_name} debido a columnas eliminadas.")
+        if method_name in ['ffill', 'bfill'] and cols_to_drop_indices:
+             print(f"Ajustando datos verdaderos y máscara para {method_name} debido a columnas eliminadas para {method_name}.")
              current_y_true = np.delete(y_true, cols_to_drop_indices, axis=2)
              current_mask = np.delete(indicating_mask, cols_to_drop_indices, axis=2)
              # y_pred para estos métodos ya debería tener las columnas eliminadas

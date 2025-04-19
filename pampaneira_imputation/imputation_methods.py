@@ -8,7 +8,7 @@ from typing import Optional, Tuple
 def impute_median(X_missing: np.ndarray) -> np.ndarray:
     """
     Imputa los valores faltantes en un array 3D usando la mediana por característica.
-
+s
     Calcula la mediana de cada característica (a través de muestras y pasos de tiempo) y
     reemplaza los valores NaN con la mediana calculada para esa característica.
 
@@ -157,47 +157,82 @@ def impute_mean_sample_wise(data):
 
     return imputed_data
 
-def impute_forward_backward(X_missing: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+def impute_forward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
     """
-    Realiza la imputación forward-fill y backward-fill en un array 3D.
+    Realiza la imputación forward-fill en un array 3D.
 
-    Aplica forward-fill seguido de backward-fill, y backward-fill seguido de forward-fill,
-    para imputar valores faltantes en cada muestra del array de entrada.
+    Aplica forward-fill para imputar valores faltantes (NaNs) en cada muestra
+    del array de entrada.
 
     Args:
         X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
                                  Forma: (n_samples, n_steps, n_features).
+        fillna_value (float, optional): Valor para rellenar los NaNs restantes después del
+                                       forward fill (por ejemplo, columnas completamente NaN).
+                                       Por defecto es 0.0.
 
     Returns:
-        Tuple[np.ndarray, np.ndarray]: Tupla que contiene dos arrays NumPy 3D:
-                                        - El primero es el resultado de forward-fill seguido de backward-fill.
-                                        - El segundo es el resultado de backward-fill seguido de forward-fill.
+        np.ndarray: Array NumPy 3D con forward-fill aplicado.
+
+    Raises:
+        ValueError: Si X_missing no es un array NumPy 3D.
     """
-    X_filled_forward_then_backward = X_missing.copy()
-    X_filled_backward_then_forward = X_missing.copy()
+    if not isinstance(X_missing, np.ndarray) or X_missing.ndim != 3:
+        raise ValueError("X_missing debe ser un array NumPy 3D.")
+
+    X_filled_forward = X_missing.copy()
     n_samples, n_steps, n_features = X_missing.shape
 
     for i in range(n_samples):
         sample_df = pd.DataFrame(X_missing[i, :, :])  # Convierte el slice paso x característica a DataFrame
 
-        # Forward fill luego backward fill
-        filled_fb = sample_df.ffill(axis=0).bfill(axis=0)
+        # Forward fill
+        filled_f = sample_df.ffill(axis=0)
         # Reserva para NaNs restantes (columnas totalmente NaN)
-        if filled_fb.isnull().any().any():
-            filled_fb.fillna(0.0, inplace=True)
-        X_filled_forward_then_backward[i, :, :] = filled_fb.to_numpy()
+        if filled_f.isnull().any().any():
+            filled_f.fillna(fillna_value, inplace=True)
+        X_filled_forward[i, :, :] = filled_f.to_numpy()
+
+    return X_filled_forward
 
 
-        # Backward fill luego forward fill
-        filled_bf = sample_df.bfill(axis=0).ffill(axis=0)
+def impute_backward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
+    """
+    Realiza la imputación backward-fill en un array 3D.
+
+    Aplica backward-fill para imputar valores faltantes (NaNs) en cada muestra
+    del array de entrada.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+        fillna_value (float, optional): Valor para rellenar los NaNs restantes después del
+                                       backward fill (por ejemplo, columnas completamente NaN).
+                                       Por defecto es 0.0.
+
+    Returns:
+        np.ndarray: Array NumPy 3D con backward-fill aplicado.
+
+    Raises:
+        ValueError: Si X_missing no es un array NumPy 3D.
+    """
+    if not isinstance(X_missing, np.ndarray) or X_missing.ndim != 3:
+        raise ValueError("X_missing debe ser un array NumPy 3D.")
+
+    X_filled_backward = X_missing.copy()
+    n_samples, n_steps, n_features = X_missing.shape
+
+    for i in range(n_samples):
+        sample_df = pd.DataFrame(X_missing[i, :, :])  # Convierte el slice paso x característica a DataFrame
+
+           # Backward fill
+        filled_b = sample_df.bfill(axis=0)
         # Reserva para NaNs restantes (columnas totalmente NaN)
-        if filled_bf.isnull().any().any():
-            filled_bf.fillna(0.0, inplace=True)
-        X_filled_backward_then_forward[i, :, :] = filled_bf.to_numpy()
+        if filled_b.isnull().any().any():
+            filled_b.fillna(fillna_value, inplace=True)
+        X_filled_backward[i, :, :] = filled_b.to_numpy()
 
-
-    return X_filled_forward_then_backward, X_filled_backward_then_forward
-
+    return X_filled_backward
 
 def impute_linear(X_missing: np.ndarray) -> np.ndarray:
     """
