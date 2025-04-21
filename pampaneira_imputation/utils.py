@@ -85,7 +85,6 @@ def create_missingness(data: np.ndarray, rate: float, pattern: str, **kwargs) ->
 
     return missing_data
 
-
 def reshape_imputed_to_df(imputed_data: np.ndarray,
                           original_index: pd.DatetimeIndex,
                           columns: List[str],
