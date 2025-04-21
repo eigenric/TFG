@@ -2,9 +2,20 @@
 import numpy as np
 import pandas as pd
 import warnings
+
 from typing import Optional, Tuple
+from .config import *
+from .utils import timeit_factory
 
+from pypots.imputation import SAITS, Transformer
+from torch.optim import Adam
+from torch.optim.lr_scheduler import ReduceLROnPlateau
+from torch.nn import SmoothL1Loss
 
+imputation_times = {}
+timeit = timeit_factory(imputation_times)
+
+@timeit
 def impute_median(X_missing: np.ndarray) -> np.ndarray:
     """
     Imputa los valores faltantes en un array 3D usando la mediana por característica.
@@ -39,6 +50,7 @@ s
 
     return X_imputed
 
+@timeit
 def impute_mean(X_missing: np.ndarray) -> np.ndarray:
     """
     Imputa los valores faltantes en un array 3D usando la media por característica.
@@ -73,6 +85,7 @@ def impute_mean(X_missing: np.ndarray) -> np.ndarray:
 
     return X_imputed
 
+@timeit
 def impute_median_sample_wise(data):
     """
     Imputa los valores faltantes usando la mediana de cada muestra (a través del tiempo).
@@ -115,6 +128,7 @@ def impute_median_sample_wise(data):
 
     return imputed_data
 
+@timeit
 def impute_mean_sample_wise(data):
     """
     Imputa los valores faltantes usando la media de cada muestra (a través del tiempo).
@@ -157,6 +171,7 @@ def impute_mean_sample_wise(data):
 
     return imputed_data
 
+@timeit
 def impute_forward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
     """
     Realiza la imputación forward-fill en un array 3D.
@@ -195,7 +210,7 @@ def impute_forward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
 
     return X_filled_forward
 
-
+@timeit
 def impute_backward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
     """
     Realiza la imputación backward-fill en un array 3D.
@@ -234,6 +249,7 @@ def impute_backward(X_missing: np.ndarray, fillna_value=0.0) -> np.ndarray:
 
     return X_filled_backward
 
+@timeit
 def impute_linear(X_missing: np.ndarray) -> np.ndarray:
     """
     Realiza la interpolación lineal para imputar valores faltantes en un array 3D.
@@ -265,3 +281,78 @@ def impute_linear(X_missing: np.ndarray) -> np.ndarray:
         X_interpolated[i, :, :] = interpolated_df.to_numpy()
 
     return X_interpolated
+
+
+@timeit
+def impute_transformer(dataset_for_training, dataset_for_validating, dataset_for_testing):
+    """
+    Configura, entrena y usa el modelo Transformer para imputación.
+    Modifica el diccionario global `imputed_results`.
+    """
+    print("\n---> Ejecutando lógica de imputación con Transformer...")
+
+    transformer_config = TRANSFORMER_PARAMS.copy()
+    # Asegúrate de que processed_data está disponible globalmente o pásalo si es necesario
+    transformer_config['n_features'] = dataset_for_training['X'].shape[2]
+
+    # Initialize the Transformer model
+    print("    Inicializando Transformer model...")
+    # Asegúrate de que tu clase Transformer real está disponible/importada
+    transformer_model = Transformer(**transformer_config) # Usa tu clase real
+
+    # Set up optimizer, scheduler, and loss function
+    print("    Configurando optimizer, scheduler, loss...")
+    # Asegúrate de que tus clases reales (Adam, ReduceLROnPlateau, SmoothL1Loss) están disponibles/importadas
+    optimizer = Adam(transformer_model.model.parameters(), **TRANSFORMER_OPTIMIZER_PARAMS)
+    scheduler = ReduceLROnPlateau(optimizer, **TRANSFORMER_SCHEDULER_PARAMS)
+    loss_func = SmoothL1Loss(**TRANSFORMER_LOSS_PARAMS)
+
+    # Train the model
+    print("    Training Transformer model...")
+    # Asegúrate de que dataset_for_training y dataset_for_validating están disponibles
+    transformer_model.fit(
+            train_set=dataset_for_training,
+            val_set=dataset_for_validating, # Pass validation set for early stopping
+    )
+    print("    Transformer training complete.")
+
+    # Predecir (imputar) en el conjunto de test
+    print("    Imputando con Transformer en el conjunto de test...")
+    transformer_prediction = transformer_model.predict(dataset_for_testing)
+    print("    Imputación Transformer completa.")
+
+    return transformer_prediction["imputation"]
+
+@timeit
+def impute_saits(dataset_for_training, dataset_for_validating, dataset_for_testing):
+    """
+    Configura, entrena y usa el modelo SAITS para imputación.
+    Modifica el diccionario global `imputed_results`.
+    """
+
+    print("\nConfigurando y ejecutando imputación con SAITS...")
+
+    # Configurar modelo SAITS
+    saits_config = SAITS_PARAMS.copy()
+    saits_config['n_features'] = dataset_for_testing['X'].shape[2]
+
+    saits_model = SAITS(**saits_config)
+
+    # Configurar optimizador, planificador y función de pérdida
+    optimizer = Adam(saits_model.model.parameters(), **SAITS_OPTIMIZER_PARAMS)
+    scheduler = ReduceLROnPlateau(optimizer, **SAITS_SCHEDULER_PARAMS)
+    loss_func = SmoothL1Loss(**SAITS_LOSS_PARAMS)
+
+    # Entrenar el modelo
+    # Nota: Podrías querer ajustar epochs/patience para ejecuciones más rápidas
+    print("Entrenando modelo SAITS...")
+    saits_model.fit(
+        train_set=dataset_for_training,
+        val_set=dataset_for_validating, # Pasar conjunto de validación para early stopping
+    )
+    print("Entrenamiento de SAITS completo.")
+
+    # Predecir (imputar) en el conjunto de test
+    print("Imputando con SAITS en el conjunto de test...")
+    saits_prediction = saits_model.predict(dataset_for_testing)
+    return saits_prediction["imputation"]
