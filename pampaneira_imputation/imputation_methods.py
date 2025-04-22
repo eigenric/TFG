@@ -282,13 +282,13 @@ def impute_linear(X_missing: np.ndarray) -> np.ndarray:
 
     return X_interpolated
 
-
 @timeit
-def impute_transformer(dataset_for_training, dataset_for_validating, dataset_for_testing):
+def fit_transformer(dataset_for_training, dataset_for_validating):
     """
     Configura, entrena y usa el modelo Transformer para imputación.
     Modifica el diccionario global `imputed_results`.
     """
+
     print("\n---> Ejecutando lógica de imputación con Transformer...")
 
     transformer_config = TRANSFORMER_PARAMS.copy()
@@ -315,7 +315,14 @@ def impute_transformer(dataset_for_training, dataset_for_validating, dataset_for
             val_set=dataset_for_validating, # Pass validation set for early stopping
     )
     print("    Transformer training complete.")
+    return transformer_model
 
+@timeit
+def impute_transformer(transformer_model, dataset_for_testing):
+    """
+    Configura, entrena y usa el modelo Transformer para imputación.
+    Modifica el diccionario global `imputed_results`.
+    """
     # Predecir (imputar) en el conjunto de test
     print("    Imputando con Transformer en el conjunto de test...")
     transformer_prediction = transformer_model.predict(dataset_for_testing)
@@ -324,7 +331,7 @@ def impute_transformer(dataset_for_training, dataset_for_validating, dataset_for
     return transformer_prediction["imputation"]
 
 @timeit
-def impute_saits(dataset_for_training, dataset_for_validating, dataset_for_testing):
+def fit_saits(dataset_for_training, dataset_for_validating):
     """
     Configura, entrena y usa el modelo SAITS para imputación.
     Modifica el diccionario global `imputed_results`.
@@ -334,7 +341,7 @@ def impute_saits(dataset_for_training, dataset_for_validating, dataset_for_testi
 
     # Configurar modelo SAITS
     saits_config = SAITS_PARAMS.copy()
-    saits_config['n_features'] = dataset_for_testing['X'].shape[2]
+    saits_config['n_features'] = dataset_for_training['X'].shape[2]
 
     saits_model = SAITS(**saits_config)
 
@@ -351,7 +358,14 @@ def impute_saits(dataset_for_training, dataset_for_validating, dataset_for_testi
         val_set=dataset_for_validating, # Pasar conjunto de validación para early stopping
     )
     print("Entrenamiento de SAITS completo.")
+    return saits_model
 
+@timeit
+def impute_saits(saits_model, dataset_for_testing):
+    """
+    Usa el modelo SAITS para imputación.
+    Modifica el diccionario global `imputed_results`.
+    """
     # Predecir (imputar) en el conjunto de test
     print("Imputando con SAITS en el conjunto de test...")
     saits_prediction = saits_model.predict(dataset_for_testing)
