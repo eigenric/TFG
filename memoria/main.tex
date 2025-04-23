@@ -44,6 +44,7 @@ cleardoublepage=empty,abstractoff,BCOR=5mm,paper=a4,fontsize=12pt,main=spanish]{
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
 \usepackage{pdfpages}
+\usepackage{siunitx} % Para alinear números en columnas y manejar unidades/formato
 
 \hypersetup{
     unicode=true,  % Permite que los bookmarks sean unicode
@@ -121,13 +122,14 @@ de vehículos utilizando \\ modelos Transformer con atención en Python}
 \include{chapters/chapter5}
 
 \appendix
+
+\input{chapters/anexos.tex} % Incluye el contenido del archivo anexos.tex aquí
+% --- FIN DE LA INCLUSIÓN DE LOS ANEXOS ---
+
 % Insert entire PDF
 
-\section*{Appendix A: Supplementary Material}
-\addcontentsline{toc}{section}{Appendix A: Supplementary Material}
 
 % Insert entire PDF
-\includepdf[pages=-]{pampaneira_imputation.pdf}
 
 % Or insert specific pages (e.g., 1 to 3)
 % \includepdf[pages=1-3]{yourfile.pdf}
@@ -137,5 +139,10 @@ de vehículos utilizando \\ modelos Transformer con atención en Python}
 % En research.bib están las entradas de los artículos que citamos.
 % Podemos cambiar el nombre del archivo aquí.
 \bibliography{research}   
+
+\section*{Appendix C: Documentación del paquete de Python}
+\addcontentsline{toc}{section}{Appendix C: Documentación del paquete de Python}
+
+\includepdf[pages=-]{pampaneira_imputation.pdf}
 
 \end{document}
