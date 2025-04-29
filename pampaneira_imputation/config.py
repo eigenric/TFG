@@ -110,7 +110,7 @@ SAITS_PARAMS = {
     "d_v": 32,
     "dropout": 0.2,
     "attn_dropout": 0.1,
-    "diagonal_attention_mask": False,
+    "diagonal_attention_mask": True,
     "ORT_weight": 1.0,
     "MIT_weight": 1.0,
     "batch_size": 64,
