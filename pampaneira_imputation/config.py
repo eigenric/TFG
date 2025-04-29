@@ -102,17 +102,17 @@ MISSING_PATTERN = "point"  # o "subseq", "block"
 SAITS_PARAMS = {
     "n_steps": N_STEPS,
     # n_features se establecerá dinámicamente
-    "n_layers": 4,
-    "d_model": 192,
+    "n_layers": 3,
+    "d_model": 128,
     "d_ffn": 256,
     "n_heads": 4,
-    "d_k": 48,
+    "d_k": 32,
     "d_v": 32,
-    "dropout": 0.3,
-    "attn_dropout": 0.2,
-    "diagonal_attention_mask": True,
-    "ORT_weight": 0.8,
-    "MIT_weight": 1.2,
+    "dropout": 0.2,
+    "attn_dropout": 0.1,
+    "diagonal_attention_mask": False,
+    "ORT_weight": 1.0,
+    "MIT_weight": 1.0,
     "batch_size": 64,
     "epochs": 50,  # Considera reducir para pruebas/depuración más rápidas
     "patience": 5,
@@ -140,8 +140,8 @@ TRANSFORMER_PARAMS = {
     'd_k': 32,                   # Dimension of key
     'd_v': 32,                   # Dimension of value
     'd_ffn': 256,                # Dimension of feed-forward network
-    'dropout': 0.3,              # Dropout rate
-    'attn_dropout': 0.2,         # Attention dropout rate
+    'dropout': 0.2,              # Dropout rate
+    'attn_dropout': 0.1,         # Attention dropout rate
     'ORT_weight': 1.0,           # Weight for ORT (Observed Reconstruction Term)
     'MIT_weight': 1.0,           # Weight for MIT (Missing Imputation Term)
     'batch_size': 64,            # Batch size for training

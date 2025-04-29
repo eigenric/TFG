@@ -1,0 +1,9 @@
+Id.,Nombre,Fecha de inicio,Fecha de fin,Duración,Progreso,Costo,Prioridad,Coordinador,Antecesores,Número de esquema,Recursos,Assignments,Nueva tarea,Notas,Página web
+0,"Investigación y Aprendizaje",30/9/24,15/12/24,77,0,0,1,,,"1",,,,,
+1,"Análisis Exploratorio",28/10/24,10/12/24,44,0,0,1,,,"2",,,,,
+2,"Gestión y Preparación de Datos",12/12/24,31/1/25,51,0,0,1,,,"3",,,,,
+3,"Modelado e Imputación",10/2/25,15/3/25,34,0,0,1,,,"4",,,,,
+4,"Análisis y Visualización",7/3/25,31/3/25,25,0,0,1,,,"5",,,,,
+5,"Elaboración del presupuesto",21/4/25,30/4/25,10,0,0,1,,,"6",,,,,
+6,"Elaboración de la memoria",9/10/24,15/4/25,189,0,0,1,,,"7",,,,,
+7,"Elaboración de la presentación",20/5/25,31/5/25,12,0,0,1,,,"8",,,,,

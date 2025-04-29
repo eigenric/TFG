@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2025.3.21)  23 APR 2025 20:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2025.3.21)  27 APR 2025 22:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1957,17 +1957,941 @@ LaTeX Info: Redefining \% on input line 118.
 
  (./chapters/chapter2.tex
 chapter 2.
-) [8
+
+Package natbib Warning: Citation `goodfellow_deep_2016' on page 8 undefined on 
+input line 10.
+
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
+14.
+(/opt/local/share/texmf-texlive/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
+! Undefined control sequence.
+l.34 ...es n}$, con las operaciones de suma (\Cref
+                                                  {def:matrix_sum}) y produc...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.34 ...las operaciones de suma (\Cref{def:matrix_
+                                                  sum}) y producto por un es...
+
+? 
+! Extra }, or forgotten $.
+l.34 ...operaciones de suma (\Cref{def:matrix_sum}
+                                                  ) y producto por un escala...
+
+? 
+! Undefined control sequence.
+l.34 ...rix_sum}) y producto por un escalar (\Cref
+                                                  {def:scalar_product}), for...
+
+? 
+
+! LaTeX Error: \PazoBB allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ... \textbf{espacio vectorial} sobre $\mathbb
+                                                  {K}$. La matriz cero $\mat...
+
+? 
+
+! LaTeX Error: \mathbf allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...obre $\mathbb{K}$. La matriz cero $\mathbf
+                                                  {0}_{m \times n}$ (con tod...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.34 ... $\mathbb{K}$. La matriz cero $\mathbf{0}_
+                                                  {m \times n}$ (con todas l...
+
+? 
+
+Overfull \hbox (182.29611pt too wide) in paragraph at lines 34--35
+\T1/pplj/m/n/12 de su-ma (def:matrix$[]\OML/zplm/m/it/12 um\OT1/zplm/m/n/12 )\O
+ML/zplm/m/it/12 yproductoporunescalar\OT1/zplm/m/n/12 ([])\OT1/pplx/m/n/12 , \O
+ML/zplm/m/it/12 formaun[]sobre$\T1/pplj/m/n/12 K$\OT1/pplx/m/n/12 .\OML/zplm/m/
+it/12 Lamatrizcero$\T1/pplj/m/n/12 0$[]$
+ []
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.35 \end{definition}
+                     
+? 
+[8
 
 
 
 
 ]
+! Undefined control sequence.
+l.55 ...hbf{B}]_{ij} = a_{ij} + b_{ij}$ (por \Cref
+                                                  {def:matrix_sum}). Como la...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.55 ... = a_{ij} + b_{ij}$ (por \Cref{def:matrix_
+                                                  sum}). Como la suma en $\m...
+
+? 
+! Extra }, or forgotten $.
+l.55 ..._{ij} + b_{ij}$ (por \Cref{def:matrix_sum}
+                                                  ). Como la suma en $\mathb...
+
+? 
+
+! LaTeX Error: \PazoBB allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.55 ...def:matrix_sum}). Como la suma en $\mathbb
+                                                  {K}$ es conmutativa, $a_{i...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.55 ...a suma en $\mathbb{K}$ es conmutativa, $a_
+                                                  {ij} + b_{ij} = b_{ij} + a...
+
+? 
+! Undefined control sequence.
+l.57 ...ij} = b_{ij} + a_{ij}$ (también por \Cref
+                                                  {def:matrix_sum}).
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.57 ... + a_{ij}$ (también por \Cref{def:matrix_
+                                                  sum}).
+? 
+! Extra }, or forgotten $.
+l.57 ..._{ij}$ (también por \Cref{def:matrix_sum}
+                                                  ).
+? 
+
+! LaTeX Error: \mathbf allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 Por lo tanto, se tiene que $[\mathbf
+                                         {A}+\mathbf{B}]_{ij} = [\mathbf{B}+...
+
+? 
+
+! LaTeX Error: \mathbf allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 ...o tanto, se tiene que $[\mathbf{A}+\mathbf
+                                                  {B}]_{ij} = [\mathbf{B}+\m...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.58 ...to, se tiene que $[\mathbf{A}+\mathbf{B}]_
+                                                  {ij} = [\mathbf{B}+\mathbf...
+
+? 
+! Undefined control sequence.
+l.58 ...hbf{B} = \mathbf{B}+\mathbf{A}$ (por \Cref
+                                                  {def:matrix_equality}). La...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.58 ...thbf{B}+\mathbf{A}$ (por \Cref{def:matrix_
+                                                  equality}). Las demostraci...
+
+? 
+! Extra }, or forgotten $.
+l.58 ...mathbf{A}$ (por \Cref{def:matrix_equality}
+                                                  ). Las demostraciones para...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 58.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 58.
+
+
+! LaTeX Error: Command \end{proof} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 \end{proof}
+                
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 \end{proof}
+                
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 \end{proof}
+                
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.59 \end{proof}
+                
+? 
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+! Missing } inserted.
+<inserted text> 
+                }
+l.59 \end{proof}
+                
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.59 \end{proof}
+                
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.59 \end{proof}
+                
+? 
+
+Overfull \hbox (247.89781pt too wide) in paragraph at lines 53--60
+\T1/pplj/m/n/12 pa-ra to-do $\OML/zplm/m/it/12 i\OT1/pplx/m/n/12 , \OML/zplm/m/
+it/12 j$\T1/pplj/m/n/12 , lo que im-pli-ca $\OT1/zplm/b/n/12 A \OT1/zplm/m/n/12
+ + \OT1/zplm/b/n/12 B \OT1/zplm/m/n/12 = \OT1/zplm/b/n/12 B \OT1/zplm/m/n/12 + 
+\OT1/zplm/b/n/12 A$ \T1/pplj/m/n/12 (por def:matrix$[]\OML/zplm/m/it/12 quality
+\OT1/zplm/m/n/12 )\OT1/pplx/m/n/12 .\OML/zplm/m/it/12 Lasdemostracionesparalosd
+emsaxiomassiguenunpatrnsimilar\OT1/pplx/m/n/12 .  []$ 
+ []
+
+
+LaTeX Warning: Reference `prop:matrix_product_properties' on page 9 undefined o
+n input line 81.
+
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
+[9]
+
+LaTeX Warning: Reference `prop:transpose_properties' on page 10 undefined on in
+put line 116.
+
+! Undefined control sequence.
+l.123 Por la \Cref
+                  {def:transpose}, $[\mathbf{B}^T]_{ik} = b_{ki}$ y $[\mathb...
+
+? 
+LaTeX Info: Redefining \. on input line 135.
+LaTeX Info: Redefining \% on input line 135.
+[10]
+
+Package natbib Warning: Citation `boyd_convex_2004' on page 11 undefined on inp
+ut line 155.
+
+LaTeX Info: Redefining \. on input line 176.
+LaTeX Info: Redefining \% on input line 176.
+[11]
+
+Package natbib Warning: Citation `rumelhart_learning_1986' on page 12 undefined
+ on input line 182.
+
+
+Package natbib Warning: Citation `goodfellow_deep_2016' on page 12 undefined on
+ input line 188.
+
+
+LaTeX Warning: Reference `prop:softmax_properties' on page 12 undefined on inpu
+t line 206.
+
+LaTeX Info: Redefining \. on input line 228.
+LaTeX Info: Redefining \% on input line 228.
+[12]
+! Undefined control sequence.
+l.244 ...as definiciones de álgebra lineal (\Cref
+                                                  {subsec:linear_algebra}) p...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.244 ... de álgebra lineal (\Cref{subsec:linear_
+                                                  algebra}) para formalizar ...
+
+? 
+! Extra }, or forgotten $.
+l.244 ...ebra lineal (\Cref{subsec:linear_algebra}
+                                                  ) para formalizar estos co...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.245 
+      
+? 
+! Undefined control sequence.
+l.248 ...bf{X} \in \mathbb{R}^{T \times D}$ (\Cref
+                                                  {def:matrix}), donde $T$ e...
+
+? 
+! Undefined control sequence.
+l.253 ...thbf{M} \in \{0, 1\}^{T \times D}$ (\Cref
+                                                  {def:matrix}), con las mis...
+
+? 
+
+Package natbib Warning: Citation `Du_saits_2023' on page 13 undefined on input 
+line 260.
+
+
+Package natbib Warning: Citation `Cui_deeplearningmultivariate_2024' on page 13
+ undefined on input line 260.
+
+LaTeX Info: Redefining \. on input line 261.
+LaTeX Info: Redefining \% on input line 261.
+[13]
+! Undefined control sequence.
+l.265 ...atos y $\mathbf{M}$ es la máscara (\Cref
+                                                  {def:matrix_mask}) que ind...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.265 ...hbf{M}$ es la máscara (\Cref{def:matrix_
+                                                  mask}) que indica explíci...
+
+? 
+! Extra }, or forgotten $.
+l.265 ...}$ es la máscara (\Cref{def:matrix_mask}
+                                                  ) que indica explícitamen...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 265.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 265.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 265.
+
+
+! LaTeX Error: Command \bfseries invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.265 ...es válidas \cite{rubiano_analyzing_2017}
+                                                  .
+? 
+
+Package natbib Warning: Citation `rubiano_analyzing_2017' on page 14 undefined 
+on input line 265.
+
+
+! LaTeX Error: Command \end{definition} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.266 \end{definition}
+                      
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.266 \end{definition}
+                      
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.266 \end{definition}
+                      
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.266 \end{definition}
+                      
+? 
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+! Missing } inserted.
+<inserted text> 
+                }
+l.266 \end{definition}
+                      
+? 
+
+Overfull \hbox (168.41187pt too wide) in paragraph at lines 265--267
+\OT1/zplm/b/n/12 X$ \T1/pplj/m/n/12 es la ma-triz de da-tos y $\OT1/zplm/b/n/12
+ M$ \T1/pplj/m/n/12 es la m�s-ca-ra (def:matrix$[]\OML/zplm/m/it/12 ask\OT1/zpl
+m/m/n/12 )\OML/zplm/m/it/12 queindicaexplcitamentelaubicacindelasobservacionesv
+lidas\OT1/zplm/m/n/12 [[]]\OT1/pplx/m/n/12 .$ 
+ []
+
+! Undefined control sequence.
+l.270 ...s mediante el producto de Hadamard (\Cref
+                                                  {def:hadamard_product}) co...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.270 ...producto de Hadamard (\Cref{def:hadamard_
+                                                  product}) con la matriz de...
+
+? 
+! Extra }, or forgotten $.
+l.270 ... de Hadamard (\Cref{def:hadamard_product}
+                                                  ) con la matriz de máscar...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 270.
+
+Missing character: There is no � in font pplr9t!
+
+! LaTeX Error: \mathbf allowed only in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.270 ...duct}) con la matriz de máscara $\mathbf
+                                                  {M}$:
+? 
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 \[
+         \mathbf{X}_{\text{obs\_masked}} = \mathbf{X} \odot \mathbf{M} \]
+? 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+
+! LaTeX Error: \begin{remark} on input line 268 ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+
+! LaTeX Error: \begin{document} ended by \end{linenomath}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.271 ...masked}} = \mathbf{X} \odot \mathbf{M} \]
+                                                  
+? 
+
+Overfull \hbox (8.28493pt too wide) in paragraph at lines 270--274
+\T1/pplj/m/n/12 el pro-duc-to de Ha-da-mard (def:hadamard$[]\OML/zplm/m/it/12 r
+oduct\OT1/zplm/m/n/12 )\OML/zplm/m/it/12 conlamatrizdemscara$\T1/pplj/m/n/12 M$
+\OT1/zplm/m/n/12 : \OT1/zplm/b/n/12 X[] \OT1/zplm/m/n/12 =
+ []
+
+
+! LaTeX Error: \begin{document} ended by \end{remark}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.274 \end{remark}
+                  
+? 
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.274 \end{remark}
+                  
+? 
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+[14]
+
+Package natbib Warning: Citation `groenwold_missing_2012' on page 15 undefined 
+on input line 318.
+
+
+Package natbib Warning: Citation `rubin_inference_1976' on page 15 undefined on
+ input line 318.
+
+! Undefined control sequence.
+l.318 ...cepto de probabilidad condicionada (\Cref
+                                                  {def:conditional_prob}) \c...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.318 ...idad condicionada (\Cref{def:conditional_
+                                                  prob}) \cite{rubiano_analy...
+
+? 
+! Extra }, or forgotten $.
+l.318 ...condicionada (\Cref{def:conditional_prob}
+                                                  ) \cite{rubiano_analyzing_...
+
+? 
+
+! LaTeX Error: Command \bfseries invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 ...o_analyzing_2017, bhaskaran_missing_2013}
+                                                  . Se distinguen tres mecan...
+
+? 
+
+Package natbib Warning: Citation `rubiano_analyzing_2017' on page 15 undefined 
+on input line 318.
+
+
+! LaTeX Error: Command \bfseries invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.318 ...o_analyzing_2017, bhaskaran_missing_2013}
+                                                  . Se distinguen tres mecan...
+
+? 
+
+Package natbib Warning: Citation `bhaskaran_missing_2013' on page 15 undefined 
+on input line 318.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.319 
+      
+? 
+LaTeX Font Info:    Trying to load font information for TS1+pplj on input line 
+323.
+(/opt/local/share/texmf-texlive/tex/latex/psnfss/ts1pplj.fd
+File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
+)
+! Undefined control sequence.
+l.323 ...es estadísticamente independiente (\Cref
+                                                  {def:independence}) del va...
+
+? 
+LaTeX Info: Redefining \. on input line 327.
+LaTeX Info: Redefining \% on input line 327.
+[15]
+LaTeX Info: Redefining \. on input line 345.
+LaTeX Info: Redefining \% on input line 345.
+ [16]
+
+Package natbib Warning: Citation `Du_saits_2023' on page 17 undefined on input 
+line 348.
+
+
+Package natbib Warning: Citation `little_statistical_2019' on page 17 undefined
+ on input line 348.
+
+
+Package natbib Warning: Citation `Vaswani_attentionis_2017' on page 17 undefine
+d on input line 353.
+
+! Undefined control sequence.
+l.353 ...omo modelo predictivo $f_{\theta}$ (\Cref
+                                                  {eq:matrix_predictive_impu...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.353 ...predictivo $f_{\theta}$ (\Cref{eq:matrix_
+                                                  predictive_imputation}), s...
+
+? 
+! Extra }, or forgotten $.
+l.353 ...$ (\Cref{eq:matrix_predictive_imputation}
+                                                  ), se basa en minimizar un...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 353.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 353.
+
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.353 ...imizar una función de pérdida $L(\theta
+                                                  )$ utilizando descenso de ...
+
+? 
+
+Overfull \hbox (299.82025pt too wide) in paragraph at lines 353--354
+[]\T1/pplj/m/n/12 El en-tre-na-mien-to de un Trans-for-mer [\T1/pplj/b/n/12 ? \
+T1/pplj/m/n/12 ], co-mo mo-de-lo pre-dic-ti-vo $\OML/zplm/m/it/12 f[]$ \T1/pplj
+/m/n/12 (eq:matrix$[]\OML/zplm/m/it/12 redictive[]mputation\OT1/zplm/m/n/12 )\O
+T1/pplx/m/n/12 , \OML/zplm/m/it/12 sebasaenminimizarunafuncindeprdida$\T1/pplj/
+m/n/12 L($\OML/zplm/m/it/12 ^^R\OT1/zplm/m/n/12 )$
+ []
+
+! Undefined control sequence.
+l.356 ...$ y vectores de sesgo $\mathbf{b}$ (\Cref
+                                                  {subsec:linear_algebra}).
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.356 ... sesgo $\mathbf{b}$ (\Cref{subsec:linear_
+                                                  algebra}).
+? 
+! Extra }, or forgotten $.
+l.356 ...\mathbf{b}$ (\Cref{subsec:linear_algebra}
+                                                  ).
+? 
+
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357     \item
+                \textbf{Función de Pérdida $L(\theta)$:} Mide el error ent...
+
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357     \item \textbf
+                       {Función de Pérdida $L(\theta)$:} Mide el error ent...
+
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357     \item \textbf
+                       {Función de Pérdida $L(\theta)$:} Mide el error ent...
+
+? 
+
+! Package amsmath Error: \hat allowed only in math mode.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357 ...l error entre la salida $\hat{\mathbf{Y}}
+                                                   = f_{\theta}(\mathbf{X})$...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.357 ...or entre la salida $\hat{\mathbf{Y}} = f_
+                                                  {\theta}(\mathbf{X})$ y la...
+
+? 
+
+Overfull \hbox (307.50319pt too wide) in paragraph at lines 356--358
+[]\T1/pplj/b/n/12 Par�metros $\OML/zplm/m/it/12 ^^R$\T1/pplj/b/n/12 : \T1/pplj/
+m/n/12 In-clu-yen ma-tri-ces de pe-sos $\OT1/zplm/b/n/12 W$ \T1/pplj/m/n/12 y v
+ec-to-res de ses-go $\OT1/zplm/b/n/12 b$ \T1/pplj/m/n/12 (subsec:linear$[]\OML/
+zplm/m/it/12 lgebra\OT1/zplm/m/n/12 )\OT1/pplx/m/n/12 .[]\OML/zplm/m/it/12 Mide
+elerrorentrelasalida$
+ []
+
+! Undefined control sequence.
+l.359 ...icientemente la Regla de la Cadena (\Cref
+                                                  {thm:chain_rule}) a travé...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.359 ...e la Regla de la Cadena (\Cref{thm:chain_
+                                                  rule}) a través de las op...
+
+? 
+! Extra }, or forgotten $.
+l.359 ...Regla de la Cadena (\Cref{thm:chain_rule}
+                                                  ) a través de las operaci...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 359.
+
+
+! LaTeX Error: Command \end{itemize} invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.360 \end{itemize}
+                   
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.360 \end{itemize}
+                   
+? 
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.360 \end{itemize}
+                   
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.360 \end{itemize}
+                   
+? 
+Missing character: There is no � in font pplr9t!
+! Missing } inserted.
+<inserted text> 
+                }
+l.360 \end{itemize}
+                   
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.360 \end{itemize}
+                   
+? 
+! Undefined control sequence.
+l.361 ...cálculo diferencial multivariable (\Cref
+                                                  {subsec:multivariable_calc...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.361 ...ultivariable (\Cref{subsec:multivariable_
+                                                  calculus}) y álgebra line...
+
+? 
+! Extra }, or forgotten $.
+l.361 ...ble (\Cref{subsec:multivariable_calculus}
+                                                  ) y álgebra lineal (\Cref...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 361.
+
+! Undefined control sequence.
+l.361 ...iable_calculus}) y álgebra lineal (\Cref
+                                                  {subsec:linear_algebra}).
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.362 
+      
+? 
+Missing character: There is no � in font pplr9t!
+
+Overfull \hbox (64.61455pt too wide) in paragraph at lines 359--362
+\T1/pplj/m/n/12 la Ca-de-na (thm:chain$[]\OML/zplm/m/it/12 ule\OT1/zplm/m/n/12 
+)\OML/zplm/m/it/12 atravsdelasoperacionesdelmodelo\OT1/zplm/m/n/12 (\OML/zplm/m
+/it/12 productomatricial\OT1/pplx/m/n/12 , \OML/zplm/m/it/12 suma\OT1/pplx/m/n/
+12 , \OML/zplm/m/it/12 Softmax\OT1/pplx/m/n/12 , \OML/zplm/m/it/12 etc\OT1/pplx
+/m/n/12 .\OT1/zplm/m/n/12 )\OT1/pplx/m/n/12 .$
+ []
+
+
+Overfull \hbox (265.73192pt too wide) in paragraph at lines 359--362
+\T1/pplj/m/n/12 El pro-ce-so re-quie-re he-rra-mien-tas del c�lcu-lo di-fe-ren-
+cial mul-ti-va-ria-ble (subsec:multivariable$[]\OML/zplm/m/it/12 alculus\OT1/zp
+lm/m/n/12 )\OML/zplm/m/it/12 ylgebralineal\OT1/zplm/m/n/12 ([])\OT1/pplx/m/n/12
+ .$ 
+ []
+
+! Undefined control sequence.
+l.370 ... el contexto experimental descrito (\Cref
+                                                  {def:exp_imputation_proble...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.370 ...xto experimental descrito (\Cref{def:exp_
+                                                  imputation_problem_revised...
+
+? 
+! Extra }, or forgotten $.
+l.370 ...\Cref{def:exp_imputation_problem_revised}
+                                                  ), se utilizan métricas d...
+
+? 
+
+LaTeX Warning: Command \' invalid in math mode on input line 370.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 370.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 370.
+
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+Missing character: There is no � in font pplr9t!
+
+! Package amsmath Error: \hat allowed only in math mode.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.370 ... los valores imputados $\hat{\mathcal{X}}
+                                                  ^{\text{test}}$ con los va...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.370 ...los valores imputados $\hat{\mathcal{X}}^
+                                                  {\text{test}}$ con los val...
+
+? 
+
+Overfull \hbox (269.0828pt too wide) in paragraph at lines 370--371
+\T1/pplj/m/n/12 to ex-pe-ri-men-tal des-cri-to (def:exp$[]\OML/zplm/m/it/12 mpu
+tation[]roblem[]evised\OT1/zplm/m/n/12 )\OT1/pplx/m/n/12 , \OML/zplm/m/it/12 se
+utilizanmtricasdeerrorestndar\OT1/pplx/m/n/12 .\OML/zplm/m/it/12 Estasmtricasco
+mparanlosvaloresimputados$$[]$
+ []
+
+LaTeX Info: Redefining \. on input line 378.
+LaTeX Info: Redefining \% on input line 378.
+[17])
+LaTeX Info: Redefining \. on input line 119.
+LaTeX Info: Redefining \% on input line 119.
+ [18]
 \openout2 = `chapters/chapter3.aux'.
 
  (./chapters/chapter3.tex
 chapter 3.
-[9
+[19
 
 
 
@@ -1981,31 +2905,21 @@ Overfull \hbox (31.74672pt too wide) in paragraph at lines 18--19
 
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
-[10]
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
-31.
- (/opt/local/share/texmf-texlive/tex/latex/psnfss/ufplmbb.fd
-File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
-)
+[20]
 LaTeX Info: Redefining \. on input line 45.
 LaTeX Info: Redefining \% on input line 45.
- [11]
+ [21]
 
-Package natbib Warning: Citation `ba_layer_2016' on page 12 undefined on input 
+Package natbib Warning: Citation `ba_layer_2016' on page 22 undefined on input 
 line 57.
 
 LaTeX Info: Redefining \. on input line 59.
 LaTeX Info: Redefining \% on input line 59.
-[12]
+[22]
 LaTeX Info: Redefining \. on input line 80.
 LaTeX Info: Redefining \% on input line 80.
- [13]
-LaTeX Font Info:    Trying to load font information for TS1+pplj on input line 
-82.
- (/opt/local/share/texmf-texlive/tex/latex/psnfss/ts1pplj.fd
-File: ts1pplj.fd 2004/09/06 font definitions for TS1/pplj.
-)
-<images/transformer_architecture.png, id=195, 770.88pt x 1086.0575pt>
+ [23]
+<images/transformer_architecture.png, id=305, 770.88pt x 1086.0575pt>
 File: images/transformer_architecture.png Graphic file (type png)
 <use images/transformer_architecture.png>
 Package pdftex.def Info: images/transformer_architecture.png  used on input lin
@@ -2013,156 +2927,645 @@ e 108.
 (pdftex.def)             Requested size: 362.37573pt x 510.52995pt.
 
 
-Package natbib Warning: Citation `he_deep_2016' on page 14 undefined on input l
+Package natbib Warning: Citation `he_deep_2016' on page 24 undefined on input l
 ine 116.
 
 LaTeX Info: Redefining \. on input line 117.
 LaTeX Info: Redefining \% on input line 117.
-[14]
+[24]
 LaTeX Info: Redefining \. on input line 129.
 LaTeX Info: Redefining \% on input line 129.
- [15]
+ [25]
 LaTeX Info: Redefining \. on input line 152.
 LaTeX Info: Redefining \% on input line 152.
- [16]
+ [26]
 LaTeX Info: Redefining \. on input line 168.
 LaTeX Info: Redefining \% on input line 168.
- [17]
+ [27]
 LaTeX Info: Redefining \. on input line 191.
 LaTeX Info: Redefining \% on input line 191.
- [18])
+ [28])
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
- [19]
+ [29]
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
- [20 <./images/transformer_architecture.png>]
+ [30 <./images/transformer_architecture.png>]
 \openout2 = `chapters/chapter4.aux'.
 
 
 (./chapters/chapter4.tex
 chapter 4.
 
-Package natbib Warning: Citation `Qin_glima_2020' on page 21 undefined on input
- line 9.
+Package natbib Warning: Citation `smartpoqueira_project' on page 31 undefined o
+n input line 7.
 
 
-Package natbib Warning: Citation `Lu_missing_2024' on page 21 undefined on inpu
-t line 9.
+LaTeX Warning: Reference `fig:mapa_lpr' on page 31 undefined on input line 7.
 
 
-Package natbib Warning: Citation `Gao_contextaware_2022' on page 21 undefined o
-n input line 9.
+LaTeX Warning: File `images/mapa_camaras_lpr.png' not found on input line 11.
 
 
-Package natbib Warning: Citation `Gao_contextaware_2022' on page 21 undefined o
-n input line 11.
+! Package pdftex.def Error: File `images/mapa_camaras_lpr.png' not found: using
+ draft setting.
 
-
-Package natbib Warning: Citation `LocalAverageNearestNeighbors_nodate' on page 
-21 undefined on input line 16.
-
-
-Package natbib Warning: Citation `imputeTS_package_nodate' on page 21 undefined
- on input line 18.
-
-
-Package natbib Warning: Citation `NewDigitals_timeseriesimputation_2024' on pag
-e 21 undefined on input line 18.
-
-
-Package natbib Warning: Citation `Abdulhamid_dataimputation_nodate' on page 21 
-undefined on input line 19.
-
-
-Package natbib Warning: Citation `StatisticsSolutions_stationarydata_nodate' on
- page 21 undefined on input line 23.
-
-
-Package natbib Warning: Citation `SeasonalMeanImputation_2023' on page 21 undef
-ined on input line 23.
-
-
-Package natbib Warning: Citation `Wikipedia_expectationmaximization_nodate' on 
-page 21 undefined on input line 24.
-
-
-Package natbib Warning: Citation `Jones_imputingmissing_nodate' on page 21 unde
-fined on input line 26.
-
-
-Package natbib Warning: Citation `Qin_glima_2020' on page 21 undefined on input
- line 31.
-
-
-Package natbib Warning: Citation `Yildirim_performancedeep_2023' on page 21 und
-efined on input line 31.
-
-
-Package natbib Warning: Citation `Lu_missing_2024' on page 21 undefined on inpu
-t line 33.
-
-
-Package natbib Warning: Citation `Abdulhamid_dataimputation_nodate' on page 21 
-undefined on input line 37.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 21 undefined o
-n input line 39.
-
-
-Package natbib Warning: Citation `Fortuin_probabilisticimputation_2023' on page
- 21 undefined on input line 39.
-
-
-Package natbib Warning: Citation `Cui_deeplearningmultivariate_2024' on page 21
- undefined on input line 39.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 21 undefined o
-n input line 41.
-
-
-Package natbib Warning: Citation `MoSPI_comparisonimputation_nodate' on page 21
- undefined on input line 41.
-
-
-Package natbib Warning: Citation `Schlegel_evaluationmissing_2024' on page 21 u
-ndefined on input line 41.
-
-
-Package natbib Warning: Citation `Ahmad_reviewdata_2024' on page 21 undefined o
-n input line 43.
-
-
-Package natbib Warning: Citation `Rahman_reviewcurrent_2021' on page 21 undefin
-ed on input line 43.
-
-[21
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 ...55\textwidth]{images/mapa_camaras_lpr.png}
+                                                   % Ajustado el ancho
+? 
+LaTeX Font Info:    Trying to load font information for T1+fvm on input line 11
+.
+(/opt/local/share/texmf-texlive/tex/latex/bera/t1fvm.fd
+File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
+)
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 10.20007pt on input line 11.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `fvm' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [31
 
 
 
 
-])
+]
+LaTeX Info: Redefining \. on input line 33.
+LaTeX Info: Redefining \% on input line 33.
+ [32]
+! Undefined control sequence.
+l.35 ...ntos, CO2, etiqueta DGT). La columna \code
+                                                  {nan} agrupa vehículos si...
+
+? 
+
+LaTeX Font Warning: Font shape `T1/pplj/b/sc' undefined
+(Font)              using `T1/pplj/b/n' instead on input line 43.
+
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.43     \item[\textbf{\code{CO}}]
+                                   \textbf{Monóxido de Carbono:} Concentrac...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.45     \item[\textbf{\code{NO}}]
+                                   \textbf{Monóxido de Nitrógeno:} Concent...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.47     \item[\textbf{\code{NO2}}]
+                                    \textbf{Dióxido de Nitrógeno:} Concent...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.49     \item[\textbf{\code{O3}}]
+                                   \textbf{Ozono Troposférico:} Concentraci...
+
+? 
+
+Overfull \hbox (0.55751pt too wide) in paragraph at lines 49--50
+[]\T1/pplj/b/sc/12 Ozono Tro-pos-f�-ri-co: \T1/pplj/m/n/12 Con-cen-tra-ci�n me-
+dia ho-ra-ria me-di-da con el ana-li-za-dor Ther-
+ []
+
+LaTeX Info: Redefining \. on input line 50.
+LaTeX Info: Redefining \% on input line 50.
+[33]
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.51     \item[\textbf{\code{SO2}}]
+                                    \textbf{Dióxido de Azufre:} Concentraci...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.53     \item[\textbf{\code{PM10}}]
+                                     \textbf{Material Particulado < 10 µm:}...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.55     \item[\textbf{\code{eBC\_tot}}]
+                                         \textbf{Carbono Negro Total (Hollí...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.57     \item[\textbf{\code{eBC\_ff}}]
+                                        \textbf{Carbono Negro de Combustible...
+
+? 
+
+Package natbib Warning: Citation `sandradewi_source_2008' on page 34 undefined 
+on input line 57.
+
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.59     \item[\textbf{\code{eBC\_bb}}]
+                                        \textbf{Carbono Negro de Quema de Bi...
+
+? 
+
+Package natbib Warning: Citation `sandradewi_source_2008' on page 34 undefined 
+on input line 59.
+
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.64     \item[\textbf{\code{TEMP}}]
+                                     \textbf{Temperatura del Aire:} Temperat...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.66     \item[\textbf{\code{RH}}]
+                                   \textbf{Humedad Relativa:} Humedad relati...
+
+? 
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
+[34]
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.68     \item[\textbf{\code{WS}}]
+                                   \textbf{Velocidad del Viento:} Velocidad ...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.70     \item[\textbf{\code{WD}}]
+                                   \textbf{Dirección del Viento:} Direcció...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.72     \item[\textbf{\code{PRES}}]
+                                     \textbf{Presión Atmosférica:} Presió...
+
+? 
+! Undefined control sequence.
+<recently read> \code 
+                      
+l.77     \item[\textbf{\code{truck\_pos}}]
+                                           \textbf{Posición del Camión Met...
+
+? 
+! Undefined control sequence.
+l.77 ...valores posibles en este dataset son \code
+                                                  {'CAP'} (cuando estaba en ...
+
+? 
+! Undefined control sequence.
+l.77 ...se usan aquí para la imputación) y \code
+                                                  {'PAM\_2'} (cuando estaba ...
+
+? 
+
+LaTeX Warning: File `images/EDA/truck_pos.png' not found on input line 82.
+
+
+! Package pdftex.def Error: File `images/EDA/truck_pos.png' not found: using dr
+aft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 ...h=0.6\textwidth]{images/EDA/truck_pos.png}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ... el dataset de intersección (\code 
+                                                  {trafico\_contamina\_inter...
+l.83 ...: Ene-Mar 2023, PAM Periodo 2: Jun 2023).}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ... el dataset de intersección (\code 
+                                                  {trafico\_contamina\_inter...
+l.83 ...: Ene-Mar 2023, PAM Periodo 2: Jun 2023).}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ... el dataset de intersección (\code 
+                                                  {trafico\_contamina\_inter...
+l.83 ...: Ene-Mar 2023, PAM Periodo 2: Jun 2023).}
+                                                  
+? 
+
+Overfull \hbox (19.19518pt too wide) in paragraph at lines 92--93
+[]\T1/pplj/m/n/12 Se reali-z� un An�-li-sis Ex-plo-ra-to-rio de Da-tos (EDA) so
+-bre el da-ta-set de trafico-intersecci�n
+ []
+
+
+LaTeX Warning: Reference `fig:porcentajes_nulos' on page 35 undefined on input 
+line 95.
+
+LaTeX Info: Redefining \. on input line 96.
+LaTeX Info: Redefining \% on input line 96.
+[35]
+
+LaTeX Warning: File `images/EDA/porcentajes_nulos.png' not found on input line 
+99.
+
+
+! Package pdftex.def Error: File `images/EDA/porcentajes_nulos.png' not found: 
+using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 ...xtwidth]{images/EDA/porcentajes_nulos.png}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...n el dataset de intersección \code 
+                                                  {trafico\_contamina\_inter...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...bserva la mayor incidencia en \code 
+                                                  {eBC\_tot} (69.3\%), segui...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...C\_tot} (69.3\%), seguida por \code 
+                                                  {eBC} (49.5\%) y \code {SO...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...da por \code {eBC} (49.5\%) y \code 
+                                                  {SO2} (48.8\%). Variables ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...SO2} (48.8\%). Variables como \code 
+                                                  {WS}, \code {WD}, y \code ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...). Variables como \code {WS}, \code 
+                                                  {WD}, y \code {PM10} tambi...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...omo \code {WS}, \code {WD}, y \code 
+                                                  {PM10} también presentan ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...n el dataset de intersección \code 
+                                                  {trafico\_contamina\_inter...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...bserva la mayor incidencia en \code 
+                                                  {eBC\_tot} (69.3\%), segui...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...C\_tot} (69.3\%), seguida por \code 
+                                                  {eBC} (49.5\%) y \code {SO...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...da por \code {eBC} (49.5\%) y \code 
+                                                  {SO2} (48.8\%). Variables ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...SO2} (48.8\%). Variables como \code 
+                                                  {WS}, \code {WD}, y \code ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...). Variables como \code {WS}, \code 
+                                                  {WD}, y \code {PM10} tambi...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...omo \code {WS}, \code {WD}, y \code 
+                                                  {PM10} también presentan ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...n el dataset de intersección \code 
+                                                  {trafico\_contamina\_inter...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...bserva la mayor incidencia en \code 
+                                                  {eBC\_tot} (69.3\%), segui...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...C\_tot} (69.3\%), seguida por \code 
+                                                  {eBC} (49.5\%) y \code {SO...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...da por \code {eBC} (49.5\%) y \code 
+                                                  {SO2} (48.8\%). Variables ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...SO2} (48.8\%). Variables como \code 
+                                                  {WS}, \code {WD}, y \code ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...). Variables como \code {WS}, \code 
+                                                  {WD}, y \code {PM10} tambi...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+! Undefined control sequence.
+<argument> ...omo \code {WS}, \code {WD}, y \code 
+                                                  {PM10} también presentan ...
+l.100 ...ión de datos ausentes superior al 20\%.}
+                                                  
+? 
+LaTeX Info: Redefining \. on input line 104.
+LaTeX Info: Redefining \% on input line 104.
+[36]
+LaTeX Info: Redefining \. on input line 104.
+LaTeX Info: Redefining \% on input line 104.
+ [37]
+
+LaTeX Warning: Reference `fig:hist_co' on page 38 undefined on input line 110.
+
+
+LaTeX Warning: File `images/EDA/histogramas_co.png' not found on input line 114
+.
+
+
+! Package pdftex.def Error: File `images/EDA/histogramas_co.png' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 ...textwidth]{images/EDA/histogramas_co.png}
+                                                  
+? 
+
+LaTeX Warning: Reference `fig:diagrama_cajas' on page 38 undefined on input lin
+e 119.
+
+! Undefined control sequence.
+l.119 ...valores atípicos, especialmente en \code
+                                                  {O3} y \code{PM10}. La med...
+
+? 
+! Undefined control sequence.
+l.119 ...picos, especialmente en \code{O3} y \code
+                                                  {PM10}. La mediana de \cod...
+
+? 
+! Undefined control sequence.
+l.119 ...de{O3} y \code{PM10}. La mediana de \code
+                                                  {SO2} fue muy baja. Las fr...
+
+? 
+! Undefined control sequence.
+l.119 ...O2} fue muy baja. Las fracciones de \code
+                                                  {eBC} mostraron diferencia...
+
+? 
+
+LaTeX Warning: File `images/EDA/diagrama_cajas.png' not found on input line 127
+.
+
+
+! Package pdftex.def Error: File `images/EDA/diagrama_cajas.png' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.127 ...linewidth]{images/EDA/diagrama_cajas.png}
+                                                  
+? 
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
+[38
+
+]
+LaTeX Info: Redefining \. on input line 135.
+LaTeX Info: Redefining \% on input line 135.
+ [39]
+
+LaTeX Warning: Reference `fig:hist_temp' on page 40 undefined on input line 137
+.
+
+! Undefined control sequence.
+l.137 ...raron distribuciones más variadas: \code
+                                                  {TEMP} bimodal (ciclos dí...
+
+? 
+! Undefined control sequence.
+l.137 ...{TEMP} bimodal (ciclos día/noche), \code
+                                                  {RH} más centrada, y \cod...
+
+? 
+! Undefined control sequence.
+l.137 .../noche), \code{RH} más centrada, y \code
+                                                  {WS} con fuerte asimetría...
+
+? 
+
+LaTeX Warning: File `images/EDA/histogramas_3.png' not found on input line 141.
+
+
+
+! Package pdftex.def Error: File `images/EDA/histogramas_3.png' not found: usin
+g draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.141 ...\textwidth]{images/EDA/histogramas_3.png}
+                                                  
+? 
+
+LaTeX Warning: Reference `fig:matriz_corr' on page 40 undefined on input line 1
+50.
+
+! Undefined control sequence.
+l.152     \item \textbf{Positivas Fuertes:} \code
+                                                 {eBC\_tot} con \code{eBC\_f...
+
+? 
+! Undefined control sequence.
+l.152 ...tivas Fuertes:} \code{eBC\_tot} con \code
+                                                  {eBC\_ff} (0.76) y \code{e...
+
+? 
+! Undefined control sequence.
+l.152 ...C\_tot} con \code{eBC\_ff} (0.76) y \code
+                                                  {eBC\_bb} (0.64); \code{NO...
+
+? 
+! Undefined control sequence.
+l.152 ...ff} (0.76) y \code{eBC\_bb} (0.64); \code
+                                                  {NO2} con \code{eBC\_tot} ...
+
+? 
+! Undefined control sequence.
+l.152 ...ode{eBC\_bb} (0.64); \code{NO2} con \code
+                                                  {eBC\_tot} (0.69); \code{N...
+
+? 
+! Undefined control sequence.
+l.152 ...de{NO2} con \code{eBC\_tot} (0.69); \code
+                                                  {NO} con \code{NO2} (0.64)...
+
+? 
+! Undefined control sequence.
+l.152 ...ode{eBC\_tot} (0.69); \code{NO} con \code
+                                                  {NO2} (0.64); \code{O3} co...
+
+? 
+! Undefined control sequence.
+l.152 ...); \code{NO} con \code{NO2} (0.64); \code
+                                                  {O3} con \code{TEMP} (~0.4).
+? 
+! Undefined control sequence.
+l.152 ...on \code{NO2} (0.64); \code{O3} con \code
+                                                  {TEMP} (~0.4).
+? 
+LaTeX Info: Redefining \. on input line 153.
+LaTeX Info: Redefining \% on input line 153.
+[40
+
+]
+! Undefined control sequence.
+l.153 ...\item \textbf{Negativas Moderadas:} \code
+                                                  {RH} con \code{O3} (~-0.5)...
+
+? 
+! Undefined control sequence.
+l.153 ...Negativas Moderadas:} \code{RH} con \code
+                                                  {O3} (~-0.5); \code{RH} co...
+
+? 
+! Undefined control sequence.
+l.153 ...:} \code{RH} con \code{O3} (~-0.5); \code
+                                                  {RH} con \code{TEMP} (~-0.5).
+
+? 
+! Undefined control sequence.
+l.153 ...on \code{O3} (~-0.5); \code{RH} con \code
+                                                  {TEMP} (~-0.5).
+? 
+
+LaTeX Warning: File `images/EDA/matriz_correlacion.png' not found on input line
+ 160.
+
+
+! Package pdftex.def Error: File `images/EDA/matriz_correlacion.png' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160 ...gle=0]{images/EDA/matriz_correlacion.png}
+                                                   % Puedes ajustar el ángu...
+
+? 
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+[41]
+LaTeX Info: Redefining \. on input line 198.
+LaTeX Info: Redefining \% on input line 198.
+ [42]
+Overfull \hbox (23.69852pt too wide) in paragraph at lines 219--220
+\T1/pplj/m/n/12 de impu-taci�n $\OML/zplm/m/it/12 f$\T1/pplj/m/n/12 , ges-tio-n
+a-da por el m�-du-lo \T1/fvm/m/n/12 pampaneira_imputation.imputation_methods\T1
+/pplj/m/n/12 ,
+ []
+
+LaTeX Info: Redefining \. on input line 230.
+LaTeX Info: Redefining \% on input line 230.
+[43]
+
+Package natbib Warning: Citation `du2023pypots' on page 44 undefined on input l
+ine 242.
+
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 8.50006pt on input line 242.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 242.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 242.
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
+[44])
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
- [22]
+ [45]
 \openout2 = `chapters/chapter5.aux'.
 
  (./chapters/chapter5.tex
 chapter 5.
-) [23
+) [46
 
 
 
 
 ] (./chapters/anexos.tex
-<images/cronograma.png, id=246, 1001.7425pt x 371.3875pt>
+<images/cronograma.png, id=448, 1001.7425pt x 371.3875pt>
 File: images/cronograma.png Graphic file (type png)
 <use images/cronograma.png>
 Package pdftex.def Info: images/cronograma.png  used on input line 17.
 (pdftex.def)             Requested size: 452.96796pt x 167.93318pt.
- [24
+ [47
 
 
 
@@ -2589,11 +3992,11 @@ l.31 ...] S[table-format=1.0] S[table-format=4.2]}
 ? 
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
-[25
+[48
 
 ])
 No file main.bbl.
-<pampaneira_imputation.pdf, id=257, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=460, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf>
 Package pdftex.def Info: pampaneira_imputation.pdf  used on input line 146.
@@ -2602,7 +4005,7 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf>
 Package pdftex.def Info: pampaneira_imputation.pdf  used on input line 146.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<pampaneira_imputation.pdf, id=260, page=1, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=463, page=1, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 1>
 Package pdftex.def Info: pampaneira_imputation.pdf , page1 used on input line 1
@@ -2615,7 +4018,7 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page1 used on input line 1
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 LaTeX Info: Redefining \. on input line 146.
 LaTeX Info: Redefining \% on input line 146.
-[26
+[49
 
 ]
 File: pampaneira_imputation.pdf Graphic file (type pdf)
@@ -2633,10 +4036,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page1 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [27
+ [50
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=281, page=2, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=484, page=2, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 2>
 Package pdftex.def Info: pampaneira_imputation.pdf , page2 used on input line 1
@@ -2652,10 +4055,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page2 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [28
+ [51
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=286, page=3, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=489, page=3, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 3>
 Package pdftex.def Info: pampaneira_imputation.pdf , page3 used on input line 1
@@ -2672,10 +4075,10 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page3 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 
-[29
+[52
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=299, page=4, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=502, page=4, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 4>
 Package pdftex.def Info: pampaneira_imputation.pdf , page4 used on input line 1
@@ -2691,10 +4094,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page4 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [30
+ [53
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=304, page=5, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=507, page=5, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 5>
 Package pdftex.def Info: pampaneira_imputation.pdf , page5 used on input line 1
@@ -2710,10 +4113,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page5 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [31
+ [54
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=314, page=6, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=516, page=6, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 6>
 Package pdftex.def Info: pampaneira_imputation.pdf , page6 used on input line 1
@@ -2729,10 +4132,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page6 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [32
+ [55
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=319, page=7, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=523, page=7, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 7>
 Package pdftex.def Info: pampaneira_imputation.pdf , page7 used on input line 1
@@ -2748,10 +4151,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page7 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [33
+ [56
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=342, page=8, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=546, page=8, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 8>
 Package pdftex.def Info: pampaneira_imputation.pdf , page8 used on input line 1
@@ -2767,10 +4170,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page8 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [34
+ [57
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=347, page=9, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=551, page=9, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 9>
 Package pdftex.def Info: pampaneira_imputation.pdf , page9 used on input line 1
@@ -2786,10 +4189,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page9 used on input line 1
 46.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [35
+ [58
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=352, page=10, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=556, page=10, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 10>
 Package pdftex.def Info: pampaneira_imputation.pdf , page10 used on input line 
@@ -2805,10 +4208,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page10 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [36
+ [59
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=357, page=11, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=561, page=11, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 11>
 Package pdftex.def Info: pampaneira_imputation.pdf , page11 used on input line 
@@ -2824,10 +4227,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page11 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [37
+ [60
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=363, page=12, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=566, page=12, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 12>
 Package pdftex.def Info: pampaneira_imputation.pdf , page12 used on input line 
@@ -2844,10 +4247,10 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page12 used on input line
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 
-[38
+[61
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=368, page=13, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=572, page=13, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 13>
 Package pdftex.def Info: pampaneira_imputation.pdf , page13 used on input line 
@@ -2863,10 +4266,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page13 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [39
+ [62
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=373, page=14, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=577, page=14, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 14>
 Package pdftex.def Info: pampaneira_imputation.pdf , page14 used on input line 
@@ -2882,10 +4285,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page14 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [40
+ [63
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=381, page=15, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=585, page=15, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 15>
 Package pdftex.def Info: pampaneira_imputation.pdf , page15 used on input line 
@@ -2901,10 +4304,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page15 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [41
+ [64
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=386, page=16, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=590, page=16, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 16>
 Package pdftex.def Info: pampaneira_imputation.pdf , page16 used on input line 
@@ -2920,10 +4323,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page16 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [42
+ [65
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=391, page=17, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=595, page=17, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 17>
 Package pdftex.def Info: pampaneira_imputation.pdf , page17 used on input line 
@@ -2939,10 +4342,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page17 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [43
+ [66
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=397, page=18, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=600, page=18, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 18>
 Package pdftex.def Info: pampaneira_imputation.pdf , page18 used on input line 
@@ -2958,10 +4361,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page18 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [44
+ [67
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=402, page=19, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=606, page=19, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 19>
 Package pdftex.def Info: pampaneira_imputation.pdf , page19 used on input line 
@@ -2977,10 +4380,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page19 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [45
+ [68
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=411, page=20, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=615, page=20, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 20>
 Package pdftex.def Info: pampaneira_imputation.pdf , page20 used on input line 
@@ -2996,10 +4399,10 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page20 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [46
+ [69
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=416, page=21, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=620, page=21, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 21>
 Package pdftex.def Info: pampaneira_imputation.pdf , page21 used on input line 
@@ -3016,10 +4419,10 @@ Package pdftex.def Info: pampaneira_imputation.pdf , page21 used on input line
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
 
-[47
+[70
 
  <./pampaneira_imputation.pdf>]
-<pampaneira_imputation.pdf, id=421, page=22, 614.295pt x 794.97pt>
+<pampaneira_imputation.pdf, id=625, page=22, 614.295pt x 794.97pt>
 File: pampaneira_imputation.pdf Graphic file (type pdf)
 <use pampaneira_imputation.pdf, page 22>
 Package pdftex.def Info: pampaneira_imputation.pdf , page22 used on input line 
@@ -3035,7 +4438,7 @@ File: pampaneira_imputation.pdf Graphic file (type pdf)
 Package pdftex.def Info: pampaneira_imputation.pdf , page22 used on input line 
 146.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [48
+ [71
 
  <./pampaneira_imputation.pdf>]
 
@@ -3045,7 +4448,12 @@ Package natbib Warning: There were undefined citations.
 LaTeX Info: Redefining \. on input line 17.
 LaTeX Info: Redefining \% on input line 17.
  (./chapters/chapter1.aux) (./chapters/chapter2.aux)
-(./chapters/chapter3.aux) (./chapters/chapter4.aux) (./chapters/chapter5.aux))
+(./chapters/chapter3.aux) (./chapters/chapter4.aux) (./chapters/chapter5.aux)
+
+Package mparhack Warning: Marginpars may have changed.
+(mparhack)                Rerun to get them right.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -3252,11 +4660,12 @@ pe)
    ugrA4.pdf    Graphic file (type pdf)
 chapters/chapter1.tex
 chapters/chapter2.tex
-chapters/chapter3.tex
  ufplmbb.fd    2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
  ts1pplj.fd    2004/09/06 font definitions for TS1/pplj.
+chapters/chapter3.tex
 images/transformer_architecture.png
 chapters/chapter4.tex
+   t1fvm.fd    2004/09/07 scalable font definitions for T1/fvm.
 chapters/chapter5.tex
 chapters/anexos.tex
 images/cronograma.png
@@ -3287,32 +4696,71 @@ pampaneira_imputation.pdf    Graphic file (type pdf)
 pampaneira_imputation.pdf    Graphic file (type pdf)
  ***********
 
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
- ) 
+ )
+(\end occurred inside a group at level 4)
+
+### simple group (level 4) entered at line 370 ({)
+### simple group (level 3) entered at line 361 ({)
+### simple group (level 2) entered at line 353 ({)
+### simple group (level 1) entered at line 318 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 42335 strings out of 476014
- 856916 string characters out of 5790998
- 1946187 words of memory out of 5000000
- 63466 multiletter control sequences out of 15000+600000
- 650184 words of font info for 191 fonts, out of 8000000 for 9000
+ 42987 strings out of 476014
+ 872334 string characters out of 5790998
+ 1949187 words of memory out of 5000000
+ 63971 multiletter control sequences out of 15000+600000
+ 674103 words of font info for 241 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 108i,23n,135p,10899b,1006s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></o
-pt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/loc
-al/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/euler/eurb10.pfb></opt/local/shar
-e/texmf-texlive/fonts/type1/public/fpl/fplbj8a.pfb></opt/local/share/texmf-texl
-ive/fonts/type1/public/mathpazo/fplmbb.pfb></opt/local/share/texmf-texlive/font
-s/type1/public/mathpazo/fplmr.pfb></opt/local/share/texmf-texlive/fonts/type1/p
-ublic/fpl/fplrc8a.pfb></opt/local/share/texmf-texlive/fonts/type1/public/fpl/fp
-lrij8a.pfb></opt/local/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb>
-</opt/local/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></opt/local
-/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (48 pages, 613286 bytes).
+ 108i,23n,135p,10899b,1414s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{equation.3.0.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.6} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter*.4} has been referenced but does not exist,
+ replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.1.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.1.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt
+/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/loca
+l/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/tex
+mf-texlive/fonts/type1/public/amsfonts/euler/eurb10.pfb></opt/local/share/texmf
+-texlive/fonts/type1/public/fpl/fplbj8a.pfb></opt/local/share/texmf-texlive/fon
+ts/type1/public/mathpazo/fplmbb.pfb></opt/local/share/texmf-texlive/fonts/type1
+/public/mathpazo/fplmr.pfb></opt/local/share/texmf-texlive/fonts/type1/public/m
+athpazo/fplmri.pfb></opt/local/share/texmf-texlive/fonts/type1/public/fpl/fplrc
+8a.pfb></opt/local/share/texmf-texlive/fonts/type1/public/fpl/fplrij8a.pfb></op
+t/local/share/texmf-texlive/fonts/type1/public/bera/fvmr8a.pfb></opt/local/shar
+e/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></opt/local/share/texmf-tex
+live/fonts/type1/urw/palatino/uplr8a.pfb></opt/local/share/texmf-texlive/fonts/
+type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (71 pages, 713581 bytes).
 PDF statistics:
- 619 PDF objects out of 1000 (max. 8388607)
- 492 compressed objects within 5 object streams
- 117 named destinations out of 1000 (max. 500000)
- 31169 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 934 PDF objects out of 1000 (max. 8388607)
+ 775 compressed objects within 8 object streams
+ 241 named destinations out of 1000 (max. 500000)
+ 44161 words of extra memory for PDF output out of 51595 (max. 10000000)
 

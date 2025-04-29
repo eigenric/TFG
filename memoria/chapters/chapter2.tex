@@ -1,17 +1,410 @@
-\ctparttext{
-  \color{black}
-  \begin{center}
-   En este capítulo se presentará una introducción a los
-  fundamentos matemáticos y del aprendizaje automático necesarios para
-  comprender el trabajo realizado en este proyecto. Se comenzará con una
-  introducción a los conceptos básicos de análisis matemático y probabilidad,
-  para posteriormente adentrarse en la teoría del aprendizaje estadístico y la
-  optimización de modelos de machine learning.
-  \end{center}
-}
-
+% --- Capítulo de Fundamentos Matemáticos ---
 \chapter{Fundamentos Matemáticos del Aprendizaje Automático}
+\label{ch:math_foundations}
 
-Taxonomía de Machine Learning -> Supervisado, no Supervisado
+Esta sección establece las bases matemáticas necesarias para comprender los modelos computacionales utilizados, con especial énfasis en la manipulación de datos estructurados (matrices) y los principios de optimización que rigen su entrenamiento.
 
-Estadístico -> Imputación 
+\subsection{Álgebra Lineal: Matrices y Espacios Vectoriales}
+\label{subsec:linear_algebra}
+
+Las matrices son estructuras fundamentales para representar datos y parámetros en modelos computacionales, especialmente en redes neuronales y Transformers \cite{goodfellow_deep_2016}.
+
+\begin{definition}[Matriz]
+\label{def:matrix}
+Una \textbf{matriz} $\mathbf{A}$ de tamaño $m \times n$, con entradas en un cuerpo $\mathbb{K}$ (típicamente $\mathbb{R}$ o $\mathbb{C}$), es una disposición rectangular de $m$ filas y $n$ columnas de elementos de $\mathbb{K}$. Se denota por $\mathbf{A} = (a_{ij})$ o $[\mathbf{A}]_{ij} = a_{ij}$, donde $a_{ij} \in \mathbb{K}$ es la entrada en la fila $i$ y la columna $j$, para $1 \leq i \leq m$ y $1 \leq j \leq n$. El conjunto de todas estas matrices se denota $M_{m \times n}(\mathbb{K})$ o $\mathbb{K}^{m \times n}$.
+\end{definition}
+
+\begin{definition}[Igualdad de Matrices]
+\label{def:matrix_equality}
+Dos matrices $\mathbf{A} = (a_{ij})$ y $\mathbf{B} = (b_{ij})$ son \textbf{iguales} si pertenecen al mismo espacio $\mathbb{K}^{m \times n}$ (tienen el mismo tamaño) y $a_{ij} = b_{ij}$ para todos $1 \leq i \leq m$, $1 \leq j \leq n$.
+\end{definition}
+
+\begin{definition}[Suma de Matrices]
+\label{def:matrix_sum}
+Dadas $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$, su \textbf{suma} es la matriz $\mathbf{A}+\mathbf{B} \in \mathbb{K}^{m \times n}$ definida por $[\mathbf{A}+\mathbf{B}]_{ij} = a_{ij} + b_{ij}$.
+\end{definition}
+
+\begin{definition}[Producto por un Escalar]
+\label{def:scalar_product}
+Dado $\mathbf{A} \in \mathbb{K}^{m \times n}$ y un escalar $c \in \mathbb{K}$, el \textbf{producto por un escalar} es la matriz $c\mathbf{A} \in \mathbb{K}^{m \times n}$ definida por $[c\mathbf{A}]_{ij} = c \cdot a_{ij}$.
+\end{definition}
+
+\begin{definition}[Espacio Vectorial de Matrices]
+\label{def:matrix_vector_space}
+El conjunto $\mathbb{K}^{m \times n}$, con las operaciones de suma (\Cref{def:matrix_sum}) y producto por un escalar (\Cref{def:scalar_product}), forma un \textbf{espacio vectorial} sobre $\mathbb{K}$. La matriz cero $\mathbf{0}_{m \times n}$ (con todas las entradas 0) actúa como vector nulo.
+\end{definition}
+
+\begin{proposition}[Axiomas del Espacio Vectorial $\mathbb{K}^{m \times n}$]
+\label{prop:vector_space_axioms}
+Las operaciones definidas en $\mathbb{K}^{m \times n}$ satisfacen los axiomas de espacio vectorial para cualesquiera matrices $\mathbf{A}, \mathbf{B}, \mathbf{C} \in \mathbb{K}^{m \times n}$ y escalares $c, d \in \mathbb{K}$:
+\begin{enumerate}
+    \item Asociatividad de la suma: $(\mathbf{A}+\mathbf{B})+\mathbf{C} = \mathbf{A}+(\mathbf{B}+\mathbf{C})$
+    \item Conmutatividad de la suma: $\mathbf{A}+\mathbf{B} = \mathbf{B}+\mathbf{A}$
+    \item Existencia del elemento neutro (matriz cero $\mathbf{0}_{m \times n}$): $\mathbf{A}+\mathbf{0}_{m \times n} = \mathbf{A}$
+    \item Existencia del opuesto (matriz $-\mathbf{A} = (-a_{ij})$): $\mathbf{A}+(-\mathbf{A}) = \mathbf{0}_{m \times n}$
+    \item Asociatividad del producto por escalar: $(cd)\mathbf{A} = c(d\mathbf{A})$
+    \item Distributividad respecto a la suma de escalares: $(c+d)\mathbf{A} = c\mathbf{A} + d\mathbf{A}$
+    \item Distributividad respecto a la suma de matrices: $c(\mathbf{A}+\mathbf{B}) = c\mathbf{A} + c\mathbf{B}$
+    \item Existencia del elemento neutro para el producto por escalar (el escalar 1): $1 \cdot \mathbf{A} = \mathbf{A}$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} % Demostración reintegrada
+Cada axioma se verifica fácilmente a partir de la definición de las operaciones y las propiedades correspondientes en el cuerpo $\mathbb{K}$. Por ejemplo, para la conmutatividad de la suma (Axioma 2):
+Sean $\mathbf{A}=(a_{ij})$ y $\mathbf{B}=(b_{ij})$.
+$[\mathbf{A}+\mathbf{B}]_{ij} = a_{ij} + b_{ij}$ (por \Cref{def:matrix_sum}). Como la suma en $\mathbb{K}$ es conmutativa, $a_{ij} + b_{ij} = b_{ij} + a_{ij}$.
+% Añadimos el paso explícito para B+A por claridad
+Entonces, $[\mathbf{B}+\mathbf{A}]_{ij} = b_{ij} + a_{ij}$ (también por \Cref{def:matrix_sum}).
+Por lo tanto, se tiene que $[\mathbf{A}+\mathbf{B}]_{ij} = [\mathbf{B}+\mathbf{A}]_{ij}$ para todo $i, j$, lo que implica $\mathbf{A}+\mathbf{B} = \mathbf{B}+\mathbf{A}$ (por \Cref{def:matrix_equality}). Las demostraciones para los demás axiomas siguen un patrón similar. \hfill
+\end{proof}
+
+
+\begin{definition}[Producto Matricial]
+\label{def:matrix_product}
+El \textbf{producto matricial} de $\mathbf{A} \in \mathbb{K}^{m \times p}$ y $\mathbf{B} \in \mathbb{K}^{p \times n}$ es la matriz $\mathbf{C} = \mathbf{A}\mathbf{B} \in \mathbb{K}^{m \times n}$, definida por:
+\[ [\mathbf{A}\mathbf{B}]_{ij} = c_{ij} = \sum_{k=1}^{p} a_{ik} b_{kj} \]
+para $1 \leq i \leq m$ y $1 \leq j \leq n$.
+\emph{Nota:} El producto $\mathbf{A}\mathbf{B}$ está definido solo si el número de columnas de $\mathbf{A}$ es igual al número de filas de $\mathbf{B}$.
+\end{definition}
+
+\begin{proposition}[Propiedades del Producto Matricial]
+\label{prop:matrix_product_properties}
+Sean $\mathbf{A}, \mathbf{B}, \mathbf{C}$ matrices de tamaños compatibles y $c$ un escalar:
+\begin{enumerate}
+    \item Asociatividad: $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$
+    \item Distributividad: $\mathbf{A}(\mathbf{B}+\mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}$ y $(\mathbf{A}+\mathbf{B})\mathbf{C} = \mathbf{A}\mathbf{C} + \mathbf{B}\mathbf{C}$
+    \item Compatibilidad escalar: $c(\mathbf{A}\mathbf{B}) = (c\mathbf{A})\mathbf{B} = \mathbf{A}(c\mathbf{B})$
+    \item No Conmutatividad general: $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$ en general.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Demostración de la Asociatividad (Prop. \ref{prop:matrix_product_properties}.1)] % Demostración reintegrada
+Sean $\mathbf{A} \in \mathbb{K}^{m \times p}$, $\mathbf{B} \in \mathbb{K}^{p \times q}$ y $\mathbf{C} \in \mathbb{K}^{q \times n}$.
+El producto $\mathbf{A}\mathbf{B}$ es una matriz de $m \times q$ con entradas $[\mathbf{A}\mathbf{B}]_{ik} = \sum_{l=1}^p a_{il} b_{lk}$.
+El producto $(\mathbf{A}\mathbf{B})\mathbf{C}$ es una matriz de $m \times n$ con entradas:
+\[ [(\mathbf{A}\mathbf{B})\mathbf{C}]_{ij} = \sum_{k=1}^q [\mathbf{A}\mathbf{B}]_{ik} c_{kj} = \sum_{k=1}^q \left(\sum_{l=1}^p a_{il} b_{lk}\right) c_{kj} = \sum_{k=1}^q \sum_{l=1}^p a_{il} b_{lk} c_{kj} \]
+El producto $\mathbf{B}\mathbf{C}$ es una matriz de $p \times n$ con entradas $[\mathbf{B}\mathbf{C}]_{lj} = \sum_{k=1}^q b_{lk} c_{kj}$.
+El producto $\mathbf{A}(\mathbf{B}\mathbf{C})$ es una matriz de $m \times n$ con entradas:
+\[ [\mathbf{A}(\mathbf{B}\mathbf{C})]_{ij} = \sum_{l=1}^p a_{il} [\mathbf{B}\mathbf{C}]_{lj} = \sum_{l=1}^p a_{il} \left(\sum_{k=1}^q b_{lk} c_{kj}\right) = \sum_{l=1}^p \sum_{k=1}^q a_{il} b_{lk} c_{kj} \]
+Dado que la suma finita es conmutativa y asociativa en $\mathbb{K}$, podemos intercambiar el orden de las sumas: $\sum_{k=1}^q \sum_{l=1}^p a_{il} b_{lk} c_{kj} = \sum_{l=1}^p \sum_{k=1}^q a_{il} b_{lk} c_{kj}$.
+Por lo tanto, $[(\mathbf{A}\mathbf{B})\mathbf{C}]_{ij} = [\mathbf{A}(\mathbf{B}\mathbf{C})]_{ij}$ para todo $i, j$, lo que implica $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$.
+\end{proof}
+
+\begin{definition}[Producto Elemento a Elemento - Hadamard]
+\label{def:hadamard_product}
+Dadas $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$ (mismo tamaño), su \textbf{producto elemento a elemento} o \textbf{producto de Hadamard} es la matriz $\mathbf{A} \odot \mathbf{B} \in \mathbb{K}^{m \times n}$ definida por:
+\[ [\mathbf{A} \odot \mathbf{B}]_{ij} = a_{ij} \cdot b_{ij} \]
+\end{definition}
+
+\begin{definition}[Matriz Traspuesta]
+\label{def:transpose}
+Dada $\mathbf{A} \in \mathbb{K}^{m \times n}$, su \textbf{matriz traspuesta}, $\mathbf{A}^T \in \mathbb{K}^{n \times m}$, se define por:
+\[ [\mathbf{A}^T]_{ij} = a_{ji} \]
+\end{definition}
+
+\begin{proposition}[Propiedades de la Traspuesta]
+\label{prop:transpose_properties}
+Sean $\mathbf{A}, \mathbf{B}$ matrices de tamaños compatibles y $c$ un escalar:
+\begin{enumerate}
+    \item $(\mathbf{A}^T)^T = \mathbf{A}$
+    \item $(\mathbf{A}+\mathbf{B})^T = \mathbf{A}^T + \mathbf{B}^T$
+    \item $(c\mathbf{A})^T = c\mathbf{A}^T$
+    \item $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Demostración de la Traspuesta de un Producto (Prop. \ref{prop:transpose_properties}.4)] % Demostración reintegrada
+Sean $\mathbf{A} \in \mathbb{K}^{m \times p}$ y $\mathbf{B} \in \mathbb{K}^{p \times n}$. El producto $\mathbf{A}\mathbf{B}$ es de $m \times n$. Su traspuesta $(\mathbf{A}\mathbf{B})^T$ es de $n \times m$.
+La entrada $(i, j)$ de $(\mathbf{A}\mathbf{B})^T$ es la entrada $(j, i)$ de $\mathbf{A}\mathbf{B}$:
+\[ [(\mathbf{A}\mathbf{B})^T]_{ij} = [\mathbf{A}\mathbf{B}]_{ji} = \sum_{k=1}^p a_{jk} b_{ki} \]
+Ahora consideremos $\mathbf{B}^T \in \mathbb{K}^{n \times p}$ y $\mathbf{A}^T \in \mathbb{K}^{p \times m}$. El producto $\mathbf{B}^T \mathbf{A}^T$ es de $n \times m$.
+La entrada $(i, j)$ de $\mathbf{B}^T \mathbf{A}^T$ es:
+\[ [\mathbf{B}^T \mathbf{A}^T]_{ij} = \sum_{k=1}^p [\mathbf{B}^T]_{ik} [\mathbf{A}^T]_{kj} \]
+Por la \Cref{def:transpose}, $[\mathbf{B}^T]_{ik} = b_{ki}$ y $[\mathbf{A}^T]_{kj} = a_{jk}$.
+Entonces, $[\mathbf{B}^T \mathbf{A}^T]_{ij} = \sum_{k=1}^p b_{ki} a_{jk}$.
+Como la multiplicación y suma en $\mathbb{K}$ permiten reordenar los términos del producto y la suma: $\sum_{k=1}^p b_{ki} a_{jk} = \sum_{k=1}^p a_{jk} b_{ki}$.
+Por lo tanto, $[(\mathbf{A}\mathbf{B})^T]_{ij} = [\mathbf{B}^T \mathbf{A}^T]_{ij}$ para todo $i, j$, lo que implica $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T$.
+\end{proof}
+
+\subsection{Estadística Descriptiva: Medidas de Centralización}
+\label{subsec:descriptive_stats}
+
+\begin{definition}[Media Aritmética]
+\label{def:mean}
+Dada una colección $\{x_1, \dots, x_N\} \subset \mathbb{R}$, la \textbf{media aritmética} es $\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i$.
+\end{definition}
+
+\begin{definition}[Mediana]
+\label{def:median}
+Dada una colección $\{x_1, \dots, x_N\} \subset \mathbb{R}$, y su versión ordenada $x_{(1)} \leq \dots \leq x_{(N)}$, la \textbf{mediana} $Me$ es $x_{((N+1)/2)}$ si $N$ es impar, o $\frac{1}{2}(x_{(N/2)} + x_{(N/2+1)})$ si $N$ es par.
+\end{definition}
+
+\subsection{Interpolación Lineal}
+\label{subsec:linear_interpolation_def}
+
+\begin{definition}[Interpolación Lineal]
+\label{def:linear_interpolation_func}
+Dados $(x_0, y_0)$ y $(x_1, y_1)$ con $x_0 \neq x_1$, la función de \textbf{interpolación lineal} para $x \in [x_0, x_1]$ es:
+\[ f(x) = y_0 + \frac{x - x_0}{x_1 - x_0}(y_1 - y_0) = (1-\alpha)y_0 + \alpha y_1 \]
+donde $\alpha = (x - x_0) / (x_1 - x_0)$.
+\end{definition}
+
+\subsection{Cálculo Multivariable y Optimización}
+\label{subsec:multivariable_calculus}
+
+El entrenamiento de modelos complejos se basa en minimizar una función objetivo utilizando métodos de optimización basados en el gradiente \cite{boyd_convex_2004}.
+
+\begin{definition}[Derivada Parcial]
+\label{def:partial_derivative}
+Sea $f: U \subseteq \mathbb{R}^n \to \mathbb{R}$ definida en un abierto $U$. La \textbf{derivada parcial} de $f$ respecto a $x_i$ en $\mathbf{a} \in U$ es:
+\[ \frac{\partial f}{\partial x_i}(\mathbf{a}) = \lim_{h \to 0} \frac{f(\mathbf{a} + h\mathbf{e}_i) - f(\mathbf{a})}{h} \]
+donde $\mathbf{e}_i$ es el $i$-ésimo vector canónico.
+\end{definition}
+
+\begin{definition}[Gradiente]
+\label{def:gradient}
+Sea $f: U \subseteq \mathbb{R}^n \to \mathbb{R}$ diferenciable en $\mathbf{a} \in U$. El \textbf{vector gradiente} $\nabla f(\mathbf{a}) \in \mathbb{R}^n$ es:
+\[ \nabla f(\mathbf{a}) = \left(\frac{\partial f}{\partial x_1}(\mathbf{a}), \dots, \frac{\partial f}{\partial x_n}(\mathbf{a})\right)^T \]
+El gradiente $\nabla f(\mathbf{a})$ apunta en la dirección de máximo aumento local de $f$.
+\end{definition}
+
+\begin{definition}[Matriz Jacobiana]
+\label{def:jacobian}
+Sea $\mathbf{f}: U \subseteq \mathbb{R}^n \to \mathbb{R}^m$, $\mathbf{f}(\mathbf{x}) = (f_1(\mathbf{x}), \dots, f_m(\mathbf{x}))$. Si las derivadas parciales existen en $\mathbf{x} \in U$, la \textbf{matriz Jacobiana} $\mathbf{J}_{\mathbf{f}}(\mathbf{x}) \in \mathbb{R}^{m \times n}$ es:
+\[ [\mathbf{J}_{\mathbf{f}}(\mathbf{x})]_{ij} = \frac{\partial f_i}{\partial x_j}(\mathbf{x}) \]
+Notar que si $m=1$, entonces $\mathbf{J}_{f}(\mathbf{x}) = (\nabla f(\mathbf{x}))^T$.
+\end{definition}
+
+\begin{theorem}[Regla de la Cadena Multivariable]
+\label{thm:chain_rule}
+Sean $\mathbf{g}: U \subseteq \mathbb{R}^n \to V \subseteq \mathbb{R}^m$ diferenciable en $\mathbf{x}_0$, y $\mathbf{f}: V \to \mathbb{R}^p$ diferenciable en $\mathbf{y}_0 = \mathbf{g}(\mathbf{x}_0)$. La composición $\mathbf{h} = \mathbf{f} \circ \mathbf{g}: U \to \mathbb{R}^p$ es diferenciable en $\mathbf{x}_0$, y su Jacobiana es:
+\[ \mathbf{J}_{\mathbf{h}}(\mathbf{x}_0) = \mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0) \]
+Esta regla es fundamental para el algoritmo de retropropagación (backpropagation) \cite{rumelhart_learning_1986}.
+\end{theorem}
+
+\subsection{Funciones de Activación: Softmax}
+\label{subsec:softmax}
+
+La función Softmax es crucial en modelos de clasificación multiclase y en mecanismos de atención \cite{goodfellow_deep_2016}.
+
+\begin{definition}[Función Softmax]
+\label{def:softmax}
+La función $\sigma: \mathbb{R}^K \to \mathbb{R}^K$ toma $\mathbf{z} \in \mathbb{R}^K$ y devuelve $\sigma(\mathbf{z})$ con componentes:
+\[ [\sigma(\mathbf{z})]_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \]
+\end{definition}
+
+\begin{proposition}[Propiedades de Softmax]
+\label{prop:softmax_properties}
+Para $\mathbf{p} = \sigma(\mathbf{z})$:
+\begin{enumerate}
+    \item Positividad: $p_i > 0$ para todo $i=1, \dots, K$.
+    \item Normalización: $\sum_{i=1}^K p_i = 1$.
+\end{enumerate}
+(Las salidas forman una distribución de probabilidad discreta).
+\end{proposition}
+
+\begin{proof}[Demostración de la Propiedad \ref{prop:softmax_properties}.2] % Demostración reintegrada
+\[ \sum_{i=1}^K [\sigma(\mathbf{z})]_i = \sum_{i=1}^K \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} = \frac{1}{\sum_{j=1}^K e^{z_j}} \sum_{i=1}^K e^{z_i} = \frac{\sum_{i=1}^K e^{z_i}}{\sum_{j=1}^K e^{z_j}} = 1 \]
+La propiedad 1 es evidente ya que la función exponencial $e^x$ es siempre positiva.
+\end{proof}
+
+\begin{proposition}[Jacobiana de Softmax]
+\label{prop:softmax_jacobian}
+La Jacobiana de $\sigma$ en $\mathbf{z}$ es $\mathbf{J}_{\sigma}(\mathbf{z}) \in \mathbb{R}^{K \times K}$ con entradas:
+\[ [\mathbf{J}_{\sigma}(\mathbf{z})]_{ij} = \frac{\partial \sigma_i}{\partial z_j} = \sigma_i(\mathbf{z}) (\delta_{ij} - \sigma_j(\mathbf{z})) \]
+donde $\delta_{ij}$ es la delta de Kronecker. Matricialmente: $\mathbf{J}_{\sigma}(\mathbf{z}) = \text{diag}(\sigma(\mathbf{z})) - \sigma(\mathbf{z})\sigma(\mathbf{z})^T$.
+\end{proposition}
+
+\begin{proof} % Demostración reintegrada
+Consideremos dos casos: $i=j$ y $i \neq j$. Sea $S = \sum_{k=1}^K e^{z_k}$. Entonces $\sigma_i(\mathbf{z}) = e^{z_i} / S$.
+
+\textbf{Caso 1:} $i=j$.
+Aplicando la regla del cociente para derivadas parciales:
+\begin{align*}
+\frac{\partial \sigma_i(\mathbf{z})}{\partial z_i} &= \frac{\partial}{\partial z_i} \left(\frac{e^{z_i}}{S}\right) = \frac{(\frac{\partial}{\partial z_i} e^{z_i}) S - e^{z_i} (\frac{\partial S}{\partial z_i})}{S^2} \\
+&= \frac{e^{z_i} S - e^{z_i} e^{z_i}}{S^2} \quad (\text{ya que } \frac{\partial S}{\partial z_i} = \frac{\partial}{\partial z_i} \sum_k e^{z_k} = e^{z_i}) \\
+&= \frac{e^{z_i}}{S} - \left(\frac{e^{z_i}}{S}\right)^2 = \sigma_i(\mathbf{z}) - (\sigma_i(\mathbf{z}))^2 \\
+&= \sigma_i(\mathbf{z}) (1 - \sigma_i(\mathbf{z})) = \sigma_i(\mathbf{z}) (\delta_{ii} - \sigma_i(\mathbf{z}))
+\end{align*}
+
+\textbf{Caso 2:} $i \neq j$.
+Aplicando la regla del cociente:
+\begin{align*}
+\frac{\partial \sigma_i(\mathbf{z})}{\partial z_j} &= \frac{\partial}{\partial z_j} \left(\frac{e^{z_i}}{S}\right) = \frac{(\frac{\partial}{\partial z_j} e^{z_i}) S - e^{z_i} (\frac{\partial S}{\partial z_j})}{S^2} \\
+&= \frac{0 \cdot S - e^{z_i} e^{z_j}}{S^2} \quad (\text{ya que } \frac{\partial S}{\partial z_j} = \frac{\partial}{\partial z_j} \sum_k e^{z_k} = e^{z_j}) \\
+&= -\frac{e^{z_i} e^{z_j}}{S^2} = -\frac{e^{z_i}}{S} \frac{e^{z_j}}{S} = -\sigma_i(\mathbf{z}) \sigma_j(\mathbf{z}) \\
+&= \sigma_i(\mathbf{z}) (0 - \sigma_j(\mathbf{z})) = \sigma_i(\mathbf{z}) (\delta_{ij} - \sigma_j(\mathbf{z}))
+\end{align*}
+Ambos casos verifican la fórmula dada.
+\end{proof}
+
+\section{Series Temporales y Datos Faltantes: Formalización Matricial}
+\label{sec:math_ts_matrix_formalization}
+
+Las series temporales, secuencias de observaciones ordenadas cronológicamente, a menudo presentan valores faltantes. Utilizamos las definiciones de álgebra lineal (\Cref{subsec:linear_algebra}) para formalizar estos conceptos.
+
+\begin{definition}[Serie Temporal Multivariante Matricial]
+\label{def:matrix_time_series}
+Una serie temporal multivariante se representa como una matriz $\mathbf{X} \in \mathbb{R}^{T \times D}$ (\Cref{def:matrix}), donde $T$ es el número de pasos de tiempo (filas) y $D$ es el número de variables (columnas). La fila $i$ de $\mathbf{X}$, denotada $\mathbf{x}(t_i)^T$ o $\mathbf{X}_{i,:}$, representa el vector de observaciones en el tiempo $t_i \in \mathcal{T}=\{t_1, \dots, t_T\}$. La columna $j$, denotada $\mathbf{X}_{:,j}$, representa la serie temporal univariante para la variable $j$. Desde una perspectiva probabilística, $\mathbf{X}$ es una realización de un proceso estocástico $\{\mathbf{X}(t)\}_{t \in \mathcal{T}}$.
+\end{definition}
+
+\begin{definition}[Matriz de Máscara de Observación]
+\label{def:matrix_mask}
+La disponibilidad de los datos en $\mathbf{X}$ se representa mediante una \textbf{matriz de máscara} $\mathbf{M} \in \{0, 1\}^{T \times D}$ (\Cref{def:matrix}), con las mismas dimensiones que $\mathbf{X}$, tal que:
+\[ [\mathbf{M}]_{ij} = M_{ij} =
+\begin{cases}
+1, & \text{si } [\mathbf{X}]_{ij} = x_j(t_i) \text{ es observado} \\
+0, & \text{si } [\mathbf{X}]_{ij} = x_j(t_i) \text{ está faltante}
+\end{cases}
+\]
+Esta convención es común en la literatura reciente \cite{Du_saits_2023, Cui_deeplearningmultivariate_2024}.
+\end{definition}
+
+\begin{definition}[Serie Temporal Parcialmente Observada (Tupla)]
+\label{def:matrix_partially_observed_ts}
+Una serie temporal parcialmente observada se representa formalmente mediante la tupla $(\mathbf{X}, \mathbf{M})$, donde $\mathbf{X}$ es la matriz de datos y $\mathbf{M}$ es la máscara (\Cref{def:matrix_mask}) que indica explícitamente la ubicación de las observaciones válidas \cite{rubiano_analyzing_2017}.
+\end{definition}
+
+\begin{remark} % Cambiado de 'definition'
+\label{rem:matrix_observed_missing} % Cambiado el prefijo del label
+Una forma útil de manipular y aislar los valores observados es mediante el producto de Hadamard (\Cref{def:hadamard_product}) con la matriz de máscara $\mathbf{M}$:
+\[ \mathbf{X}_{\text{obs\_masked}} = \mathbf{X} \odot \mathbf{M} \]
+La matriz resultante, $\mathbf{X}_{\text{obs\_masked}}$, contiene los valores observados $[\mathbf{X}]_{ij}$ en las posiciones donde $[\mathbf{M}]_{ij}=1$, y ceros en las posiciones donde $[\mathbf{M}]_{ij}=0$.
+Esta operación facilita la separación conceptual y a veces computacional de los datos. Recordemos que los conjuntos de índices observados y faltantes son $\mathcal{O} = \{(i,j) | M_{ij}=1\}$ y $\mathcal{M} = \{(i,j) | M_{ij}=0\}$, y los conjuntos de valores correspondientes son $\mathbf{X}_{\text{obs}} = \{x_j(t_i) | (i,j) \in \mathcal{O}\}$ y $\mathbf{X}_{\text{mis}} = \{x_j(t_i) | (i,j) \in \mathcal{M}\}$.
+\end{remark}
+
+% --- Nueva Subsección: Fundamentos de Probabilidad ---
+\subsection{Fundamentos de Probabilidad para Mecanismos de Datos Faltantes}
+\label{subsec:prob_foundations}
+
+Para comprender formalmente los mecanismos que generan datos faltantes, es necesario revisar algunos conceptos básicos de la teoría de la probabilidad, particularmente la probabilidad condicionada y la independencia estadística. En este contexto, trataremos la matriz de datos completa (hipotética) $\mathbf{X}$ y la matriz de máscara $\mathbf{M}$ como realizaciones de procesos aleatorios o, más simplemente, como matrices aleatorias.
+
+\begin{definition}[Espacio de Probabilidad y Eventos]
+\label{def:prob_space}
+Un \textbf{espacio de probabilidad} es una terna $(\Omega, \mathcal{F}, P)$, donde $\Omega$ es el \textbf{espacio muestral} (el conjunto de todos los posibles resultados), $\mathcal{A}$ es una $\sigma$-álgebra de \textbf{eventos} (subconjuntos de $\Omega$ cuya probabilidad podemos medir), y $P: \mathcal{A} \to [0, 1]$ es una \textbf{medida de probabilidad} que satisface los axiomas de Kolmogorov (no negatividad, normalización $P(\Omega)=1$, y $\sigma$-aditividad). Un evento $A \in \mathcal{A}$ es un conjunto de resultados de interés.
+\end{definition}
+
+\begin{definition}[Variables Aleatorias]
+\label{def:random_variable}
+Una \textbf{variable aleatoria} (v.a.) es una función medible $X: \Omega \to \mathbb{R}$ (o a $\mathbb{R}^n$ para un vector aleatorio, o a $\mathbb{K}^{m \times n}$ para una matriz aleatoria). Asocia un valor numérico (o vectorial/matricial) a cada resultado del espacio muestral. En nuestro caso, podemos considerar cada entrada $X_{ij}$ de la matriz de datos $\mathbf{X}$ y cada entrada $M_{ij}$ de la matriz de máscara $\mathbf{M}$ como variables aleatorias.
+\end{definition}
+
+\begin{definition}[Probabilidad de un Evento]
+\label{def:event_prob}
+La \textbf{probabilidad} de un evento $A$, denotada $P(A)$, cuantifica la verosimilitud de que el resultado del experimento aleatorio pertenezca al conjunto $A$. Por ejemplo, $P(M_{ij}=0)$ representa la probabilidad de que la entrada $(i, j)$ de la matriz de datos esté faltante.
+\end{definition}
+
+\begin{definition}[Probabilidad Condicionada]
+\label{def:conditional_prob}
+Dados dos eventos $A$ y $B$ con $P(B) > 0$, la \textbf{probabilidad condicionada} de $A$ dado $B$, denotada $P(A|B)$, se define como:
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+Representa la probabilidad de que ocurra el evento $A$ \textit{sabiendo} que el evento $B$ ya ha ocurrido. En el contexto de datos faltantes, $P(M_{ij}=0 | \mathbf{X})$ representa la probabilidad de que la entrada $(i,j)$ falte, condicionada al conocimiento de \textit{todos} los valores (observados y faltantes) de la matriz de datos $\mathbf{X}$. Similarmente, $P(M_{ij}=0 | \mathbf{X}_{\text{obs}})$ condiciona únicamente sobre el subconjunto de valores observados $\mathbf{X}_{\text{obs}} = \{x_k(t_l) | M_{lk}=1\}$.
+\end{definition}
+
+\begin{definition}[Independencia Estadística]
+\label{def:independence}
+Dos eventos $A$ y $B$ son \textbf{estadísticamente independientes} si la ocurrencia de uno no afecta la probabilidad del otro. Formalmente, esto ocurre si $P(A \cap B) = P(A)P(B)$. Si $P(B)>0$, una definición equivalente es:
+\[ P(A|B) = P(A) \]
+De manera análoga, dos variables (o conjuntos de variables) aleatorias $X$ e $Y$ son independientes si el conocimiento de $Y$ no altera la distribución de probabilidad de $X$.
+\end{definition}
+
+% --- Párrafo de conexión ---
+Estos conceptos son la base para clasificar los mecanismos de datos faltantes. La diferencia entre MCAR, MAR y MNAR radica precisamente en la dependencia (o independencia) probabilística entre el evento de que un dato falte ($M_{ij}=0$) y los valores de la propia serie temporal ($\mathbf{X}$, $\mathbf{X}_{\text{obs}}$, o $\mathbf{X}_{\text{mis}}$), como se detalla a continuación.
+
+% --- Párrafo (o Subsección) sobre Mecanismos de Datos Faltantes ---
+
+\paragraph{Mecanismos de Datos Faltantes.} % O \subsection{...} si prefieres más jerarquía
+\label{par:matrix_missingness_mechanisms}
+La comprensión del mecanismo que genera los datos faltantes es un paso crucial antes de seleccionar una estrategia de imputación, ya que diferentes mecanismos tienen distintas implicaciones para la validez de los análisis y la idoneidad de los métodos \cite{groenwold_missing_2012}. La clasificación fundamental, propuesta originalmente por Rubin \cite{rubin_inference_1976}, se basa en la relación de dependencia probabilística entre la ausencia de un dato (el evento $M_{ij}=0$) y los valores de la propia serie temporal ($\mathbf{X}$), utilizando el concepto de probabilidad condicionada (\Cref{def:conditional_prob}) \cite{rubiano_analyzing_2017, bhaskaran_missing_2013}. Se distinguen tres mecanismos principales:
+
+\begin{itemize}
+    \item \textbf{MCAR (Missing Completely At Random - Faltantes Completamente al Azar):}
+        \begin{itemize}
+            \item \textit{Definición Formal:} La probabilidad de que un dato falte es estadísticamente independiente (\Cref{def:independence}) del valor de \textit{cualquier} variable en la serie temporal, ya sea observada o faltante.
+            \[ P(M_{ij}=0 | \mathbf{X}) = P(M_{ij}=0) \]
+            \item \textit{Intuición:} La ausencia es un suceso puramente aleatorio, como si se lanzara una moneda para decidir si borrar o no cada entrada, o si fallos técnicos completamente aleatorios (no relacionados con las mediciones) causaran pérdidas de datos.
+            \item \textit{Implicaciones:} Es el supuesto más fuerte y, a menudo, poco realista. Sin embargo, si se cumple, los datos observados $\mathbf{X}_{\text{obs}}$ son una submuestra completamente representativa de la serie completa hipotética. Los análisis realizados únicamente sobre los casos completos (listwise deletion) producirán estimaciones insesgadas de los parámetros (aunque pueden ser ineficientes por la pérdida de datos). Muchos métodos de imputación funcionan bien bajo MCAR.
+        \end{itemize}
+
+    \item \textbf{MAR (Missing At Random - Faltantes al Azar):}
+        \begin{itemize}
+            \item \textit{Definición Formal:} La probabilidad de que un dato falte puede depender de los valores de las variables \textit{observadas}, pero, una vez que se tienen en cuenta estas variables observadas, ya no depende de los valores de las variables \textit{faltantes}.
+            \[ P(M_{ij}=0 | \mathbf{X}) = P(M_{ij}=0 | \mathbf{X}_{\text{obs}}) \]
+            Es decir, la ausencia $M_{ij}=0$ es condicionalmente independiente de $\mathbf{X}_{\text{mis}}$, dado $\mathbf{X}_{\text{obs}}$.
+            \item \textit{Intuición:} La ausencia no es completamente aleatoria, sino que está relacionada con otras características que sí conocemos. Si conocemos esas características, la razón por la que falta el dato específico ya está "explicada" y no depende del valor que no vemos.
+            \item \textit{Implicaciones:} Es un supuesto más débil y plausible que MCAR en muchas situaciones reales. Los análisis sobre casos completos pueden producir estimaciones sesgadas. Sin embargo, los métodos de imputación basados en modelos (como la imputación múltiple o métodos basados en máxima verosimilitud) que utilicen correctamente la información de $\mathbf{X}_{\text{obs}}$ (incluyendo las variables que predicen la ausencia) pueden, en teoría, producir resultados insesgados. La clave es que la información sobre la ausencia está contenida en los datos observados.
+        \end{itemize}
+
+    \item \textbf{MNAR (Missing Not At Random - Faltantes No al Azar):}
+        \begin{itemize}
+            \item \textit{Definición Formal:} La probabilidad de que un dato falte depende del valor de la propia variable faltante, incluso después de tener en cuenta todas las variables observadas.
+            \[ P(M_{ij}=0 | \mathbf{X}) \text{ depende de } \mathbf{X}_{\text{mis}} \]
+            (La condición $P(M_{ij}=0 | \mathbf{X}) = P(M_{ij}=0 | \mathbf{X}_{\text{obs}})$ no se cumple).
+            \item \textit{Intuición:} La razón por la que falta el dato está directamente relacionada con el valor que no estamos viendo. El propio valor faltante es informativo sobre por qué falta.
+            \item \textit{Implicaciones:} Es el escenario más complejo y problemático. Casi todos los métodos estándar de manejo de datos faltantes (listwise deletion, imputación simple, imputación múltiple estándar, modelos ML que ignoran el mecanismo) producen estimaciones sesgadas. Abordar datos MNAR requiere técnicas más avanzadas que modelen explícitamente el mecanismo de ausencia (modelos de selección, modelos de mezcla de patrones) o realizar análisis de sensibilidad para evaluar el impacto potencial del mecanismo MNAR. La información sobre la ausencia no está completamente contenida en los datos observados.
+        \end{itemize}
+\end{itemize}
+
+Es importante destacar que la distinción entre MAR y MNAR no siempre puede verificarse empíricamente solo con los datos observados; a menudo requiere supuestos basados en el conocimiento del dominio o el diseño del estudio. Sin embargo, comprender estas categorías es fundamental para evaluar críticamente los resultados de cualquier análisis realizado en presencia de datos faltantes y para justificar la elección de una técnica de imputación particular. Los métodos de imputación más sofisticados, como los basados en aprendizaje profundo (ej. SAITS), intentan capturar las complejas dependencias en los datos que podrían estar relacionadas con los mecanismos MAR o incluso, implícitamente, con algunos patrones MNAR, aunque la garantía teórica bajo MNAR es más difícil de establecer \cite{Du_saits_2023, little_statistical_2019}.
+
+\section{Fundamentos Matemáticos del Entrenamiento del Transformer}
+\label{sec:math_transformer_training}
+
+El entrenamiento de un Transformer \cite{Vaswani_attentionis_2017}, como modelo predictivo $f_{\theta}$ (\Cref{eq:matrix_predictive_imputation}), se basa en minimizar una función de pérdida $L(\theta)$ utilizando descenso de gradiente.
+
+\begin{itemize}
+    \item \textbf{Parámetros $\theta$:} Incluyen matrices de pesos $\mathbf{W}$ y vectores de sesgo $\mathbf{b}$ (\Cref{subsec:linear_algebra}).
+    \item \textbf{Función de Pérdida $L(\theta)$:} Mide el error entre la salida $\hat{\mathbf{Y}} = f_{\theta}(\mathbf{X})$ y la referencia $\mathbf{Y}$ (ej. MSE usando normas matriciales).
+    \item \textbf{Descenso de Gradiente:} Actualiza $\theta^{(t+1)} = \theta^{(t)} - \eta \nabla L(\theta^{(t)})$.
+    \item \textbf{Gradiente $\nabla L(\theta)$:} Es la colección de derivadas parciales $\frac{\partial L}{\partial w_{ij}}, \frac{\partial L}{\partial b_i}$ para todos los parámetros. Se calcula mediante \textbf{Backpropagation}, que aplica eficientemente la Regla de la Cadena (\Cref{thm:chain_rule}) a través de las operaciones del modelo (producto matricial, suma, Softmax, etc.).
+\end{itemize}
+El proceso requiere herramientas del cálculo diferencial multivariable (\Cref{subsec:multivariable_calculus}) y álgebra lineal (\Cref{subsec:linear_algebra}).
+
+% --- Dentro del Capítulo de Fundamentos Matemáticos ---
+
+% --- (Secciones anteriores...) ---
+
+\section{Métricas de Evaluación para Imputación}
+\label{sec:evaluation_metrics}
+
+Para cuantificar el rendimiento de los diferentes métodos de imputación en el contexto experimental descrito (\Cref{def:exp_imputation_problem_revised}), se utilizan métricas de error estándar. Estas métricas comparan los valores imputados $\hat{\mathcal{X}}^{\text{test}}$ con los valores verdaderos originales $\mathcal{X}_{\text{orig}}^{\text{test}}$ \textit{únicamente} en las posiciones donde los datos fueron artificialmente eliminados, según lo indicado por la máscara $\mathbf{M}_{\text{indicating}}^{\text{test}}$ (o equivalentemente $\mathbf{M}_{\text{artificial}}^{\text{test}}$).
+
+Sea $\hat{\mathcal{X}} = \hat{\mathcal{X}}^{\text{test}} \in \mathbb{R}^{N \times T \times D}$ el tensor de valores imputados para el conjunto de test.
+Sea $\mathbf{X}_{\text{orig}} = \mathcal{X}_{\text{orig}}^{\text{test}} \in \mathbb{R}^{N \times T \times D}$ el tensor de valores verdaderos originales (ground truth) para el conjunto de test.
+Sea $\mathbf{M}_{\text{ind}} = \mathbf{M}_{\text{artificial}}^{\text{test}} \in \{0, 1\}^{N \times T \times D}$ la máscara que indica las posiciones artificialmente eliminadas (1 si fue eliminada, 0 si no).
+
+Denotamos $[\hat{\mathcal{X}}]_{ktd}$ y $[\mathbf{X}_{\text{orig}}]_{ktd}$ a los valores en la muestra $k$, tiempo $t$ ($1 \le t \le T$), y característica $d$ ($1 \le d \le D$). $[\mathbf{M}_{\text{ind}}]_{ktd}$ es el valor correspondiente de la máscara.
+
+Las métricas se calculan promediando sobre todas las muestras $N$ y todas las posiciones indicadas por la máscara $\mathbf{M}_{\text{ind}}$.
+
+\begin{definition}[Error Absoluto Medio (MAE)]
+\label{def:mae}
+El MAE mide el promedio de los errores absolutos entre los valores imputados y los verdaderos en las posiciones indicadas:
+\begin{equation}
+\text{MAE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \frac{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} \lvert [\hat{\mathcal{X}}]_{ktd} - [\mathbf{X}_{\text{orig}}]_{ktd} \rvert \cdot [\mathbf{M}_{\text{ind}}]_{ktd}}{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} [\mathbf{M}_{\text{ind}}]_{ktd}}
+\label{eq:mae}
+\end{equation}
+donde el denominador representa el número total de puntos artificialmente eliminados.
+\end{definition}
+
+\begin{definition}[Raíz del Error Cuadrático Medio (RMSE)]
+\label{def:rmse}
+El RMSE es la raíz cuadrada del promedio de los errores cuadráticos, penalizando más los errores grandes:
+\begin{equation}
+\text{RMSE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \sqrt{\frac{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} \left( [\hat{\mathcal{X}}]_{ktd} - [\mathbf{X}_{\text{orig}}]_{ktd} \right)^2 \cdot [\mathbf{M}_{\text{ind}}]_{ktd}}{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} [\mathbf{M}_{\text{ind}}]_{ktd}}}
+\label{eq:rmse}
+\end{equation}
+El término dentro de la raíz cuadrada es el Error Cuadrático Medio (MSE).
+\end{definition}
+
+\begin{definition}[Error Relativo Medio (MRE)]
+\label{def:mre}
+El MRE mide el error absoluto promedio relativo al valor verdadero original:
+\begin{equation}
+\text{MRE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \frac{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} \lvert [\hat{\mathcal{X}}]_{ktd} - [\mathbf{X}_{\text{orig}}]_{ktd} \rvert \cdot [\mathbf{M}_{\text{ind}}]_{ktd}}{\sum_{k=1}^{N} \sum_{t=1}^{T} \sum_{d=1}^{D} \lvert [\mathbf{X}_{\text{orig}}]_{ktd} \rvert \cdot [\mathbf{M}_{\text{ind}}]_{ktd} + \epsilon}
+\label{eq:mre}
+\end{equation}
+\textit{Nota:} Se añade un pequeño valor $\epsilon > 0$ al denominador para evitar la división por cero en caso de que algún valor verdadero original $[\mathbf{X}_{\text{orig}}]_{ktd}$ sea cero en una posición indicada por la máscara. La fórmula original de la imagen parece usar el producto Hadamard de forma ligeramente distinta, pero esta formulación (dividir la suma de errores absolutos por la suma de valores absolutos verdaderos, ambos enmascarados) es una interpretación común y robusta del MRE en este contexto.
+\end{definition}
+
+% --- Fin de la Sección ---

@@ -57,7 +57,7 @@ def calculate_imputation_metrics(y_true: np.ndarray,
 
 def evaluate_all_methods(preprocessed_data: Dict,
                          imputed_results: Dict[str, np.ndarray],
-                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill', 'bfill', 'saits']) -> pd.DataFrame:
+                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill', 'bfill', 'transformer', 'saits']) -> pd.DataFrame:
     """
     Evalúa múltiples métodos de imputación usando los resultados del conjunto de prueba.
 
@@ -72,7 +72,9 @@ def evaluate_all_methods(preprocessed_data: Dict,
     """
     results = []
     y_true = preprocessed_data['test_X_ori']
-    indicating_mask = preprocessed_data['test_indicating_mask']
+    indicating_mask = preprocessed_data['test_artificial_mask']
+    print("Mostrando máscara:")
+    print(indicating_mask)
 
     # Maneja la posible eliminación de columnas para ffill/bfill si es necesario
     # Esta lógica asume que WS/WD se eliminaron *antes* de la imputación para ffill/bfill
