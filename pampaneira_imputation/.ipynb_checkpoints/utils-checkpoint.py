@@ -1,6 +1,9 @@
 # pampaneira_imputation/utils.py
 import numpy as np
 import pandas as pd
+import time
+import functools
+
 from typing import List
 
 def sliding_window(data: np.ndarray, n_steps: int) -> np.ndarray:
@@ -41,6 +44,11 @@ def create_missingness(data: np.ndarray, rate: float, pattern: str, **kwargs) ->
     Returns:
         np.ndarray: Array NumPy 3D con valores faltantes introducidos.
     """
+
+    # Fijar Semilla
+    if "seed" in kwargs:
+        np.random.seed(kwargs["seed"])
+            
     n_samples, n_steps, n_features = data.shape
     missing_data = data.copy()  # Trabaja sobre una copia
 
@@ -81,7 +89,6 @@ def create_missingness(data: np.ndarray, rate: float, pattern: str, **kwargs) ->
         raise ValueError(f"Patrón de datos faltantes desconocido: {pattern}")
 
     return missing_data
-
 
 def reshape_imputed_to_df(imputed_data: np.ndarray,
                           original_index: pd.DatetimeIndex,
@@ -138,3 +145,37 @@ def reshape_imputed_to_df(imputed_data: np.ndarray,
 
     df = pd.DataFrame(flat_data, index=full_index, columns=columns)
     return df
+
+def timeit_factory(time_results_dict):
+    """
+    Decorador de fábrica que devuelve un decorador para funciones.
+    Mide el tiempo de ejecución de la función decorada y lo guarda en
+    el diccionario proporcionado.
+
+    Args:
+        time_results_dict (dict): Diccionario donde se almacenarán los tiempos.
+    """
+    # Este es el decorador real
+    def decorator(func):
+        @functools.wraps(func)
+        # El 'wrapper' es la función que realmente se ejecuta.
+        # NOTA: No recibe 'self' porque decora una función, no un método de clase.
+        def wrapper(*args, **kwargs):
+            print(f"  Midiendo tiempo para '{func.__name__}'...") # Feedback
+            start_time = time.perf_counter()
+
+            # Llama a la función original con sus argumentos
+            result = func(*args, **kwargs) # No se pasa 'self' aquí
+
+            end_time = time.perf_counter()
+            duration = end_time - start_time
+
+            # Almacena la duración en el diccionario usando el nombre de la función
+            time_results_dict[func.__name__] = duration
+
+            print(f"  Finalizado '{func.__name__}' en {duration:.6f} segundos") # Feedback
+            return result # Devuelve el resultado de la función original
+
+        return wrapper # El decorador devuelve la función 'wrapper'
+
+    return decorator # La fábrica devuelve el decoradors

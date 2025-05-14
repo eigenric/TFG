@@ -44,6 +44,11 @@ def create_missingness(data: np.ndarray, rate: float, pattern: str, **kwargs) ->
     Returns:
         np.ndarray: Array NumPy 3D con valores faltantes introducidos.
     """
+
+    # Fijar Semilla
+    if "seed" in kwargs:
+        np.random.seed(kwargs["seed"])
+            
     n_samples, n_steps, n_features = data.shape
     missing_data = data.copy()  # Trabaja sobre una copia
 

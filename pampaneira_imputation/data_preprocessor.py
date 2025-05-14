@@ -139,6 +139,11 @@ def preprocess_for_imputation(
             "Verifica los rangos de fechas y los datos de entrada."
         )
 
+     # Guardar los índices originales ANTES del escalado y ventaneo
+    train_index_original = train_set.index
+    val_index_original = val_set.index
+    test_index_original = test_set.index
+
     # --- 2. Escalado ---
     # Nota: StandardScaler no maneja bien los NaNs. Idealmente, los NaNs
     # originales se imputan *antes* de escalar o se usa un escalador robusto.
@@ -174,6 +179,9 @@ def preprocess_for_imputation(
         "train_X": train_X_win,
         "val_X": val_X_win,
         "test_X": test_X_win,
+        "train_index": train_index_original,
+        "val_index": val_index_original,
+        "test_index": test_index_original,
     }
 
     # --- 4. Introducción Opcional de Datos Faltantes y Creación de Máscaras ---
@@ -202,11 +210,11 @@ def preprocess_for_imputation(
         # Aquí, para simplicidad, no se pasa semilla explícita (usará la global o será aleatorio).
         val_X_missing = create_missingness(
             processed_data["val_X_ori"], missing_rate, missing_pattern,
-            **missingness_kwargs # Podrías añadir seed=random_seed+1 si quieres diferenciar
+            seed=random_seed+1, **missingness_kwargs # Podrías añadir seed=random_seed+1 si quieres diferenciar
         )
         test_X_missing = create_missingness(
             processed_data["test_X_ori"], missing_rate, missing_pattern,
-             **missingness_kwargs # Podrías añadir seed=random_seed+2
+            seed=random_seed+1, **missingness_kwargs # Podrías añadir seed=random_seed+2
         )
 
         # Actualiza los datos en el diccionario
