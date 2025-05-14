@@ -73,8 +73,6 @@ def evaluate_all_methods(preprocessed_data: Dict,
     results = []
     y_true = preprocessed_data['test_X_ori']
     indicating_mask = preprocessed_data['test_artificial_mask']
-    print("Mostrando máscara:")
-    print(indicating_mask)
 
     # Maneja la posible eliminación de columnas para ffill/bfill si es necesario
     # Esta lógica asume que WS/WD se eliminaron *antes* de la imputación para ffill/bfill

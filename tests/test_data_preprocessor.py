@@ -7,7 +7,7 @@ from pampaneira_imputation import data_preprocessor as dp
 from pampaneira_imputation import config
 
 def test_fill_missing_timestamps(sample_feature_data):
-    df = sample_feature_data.iloc[10:50].copy() # df IS DEFINED HERE
+    df = sample_feature_data.iloc[10:50].copy()
     start = sample_feature_data.index.min()
     end = sample_feature_data.index.max()
     df_filled = dp.fill_missing_timestamps(df.reset_index(), start, end, date_col='index')
@@ -25,14 +25,13 @@ def test_preprocess_for_imputation(sample_feature_data):
     n_steps = 12
     rate = 0.1
 
-    # Define simple split ranges within the sample data
+    # Define split ranges within the sample data
     train_start = df.index[0].strftime('%Y-%m-%d %H:%M:%S')
     train_end = df.index[50].strftime('%Y-%m-%d %H:%M:%S')
     val_start = df.index[50].strftime('%Y-%m-%d %H:%M:%S')
     val_end = df.index[75].strftime('%Y-%m-%d %H:%M:%S')
     test_start = df.index[75].strftime('%Y-%m-%d %H:%M:%S')
-    test_end = df.index[-1].strftime('%Y-%m-%d %H:%M:%S') # Use last timestamp
-
+    test_end = df.index[-1].strftime('%Y-%m-%d %H:%M:%S')
 
     result = dp.preprocess_for_imputation(
         df,
@@ -42,7 +41,7 @@ def test_preprocess_for_imputation(sample_feature_data):
         missing_pattern='point',
         train_start=train_start, train_end=train_end,
         val_start=val_start, val_end=val_end,
-        test_start=test_start, test_end=test_end # Adjust end date if needed
+        test_start=test_start, test_end=test_end
     )
 
     assert isinstance(result, dict)
@@ -50,19 +49,18 @@ def test_preprocess_for_imputation(sample_feature_data):
     assert result['n_features'] == len(feature_cols)
     assert isinstance(result['scaler'], StandardScaler)
 
-    # Check shapes (consider windowing effect)
-    expected_train_samples = 50 - n_steps + 1
-    expected_val_samples = 25 - n_steps + 1
-    # Test samples: len(df) - 75 - n_steps + 1 = 100 - 75 = 25 -> 25 - 12 + 1 = 14
+    # Check shapes considering windowing effect
+    # For train: 51 points (0 to 50 inclusive) - n_steps + 1
+    expected_train_samples = 51 - n_steps + 1
+    # For val: 26 points (50 to 75 inclusive) - n_steps + 1
+    expected_val_samples = 26 - n_steps + 1
+    # For test: remaining points - n_steps + 1
     expected_test_samples = len(df.loc[test_start:]) - n_steps + 1
-
 
     assert result['train_X'].shape == (expected_train_samples, n_steps, len(feature_cols))
     assert result['val_X'].shape == (expected_val_samples, n_steps, len(feature_cols))
-    # Adjust expected test samples calculation if end date logic is exclusive
-    assert result['test_X'].shape[0] >= expected_test_samples -1 # Allow for slight end date diff
+    assert result['test_X'].shape[0] >= expected_test_samples - 1
     assert result['test_X'].shape[1:] == (n_steps, len(feature_cols))
-
 
     # Check if missingness was introduced
     assert np.isnan(result['train_X']).sum() > np.isnan(result['train_X_ori']).sum()
