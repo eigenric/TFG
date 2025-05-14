@@ -1,0 +1,191 @@
+% Plantilla para un Trabajo Fin de Grado de la Universidad de Granada,
+% adaptada para el Doble Grado en Ingeniería Informática y Matemáticas.
+%
+%  Autor: Mario Román.
+%  Licencia: GNU GPLv2.
+%
+% Esta plantilla es una adaptación al castellano de la plantilla
+% classicthesis de André Miede, que puede obtenerse en:
+%  https://ctan.org/tex-archive/macros/latex/contrib/classicthesis?lang=en
+% La plantilla original se licencia en GNU GPLv2.
+%
+% Esta plantilla usa símbolos de la Universidad de Granada sujetos a la normativa
+% de identidad visual corporativa, que puede encontrarse en:
+% http://secretariageneral.ugr.es/pages/ivc/normativa
+%
+% La compilación se realiza con las siguientes instrucciones:
+%   pdflatex --shell-escape main.tex
+%   bibtex main
+%   pdflatex --shell-escape main.tex
+%   pdflatex --shell-escape main.tex
+
+% Opciones del tipo de documento
+\documentclass[oneside,openright,titlepage,numbers=noenddot,openany,headinclude,footinclude=true,
+cleardoublepage=empty,abstractoff,BCOR=5mm,paper=a4,fontsize=12pt,main=spanish]{scrreprt}
+
+% Paquetes de latex que se cargan al inicio. Cubren la entrada de
+% texto, gráficos, código fuente y símbolos.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % Asegúrate de que esté antes de natbib si hay problemas de codificación con las citas
+\usepackage{fixltx2e}
+\usepackage{graphicx} % Inclusión de imágenes.
+\usepackage{grffile}  % Distintos formatos para imágenes.
+\usepackage{longtable} % Tablas multipágina.
+\usepackage{wrapfig} % Coloca texto alrededor de una figura.
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{listings} % Para el comando \code
+\usepackage[colorlinks=true]{hyperref} % Cargar hyperref DESPUÉS de la mayoría de los paquetes, especialmente natbib si hay problemas
+\usepackage{tikz} % Diagramas conmutativos.
+\usepackage{minted} % Código fuente.
+% \usepackage[T1]{fontenc} % Ya cargado arriba
+\usepackage[sort&compress]{natbib} % Opciones para natbib (ej. citas numéricas, comprimidas)
+                                         % Si quieres estilo autor-año, podrías usar [authoryear]
+\usepackage{pdfpages}
+% \usepackage{graphicx} % Ya cargado arriba
+\usepackage{float}    % Opcional: para un control más estricto de la posición con [H]
+\usepackage{cleveref} % Cargar cleveref DESPUÉS de hyperref y natbib si es posible
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode} % noend para no mostrar los 'end if', 'end for'
+\usepackage{booktabs} % Para líneas de tabla más profesionales
+\usepackage{caption}  % Para captions de tablas
+\usepackage{siunitx}  % Para formateo de números en tablas
+
+
+\hypersetup{
+    unicode=true,  % Permite que los bookmarks sean unicode
+    pdftitle={Tu Título}, % Título del documento PDF
+    pdfauthor={Tu Nombre}, % Autor del PDF
+    % Opciones adicionales para mejorar la interacción con hyperref y natbib
+    pdfstartview=FitH, % Ajustar página al ancho al abrir
+    bookmarksnumbered=true, % Numerar bookmarks
+    bookmarksopen=true, % Abrir bookmarks
+    linktocpage=true, % Hacer que los números de página en ToC sean enlaces
+    colorlinks=true, % Colorear enlaces
+    linkcolor=blue, % Color de enlaces internos
+    citecolor=blue, % Color de enlaces de citas
+    urlcolor=blue % Color de enlaces URL
+}
+
+% Plantilla classicthesis
+\usepackage[beramono,eulerchapternumbers,linedheaders,parts,a5paper,dottedtoc,
+manychapters,pdfspacing]{classicthesis}
+
+% Geometría y espaciado de párrafos.
+% \setcounter{secnumdepth}{0} % Esto oculta la numeración de secciones, ¿estás seguro?
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
+\usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
+\setlength\itemsep{0em}
+\setlength{\parindent}{0pt}
+\usepackage{parskip}
+
+% Profundidad de la tabla de contenidos.
+\setcounter{secnumdepth}{3} % Esto numera hasta subsubsecciones
+
+% Usa el paquete minted para mostrar trozos de código.
+% Pueden seleccionarse el lenguaje apropiado y el estilo del código.
+% \usepackage{minted} % Ya cargado arriba
+\usemintedstyle{colorful}
+\setminted{fontsize=\small}
+\setminted[haskell]{linenos=false,fontsize=\small} % Ejemplo específico para Haskell
+\renewcommand{\theFancyVerbLine}{\sffamily\textcolor[rgb]{0.5,0.5,1.0}{\oldstylenums{\arabic{FancyVerbLine}}}}
+
+% Definir comandos matemáticos si es necesario
+\newcommand{\loss}{\mathcal{L}} % Usar \mathcal{L} para la pérdida
+\newcommand{\params}{\theta}
+\newcommand{\weights}{W}
+\newcommand{\biases}{b}
+\newcommand{\activation}{A}
+\newcommand{\preactivation}{Z}
+\newcommand{\activationfunc}{g}
+\newcommand{\grad}{\nabla}
+\newcommand{\inputdata}{X}
+\newcommand{\targetdata}{Y}
+\newcommand{\prediction}{\hat{\targetdata}}
+\newcommand{\hadamard}{\odot}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}} % Cuerpo genérico
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\supp}{\text{supp}}
+\DeclareMathOperator{\Span}{span}
+% Define colors from the image
+\definecolor{imageyellow}{RGB}{254,254,205}
+\definecolor{imagepink}{RGB}{254,232,231}
+\definecolor{imageblue}{RGB}{222,246,248}
+\definecolor{imageorange}{RGB}{248,152,29}
+\definecolor{imageredframe}{RGB}{228,0,0}
+\definecolor{imagegreenframe}{RGB}{0,128,0}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\newcommand{\softmaxop}{\operatorname{Softmax}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+% Definir el comando \code
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Archivos de configuración.
+\input{macros}  % En macros.tex se almacenan las opciones y comandos para escribir matemáticas.
+\input{classicthesis-config} % En classicthesis-config.tex se almacenan las opciones propias de la plantilla.
+
+% Color institucional UGR
+% \definecolor{ugrColor}{HTML}{ed1c3e} % Versión clara.
+\definecolor{ugrColor}{HTML}{c6474b}  % Usado en el título.
+\definecolor{ugrColor2}{HTML}{c6474b} % Usado en las secciones.
+
+% Datos de portada
+\usepackage{titling} % Facilita los datos de la portada
+\author{Ricardo Ruiz Fernández de Alba}
+\date{\today}
+\title{Generación de datos sintéticos a partir de un \\  sistema IoT de detección
+de vehículos utilizando \\ modelos Transformer con atención en Python}
+
+% Portada
+\include{titlepage}
+\usepackage{wallpaper}
+\usepackage[main=spanish]{babel} % Cargar babel DESPUÉS de paquetes de fuentes y antes de classicthesis si es posible
+
+
+\begin{document}
+
+\ThisULCornerWallPaper{1}{ugrA4.pdf}
+\maketitle
+\tableofcontents
+
+
+\chapter*{Resumen}
+
+
+% Inclusión de capítulos
+
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+
+% Colocar la bibliografía ANTES de los apéndices si así se desea
+\bibliographystyle{apalike} % Estilo de bibliografía para natbib (ej. apalike, plainnat, unsrtnat)
+\bibliography{research}    % Tu archivo .bib
+
+\appendix
+
+\input{chapters/anexos.tex}
+
+%\section*{Appendix C: Documentación del paquete de Python}
+% \addcontentsline{toc}{section}{Appendix C: Documentación del paquete de Python}
+% Insert entire PDF
+% \includepdf[pages=-]{pampaneira_imputation.pdf}
+
+
+\end{document}

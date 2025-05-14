@@ -1,0 +1,141 @@
+\begin{thebibliography}{}
+
+\bibitem[Abu-Mostafa et~al., 2012]{abu-mostafa_learning_2012}
+Abu-Mostafa, Y.~S., Magdon-Ismail, M., and Lin, H.-T. (2012).
+\newblock {\em Learning from Data}.
+\newblock AMLBook.
+
+\bibitem[Apostol, 1974]{Apostol1974}
+Apostol, T.~M. (1974).
+\newblock {\em Mathematical Analysis}.
+\newblock Addison-Wesley, 2nd edition.
+
+\bibitem[Ba et~al., 2016]{ba_layer_2016}
+Ba, J.~L., Kiros, J.~R., and Hinton, G.~E. (2016).
+\newblock {Layer normalization}.
+\newblock {\em arXiv preprint arXiv:1607.06450}.
+
+\bibitem[Bishop, 2006]{Bishop2006}
+Bishop, C.~M. (2006).
+\newblock {\em Pattern Recognition and Machine Learning}.
+\newblock Springer.
+
+\bibitem[Burden and Faires, 2011]{BurdenFaires2011}
+Burden, R.~L. and Faires, J.~D. (2011).
+\newblock {\em Numerical Analysis}.
+\newblock Brooks/Cole, 9th edition.
+
+\bibitem[Casella and Berger, 2002]{CasellaBerger2002}
+Casella, G. and Berger, R.~L. (2002).
+\newblock {\em Statistical Inference}.
+\newblock Duxbury Press, 2nd edition.
+
+\bibitem[Cybenko, 1989]{Cybenko1989}
+Cybenko, G. (1989).
+\newblock Approximation by superpositions of a sigmoidal function.
+\newblock {\em Mathematics of Control, Signals, and Systems}, 2(4):303--314.
+
+\bibitem[De et~al., 2022]{de_deep_2022}
+De, S., Bermudez-Edo, M., Xu, H., and Cai, Z. (2022).
+\newblock {Deep Generative Models in the Industrial Internet of Things: A
+  Survey}.
+\newblock {\em {IEEE} Transactions on Industrial Informatics},
+  18(9):5728--5737.
+
+\bibitem[DeGroot and Schervish, 2012]{DeGrootSchervish2012}
+DeGroot, M.~H. and Schervish, M.~J. (2012).
+\newblock {\em Probability and Statistics}.
+\newblock Addison-Wesley, 4th edition.
+
+\bibitem[Du, 2023]{du2023pypots}
+Du, W. (2023).
+\newblock Pypots: a python toolbox for data mining on partially-observed time
+  series.
+\newblock {\em arXiv preprint arXiv:2305.18811}.
+
+\bibitem[Golub and Van~Loan, 2013]{GolubVanLoan2013}
+Golub, G.~H. and Van~Loan, C.~F. (2013).
+\newblock {\em Matrix Computations}.
+\newblock Johns Hopkins University Press, 4th edition.
+
+\bibitem[Goodfellow et~al., 2016]{GBC16}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\newblock {\em Deep Learning}.
+\newblock MIT Press.
+
+\bibitem[Kincaid and Cheney, 2002]{KincaidCheney2002}
+Kincaid, D.~R. and Cheney, E.~W. (2002).
+\newblock {\em Numerical Analysis: Mathematics of Scientific Computing}.
+\newblock Brooks/Cole, 3rd edition.
+
+\bibitem[Kolda and Bader, 2009]{KoldaBader2009}
+Kolda, T.~G. and Bader, B.~W. (2009).
+\newblock Tensor decompositions and applications.
+\newblock {\em SIAM Review}, 51(3):455--500.
+
+\bibitem[Kreyszig, 1989]{Kreyszig1989}
+Kreyszig, E. (1989).
+\newblock {\em Introductory Functional Analysis with Applications}.
+\newblock Wiley.
+
+\bibitem[Noble and Daniel, 1988]{Noble1988}
+Noble, B. and Daniel, J.~W. (1988).
+\newblock {\em Applied Linear Algebra}.
+\newblock Prentice Hall, 3rd edition.
+
+\bibitem[Rohatgi and Saleh, 2015]{rohatgi_introduction_nodate}
+Rohatgi, V.~K. and Saleh, A. K. M.~E. (2015).
+\newblock {\em {An Introduction to Probability and Statistics}}.
+\newblock Wiley, 3rd edition.
+
+\bibitem[Ross, 2014]{Ross2014}
+Ross, S.~M. (2014).
+\newblock {\em A First Course in Probability}.
+\newblock Pearson, 9th edition.
+
+\bibitem[Rudin, 1976]{Rudin1976}
+Rudin, W. (1976).
+\newblock {\em Principles of Mathematical Analysis}.
+\newblock McGraw-Hill, 3rd edition.
+
+\bibitem[Rudin, 1987]{Rudin1987}
+Rudin, W. (1987).
+\newblock {\em Real and Complex Analysis}.
+\newblock McGraw-Hill, 3rd edition.
+
+\bibitem[Rudin, 1991]{Rudin1991}
+Rudin, W. (1991).
+\newblock {\em Functional Analysis}.
+\newblock McGraw-Hill, 2nd edition.
+
+\bibitem[Rumelhart et~al., 1986]{Rumelhart1986}
+Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1986).
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323(6088):533--536.
+
+\bibitem[Sandradewi et~al., 2008]{sandradewi_source_2008}
+Sandradewi, J., Prévôt, A. S.~H., Szidat, S., Perron, N., Alfarra, M.~R.,
+  Lanz, V.~A., Weingartner, E., and Baltensperger, U. (2008).
+\newblock {Source apportionment of carbonaceous aerosol using the Aethalometer
+  model}.
+\newblock {\em Atmospheric Chemistry and Physics}, 8(11):2749--2760.
+
+\bibitem[Strang, 2016]{Strang2016}
+Strang, G. (2016).
+\newblock {\em Introduction to Linear Algebra}.
+\newblock Wellesley-Cambridge Press, 5th edition.
+
+\bibitem[{Universidad de Granada}, 2023]{smartpoqueira_project}
+{Universidad de Granada} (2023).
+\newblock Smartpoqueira: Experimentación de tecnologías inteligentes para la
+  gestión sostenible de las visitas a zonas rurales y parques nacionales.
+\newblock Proyecto de investigación.
+
+\bibitem[Vaswani et~al., 2017]{Vaswani_attentionis_2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  volume~30.
+
+\end{thebibliography}

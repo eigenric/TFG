@@ -1,0 +1,734 @@
+% --- BLOQUE II: FUNDAMENTOS TEÓRICOS ---
+\part{BLOQUE II: FUNDAMENTOS TEÓRICOS}
+
+% --- Capítulo de Fundamentos Matemáticos ---
+\chapter{Fundamentos Matemáticos}
+\label{ch:math_foundations}
+
+Este capítulo establece el marco conceptual y las herramientas matemáticas esenciales que servirán de base para comprender los modelos y métodos que presentaremos en los capítulos posteriores. Abordaremos las ramas fundamentales del Álgebra Lineal, el Análisis Matemático, la Probabilidad y Estadística, y los Métodos Numéricos, proporcionando las definiciones y propiedades necesarias de una manera abstracta y general.
+
+\section{Álgebra Lineal y Geometría}
+\label{sec:linear_algebra_geometry}
+
+Nosotros utilizamos el Álgebra Lineal, un área extensamente tratada en textos como los de \citet{Strang2016} y \citet{Noble1988}, para representar y manipular datos, así como para describir transformaciones y relaciones en espacios multidimensionales. Estudiamos como objetos centrales los vectores, las matrices y, de forma más general, los tensores, junto con las operaciones que definimos sobre ellos.
+
+\subsection{Vectores y Espacios Vectoriales}
+\label{subsec:vectors_vector_spaces}
+
+Comenzamos formalizando el concepto de vector, y posteriormente el de matriz, que generaliza la noción de vector y escalar.
+
+\begin{definition}[Vector]
+\label{def:vector}
+Definimos un \textbf{vector} $\mathbf{v}$ en $\mathbb{K}^n$ (típicamente $\mathbb{R}^n$), donde $\mathbb{K}$ es un cuerpo, como una lista ordenada de $n$ elementos de $\mathbb{K}$ \citep{Strang2016}. Lo representamos como una columna de tamaño $n$:
+\[ \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \]
+o como una fila de tamaño $n$ (vector traspuesto):
+\[ \mathbf{v}^T = \begin{pmatrix} v_1 & v_2 & \dots & v_n \end{pmatrix} \]
+Llamamos \textbf{componentes} del vector a los elementos $v_i \in \mathbb{K}$. El conjunto de todos estos vectores conforma el espacio vectorial $\mathbb{K}^n$.
+\end{definition}
+
+Sobre los vectores en $\mathbb{K}^n$ definimos la suma y el producto por un escalar componente a componente, operaciones que le confieren la estructura de espacio vectorial \citep{Noble1988}.
+
+\paragraph{Ejemplo numérico en $\mathbb{R}^3$:}
+Consideremos un vector $\mathbf{u}$ en el espacio tridimensional $\mathbb{R}^3$ (es decir, $n=3$ y $\mathbb{K}=\mathbb{R}$). Si sus componentes son $u_1 = 2$, $u_2 = -1$, y $u_3 = 5$, entonces escribimos el vector columna como:
+\[ \mathbf{u} = \begin{pmatrix} 2 \\ -1 \\ 5 \end{pmatrix} \]
+Y su vector traspuesto (vector fila) es:
+\[ \mathbf{u}^T = \begin{pmatrix} 2 & -1 & 5 \end{pmatrix} \]
+
+\subsection{Matrices y Operaciones Matriciales}
+\label{subsec:matrices_operations}
+
+Las matrices son arreglos rectangulares de elementos que nos permiten organizar datos de manera estructurada y representar transformaciones lineales entre espacios vectoriales \citep{Strang2016}.
+
+\begin{definition}[Matriz]
+\label{def:matrix_general}
+Definimos una \textbf{matriz} $\mathbf{A}$ de tamaño $m \times n$, con entradas en un cuerpo $\mathbb{K}$ (típicamente $\mathbb{R}$ o $\mathbb{C}$), como una disposición rectangular de $m$ filas y $n$ columnas de elementos de $\mathbb{K}$. Denotamos una matriz por $\mathbf{A} = (a_{ij})$ o $[\mathbf{A}]_{ij} = a_{ij}$, donde $a_{ij} \in \mathbb{K}$ es la entrada en la fila $i$ y la columna $j$, para $1 \leq i \leq m$ y $1 \leq j \leq n$. Denotamos el conjunto de todas estas matrices como $M_{m \times n}(\mathbb{K})$ o $\mathbb{K}^{m \times n}$ \citep{Bishop2006}.
+\end{definition}
+
+Definimos la igualdad entre matrices a partir de la igualdad de sus elementos.
+
+\begin{definition}[Igualdad de Matrices]
+\label{def:matrix_equality_general}
+Decimos que dos matrices $\mathbf{A} = (a_{ij})$ y $\mathbf{B} = (b_{ij})$ son \textbf{iguales} si pertenecen al mismo espacio $\mathbb{K}^{m \times n}$ (tienen el mismo tamaño) y $a_{ij} = b_{ij}$ para todos $1 \leq i \leq m$, $1 \leq j \leq n$.
+\end{definition}
+
+Las operaciones básicas que definimos para matrices de igual tamaño son la suma y el producto por un escalar, que realizamos entrada a entrada \citep{Strang2016}.
+
+\begin{definition}[Suma de Matrices]
+\label{def:matrix_sum_general}
+Dadas $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$, definimos su \textbf{suma} como la matriz $\mathbf{A}+\mathbf{B} \in \mathbb{K}^{m \times n}$ mediante $[\mathbf{A}+\mathbf{B}]_{ij} = a_{ij} + b_{ij}$.
+\end{definition}
+
+\begin{definition}[Producto por un Escalar]
+\label{def:scalar_product_general}
+Dado $\mathbf{A} \in \mathbb{K}^{m \times n}$ y un escalar $c \in \mathbb{K}$, definimos el \textbf{producto por un escalar} como la matriz $c\mathbf{A} \in \mathbb{K}^{m \times n}$ mediante $[c\mathbf{A}]_{ij} = c \cdot a_{ij}$.
+\end{definition}
+
+Con estas dos operaciones, el conjunto de matrices de tamaño fijo $\mathbb{K}^{m \times n}$ adquiere la estructura de un espacio vectorial \citep{Noble1988}.
+
+\begin{definition}[Espacio Vectorial de Matrices]
+\label{def:matrix_vector_space_general}
+El conjunto $\mathbb{K}^{m \times n}$, con las operaciones de suma (\Cref{def:matrix_sum_general}) y producto por un escalar (\Cref{def:scalar_product_general}), forma un \textbf{espacio vectorial} sobre $\mathbb{K}$. La matriz cero $\mathbf{0}_{m \times n}$ (con todas las entradas $0$) actúa como elemento neutro aditivo.
+\end{definition}
+
+\begin{proposition}[Axiomas del Espacio Vectorial $\mathbb{K}^{m \times n}$]
+Las operaciones definidas en $\mathbb{K}^{m \times n}$ satisfacen los axiomas de espacio vectorial \citep{Strang2016}.
+\end{proposition}
+
+\begin{proof}
+Verificamos que $(\mathbb{K}^{m \times n}, +, \cdot)$ cumple los axiomas de un espacio vectorial sobre $\mathbb{K}$. A modo de ejemplo, demostramos la conmutatividad de la suma. Sean $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$. Queremos demostrar que $\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$.
+Por la definición de suma de matrices (\Cref{def:matrix_sum_general}), la entrada $(i,j)$ de $\mathbf{A} + \mathbf{B}$ es:
+\[ [\mathbf{A} + \mathbf{B}]_{ij} = a_{ij} + b_{ij} \]
+La entrada $(i,j)$ de $\mathbf{B} + \mathbf{A}$ es:
+\[ [\mathbf{B} + \mathbf{A}]_{ij} = b_{ij} + a_{ij} \]
+Dado que $a_{ij}$ y $b_{ij}$ son elementos del cuerpo $\mathbb{K}$, y la suma en $\mathbb{K}$ es conmutativa, tenemos que $a_{ij} + b_{ij} = b_{ij} + a_{ij}$ para todo $i, j$.
+Por lo tanto, $[\mathbf{A} + \mathbf{B}]_{ij} = [\mathbf{B} + \mathbf{A}]_{ij}$ para todo $i, j$.
+Como las matrices tienen el mismo tamaño ($m \times n$) y todas sus entradas correspondientes son iguales, por la definición de igualdad de matrices (\Cref{def:matrix_equality_general}), concluimos que $\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$.
+
+Verificamos los demás axiomas (asociatividad de la suma, existencia de elemento neutro aditivo - la matriz cero $\mathbf{0}_{m \times n}$, existencia de inverso aditivo $-\mathbf{A}$, asociatividad del producto por escalar, distributividad escalar y vectorial, y elemento neutro multiplicativo $1 \in \mathbb{K}$) de manera similar, apoyándonos en las propiedades correspondientes de la suma y el producto en el cuerpo $\mathbb{K}$ y las definiciones de las operaciones matriciales. La verificación detallada de estos axiomas se puede encontrar en textos de álgebra lineal como el de \citet{Strang2016}.
+\end{proof}
+
+Además de las operaciones elemento a elemento, el álgebra matricial define un producto que nos permite combinar matrices bajo ciertas condiciones de compatibilidad de tamaño.
+
+\begin{definition}[Producto Matricial]
+\label{def:matrix_product_general}
+Definimos el \textbf{producto matricial} de $\mathbf{A} \in \mathbb{K}^{m \times p}$ y $\mathbf{B} \in \mathbb{K}^{p \times n}$ como la matriz $\mathbf{C} = \mathbf{A}\mathbf{B} \in \mathbb{K}^{m \times n}$, mediante:
+\[ [\mathbf{A}\mathbf{B}]_{ij} = c_{ij} = \sum_{k=1}^{p} a_{ik} b_{kj} \]
+para $1 \leq i \leq m$ y $1 \leq j \leq n$ \citep{Bishop2006}.
+\emph{Nota:} Definimos el producto $\mathbf{A}\mathbf{B}$ solo si el número de columnas de $\mathbf{A}$ es igual al número de filas de $\mathbf{B}$.
+\end{definition}
+
+El producto matricial posee propiedades importantes, aunque no es conmutativo en general \citep{Strang2016}.
+
+\begin{proposition}[Propiedades del Producto Matricial]
+\label{prop:matrix_product_properties_general}
+Sean $\mathbf{A}, \mathbf{B}, \mathbf{C}$ matrices de tamaños compatibles para que las operaciones estén definidas, y $c$ un escalar. Nosotros establecemos las siguientes propiedades \citep{Noble1988}:
+\begin{enumerate}
+    \item Asociatividad: $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$
+    \item Distributividad: $\mathbf{A}(\mathbf{B}+\mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}$ y $(\mathbf{A}+\mathbf{B})\mathbf{C} = \mathbf{A}\mathbf{C} + \mathbf{B}\mathbf{C}$
+    \item Compatibilidad escalar: $c(\mathbf{A}\mathbf{B}) = (c\mathbf{A})\mathbf{B} = \mathbf{A}(c\mathbf{B})$
+    \item No Conmutatividad general: $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$ en general.
+\end{enumerate}
+\end{proposition}
+
+Además del producto matricial estándar, a menudo resulta útil realizar operaciones elemento a elemento.
+
+\begin{definition}[Producto Elemento a Elemento - Hadamard]
+\label{def:hadamard_product_general}
+Dadas $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$ (mismo tamaño), definimos su \textbf{producto elemento a elemento} o \textbf{producto de Hadamard} como la matriz $\mathbf{A} \odot \mathbf{B} \in \mathbb{K}^{m \times n}$ mediante:
+\[ [\mathbf{A} \odot \mathbf{B}]_{ij} = a_{ij} \cdot b_{ij} \]
+Este producto es mencionado en contextos de aprendizaje profundo \citep{GBC16}.
+\end{definition}
+
+Otra operación fundamental es la transposición, que intercambia filas por columnas.
+
+\begin{definition}[Matriz Traspuesta]
+\label{def:transpose_general}
+Dada $\mathbf{A} \in \mathbb{K}^{m \times n}$, definimos su \textbf{matriz traspuesta}, $\mathbf{A}^T \in \mathbb{K}^{n \times m}$, mediante:
+\[ [\mathbf{A}^T]_{ij} = a_{ji} \]
+\citep{Strang2016}.
+\end{definition}
+
+La transposición tiene propiedades que interactúan con las operaciones matriciales.
+
+\begin{proposition}[Propiedades de la Traspuesta]
+\label{prop:transpose_properties_general}
+Sean $\mathbf{A}, \mathbf{B}$ matrices de tamaños compatibles para que las operaciones estén definidas, y $c$ un escalar. Nosotros enunciamos las siguientes propiedades \citep{Bishop2006}:
+\begin{enumerate}
+    \item $(\mathbf{A}^T)^T = \mathbf{A}$
+    \item $(\mathbf{A}+\mathbf{B})^T = \mathbf{A}^T + \mathbf{B}^T$
+    \item $(c\mathbf{A})^T = c\mathbf{A}^T$
+    \item $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T$
+\end{enumerate}
+\end{proposition}
+
+\subsection{Tensores y Normas}
+\label{subsec:tensors_norms}
+
+Expandiendo la noción de matrices, los tensores nos permiten representar datos y operaciones en dimensiones arbitrarias, un concepto fundamental en el aprendizaje automático moderno. Para un tratamiento más formal sobre tensores y sus descomposiciones, se puede consultar a \citet{KoldaBader2009}.
+
+\begin{definition}[Tensor y Orden]
+Un \textbf{tensor} $\mathbf{A}$ de \textbf{orden} $k$ (o grado $k$) sobre el campo de los números reales $\mathbb{R}$ es una generalización de escalares ($k=0$), vectores ($k=1$) y matrices ($k=2$). Lo podemos representar como un array multidimensional cuyos elementos direccionamos usando $k$ índices. Si las dimensiones a lo largo de cada índice son $d_1, d_2, \dots, d_k$, entonces el tensor pertenece al espacio $\mathbb{R}^{d_1 \times d_2 \times \dots \times d_k}$. Denotamos un elemento del tensor $\mathbf{A}$ usando la notación de índices como $[\mathbf{A}]_{i_1 i_2 \dots i_k}$, donde cada índice $i_j$ varía sobre la extensión de la $j$-ésima dimensión (i.e., $1 \le i_j \le d_j$) \citep{GBC16}.
+\end{definition}
+
+Extendemos de manera natural a los tensores las operaciones elemento a elemento definidas para matrices.
+
+\begin{definition}[Operaciones Elemento a Elemento para Tensores]
+Sean $\mathbf{A}, \mathbf{B}$ dos tensores del mismo orden $k$ y con idénticas dimensiones $d_1 \times \dots \times d_k$. Sea $c \in \mathbb{R}$ un escalar y $f: \mathbb{R} \to \mathbb{R}$ una función escalar. Definimos \citep{GBC16}:
+\begin{itemize}
+    \item \textbf{Suma/Resta:} $\mathbf{C} = \mathbf{A} \pm \mathbf{B}$ con $[\mathbf{C}]_{i_1 \dots i_k} = [\mathbf{A}]_{i_1 \dots i_k} \pm [\mathbf{B}]_{i_1 \dots i_k}$.
+    \item \textbf{Multiplicación por Escalar:} $\mathbf{C} = c\mathbf{A}$ con $[\mathbf{C}]_{i_1 \dots i_k} = c \cdot [\mathbf{A}]_{i_1 \dots i_k}$.
+    \item \textbf{Producto de Hadamard:} $\mathbf{C} = \mathbf{A} \odot \mathbf{B}$ con $[\mathbf{C}]_{i_1 \dots i_k} = [\mathbf{A}]_{i_1 \dots i_k} \cdot [\mathbf{B}]_{i_1 \dots i_k}$ (\Cref{def:hadamard_product_general} generalizada).
+    \item \textbf{Aplicación de Función Escalar:} $f(\mathbf{A})$ con $[f(\mathbf{A})]_{i_1 \dots i_k} = f([\mathbf{A}]_{i_1 \dots i_k})$.
+\end{itemize}
+\end{definition}
+
+Para medir la "magnitud" de un tensor o de los errores entre tensores, utilizamos el concepto de norma \citep{GBC16}.
+
+\begin{definition}[Norma $L_p$ de un Tensor]
+\label{def:lp_norm}
+Definimos la \textbf{norma $L_p$} de un tensor $\mathbf{A} \in \mathbb{R}^{d_1 \times \dots \times d_k}$, para $1 \le p < \infty$, como:
+\[ ||\mathbf{A}||_p = \left( \sum_{i_1=1}^{d_1} \dots \sum_{i_k=1}^{d_k} \lvert [\mathbf{A}]_{i_1 \dots i_k} \rvert^p \right)^{1/p} \]
+donde $[\mathbf{A}]_{i_1 \dots i_k}$ denota el elemento del tensor $\mathbf{A}$ correspondiente a los índices $i_1, \dots, i_k$.
+Para $p=\infty$, la norma $L_\infty$ (también conocida como norma del máximo) es el máximo valor absoluto de sus elementos:
+\[ ||\mathbf{A}||_\infty = \max_{i_1, \dots, i_k} \lvert [\mathbf{A}]_{i_1 \dots i_k} \rvert \]
+Casos particulares importantes son la \textbf{norma $L_1$} ($p=1$), que es la suma de los valores absolutos de todos los elementos, y la \textbf{norma $L_2$} ($p=2$). Para matrices (tensores de orden $k=2$), la norma $L_2$ es comúnmente conocida como la \textbf{norma de Frobenius} \citep{GolubVanLoan2013, Bishop2006}.
+\end{definition}
+
+La norma $L_1$ suma los valores absolutos de los elementos. La norma $L_2$ (o norma de Frobenius para matrices) está intrínsecamente relacionada con el producto escalar. Si consideramos el tensor $\mathbf{A}$ como un vector aplanado $\text{vec}(\mathbf{A})$ en un espacio de dimensión $d_1 \times \dots \times d_k$, entonces la norma $L_2$ al cuadrado es el producto escalar de este vector consigo mismo:
+\[ ||\mathbf{A}||_2^2 = \sum_{i_1=1}^{d_1} \dots \sum_{i_k=1}^{d_k} ([\mathbf{A}]_{i_1 \dots i_k})^2 = \langle \text{vec}(\mathbf{A}), \text{vec}(\mathbf{A}) \rangle \]
+Para una matriz $\mathbf{M} \in \mathbb{R}^{m \times n}$, la norma de Frobenius al cuadrado también puede expresarse como la traza del producto de la matriz por su traspuesta \citep{GolubVanLoan2013}:
+\[ ||\mathbf{M}||_F^2 = ||\mathbf{M}||_2^2 = \sum_{i=1}^{m} \sum_{j=1}^{n} ([\mathbf{M}]_{ij})^2 = \text{Tr}(\mathbf{M}^T \mathbf{M}) = \text{Tr}(\mathbf{M} \mathbf{M}^T) \]
+Ambas normas, $L_1$ y $L_2$, son cruciales cuando definimos métricas de error y funciones de regularización en aprendizaje automático \citep{Bishop2006}.
+
+\paragraph{Ejemplo de cálculo de la norma $L_2$ (Norma de Frobenius):}
+Consideremos la siguiente matriz $\mathbf{B} \in \mathbb{R}^{2 \times 3}$:
+\[ \mathbf{B} = \begin{pmatrix} 1 & -2 & 0 \\ 3 & 4 & -1 \end{pmatrix} \]
+Calculamos la norma $L_2$ (o norma de Frobenius) de $\mathbf{B}$ como:
+\begin{align*}
+||\mathbf{B}||_2 &= \left( \sum_{i=1}^{2} \sum_{j=1}^{3} \lvert [\mathbf{B}]_{ij} \rvert^2 \right)^{1/2} \\
+&= \sqrt{1^2 + (-2)^2 + 0^2 + 3^2 + 4^2 + (-1)^2} \\
+&= \sqrt{1 + 4 + 0 + 9 + 16 + 1} \\
+&= \sqrt{31}
+\end{align*}
+
+\section{Análisis Matemático}
+\label{sec:mathematical_analysis}
+
+El Análisis Matemático, particularmente el cálculo diferencial, nos proporciona herramientas para estudiar la variación y el cambio, lo cual es esencial para comprender cómo se comportan las funciones y cómo optimizarlas. Textos clásicos como los de \citet{Rudin1976} y \citet{Apostol1974} cubren estos temas en profundidad.
+
+\subsection{Funciones y Continuidad}
+\label{subsec:functions_continuity}
+
+Comenzamos con el concepto fundamental de función, una regla que asigna a cada elemento de un conjunto de partida un único elemento de un conjunto de llegada.
+
+\begin{definition}[Función]
+\label{def:function}
+Una \textbf{función} $f$ de un conjunto $A$ a un conjunto $B$, que denotamos $f: A \to B$, es una regla que asigna a cada elemento $x \in A$ un único elemento $f(x) \in B$. Llamamos a $A$ el \textbf{dominio} de $f$, y a $B$ el \textbf{codominio}. La \textbf{imagen} de $f$, denotada $\text{Im}(f)$, es el conjunto $\{f(x) | x \in A\} \subseteq B$ \citep{Apostol1974}.
+\end{definition}
+
+En el contexto que nos ocupa, trabajaremos principalmente con funciones cuyo dominio y codominio son subconjuntos de espacios euclídeos $\mathbb{R}^n$ o $\mathbb{R}^m$. La continuidad, un concepto clave, describe funciones cuyas salidas varían de manera suave con pequeñas variaciones en sus entradas \citep{Rudin1976}.
+
+\begin{definition}[Continuidad]
+\label{def:continuity}
+Decimos que una función $f: A \subseteq \mathbb{R}^n \to \mathbb{R}^m$ es \textbf{continua} en un punto $\mathbf{a} \in A$ si para todo $\epsilon > 0$, existe un $\delta > 0$ tal que si $\mathbf{x} \in A$ y $||\mathbf{x} - \mathbf{a}||_2 < \delta$, entonces $||f(\mathbf{x}) - f(\mathbf{a})||_2 < \epsilon$. Si $f$ es continua en todos los puntos de $A$, decimos que $f$ es continua en $A$. Esta es la definición $\epsilon-\delta$ estándar de continuidad \citep{Apostol1974, Rudin1976}.
+\end{definition}
+
+\subsection{Cálculo Diferencial Multivariable}
+\label{subsec:multivariable_calculus_general}
+
+Extendemos la noción de derivada a funciones de varias variables o funciones con valores vectoriales, siguiendo el tratamiento de autores como \citet{Apostol1974}.
+
+\begin{definition}[Derivada Parcial]
+\label{def:partial_derivative_general}
+Sea $f: U \subseteq \mathbb{R}^n \to \mathbb{R}$ definida en un conjunto abierto $U$. Definimos la \textbf{derivada parcial} de $f$ respecto a la $i$-ésima variable $x_i$ en un punto $\mathbf{a} \in U$ como el límite:
+\[ \frac{\partial f}{\partial x_i}(\mathbf{a}) = \lim_{h \to 0} \frac{f(\mathbf{a} + h\mathbf{e}_i) - f(\mathbf{a})}{h} \]
+si el límite existe, donde $\mathbf{e}_i$ es el $i$-ésimo vector canónico de la base estándar de $\mathbb{R}^n$ \citep{Rudin1976}.
+\end{definition}
+
+Es importante destacar que la mera existencia de todas las derivadas parciales de una función $f$ en un punto $\mathbf{a}$ no garantiza que $f$ sea diferenciable en $\mathbf{a}$. La diferenciabilidad es una condición más fuerte que implica que la función puede ser bien aproximada localmente por una transformación lineal (su diferencial) \citep{Apostol1974, Rudin1976}.
+
+Una condición suficiente común para la diferenciabilidad es que la función sea de \textbf{clase $C^1$}. Decimos que una función $f$ es de clase $C^1$ en un conjunto abierto $U$ si todas sus derivadas parciales $\frac{\partial f}{\partial x_i}$ existen en $U$ y son, además, funciones continuas en $U$. Si las derivadas parciales de $f$ existen en un entorno de $\mathbf{a}$ y son continuas en $\mathbf{a}$ mismo, entonces $f$ es diferenciable en $\mathbf{a}$ \citep{Apostol1974}.
+
+\paragraph{Contraejemplo:}
+Consideremos la función $f: \mathbb{R}^2 \to \mathbb{R}$ definida por:
+\[ f(x,y) = \begin{cases} \frac{xy}{x^2+y^2} & \text{si } (x,y) \neq (0,0) \\ 0 & \text{si } (x,y) = (0,0) \end{cases} \]
+Calculamos las derivadas parciales en el origen $(0,0)$:
+\begin{align*}
+\frac{\partial f}{\partial x}(0,0) &= \lim_{h \to 0} \frac{f(h,0) - f(0,0)}{h} = \lim_{h \to 0} \frac{(h \cdot 0)/(h^2+0^2) - 0}{h} = \lim_{h \to 0} \frac{0}{h} = 0 \\
+\frac{\partial f}{\partial y}(0,0) &= \lim_{h \to 0} \frac{f(0,h) - f(0,0)}{h} = \lim_{h \to 0} \frac{(0 \cdot h)/(0^2+h^2) - 0}{h} = \lim_{h \to 0} \frac{0}{h} = 0
+\end{align*}
+Ambas derivadas parciales existen en $(0,0)$ y son iguales a cero. Sin embargo, la función $f$ no es continua en $(0,0)$, como se discute en \citet{Apostol1974} o \citet{Rudin1976} para ejemplos similares. Si nos acercamos al origen a lo largo de la recta $y=mx$, obtenemos:
+\[ \lim_{x \to 0} f(x,mx) = \lim_{x \to 0} \frac{x(mx)}{x^2+(mx)^2} = \lim_{x \to 0} \frac{mx^2}{x^2(1+m^2)} = \frac{m}{1+m^2} \]
+Dado que este límite depende de la pendiente $m$ de la trayectoria de aproximación, el límite general $\lim_{(x,y) \to (0,0)} f(x,y)$ no existe. Como la función no es continua en $(0,0)$, no puede ser diferenciable en $(0,0)$, a pesar de que todas sus derivadas parciales existan en ese punto.
+
+Para funciones de $\mathbb{R}^n$ a $\mathbb{R}$, podemos agrupar todas las derivadas parciales en un vector llamado gradiente.
+
+\begin{definition}[Gradiente]
+\label{def:gradient_general}
+Sea $f: U \subseteq \mathbb{R}^n \to \mathbb{R}$ una función real-valorada tal que todas sus derivadas parciales existen en un punto $\mathbf{a} \in U$. Definimos el \textbf{vector gradiente} de $f$ en $\mathbf{a}$, denotado $\nabla f(\mathbf{a})$, como el vector en $\mathbb{R}^n$ cuyas componentes son las derivadas parciales de $f$ en $\mathbf{a}$:
+\[ \nabla f(\mathbf{a}) = \left(\frac{\partial f}{\partial x_1}(\mathbf{a}), \frac{\partial f}{\partial x_2}(\mathbf{a}), \dots, \frac{\partial f}{\partial x_n}(\mathbf{a})\right)^T \]
+Si $f$ es diferenciable en $\mathbf{a}$, el gradiente $\nabla f(\mathbf{a})$ indica la dirección y magnitud del mayor aumento local de $f$ en el punto $\mathbf{a}$ \citep{Apostol1974, Bishop2006}.
+\end{definition}
+
+Cuando el codominio de la función es vectorial ($\mathbb{R}^m$), organizamos las derivadas parciales en una matriz.
+
+\begin{proposition}[Diferenciabilidad y Gradiente para Campos Escalares]
+\label{prop:diff_grad_scalar}
+Para un campo escalar $f: \Omega \to \mathbb{R}$ donde $\Omega$ es un abierto de $\mathbb{R}^N$, y un punto $a \in \Omega$, las siguientes afirmaciones son equivalentes \citep{Apostol1974}:
+    \begin{enumerate}
+        \item $f$ es diferenciable en $a$.
+        \item $f$ es parcialmente derivable en $a$ (es decir, existe $\nabla f(a)$) y verificamos que:
+              \begin{equation} \label{eq:diff_limit_condition_scalar}
+              \lim_{\mathbf{x} \to \mathbf{a}} \frac{f(\mathbf{x}) - f(\mathbf{a}) - \langle \nabla f(\mathbf{a}), \mathbf{x}-\mathbf{a} \rangle}{\lVert \mathbf{x}-\mathbf{a} \rVert_2} = 0
+              \end{equation}
+              donde $\langle \cdot, \cdot \rangle$ denota el producto escalar usual en $\mathbb{R}^N$.
+    \end{enumerate}
+En caso de que se cumplan (i) y (ii), tenemos que la diferencial de $f$ en $a$ aplicada a un vector $v \in \mathbb{R}^N$, denotada $Df(a)v$, es:
+    \begin{equation} \label{eq:diff_as_grad_dot_prod_scalar}
+    Df(a)v = \langle \nabla f(a), v \rangle \quad (\text{también escrito como } \nabla f(a) \cdot v \text{ o } (\nabla f(a))^T v)
+    \end{equation}
+\end{proposition}
+
+\begin{definition}[Matriz Jacobiana]
+\label{def:jacobian_general}
+Sea $\mathbf{f}: U \subseteq \mathbb{R}^n \to \mathbb{R}^m$ una función vectorial $\mathbf{f}(\mathbf{x}) = (f_1(\mathbf{x}), \dots, f_m(\mathbf{x}))^T$, donde cada $f_i: U \subseteq \mathbb{R}^n \to \mathbb{R}$. Si todas las derivadas parciales $\frac{\partial f_i}{\partial x_j}(\mathbf{x})$ existen en un punto $\mathbf{x} \in U$, definimos la \textbf{matriz Jacobiana} de $\mathbf{f}$ en $\mathbf{x}$, denotada $\mathbf{J}_{\mathbf{f}}(\mathbf{x})$, como la matriz de tamaño $m \times n$ cuyas entradas son:
+\[ [\mathbf{J}_{\mathbf{f}}(\mathbf{x})]_{ij} = \frac{\partial f_i}{\partial x_j}(\mathbf{x}) \]
+Notar que si $m=1$, entonces $\mathbf{f}$ es una función real-valorada $f$, y la matriz Jacobiana es el vector gradiente traspuesto: $\mathbf{J}_{f}(\mathbf{x}) = (\nabla f(\mathbf{x}))^T$ \citep{Apostol1974, Bishop2006}.
+\end{definition}
+
+Una regla fundamental para derivar funciones compuestas es la regla de la cadena \citep{Apostol1974, Rudin1976}.
+
+\begin{theorem}[Regla de la Cadena Multivariable]
+\label{thm:chain_rule_general}
+Sean $U \subseteq \mathbb{R}^n$, $V \subseteq \mathbb{R}^m$ conjuntos abiertos. Sean $\mathbf{g}: U \to V$ diferenciable en $\mathbf{x}_0 \in U$, y $\mathbf{f}: V \to \mathbb{R}^p$ diferenciable en $\mathbf{y}_0 = \mathbf{g}(\mathbf{x}_0) \in V$. La composición $\mathbf{h} = \mathbf{f} \circ \mathbf{g}: U \to \mathbb{R}^p$ es diferenciable en $\mathbf{x}_0$, y su matriz Jacobiana en $\mathbf{x}_0$ es el producto de las matrices Jacobianas de $\mathbf{f}$ y $\mathbf{g}$:
+\[ \mathbf{J}_{\mathbf{h}}(\mathbf{x}_0) = \mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0) \]
+\citep{Apostol1974}.
+\end{theorem}
+
+\begin{proof}
+Sea $\mathbf{h}(\mathbf{x}) = \mathbf{f}(\mathbf{g}(\mathbf{x}))$. Escribimos las funciones componentes: $\mathbf{x} = (x_1, \dots, x_n)^T$, $\mathbf{y} = \mathbf{g}(\mathbf{x}) = (g_1(\mathbf{x}), \dots, g_m(\mathbf{x}))^T$, y $\mathbf{z} = \mathbf{h}(\mathbf{x}) = \mathbf{f}(\mathbf{y}) = (f_1(\mathbf{y}), \dots, f_p(\mathbf{y}))^T$.
+Queremos encontrar la entrada $(k,j)$ de la matriz Jacobiana $\mathbf{J}_{\mathbf{h}}(\mathbf{x}_0)$, que por definición es $\frac{\partial h_k}{\partial x_j}(\mathbf{x}_0)$. La función $h_k$ es $f_k(g_1(\mathbf{x}), \dots, g_m(\mathbf{x}))$.
+Aplicando la regla de la cadena del cálculo multivariable para funciones escalares, como se detalla en \citet{Apostol1974}, calculamos la derivada parcial de $h_k$ con respecto a $x_j$ como:
+\[ \frac{\partial h_k}{\partial x_j}(\mathbf{x}_0) = \sum_{l=1}^{m} \frac{\partial f_k}{\partial y_l}(\mathbf{y}_0) \frac{\partial g_l}{\partial x_j}(\mathbf{x}_0) \]
+donde $\mathbf{y}_0 = \mathbf{g}(\mathbf{x}_0)$.
+Examinamos el lado derecho de la ecuación. El término $\frac{\partial f_k}{\partial y_l}(\mathbf{y}_0)$ es la entrada $(k,l)$ de la matriz Jacobiana $\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0)$. El término $\frac{\partial g_l}{\partial x_j}(\mathbf{x}_0)$ es la entrada $(l,j)$ de la matriz Jacobiana $\mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)$.
+La suma $\sum_{l=1}^{m} [\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0)]_{kl} [\mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)]_{lj}$ es precisamente la definición de la entrada $(k,j)$ del producto matricial $\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)$.
+Por lo tanto, hemos demostrado que:
+\[ [\mathbf{J}_{\mathbf{h}}(\mathbf{x}_0)]_{kj} = \frac{\partial h_k}{\partial x_j}(\mathbf{x}_0) = [\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)]_{kj} \]
+Como esto es válido para todo $1 \le k \le p$ y $1 \le j \le n$, las matrices son iguales: $\mathbf{J}_{\mathbf{h}}(\mathbf{x}_0) = \mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)$.
+(Nota: Esta prueba asume la validez de la regla de la cadena para derivar una función escalar $f_k$ compuesta con una función vectorial $\mathbf{g}$. Una prueba más rigurosa se basa en la definición de diferenciabilidad mediante aproximaciones lineales y el manejo cuidadoso de los términos de error, como se encuentra en \citet{Apostol1974} o \citet{Rudin1976}).
+\end{proof}
+
+Esta regla es crucial para el cálculo de gradientes en funciones compuestas, una operación recurrente en algoritmos de optimización, como el de retropropagación \citep{Rumelhart1986, GBC16}.
+
+\section{Análisis Funcional}
+
+Introducimos algunos conceptos del Análisis Funcional, que son cruciales para la demostración del Teorema de Aproximación Universal. Textos de referencia para esta área son \citet{Kreyszig1989} y \citet{Rudin1991}.
+
+\begin{definition}[Espacio de Funciones Continuas $C(K)$]
+Sea $K$ un espacio topológico compacto Hausdorff (en nuestro caso, $I_n = [0,1]^n \subset \mathbb{R}^n$). Definimos el espacio $C(K)$ como el conjunto de todas las funciones continuas $f: K \to \mathbb{R}$ (o $\mathbb{C}$). Dotamos a $C(K)$ de la estructura de espacio de Banach con la \textbf{norma del supremo} (o norma uniforme):
+\[ \norm{f}_{\infty} = \sup_{\mathbf{x} \in K} \abs{f(\mathbf{x})} \]
+\citep{Kreyszig1989}.
+\end{definition}
+
+\begin{definition}[Densidad]
+Decimos que un subconjunto $S$ de un espacio normado $X$ (e.g., $C(K)$) es \textbf{denso} en $X$ si la clausura de $S$, denotada $\overline{S}$, es igual a $X$. Esto equivale a decir que para todo $f \in X$ y todo $\epsilon > 0$, existe un $g \in S$ tal que $\norm{f-g}_{\infty} < \epsilon$ (usando la norma del espacio ambiente) \citep{Rudin1991}.
+\end{definition}
+
+\begin{definition}[Funcional Lineal Acotado]
+Sea $X$ un espacio vectorial normado sobre $\mathbb{K}$ ($\mathbb{R}$ o $\mathbb{C}$). Definimos un \textbf{funcional lineal} como una aplicación $L: X \to \mathbb{K}$ tal que para todo $x,y \in X$ y todo $\alpha \in \mathbb{K}$:
+\begin{enumerate}
+    \item $L(x+y) = L(x) + L(y)$ (aditividad)
+    \item $L(\alpha x) = \alpha L(x)$ (homogeneidad)
+\end{enumerate}
+Decimos que un funcional lineal $L$ es \textbf{acotado} si existe una constante $M \ge 0$ tal que $\abs{L(x)} \le M \norm{x}$ para todo $x \in X$. El conjunto de todos los funcionales lineales acotados sobre $X$ conforma el espacio dual $X^*$ \citep{Kreyszig1989}.
+\end{definition}
+
+\begin{theorem}[Teorema de Hahn-Banach (Corolario para subespacios)]
+\label{thm:hahn_banach}
+\citep[Thm. 4.3-2]{Kreyszig1989}. Sea $S$ un subespacio de un espacio vectorial normado $X$. Si $f \in X$ y la distancia de $f$ a $S$, $d(f,S) = \inf_{s \in S} \norm{f-s} = \delta > 0$ (i.e., $f \notin \overline{S}$), entonces existe un funcional lineal acotado $L \in X^*$ tal que:
+\begin{enumerate}
+    \item $L(s) = 0$ para todo $s \in S$ (i.e., $L$ anula a $S$).
+    \item $L(f) = \delta$ (o, más generalmente, $L(f) \neq 0$).
+    \item $\norm{L} = 1$.
+\end{enumerate}
+En particular, si $S$ es un subespacio propio cerrado de $X$, existe un $L \in X^*$ no nulo tal que $L(s)=0$ para todo $s \in S$.
+\end{theorem}
+
+\begin{definition}[Medida de Borel Signada Regular]
+Sea $K$ un espacio topológico compacto Hausdorff. Una \textbf{medida de Borel signada} $\mu$ sobre $K$ es una función de conjunto $\mu: \mathcal{B}(K) \to \mathbb{R} \cup \{-\infty, \infty\}$ (donde $\mathcal{B}(K)$ es la $\sigma$-álgebra de Borel de $K$) que es $\sigma$-aditiva.
+Decimos que una medida de Borel signada $\mu$ es \textbf{regular} si para todo conjunto de Borel $B$:
+\begin{align*}
+    \abs{\mu(B)} &= \inf \{ \mu(U) : B \subseteq U, U \text{ abierto} \} \\
+    &= \sup \{ \mu(C) : C \subseteq B, C \text{ compacto} \} \quad (\text{para medidas positivas, con ajuste para signadas})
+\end{align*}
+El espacio de todas las medidas de Borel signadas regulares finitas sobre $K$ lo denotamos $M(K)$ \citep[Definición 6.2, 6.4]{Rudin1987}.
+\end{definition}
+
+\begin{theorem}[Teorema de Representación de Riesz-Markov-Kakutani]
+\label{thm:riesz_markov}
+\citep[Thm. 6.19]{Rudin1987}. Sea $K$ un espacio topológico compacto Hausdorff. El espacio dual de $C(K)$, denotado $(C(K))^*$, es isométricamente isomorfo al espacio $M(K)$ de las medidas de Borel signadas regulares finitas sobre $K$. Es decir, para cada funcional lineal acotado $L \in (C(K))^*$, existe una única medida $\mu \in M(K)$ tal que:
+\[ L(f) = \int_K f(\mathbf{x}) d\mu(\mathbf{x}) \quad \text{para todo } f \in C(K) \]
+y $\norm{L} = \norm{\mu}_{TV}$ (norma de variación total de $\mu$).
+\end{theorem}
+
+\begin{theorem}[Teorema de Convergencia Dominada de Lebesgue]
+\label{thm:lebesgue_dct}
+\citep[Thm. 1.34]{Rudin1987}. Sea $(X, \mathcal{M}, \mu)$ un espacio de medida. Si $\{f_k\}_{k=1}^\infty$ es una secuencia de funciones medibles $f_k: X \to \mathbb{R}$ tal que $f_k(\mathbf{x}) \to f(\mathbf{x})$ casi en todas partes para $\mathbf{x} \in X$ cuando $k \to \infty$, y existe una función integrable $g: X \to [0, \infty]$ tal que $\abs{f_k(\mathbf{x})} \le g(\mathbf{x})$ casi en todas partes para todo $k$, entonces $f$ es integrable y
+\[ \lim_{k \to \infty} \int_X f_k d\mu = \int_X f d\mu \]
+\end{theorem}
+
+
+\section{Probabilidad y Estadística}
+\label{sec:probability_statistics}
+
+La Probabilidad y la Estadística nos permiten modelar la incertidumbre, describir conjuntos de datos y realizar inferencias. La probabilidad proporciona el lenguaje para describir fenómenos aleatorios, mientras que la estadística se ocupa de la recolección, análisis, interpretación y presentación de datos. Textos de referencia incluyen \citet{CasellaBerger2002}, \citet{Ross2014}, \citet{DeGrootSchervish2012} y \citet{rohatgi_introduction_nodate}.
+
+\subsection{Estadística Descriptiva}
+\label{subsec:descriptive_statistics_general}
+
+La estadística descriptiva resume y describe las características principales de un conjunto de datos.
+
+\begin{definition}[Media Aritmética]
+\label{def:mean_general}
+Dada una colección finita de $N$ números reales $\{x_1, \dots, x_N\} \subset \mathbb{R}$, definimos la \textbf{media aritmética} como $\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i$ \citep{CasellaBerger2002}.
+\end{definition}
+
+\begin{definition}[Mediana]
+\label{def:median_general}
+Dada una colección finita de $N$ números reales $\{x_1, \dots, x_N\} \subset \mathbb{R}$, y su versión ordenada no decreciente $x_{(1)} \leq x_{(2)} \leq \dots \leq x_{(N)}$, definimos la \textbf{mediana} $Me$ como el valor central. Formalmente, si $N$ es impar, $Me = x_{((N+1)/2)}$. Si $N$ es par, $Me = \frac{1}{2}(x_{(N/2)} + x_{(N/2+1)})$ \citep{DeGrootSchervish2012}.
+\end{definition}
+
+La media y la mediana son medidas de centralización que buscan representar el valor típico de un conjunto de datos. Para medir la dispersión o variabilidad de los datos alrededor de la media, utilizamos la varianza y la desviación estándar.
+
+\begin{definition}[Varianza Muestral]
+\label{def:sample_variance}
+Dada una colección finita de $N$ números reales $\{x_1, \dots, x_N\} \subset \mathbb{R}$ con media aritmética $\bar{x}$, definimos la \textbf{varianza muestral}, denotada $s^2$ o $\sigma^2_{\text{muestra}}$, como el promedio de las diferencias al cuadrado con respecto a la media:
+\[ s^2 = \frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2 \]
+El uso del denominador $N-1$ en lugar de $N$ proporciona un estimador insesgado de la varianza poblacional cuando los datos se consideran una muestra de una población mayor \citep{CasellaBerger2002, Ross2014}. Si el conjunto de $N$ datos constituye la totalidad de la población, se utiliza $N$ en el denominador para calcular la varianza poblacional $\sigma^2$.
+\end{definition}
+
+\begin{definition}[Desviación Estándar Muestral]
+\label{def:sample_std_dev}
+Dada una colección finita de $N$ números reales $\{x_1, \dots, x_N\} \subset \mathbb{R}$, la \textbf{desviación estándar muestral}, denotada $s$ o $\sigma_{\text{muestra}}$, es la raíz cuadrada positiva de la varianza muestral:
+\[ s = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2} \]
+La desviación estándar se expresa en las mismas unidades que los datos originales, lo que facilita su interpretación como una medida típica de la distancia de las observaciones a la media \citep{DeGrootSchervish2012}.
+\end{definition}
+
+Mientras que la media (\Cref{def:mean_general}) y la mediana son medidas de centralización que buscan representar el valor típico de un conjunto de datos, la varianza y la desviación estándar cuantifican la dispersión o variabilidad de esos datos alrededor de la media.
+
+\subsection{Fundamentos de Probabilidad}
+\label{subsec:probability_foundations_general}
+
+La teoría de la probabilidad proporciona un marco para cuantificar la incertidumbre, basada en los axiomas de Kolmogorov \citep{Ross2014}.
+
+\begin{definition}[Espacio de Probabilidad y Eventos]
+\label{def:prob_space_general}
+Definimos un \textbf{espacio de probabilidad} como una terna $(\Omega, \mathcal{F}, P)$, donde $\Omega$ es el \textbf{espacio muestral} (el conjunto de todos los posibles resultados de un experimento aleatorio), $\mathcal{F}$ es una $\sigma$-álgebra de \textbf{eventos} (subconjuntos de $\Omega$ a los que podemos asignar una probabilidad), y $P: \mathcal{F} \to [0, 1]$ es una \textbf{medida de probabilidad} que satisface los axiomas de Kolmogorov \citep{Ross2014}.
+\end{definition}
+
+\begin{definition}[Probabilidad de un Evento]
+\label{def:event_prob_general}
+Definimos la \textbf{probabilidad} de un evento $A \in \mathcal{F}$, denotada $P(A)$, como un número en el intervalo $[0, 1]$ que cuantifica la verosimilitud de que ocurra $A$.
+\end{definition}
+
+\begin{definition}[Variable Aleatoria]
+\label{def:random_variable_general}
+Definimos una \textbf{variable aleatoria} (v.a.) $X$ como una función medible $X: \Omega \to \mathbb{R}$. Esta transforma los resultados del espacio muestral en valores numéricos. Podemos considerar también vectores aleatorios ($X: \Omega \to \mathbb{R}^n$) o matrices aleatorias ($X: \Omega \to \mathbb{R}^{m \times n}$) \citep{CasellaBerger2002}.
+\end{definition}
+
+Clasificamos las variables aleatorias como discretas o continuas, dependiendo del conjunto de valores que pueden tomar. A continuación, definiremos cada una de estas variables con el objetivo de caracterizar su comportamiento.
+
+\begin{definition}[Variable Aleatoria Discreta]
+\label{def:discrete_random_variable}
+Decimos que una variable aleatoria $X$ es \textbf{discreta} si su conjunto de posibles valores es finito o contablemente infinito. Describimos la distribución de probabilidad de una v.a. discreta mediante su \textbf{función de masa de probabilidad} (FMP), $p_X(x) = P(X=x)$, que asigna una probabilidad a cada valor posible $x$. La FMP satisface $p_X(x) \ge 0$ para todo $x$ y $\sum_x p_X(x) = 1$ \citep{Ross2014}.
+\end{definition}
+
+\begin{definition}[Variable Aleatoria Continua]
+\label{def:continuous_random_variable}
+Decimos que una variable aleatoria $X$ es \textbf{continua} si toma valores en un intervalo de números reales (o $\mathbb{R}$). Describimos la distribución de probabilidad de una v.a. continua mediante su \textbf{función de densidad de probabilidad} (FDP), $f_X(x)$, tal que $P(a \le X \le b) = \int_a^b f_X(x) dx$ para cualesquiera $a \le b$. La FDP satisface $f_X(x) \ge 0$ para todo $x$ y $\int_{-\infty}^\infty f_X(x) dx = 1$ \citep{DeGrootSchervish2012}.
+\end{definition}
+
+Un concepto crucial es cómo la información sobre un evento afecta la probabilidad de otro.
+
+\begin{definition}[Probabilidad Condicionada]
+\label{def:conditional_prob_general}
+Dados dos eventos $A, B \in \mathcal{F}$ con $P(B) > 0$, definimos la \textbf{probabilidad condicionada} de $A$ dado $B$, denotada $P(A|B)$, como:
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+Esta representa la probabilidad de que ocurra $A$ sabiendo que $B$ ha ocurrido \citep{Ross2014}.
+\end{definition}
+
+Relacionamos la probabilidad condicionada con el concepto de independencia.
+
+\begin{definition}[Independencia Estadística]
+\label{def:independence_general}
+Decimos que dos eventos $A, B \in \mathcal{F}$ son \textbf{estadísticamente independientes} si la ocurrencia de uno no altera la probabilidad del otro. Formalizamos esto como $P(A \cap B) = P(A)P(B)$. Si $P(B)>0$, una definición equivalente es $P(A|B) = P(A)$. Decimos que dos variables aleatorias $X$ e $Y$ son independientes si para cualesquiera conjuntos medibles $A, B \subseteq \mathbb{R}$, los eventos $\{X \in A\}$ e $\{Y \in B\}$ son independientes \citep{CasellaBerger2002}.
+\end{definition}
+
+\begin{proof}[Demostración de la equivalencia de las definiciones de independencia (si $P(B) > 0$)]
+Queremos demostrar que $P(A \cap B) = P(A)P(B) \iff P(A|B) = P(A)$, asumiendo $P(B)>0$.
+
+$(\Rightarrow)$: Supongamos que $P(A \cap B) = P(A)P(B)$.
+Por la definición de probabilidad condicionada (\Cref{def:conditional_prob_general}), tenemos:
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+Sustituyendo la hipótesis $P(A \cap B) = P(A)P(B)$:
+\[ P(A|B) = \frac{P(A)P(B)}{P(B)} \]
+Como $P(B) > 0$, podemos cancelar $P(B)$ en el numerador y denominador:
+\[ P(A|B) = P(A) \]
+
+$(\Leftarrow)$: Supongamos que $P(A|B) = P(A)$.
+Por la definición de probabilidad condicionada (\Cref{def:conditional_prob_general}):
+\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
+Sustituyendo la hipótesis $P(A|B) = P(A)$:
+\[ P(A) = \frac{P(A \cap B)}{P(B)} \]
+Multiplicando ambos lados por $P(B)$ (que es positivo y, por lo tanto, no cero):
+\[ P(A)P(B) = P(A \cap B) \]
+Esto completa la demostración de la equivalencia, como se puede encontrar en textos estándar de probabilidad \citep{Ross2014}.
+\end{proof}
+
+\subsection{Distribuciones de Probabilidad Discretas Comunes}
+
+Presentamos algunas distribuciones discretas fundamentales \citep{Ross2014, CasellaBerger2002}.
+
+\begin{definition}[Distribución Binomial]
+\label{def:binomial_distribution}
+La distribución Binomial describe el número de éxitos $k$ en una secuencia de $n$ ensayos de Bernoulli independientes e idénticamente distribuidos, cada uno con una probabilidad de éxito $p$.
+
+Sea $X$ una variable aleatoria que sigue una distribución Binomial, que denotamos como $X \sim \text{Binomial}(n, p)$ o $X \sim B(n, p)$. La \textbf{función de masa de probabilidad} (FMP) de $X$ para obtener exactamente $k$ éxitos en $n$ ensayos es:
+\[ P(X=k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+para $k = 0, 1, 2, \ldots, n$, donde:
+\begin{itemize}
+    \item $n$ es el número total de ensayos (un entero no negativo).
+    \item $k$ es el número de éxitos (un entero no negativo, $0 \le k \le n$).
+    \item $p$ es la probabilidad de éxito en un solo ensayo ($0 \le p \le 1$).
+    \item $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ es el coeficiente binomial.
+\end{itemize}
+La probabilidad de fracaso en un solo ensayo es $q = 1-p$ \citep{Ross2014}.
+\end{definition}
+
+\begin{definition}[Distribución Multinomial]
+\label{def:multinomial_distribution}
+La distribución Multinomial generaliza la distribución Binomial. Describe la probabilidad de obtener un conjunto específico de conteos para $K$ categorías mutuamente excluyentes, después de realizar $n$ ensayos independientes.
+
+Sean $X_1, X_2, \ldots, X_K$ variables aleatorias que representan el número de veces que ocurre cada una de las $K$ categorías en $n$ ensayos. El vector de conteos $\mathbf{x} = (x_1, x_2, \ldots, x_K)^T$ sigue una distribución Multinomial con parámetros $n$ (número de ensayos) y $\mathbf{p} = (p_1, p_2, \ldots, p_K)^T$ (vector de probabilidades de cada categoría), que denotamos como $\mathbf{X} \sim \text{Multinomial}(n, \mathbf{p})$.
+Las condiciones son:
+\begin{itemize}
+    \item $x_i$ es el número de ocurrencias de la categoría $i$ (entero no negativo).
+    \item $\sum_{i=1}^{K} x_i = n$.
+    \item $p_i$ es la probabilidad de que un ensayo resulte en la categoría $i$.
+    \item $\sum_{i=1}^{K} p_i = 1$ y $p_i \ge 0$ para todo $i=1, \ldots, K$.
+\end{itemize}
+La \textbf{función de masa de probabilidad} (FMP) conjunta de $X_1, \ldots, X_K$ es:
+\[ P(X_1=x_1, X_2=x_2, \ldots, X_K=x_K) = \frac{n!}{x_1! x_2! \cdots x_K!} p_1^{x_1} p_2^{x_2} \cdots p_K^{x_K} \]
+donde $\frac{n!}{x_1! x_2! \cdots x_K!}$ es el coeficiente multinomial.
+Si $K=2$, la distribución Multinomial se reduce a la \Cref{def:binomial_distribution} (con $x_1=k$, $x_2=n-k$, $p_1=p$, $p_2=1-p$) \citep{CasellaBerger2002}.
+\end{definition}
+
+\begin{definition}[Distribución Categórica]
+\label{def:categorical_distribution}
+La distribución Categórica (también conocida como distribución de Bernoulli generalizada o Multinoulli) es un caso especial de la \Cref{def:multinomial_distribution} donde realizamos un solo ensayo, es decir, $n=1$. Describe la probabilidad de que un solo evento pertenezca a una de $K$ categorías mutuamente excluyentes \citep{Bishop2006}.
+
+Sea $Y$ una variable aleatoria que sigue una distribución Categórica con parámetro $\mathbf{p} = (p_1, p_2, \ldots, p_K)^T$, que denotamos como $Y \sim \text{Categorical}(\mathbf{p})$.
+Las condiciones son:
+\begin{itemize}
+    \item $K$ es el número de categorías posibles.
+    \item $p_i$ es la probabilidad de que el resultado sea la categoría $i$.
+    \item $\sum_{i=1}^{K} p_i = 1$ y $p_i \ge 0$ para todo $i=1, \ldots, K$.
+\end{itemize}
+\end{definition}
+
+Estos fundamentos probabilísticos son indispensables para que comprendamos la aleatoriedad inherente en los datos y en los procesos de modelado.
+
+\section{Funciones Específicas: La Función Softmax}
+\label{subsec:softmax_general}
+
+Presentamos funciones no lineales con propiedades particulares que son relevantes en diversas aplicaciones, como la función Softmax, ampliamente utilizada en clasificación multiclase \citep{Bishop2006}. La \textbf{Softmax} (también llamada función Softmax) transforma un vector de números reales en un vector de números positivos que suman 1.
+
+\begin{definition}[Softmax]
+\label{def:softmax_general}
+Definimos la \textbf{Softmax} $\sigma: \mathbb{R}^K \to \mathbb{R}^K$ como la función que toma un vector de entrada $\mathbf{z} = (z_1, \dots, z_K)^T \in \mathbb{R}^K$ y devuelve un vector de salida $\sigma(\mathbf{z}) = (p_1, \dots, p_K)^T$ con componentes:
+\[ p_i = [\sigma(\mathbf{z})]_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \]
+para $i=1, \dots, K$
+\end{definition}
+
+La Softmax posee dos propiedades clave que la relacionan con las distribuciones de probabilidad discretas.
+
+\begin{proposition}[Propiedades de la Softmax]
+\label{prop:softmax_properties_general}
+Para el vector de salida $\mathbf{p} = \sigma(\mathbf{z})$, se cumplen \citep{Bishop2006}:
+\begin{enumerate}
+    \item Positividad: $p_i > 0$ para todo $i=1, \dots, K$.
+    \item Normalización: $\sum_{i=1}^K p_i = 1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Demostración de la Propiedad \ref{prop:softmax_properties_general}.1 (Positividad)]
+Para cualquier número real $z_i$, la función exponencial $e^{z_i}$ es estrictamente positiva. La suma en el denominador, $\sum_{j=1}^K e^{z_j}$, es una suma de términos estrictamente positivos, por lo que también es estrictamente positiva. El cociente de dos números estrictamente positivos es estrictamente positivo. Por lo tanto, concluimos que $p_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} > 0$ para todo $i$.
+\end{proof}
+
+\begin{proof}[Demostración de la Propiedad \ref{prop:softmax_properties_general}.2 (Normalización)]
+Calculamos la suma de las componentes del vector de salida:
+\[ \sum_{i=1}^K p_i = \sum_{i=1}^K \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \]
+Dado que el denominador $\sum_{j=1}^K e^{z_j}$ es una constante con respecto al índice de sumación $i$, podemos sacarlo fuera de la suma:
+\[ \sum_{i=1}^K p_i = \frac{1}{\sum_{j=1}^K e^{z_j}} \left( \sum_{i=1}^K e^{z_i} \right) \]
+Observamos que la suma en el numerador $\sum_{i=1}^K e^{z_i}$ es idéntica a la suma en el denominador $\sum_{j=1}^K e^{z_j}$ (solo cambia el nombre del índice de sumación, lo cual no altera el resultado de la suma sobre todos los componentes). Por lo tanto, simplificamos la expresión a:
+\[ \frac{\sum_{i=1}^K e^{z_i}}{\sum_{j=1}^K e^{z_j}} = 1 \]
+Esto completa la demostración.
+\end{proof}
+
+\subsection{Apunte sobre estabilidad numérica}
+Para mejorar la estabilidad numérica al calcular la Softmax, especialmente cuando los valores de entrada $x_i$ son grandes (lo que podría llevar a que $e^{x_i}$ cause un desbordamiento), restamos el valor máximo del vector de entrada de cada elemento \textit{antes} de aplicar la exponencial. Esta es una práctica común \citep[Capítulo 4].
+
+Definimos $m = \max \{x_1, x_2, \dots, x_N \}$.
+Entonces, calculamos:
+\[ \operatorname{softmax}(x_i) =
+\frac{e^{x_i-m}}{\sum_{j=1}^{N} e^{x_j-m}} = \frac{e^{-m}\sum_{i=1}^N e^{x_i}}{e^{-m}\sum_{j=1}^{N} e^{x_j}} = \frac{\sum_{i=1}^N e^{x_i}}{\sum_{j=1}^{N} e^{x_j}}
+\]
+Esto es matemáticamente equivalente pero numéricamente estable.
+Al restar $m$, el exponente más grande será $0$ (ya que para algún $k$, $x_k = m$, entonces $x_k - m = 0$), y $e^0 = 1$. Todos los demás exponentes serán negativos, resultando en valores $e^{x_j-m}$ entre $(0, 1]$. Esto evita el desbordamiento de los términos exponenciales y también ayuda a prevenir el subdesbordamiento en el denominador (ya que al menos un término en la suma será 1).
+
+\subsection*{Ejemplo numérico breve con K=3}
+Consideremos un vector de logits (valores de entrada) $\mathbf{x} = (1, 2, 5)^T$.
+\begin{itemize}
+    \item \textbf{Cálculo estándar (potencialmente inestable):}
+    \begin{itemize}
+        \item $e^1 \approx 2.718$
+        \item $e^2 \approx 7.389$
+        \item $e^5 \approx 148.413$
+    \end{itemize}
+    Suma de exponenciales: $S_E = 2.718 + 7.389 + 148.413 = 158.520$.
+    \begin{align*}
+        \operatorname{softmax}(x_1) &= \frac{2.718}{158.520} \approx 0.017 \\
+        \operatorname{softmax}(x_2) &= \frac{7.389}{158.520} \approx 0.047 \\
+        \operatorname{softmax}(x_3) &= \frac{148.413}{158.520} \approx 0.936
+    \end{align*}
+    Vector de salida: $(0.017, 0.047, 0.936)^T$. (Suma $\approx 1.000$)
+
+    \item \textbf{Cálculo numéricamente estable:}
+    El valor máximo es $m = \max(1, 2, 5) = 5$.
+    Restamos $m$ de cada elemento: $\mathbf{x'} = (1-5, 2-5, 5-5)^T = (-4, -3, 0)^T$.
+    Calculamos las exponenciales de $\mathbf{x'}$:
+    \begin{itemize}
+        \item $e^{-4} \approx 0.0183$
+        \item $e^{-3} \approx 0.0498$
+        \item $e^0 = 1.0000$
+    \end{itemize}
+    Suma de nuevas exponenciales: $S'_E = 0.0183 + 0.0498 + 1.0000 = 1.0681$.
+    \begin{align*}
+        \operatorname{softmax}(x_1) &= \frac{0.0183}{1.0681} \approx 0.017 \\
+        \operatorname{softmax}(x_2) &= \frac{0.0498}{1.0681} \approx 0.047 \\
+        \operatorname{softmax}(x_3) &= \frac{1.0000}{1.0681} \approx 0.936
+    \end{align*}
+    Vector de salida: $(0.017, 0.047, 0.936)^T$. (Suma $\approx 1.000$)
+\end{itemize}
+Ambos métodos producen el mismo resultado (dentro de la precisión de redondeo). Sin embargo, si los valores de entrada fueran, por ejemplo, $(100, 102, 105)^T$, $e^{105}$ excedería el límite de flotantes estándar, mientras que el método estable operaría con $e^0, e^{-3}, e^{-5}$, que son numéricamente manejables.
+
+\vspace{1em}
+\noindent El vector de salida de la función Softmax, que denotamos como $\mathbf{y} = (y_1, \ldots, y_K)^T$ donde cada componente $y_i = \operatorname{softmax}(x_i) = \frac{e^{x_i-m}}{\sum_{j=1}^{K} e^{x_j-m}}$, tiene elementos $y_i$ que son no negativos ($y_i \ge 0$) y suman a uno ($\sum_{i=1}^K y_i = 1$). Estas propiedades fundamentales (no negatividad y suma igual a uno) permiten que interpretemos el vector $\mathbf{y}$ como los parámetros de una distribución de probabilidad categórica (\Cref{def:categorical_distribution}) sobre $K$ posibles resultados mutuamente excluyentes \citep{Bishop2006}.
+
+\section{Métodos Numéricos}
+\label{sec:numerical_methods}
+
+Los métodos numéricos desarrollan algoritmos para resolver problemas matemáticos que no podemos resolver analíticamente de manera sencilla o eficiente. Estos métodos son esenciales en la práctica computacional, como detallan \citet{BurdenFaires2011} y \citet{KincaidCheney2002}. Una técnica común es la interpolación, que estima valores desconocidos a partir de valores conocidos.
+
+\subsection{Interpolación lineal}
+\label{subsec:interpolation}
+
+Definimos la interpolación lineal como la forma más simple de interpolación, que aproxima una función entre dos puntos conocidos mediante una línea recta \citep{BurdenFaires2011}.
+
+\begin{definition}[Interpolación Lineal]
+\label{def:linear_interpolation_func_general}
+Dados dos puntos $(x_0, y_0)$ y $(x_1, y_1)$ en el plano cartesiano $\mathbb{R}^2$, con $x_0 \neq x_1$, la función de \textbf{interpolación lineal} que pasa por estos puntos es la única línea recta. Para cualquier valor $x$ en el intervalo $[x_0, x_1]$, calculamos el valor interpolado $f(x)$ como:
+\[ f(x) = y_0 + \frac{x - x_0}{x_1 - x_0}(y_1 - y_0) \]
+Podemos reescribir esta fórmula como una combinación convexa de $y_0$ e $y_1$:
+\[ f(x) = (1-\alpha)y_0 + \alpha y_1 \]
+donde $\alpha = \frac{x - x_0}{x_1 - x_0}$. Notamos que $\alpha$ varía de 0 a 1 a medida que $x$ varía de $x_0$ a $x_1$.
+\end{definition}
+
+\begin{proof}[Derivación de la fórmula de interpolación lineal]
+Buscamos la ecuación de la recta $y = mx + c$ que pasa por los puntos $(x_0, y_0)$ y $(x_1, y_1)$.
+Calculamos la pendiente $m$ de la recta como:
+\[ m = \frac{y_1 - y_0}{x_1 - x_0} \]
+Usamos la forma punto-pendiente de la ecuación de una recta con el punto $(x_0, y_0)$:
+\[ y - y_0 = m(x - x_0) \]
+Sustituyendo el valor de $m$:
+\[ y - y_0 = \frac{y_1 - y_0}{x_1 - x_0} (x - x_0) \]
+Despejando $y$, que representa el valor interpolado $f(x)$:
+\[ f(x) = y = y_0 + \frac{x - x_0}{x_1 - x_0} (y_1 - y_0) \]
+Esta es la primera fórmula dada en la \Cref{def:linear_interpolation_func_general}.
+
+Para obtener la segunda forma, definimos $\alpha = \frac{x - x_0}{x_1 - x_0}$. Entonces:
+\[ f(x) = y_0 + \alpha (y_1 - y_0) \]
+\[ f(x) = y_0 + \alpha y_1 - \alpha y_0 \]
+\[ f(x) = (1 - \alpha) y_0 + \alpha y_1 \]
+Esta es la segunda fórmula. Cuando $x=x_0$, $\alpha = \frac{x_0 - x_0}{x_1 - x_0} = 0$, y $f(x_0) = (1-0)y_0 + 0 \cdot y_1 = y_0$.
+Cuando $x=x_1$, $\alpha = \frac{x_1 - x_0}{x_1 - x_0} = 1$, y $f(x_1) = (1-1)y_0 + 1 \cdot y_1 = y_1$.
+La fórmula interpola correctamente los puntos dados.
+\end{proof}
+
+Utilizamos este método comúnmente para estimar valores intermedios cuando solo conocemos puntos discretos.
+
+\subsection{Limitaciones de la Interpolación Lineal}
+Si bien la interpolación lineal es simple y computacionalmente económica, presenta varias limitaciones \citep{BurdenFaires2011, KincaidCheney2002}:
+\begin{itemize}
+    \item \textbf{No es suave (diferenciable en los nodos):} La función interpolada resulta continua, pero su derivada es discontinua en los puntos de datos originales ($x_0, x_1, \ldots, x_n$). Esto significa que la función resultante no es suave y puede presentar esquinas o quiebres en los nodos. Esto puede ser problemático si requerimos derivadas de orden superior.
+    \item \textbf{Presupone linealidad:} El método asume que la función subyacente se comporta de manera lineal entre los puntos de datos conocidos. Si la función real tiene una curvatura significativa o variaciones no lineales entre los puntos, la interpolación lineal producirá una aproximación pobre.
+    \item \textbf{Pobre para la extrapolación:} Diseñamos la interpolación lineal para estimar valores \textit{dentro} del rango de los datos conocidos ($[x_0, x_1]$ en el caso de dos puntos, o $[\min(x_i), \max(x_i)]$ para múltiples puntos). Usarla para extrapolar valores \textit{fuera} de este rango puede llevar a errores muy grandes, ya que no tenemos información sobre el comportamiento de la función más allá de los puntos observados.
+    \item \textbf{Fenómeno de Runge (con interpolación polinómica de alto grado, no lineal directa):} Aunque la interpolación lineal simple entre dos puntos no sufre directamente del fenómeno de Runge, si intentamos construir un único polinomio de alto grado que pase por \textit{muchos} puntos de datos (en lugar de interpolar linealmente por partes), pueden aparecer oscilaciones espurias entre los puntos, especialmente cerca de los extremos del intervalo. La interpolación lineal por partes evita este problema específico \citep{BurdenFaires2011}.
+    \item \textbf{Error de aproximación:} El error de la interpolación lineal depende de la distancia entre los puntos de datos y de la segunda derivada de la función subyacente. Si los puntos están muy espaciados o la función tiene una curvatura alta, el error puede ser considerable.
+\end{itemize}
+A pesar de estas limitaciones, su simplicidad la hace una herramienta útil para aproximaciones rápidas o cuando sabemos que la función subyacente es aproximadamente lineal entre los puntos muestreados. Para funciones más complejas o cuando requerimos mayor suavidad, solemos preferir métodos de interpolación de orden superior como la interpolación polinómica (e.g., Lagrange, Newton), splines, o interpolación trigonométrica \citep{KincaidCheney2002}.
+
+
+\section{Teorema de Aproximación Universal (Cybenko)}
+
+Establecemos el Teorema de Aproximación Universal de \citet{Cybenko1989}, que es un resultado fundamental en la teoría de redes neuronales.
+Sea $I_n = [0,1]^n$ el hipercubo unitario n-dimensional.
+Nuestro objetivo es demostrar que las funciones de la forma:
+\[ G(\mathbf{x}) = \sum_{j=1}^{N} \alpha_j \sigma(\mathbf{y}_j^T \mathbf{x} + \theta_j) \]
+donde $\mathbf{x}, \mathbf{y}_j \in \mathbb{R}^n$, $\alpha_j, \theta_j \in \mathbb{R}$, $N \in \mathbb{N}$, y $\sigma$ es una función de activación adecuada, son densas en $C(I_n)$.
+
+\begin{definition}[Función Sigmoidal (según Cybenko)]
+\label{def:sigmoidal_cybenko}
+Definimos una función $\sigma: \mathbb{R} \to \mathbb{R}$ como \textbf{sigmoidal} \citep{Cybenko1989} si
+\[ \sigma(t) \to \begin{cases} 1 & \text{si } t \to +\infty \\ 0 & \text{si } t \to -\infty \end{cases} \]
+\citet{Cybenko1989} considera funciones sigmoides continuas.
+\end{definition}
+
+\begin{definition}[Función Discriminatoria (según Cybenko)]
+\label{def:discriminatory_cybenko}
+Definimos una función continua $\sigma: \mathbb{R} \to \mathbb{R}$ como \textbf{discriminatoria} \citep{Cybenko1989} si para cualquier medida $\mu \in M(I_n)$ (medida de Borel signada regular finita sobre $I_n$), la condición
+\[ \int_{I_n} \sigma(\mathbf{y}^T \mathbf{x} + \theta) d\mu(\mathbf{x}) = 0 \quad \text{para todo } \mathbf{y} \in \mathbb{R}^n, \theta \in \mathbb{R} \]
+implica que $\mu = 0$ (la medida nula).
+\end{definition}
+
+\begin{lemma}[Lema 1 de Cybenko: Sigmoidal $\implies$ Discriminatoria]
+\label{lem:sigmoidal_is_discriminatory}
+\citep[Lemma 1]{Cybenko1989}. Toda función $\sigma: \mathbb{R} \to \mathbb{R}$ continua y sigmoidal (según Def. \ref{def:sigmoidal_cybenko}) es discriminatoria (según Def. \ref{def:discriminatory_cybenko}).
+\end{lemma}
+
+\begin{proof}[Esquema de la Demostración del Lema \ref{lem:sigmoidal_is_discriminatory} (basado en \citet{Cybenko1989})]
+    \begin{enumerate}
+        \item Asumimos que $\int_{I_n} \sigma(\mathbf{y}^T \mathbf{x} + \theta) d\mu(\mathbf{x}) = 0$ para todo $\mathbf{y}, \theta$.
+        \item Consideramos la familia de funciones $\sigma_{\lambda, \phi}(u) = \sigma(\lambda u + \phi)$ para $\lambda > 0$. Entonces $\int_{I_n} \sigma(\lambda(\mathbf{y}^T \mathbf{x} + \theta_0) + \phi) d\mu(\mathbf{x}) = 0$ para $\mathbf{y}, \theta_0, \phi$ fijos y todo $\lambda$. (Obtenemos esto de la hipótesis tomando un $\mathbf{y}'$ adecuado y $\theta'$).
+        \item Sea $u = \mathbf{y}^T \mathbf{x} + \theta_0$. A medida que $\lambda \to \infty$:
+        \[ \sigma(\lambda u + \phi) \to \gamma_{\phi}(u) = \begin{cases} 1 & \text{si } u > 0 \\ 0 & \text{si } u < 0 \\ \sigma(\phi) & \text{si } u = 0 \end{cases} \]
+        Esta convergencia es puntual. Como $\sigma$ es continua y sigmoidal, es acotada. Por el Teorema de Convergencia Dominada de Lebesgue (\Cref{thm:lebesgue_dct}, \citealt{Rudin1987}), podemos intercambiar el límite y la integral:
+        \[ \int_{I_n} \gamma_{\phi}(\mathbf{y}^T \mathbf{x} + \theta_0) d\mu(\mathbf{x}) = 0 \]
+        Esto es $\mu(H_{\mathbf{y},\theta_0}^+) + \sigma(\phi)\mu(\Pi_{\mathbf{y},\theta_0}) = 0$, donde $H_{\mathbf{y},\theta_0}^+ = \{\mathbf{x} \in I_n : \mathbf{y}^T \mathbf{x} + \theta_0 > 0\}$ y $\Pi_{\mathbf{y},\theta_0} = \{\mathbf{x} \in I_n : \mathbf{y}^T \mathbf{x} + \theta_0 = 0\}$.
+        \item Tomando el límite cuando $\phi \to -\infty$, tenemos $\sigma(\phi) \to 0$. Entonces $\mu(H_{\mathbf{y},\theta_0}^+) = 0$.
+        \item De forma similar, tomando $\phi \to +\infty$, $\sigma(\phi) \to 1$. Usando una transformación adecuada ($1-\sigma$ en lugar de $\sigma$ para definir una función sigmoidal que va de 1 a 0, y ajustando los argumentos), podemos mostrar que $\mu(H_{\mathbf{y},\theta_0}^-) = 0$, donde $H_{\mathbf{y},\theta_0}^- = \{\mathbf{x} \in I_n : \mathbf{y}^T \mathbf{x} + \theta_0 < 0\}$.
+        \item Dado que $\mu(I_n) = \mu(H_{\mathbf{y},\theta_0}^+) + \mu(H_{\mathbf{y},\theta_0}^-) + \mu(\Pi_{\mathbf{y},\theta_0})$, deducimos que $\mu(\Pi_{\mathbf{y},\theta_0})$ también debe ser cero para casi todo $\theta_0$ si $\mathbf{y} \neq \mathbf{0}$.
+        \item El hecho de que la medida de todos los semiplanos abiertos sea cero ($\mu(H_{\mathbf{y},\theta_0}^+) = 0$ y $\mu(H_{\mathbf{y},\theta_0}^-) = 0$ para todo $\mathbf{y} \neq \mathbf{0}$ y casi todo $\theta_0$) implica que la Transformada de Fourier de la medida $\mu$ es idénticamente cero para $\boldsymbol{\xi} \neq \mathbf{0}$.
+        \[ \hat{\mu}(\boldsymbol{\xi}) = \int_{I_n} e^{-2\pi i \boldsymbol{\xi}^T \mathbf{x}} d\mu(\mathbf{x}) = 0 \quad \text{para todo } \boldsymbol{\xi} \in \mathbb{R}^n \setminus \{\mathbf{0}\} \]
+        (Este paso requiere un argumento técnico que \citet{Cybenko1989} detalla, mostrando que la integral de $e^{i \boldsymbol{\xi}^T \mathbf{x}}$ contra $d\mu(\mathbf{x})$ es cero usando la relación con las funciones indicadoras de semiplanos. La anulación para $\boldsymbol{\xi}=\mathbf{0}$ se sigue de $\mu(I_n)=0$, que se deriva de los pasos anteriores).
+        \item Si la Transformada de Fourier de una medida finita es cero, entonces la medida misma es cero ($\mu=0$) por la unicidad de la Transformada de Fourier \citep[Capítulo 9]{Rudin1987}.
+        \item Por lo tanto, concluimos que $\sigma$ es discriminatoria.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Teorema 1 de Cybenko - Teorema de Aproximación Universal]
+\label{thm:uat_cybenko}
+\citep[Theorem 1]{Cybenko1989}. Sea $\sigma: \mathbb{R} \to \mathbb{R}$ una función continua y discriminatoria (por Lema \ref{lem:sigmoidal_is_discriminatory}, esto incluye a las sigmoides continuas). Entonces, las sumas finitas de la forma
+\[ G(\mathbf{x}) = \sum_{j=1}^{N} \alpha_j \sigma(\mathbf{y}_j^T \mathbf{x} + \theta_j) \]
+son densas en $C(I_n)$ con respecto a la norma del supremo.
+\end{theorem}
+
+\begin{proof}[Esquema de la Demostración del Teorema \ref{thm:uat_cybenko} (basado en \citet{Cybenko1989})]
+    \begin{enumerate}
+        \item Sea $S$ el conjunto de todas las funciones $G(\mathbf{x})$ de la forma dada. $S$ es un subespacio vectorial de $C(I_n)$ (no necesariamente cerrado).
+        \item Queremos demostrar que $\overline{S} = C(I_n)$. Procedemos por contradicción.
+        \item Suponemos que $\overline{S} \neq C(I_n)$. Entonces $\overline{S}$ es un subespacio propio cerrado de $C(I_n)$.
+        \item Por el Teorema de Hahn-Banach (\Cref{thm:hahn_banach}, \citealt{Kreyszig1989}), existe un funcional lineal acotado $L \in (C(I_n))^*$ tal que $L \neq 0$ (el funcional nulo) y $L(g) = 0$ para todo $g \in \overline{S}$ (y por lo tanto para todo $g \in S$).
+        \item Por el Teorema de Representación de Riesz-Markov-Kakutani (\Cref{thm:riesz_markov}, \citealt{Rudin1987}), existe una medida de Borel signada regular finita no nula $\mu \in M(I_n)$ (ya que $L \neq 0$) tal que para toda función $h \in C(I_n)$:
+        \[ L(h) = \int_{I_n} h(\mathbf{x}) d\mu(\mathbf{x}) \]
+        \item En particular, para cualquier función de la forma $s(\mathbf{x}) = \sigma(\mathbf{y}^T \mathbf{x} + \theta)$ (que es un elemento de $S$ tomando $N=1, \alpha_1=1$), tenemos que $L(s(\mathbf{x})) = 0$. Es decir:
+        \[ \int_{I_n} \sigma(\mathbf{y}^T \mathbf{x} + \theta) d\mu(\mathbf{x}) = 0 \quad \text{para todo } \mathbf{y} \in \mathbb{R}^n, \theta \in \mathbb{R} \]
+        \item Dado que asumimos que $\sigma$ es una función discriminatoria (\Cref{def:discriminatory_cybenko}), la condición anterior implica que la medida $\mu$ debe ser la medida nula ($\mu=0$).
+        \item Si $\mu=0$, entonces el funcional $L$ debe ser el funcional nulo ($L(h) = \int h d0 = 0$ para todo $h$). Esto contradice el paso 4, donde establecimos que $L \neq 0$.
+        \item Por lo tanto, la suposición inicial (que $\overline{S} \neq C(I_n)$) debe ser falsa.
+        \item Concluimos que $\overline{S} = C(I_n)$, es decir, las sumas finitas de la forma $G(\mathbf{x})$ son densas en $C(I_n)$.
+    \end{enumerate}
+\end{proof}
+
+% --- Fin del Capítulo de Fundamentos Matemáticos ---

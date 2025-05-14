@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "make",
             "options": {
-                "cwd": "${workspaceFolder}/memoria"
+                "cwd": "${workspaceFolder}/memoria-overleaf"
             },
             "group": {
                 "kind": "build",

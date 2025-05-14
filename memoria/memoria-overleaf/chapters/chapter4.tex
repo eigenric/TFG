@@ -1,0 +1,392 @@
+% --- BLOQUE III ---
+\part{BLOQUE III: METODOLOGÍA Y CASO DE ESTUDIO: IMPUTACIÓN DE DATOS}
+
+\chapter{Imputación de Datos de Tráfico y Contaminación}
+\label{chap:eda_imputacion}
+
+\section{Contexto del Problema y Motivación}
+\label{sec:contexto_problema}
+
+El presente estudio se enmarca en el ámbito de las \textit{Smart Villages} o pueblos inteligentes, aplicando tecnologías del Internet de las Cosas (IoT) para monitorizar y analizar dinámicas ambientales y de movilidad en entornos rurales. Específicamente, se utiliza la infraestructura desplegada en el proyecto Smart Poqueira \citep{smartpoqueira_project}, localizado en la Alpujarra Granadina, una zona de alto valor ecológico y turístico. La infraestructura IoT consta, entre otros sensores, de cámaras con reconocimiento de matrículas (LPR - License Plate Recognition) estratégicamente ubicadas en los accesos a los municipios de Pampaneira, Bubión y Capileira (Figura~\ref{fig:mapa_lpr}), y una unidad móvil (camión) equipada con sensores para medir diversos contaminantes atmosféricos y variables meteorológicas.
+
+\begin{figure}[H] % Usar [H] requiere el paquete float
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/mapa_camaras_lpr.png} % Ajustado el ancho
+    \caption{Distribución geográfica de las cámaras LPR (License Plate Recognition) en los municipios de Pampaneira, Capileira y Bubión, utilizadas para la monitorización del tráfico vehicular en el proyecto Smart Poqueira. Se indican las ubicaciones específicas y la dirección de monitorización.}
+    \label{fig:mapa_lpr}
+\end{figure}
+
+%\clearpage % Puede no ser necesario con [H]
+
+El objetivo general es comprender las relaciones entre los patrones de tráfico vehicular y los niveles de contaminación atmosférica en esta región. Sin embargo, surge un desafío fundamental inherente a la naturaleza móvil de la unidad de medición de contaminantes: el camión de meteorología y contaminación opera en ubicaciones específicas (Pampaneira-Bubión) solo durante periodos de tiempo definidos:
+\begin{itemize}
+    \item \textbf{Capileira:} 16/11/2022 - 15/01/2023 (Estos datos no se tratan en este análisis específico de imputación).
+    \item \textbf{Pampaneira-Bubión (Cementerio):} 17/01/2023 - 14/03/2023.
+    \item \textbf{Pampaneira-Bubión (Cementerio):} 06/06/2023 - 27/06/2023.
+\end{itemize}
+Esta operativa, junto con posibles fallos intermitentes de los sensores o cámaras, genera \textbf{datos faltantes} sistemáticos en las series temporales combinadas de tráfico y contaminación. La ausencia de estas mediciones impide un análisis continuo y completo de la relación tráfico-contaminación.
+
+Por lo tanto, la \textbf{motivación principal} de este trabajo es abordar el problema de los datos faltantes mediante la aplicación y evaluación de diferentes técnicas de \textbf{imputación}. El objetivo es estimar los valores ausentes de manera robusta y precisa, aprovechando la información contenida en los datos existentes, para así poder realizar análisis posteriores más completos y fiables.
+
+\section{Conjuntos de Datos}
+\label{sec:datasets}
+
+Para llevar a cabo este estudio, se utilizan dos conjuntos de datos principales, derivados de la infraestructura IoT descrita.
+
+\subsection{Dataset de Tráfico General}
+\label{subsec:dataset_trafico}
+Este dataset contiene los registros agregados por hora del tráfico vehicular detectado por las 4 cámaras LPR durante un periodo extenso (febrero 2022 - agosto 2023). Cada fila representa una hora y las columnas cuantifican vehículos categorizados por: localización/dirección (PAM\_1, PAM\_2, BUB, CAP; IN/OUT), origen geográfico (Zona\_Granada, Zona\_Andalucia\_no\_GR, etc.), y características inferidas (asientos, CO2, etiqueta DGT). La columna \texttt{nan} agrupa vehículos sin información específica. Proporciona una visión continua de la movilidad.
+
+\subsection{Dataset de Intersección Tráfico-Contaminación}
+\label{subsec:dataset_contaminacion}
+Este dataset fusiona temporalmente los datos de tráfico con las mediciones del camión móvil, conteniendo únicamente registros horarios de los periodos y ubicaciones donde el camión estuvo operativo en Pampaneira/Bubión. Es un subconjunto temporal del dataset de tráfico, enriquecido con variables ambientales.
+
+\subsubsection{Variables de Contaminación}
+\begin{description}
+    \item[\textbf{\texttt{CO}}] \textbf{Monóxido de Carbono:} Concentración media horaria medida con el analizador Thermo Scientific mod. 48i. Es un trazador de combustión incompleta, principalmente de vehículos de gasolina en condiciones de arranque en frío o ralentí, y también de la quema de biomasa. Unidades: miligramos por metro cúbico (mg/m³).
+
+    \item[\textbf{\texttt{NO}}] \textbf{Monóxido de Nitrógeno:} Concentración media horaria medida con el analizador Thermo Scientific mod. 42i. Es un contaminante primario emitido directamente por procesos de combustión a alta temperatura, siendo un \textbf{trazador importante del tráfico diésel}. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{NO2}}] \textbf{Dióxido de Nitrógeno:} Concentración media horaria medida con el analizador Thermo Scientific mod. 42i. Se forma principalmente por la oxidación del NO en la atmósfera, aunque también se emite directamente en menor medida. Es, junto con el NO, un \textbf{trazador clave del tráfico diésel} y otros procesos de combustión. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{O3}}] \textbf{Ozono Troposférico:} Concentración media horaria medida con el analizador Thermo Scientific mod. 49i. Es un contaminante secundario, no emitido directamente, sino formado en la atmósfera por reacciones fotoquímicas entre óxidos de nitrógeno (NOx) y compuestos orgánicos volátiles (COVs) en presencia de luz solar. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{SO2}}] \textbf{Dióxido de Azufre:} Concentración media horaria medida con el analizador Thermo Scientific mod. 43i. Proviene principalmente de la combustión de combustibles fósiles que contienen azufre (carbón, fuelóleo). Su relevancia como trazador del tráfico rodado actual es limitada debido a las bajas concentraciones de azufre en gasolinas y gasóleos modernos. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{PM10}}] \textbf{Material Particulado < 10 µm:} Concentración media horaria de partículas en suspensión con un diámetro aerodinámico inferior a 10 micrómetros, obtenida con el Monitor TEOM 1405 (Thermo Scientific). Incluye una mezcla compleja de partículas de diversas fuentes: combustión (tráfico, industria, calefacción), polvo resuspendido, aerosoles secundarios, fuentes naturales, etc. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{eBC\_tot}}] \textbf{Carbono Negro Total (Hollín):} Concentración media horaria de carbono negro total obtenida con el fotómetro de absorción Aethalometer AE31. El carbono negro es un producto de la combustión incompleta de material carbonoso y es un componente importante del material particulado fino. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{eBC\_ff}}] \textbf{Carbono Negro de Combustibles Fósiles:} Concentración media horaria de carbono negro atribuible específicamente a la combustión de combustibles fósiles (gasolina, diésel). Se obtiene aplicando el "modelo del etalómetro" \citep{sandradewi_source_2008}. Es considerado un \textbf{trazador primario y específico del tráfico vehicular}. Unidades: microgramos por metro cúbico (µg/m³).
+
+    \item[\textbf{\texttt{eBC\_bb}}] \textbf{Carbono Negro de Quema de Biomasa:} Concentración media horaria de carbono negro atribuible específicamente a la quema de biomasa (leña para calefacción, quemas agrícolas, incendios forestales). Se obtiene aplicando el "modelo del etalómetro" \citep{sandradewi_source_2008}. Unidades: microgramos por metro cúbico (µg/m³).
+\end{description}
+
+\subsubsection{Variables Meteorológicas}
+\begin{description}
+    \item[\textbf{\texttt{TEMP}}] \textbf{Temperatura del Aire:} Temperatura media horaria medida por el transmisor meteorológico YOUNG 92000 ResponseONE. Influye en la tasa de reacciones químicas atmosféricas y en la dispersión vertical de los contaminantes. Temperaturas altas en invierno pueden indicar condiciones anticiclónicas de estancamiento. Unidades: grados Celsius (°C).
+
+    \item[\textbf{\texttt{RH}}] \textbf{Humedad Relativa:} Humedad relativa media horaria del aire medida por el transmisor YOUNG 92000. Afecta a la formación de aerosoles secundarios, la visibilidad y puede influir en la deposición de contaminantes. Alta humedad puede correlacionarse con condiciones de estancamiento o niebla. Unidades: porcentaje (\%).
+
+    \item[\textbf{\texttt{WS}}] \textbf{Velocidad del Viento:} Velocidad media horaria del viento medida por el anemómetro de la torre meteorológica. Es un factor fundamental para la dispersión horizontal de los contaminantes; velocidades bajas favorecen la acumulación. Unidades: metros por segundo (m/s).
+
+    \item[\textbf{\texttt{WD}}] \textbf{Dirección del Viento:} Dirección media horaria desde la que sopla el viento, medida en la torre meteorológica. 0° corresponde al Norte geográfico. Es crucial para identificar el transporte de contaminantes desde posibles áreas fuente. Unidades: grados (°).
+
+    \item[\textbf{\texttt{PRES}}] \textbf{Presión Atmosférica:} Presión atmosférica media horaria a nivel de la estación de medición. Altas presiones suelen asociarse con condiciones meteorológicas estables (anticiclones) que, combinadas con vientos bajos, dificultan la dispersión vertical y horizontal de los contaminantes, favoreciendo episodios de alta contaminación. Unidades: hectopascales (hPa).
+\end{description}
+
+\subsubsection{Variable de Posición del Camión}
+\begin{description}
+    \item[\textbf{\texttt{truck\_pos}}] \textbf{Posición del Camión Meteorológico:} Variable categórica que indica la cámara LPR más cercana a la ubicación física del camión de medición durante la hora correspondiente. Los valores posibles en este dataset son \texttt{'CAP'} (cuando estaba en Capileira, aunque esos datos no se usan aquí para la imputación) y \texttt{'PAM\_2'} (cuando estaba en la ubicación del cementerio de Pampaneira, monitorizado por la cámara PAM\_2). Esta variable permite asociar las mediciones de contaminación con el flujo de tráfico específico de la cámara más próxima.
+\end{description}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/EDA/truck_pos.png}
+    \caption{Distribución del número de registros horarios en el dataset de intersección (\texttt{trafico\_contamina\_interseccion}) según la ubicación y periodo operativo del camión móvil de medición (PAM Periodo 1: Ene-Mar 2023, PAM Periodo 2: Jun 2023).}
+    \label{fig:truck_pos_dist}
+\end{figure}
+
+Este dataset hereda también las columnas de tráfico vehicular correspondientes a la hora y cámara más cercana. Es el dataset principal para el análisis y la imputación.
+
+\section{Análisis Exploratorio de Datos (EDA)}
+\label{sec:eda}
+
+Se realizó un Análisis Exploratorio de Datos (EDA) sobre el dataset de trafico-intersección para comprender las distribuciones, identificar patrones, valores atípicos, datos faltantes y correlaciones.
+
+\subsection{Análisis de Valores Faltantes}
+El análisis del porcentaje de valores faltantes por variable (Figura~\ref{fig:porcentajes_nulos}) muestra una alta incidencia de datos ausentes en varias columnas clave. Destaca eBC\_tot con casi el 70\% de sus valores faltantes, seguido por eBC y SO2 con cerca del 50\%. Un segundo grupo de variables afectadas significativamente incluye WS, WD (ambas 26.6\%), PM10 (20.3\%) y las fracciones eBC\_ff y eBC\_bb (ambas 18.8\%). La considerable proporción de datos faltantes, particularmente en indicadores importantes de calidad del aire y fuentes como eBC\_tot, SO2 y PM10, confirma la necesidad de realizar una imputación robusta para análisis posteriores.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{images/EDA/porcentajes_nulos.png} 
+    \caption{Porcentaje de valores faltantes (nulos) para las 15 variables con mayor proporción de ausencias en el dataset de intersección \texttt{trafico\_contamina\_interseccion}. Se observa la mayor incidencia en \texttt{eBC\_tot} (69.3\%), seguida por \texttt{eBC} (49.5\%) y \texttt{SO2} (48.8\%). Variables como \texttt{WS}, \texttt{WD}, y \texttt{PM10} también presentan una notable proporción de datos ausentes superior al 20\%.}
+    \label{fig:porcentajes_nulos}
+\end{figure}
+
+\clearpage
+
+\subsection{Distribución de Variables}
+Se analizaron las distribuciones mediante histogramas y diagramas de caja.
+
+\begin{itemize}
+    \item \textbf{Contaminantes (CO, NO, NO2):} Los histogramas (Figura~\ref{fig:hist_co}) mostraron distribuciones con fuerte asimetría derecha, indicando predominio de concentraciones bajas con picos ocasionales altos, característico de fuentes como el tráfico.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=\textwidth]{images/EDA/histogramas_co.png}
+        \caption{Histogramas de las concentraciones horarias de CO, NO y NO2. Se observa una clara asimetría hacia la derecha en las tres distribuciones.}
+        \label{fig:hist_co}
+    \end{figure}
+
+    \item \textbf{Contaminantes (O3, SO2, PM10, eBC):} Los diagramas de caja (Figura ~\ref{fig:diagrama_cajas} y revelaron valores atípicos, especialmente en \texttt{O3} y \texttt{PM10}. La mediana de \texttt{SO2} fue muy baja. Las fracciones de \texttt{eBC} mostraron diferencias en sus rangos y medianas.
+
+    % --- LaTeX Code to Insert the Combined Image ---
+
+    \begin{figure}[htbp] 
+    \centering 
+
+    % Otras opciones son: 0.8\textwidth, 10cm, etc.
+    \includegraphics[width=0.9\linewidth]{images/EDA/diagrama_cajas.png}
+
+    \caption{Diagramas de caja comparativos para variables de contaminación. A la izquierda se muestran O3, SO2 y PM10. A la derecha se muestran las variables relacionadas con el carbono negro elemental (eBC\_tot, eBC\_ff, eBC\_bb).}
+
+    \label{fig:diagrama_cajas}
+
+    \end{figure}
+
+    \clearpage
+
+    \item \textbf{Meteorología (TEMP, RH, WS):} Los histogramas (Figura~\ref{fig:hist_temp}) mostraron distribuciones más variadas: \texttt{TEMP} bimodal (ciclos día/noche), \texttt{RH} más centrada, y \texttt{WS} con fuerte asimetría derecha (predominio de vientos bajos).
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=\textwidth]{images/EDA/histogramas_3.png}
+        \caption{Histogramas de las variables meteorológicas TEMP (Temperatura), RH (Humedad Relativa) y WS (Velocidad del Viento).}
+        \label{fig:hist_temp}
+    \end{figure}
+
+\end{itemize}
+
+\subsection{Análisis de Correlaciones}
+\label{subsec:correlaciones}
+La matriz de correlación (Figura~\ref{fig:matriz_corr}) mostró relaciones significativas:
+\begin{itemize}
+    \item \textbf{Positivas Fuertes:} \texttt{eBC\_tot} con \texttt{eBC\_ff} (0.76) y \texttt{eBC\_bb} (0.64); \texttt{NO2} con \texttt{eBC\_tot} (0.69); \texttt{NO} con \texttt{NO2} (0.64); \texttt{O3} con \texttt{TEMP} (~0.4).
+    \item \textbf{Negativas Moderadas:} \texttt{RH} con \texttt{O3} (~-0.5); \texttt{RH} con \texttt{TEMP} (~-0.5).
+    \item \textbf{Otras:} Correlaciones negativas débiles entre contaminantes primarios (NOx, eBC) y O3. Correlaciones débiles entre meteorología y contaminantes primarios.
+\end{itemize}
+Estas correlaciones, especialmente las ligadas a trazadores de tráfico, son clave para la imputación basada en modelos predictivos.
+
+\begin{figure}[H] % Forzar la ubicación aquí
+    \centering
+    \includegraphics[width=0.5\textwidth, angle=0]{images/EDA/matriz_correlacion.png} % Puedes ajustar el ángulo si es necesario
+    \caption{Matriz de correlación de Pearson entre las principales variables de contaminación}
+    \label{fig:matriz_corr}
+\end{figure}
+
+% --- Capítulo/Sección de Implementación y Formalización ---
+\section{Metodología: Pipeline de Imputación y Formalización}
+\label{ch:pipeline_methodology_revised}
+
+Este capítulo describe la metodología completa empleada para la imputación de valores faltantes. Se detalla la preparación de los datos, la configuración experimental para evaluación, y la aplicación de cada técnica de imputación implementada.
+
+\subsection{Desarrollo del Entorno de Imputación}
+\label{sec:desarrollo_entorno}
+
+Para llevar a cabo la parte práctica, centrada en la imputación de datos faltantes en series temporales de contaminación, se ha desarrollado una solución específica mediante la creación de un paquete de Python denominado \texttt{pampaneira\_imputation}. Este paquete organiza de forma modular toda la lógica necesaria para el preprocesamiento de datos, la aplicación de diversos métodos de imputación y la evaluación de sus resultados.
+
+\subsubsection{Estructura del Paquete \texttt{pampaneira\_imputation}}
+El paquete \texttt{pampaneira\_imputation} ha sido estructurado en varios módulos, cada uno con responsabilidades bien definidas para facilitar el mantenimiento, la escalabilidad y la claridad del código. La estructura principal del paquete es la siguiente:
+
+\begin{itemize}
+    \item \textbf{\texttt{\_\_init\_\_.py}}: Permite que el directorio sea tratado como un paquete de Python.
+    \item \textbf{\texttt{config.py}}: Centraliza todos los parámetros de configuración del proyecto, como rutas de archivos, fechas de los periodos, parámetros de los modelos, nombres de columnas, etc., permitiendo una fácil modificación y experimentación.
+    \item \textbf{\texttt{data\_loader.py}}: Contiene las funciones responsables de cargar los conjuntos de datos originales desde sus fuentes (e.g., archivos CSV) y realizar una limpieza o transformación inicial básica.
+    \item \textbf{\texttt{data\_preprocessor.py}}: Implementa la lógica para el preprocesamiento de los datos, incluyendo la división en conjuntos de entrenamiento, validación y prueba, el escalado de características, la creación de ventanas temporales (secuencias) y la introducción artificial de datos faltantes para la evaluación de los modelos de imputación.
+    \item \textbf{\texttt{evaluation.py}}: Define las funciones para calcular las métricas de rendimiento utilizadas para evaluar la precisión de los métodos de imputación (RMSE, MSE, MAE, MRE).
+    \item \textbf{\texttt{imputation\_methods.py}}: Agrupa las implementaciones de los diferentes algoritmos de imputación evaluados, incluyendo tanto métodos simples (media, mediana, interpolación lineal, ffill, bfill) como modelos más avanzados basados en deep learning. Parte de la funcionalidad de los modelos avanzados se ha construido aprovechando las capacidades de la librería \textbf{PyPOTS} \citep{du2023pypots}, una biblioteca especializada en el procesamiento de datos con patrones irregulares y datos faltantes en series temporales.
+    \item \textbf{\texttt{utils.py}}: Recopila funciones auxiliares de propósito general utilizadas a lo largo de todo el paquete, como pueden ser funciones para la creación de ventanas deslizantes, generación de datos faltantes con patrones específicos, o reformateo de datos.
+\end{itemize}
+
+\subsubsection{Flujo de Trabajo y Experimentación}
+El flujo de trabajo principal (pipeline) para la experimentación y la obtención de resultados se ha orquestado y documentado mediante un Jupyter Notebook denominado \texttt{Notebook\_Imputation.ipynb}. Este notebook guía a través de los siguientes pasos:
+\begin{enumerate}
+    \item Carga de la configuración del proyecto.
+    \item Carga de los datos crudos utilizando el módulo \texttt{data\_loader}.
+    \item Preprocesamiento de los datos (división, escalado, ventaneo, introducción de NAs) a través de \texttt{data\_preprocessor}.
+    \item Aplicación de los diferentes métodos de imputación definidos en \texttt{imputation\_methods} sobre los datos preprocesados con valores faltantes.
+    \item Evaluación del rendimiento de cada método utilizando las métricas de \texttt{evaluation} sobre los puntos donde se introdujeron NAs artificialmente.
+    \item Visualización y análisis de los resultados.
+\end{enumerate}
+Este enfoque permite una experimentación reproducible y una clara trazabilidad de los resultados obtenidos.
+
+\subsubsection{Control de Versiones y Pruebas}
+El desarrollo íntegro del código del paquete \texttt{pampaneira\_imputation} y el Jupyter Notebook se ha gestionado mediante el sistema de control de versiones Git. El repositorio con todo el código fuente y los materiales del proyecto se encuentra disponible públicamente en GitHub\footnote{\url{https://github.com/eigenric/TFG}}.
+
+Adicionalmente, para asegurar la correcta funcionalidad de los componentes clave del paquete, se han implementado una serie de \textbf{test unitarios}. Estos tests verifican el comportamiento esperado de funciones críticas, especialmente aquellas involucradas en el preprocesamiento de datos y el cálculo de métricas, contribuyendo a la robustez y fiabilidad del software desarrollado.
+
+\section{Preparación de Datos y Configuración Experimental}
+\label{sec:data_prep_setup_revised}
+
+El proceso se inicia con los datos crudos de series temporales multivariantes de Pampaneira-Bubión.
+
+\subsection{Carga, Estructura y Preprocesamiento Inicial}
+\label{subsec:load_preprocess_revised}
+Los datos originales, que pueden contener faltantes naturales, son cargados utilizando rutinas del módulo \texttt{pampaneira\_imputation.data\_loader}. Posteriormente, una función del módulo \texttt{pampaneira\_imputation.data\_preprocessor} asegura un índice temporal horario completo y regular para los periodos de interés definidos. Los datos se organizan en una estructura tensorial 3D $(N \times T \times D)$, donde $N$ es el número de muestras (ventanas temporales), $T=24$ es la longitud fija de la ventana, y $D$ el número de características. Los datos se dividen por periodos temporales para análisis separados.
+
+\subsection{División, Escalado y Creación del Escenario de Evaluación}
+\label{subsec:split_scale_eval_setup}
+El núcleo del preprocesamiento, gestionado por el módulo \\ \texttt{pampaneira\_imputation.data\_preprocessor}, aplica los siguientes pasos a los datos de cada periodo:
+\begin{enumerate}
+    \item \textbf{División Train/Validation/Test:} Segmentación cronológica de los datos en conjuntos de entrenamiento (80\%), validación (20\% del de entrenamiento) y prueba (20\% final), según las duraciones especificadas.
+    \item \textbf{Escalado (Normalización Z-score):} Aplicación de escalado estándar a las características seleccionadas, ajustando el escalador (\textit{fitting}) solo sobre el conjunto de entrenamiento y aplicándolo (\textit{transforming}) a los tres conjuntos.
+    \item \textbf{Ventaneo (Windowing):} Creación de secuencias de longitud $T=24$ mediante una ventana deslizante, resultando en la estructura tensorial 3D $(N \times T \times D)$.
+    \item \textbf{Introducción Artificial de Datos Faltantes:} Se eliminan artificialmente un 10\% de los valores previamente observados (después de escalar y ventanear) en cada split (train, val, test), siguiendo un patrón configurado (ej., 'point'). Este paso es crucial para la evaluación controlada.
+\end{enumerate}
+Este proceso define formalmente los siguientes conjuntos de datos y máscaras utilizados en el experimento:
+
+\begin{itemize}
+    \item \textbf{$\mathcal{X}_{\text{orig}}$}: El tensor de datos escalados y ventaneados \textit{antes} de introducir los faltantes artificiales. Contiene los faltantes naturales originales y sirve como \textbf{ground truth} para la evaluación.
+    \item \textbf{$\mathbf{M}_{\text{natural}}$}: La máscara binaria que indica la posición de los faltantes naturales en $\mathcal{X}_{\text{orig}}$ ($0=$faltante, $1=$observado).
+    \item \textbf{$\mathbf{M}_{\text{artificial}}$}: La máscara binaria que indica las posiciones donde se introdujeron faltantes \textit{artificialmente} ($1=$eliminado artificialmente, $0=$no eliminado).
+    \item \textbf{$\mathcal{X}_{\text{missing}}$}: El tensor de datos utilizado como \textbf{entrada} para los métodos de imputación. Contiene tanto los faltantes naturales como los artificiales.
+
+    
+\end{itemize}
+
+\section{Problema de Imputación y Objetivo de Evaluación}
+\label{sec:impl_problem_formal_revised}
+
+\begin{definition}[Problema de Imputación Experimental y Evaluación]
+\label{def:exp_imputation_problem_revised}
+El problema abordado es desarrollar y evaluar funciones de imputación $f$ que, aplicadas al conjunto de test con faltantes combinados $(\mathcal{X}_{\text{missing}}^{\text{test}}, \mathbf{M}^{\text{test}})$, generen una estimación completada $\hat{\mathcal{X}}^{\text{test}}$:
+\[ \hat{\mathcal{X}}^{\text{test}} = f(\mathcal{X}_{\text{missing}}^{\text{test}}, \mathbf{M}^{\text{test}}) \]
+Para modelos predictivos $f_{\theta}$, la función $f$ depende de parámetros $\theta^*$ optimizados durante una fase de entrenamiento previa.
+El \textbf{objetivo principal de evaluación} es medir la precisión con la que $\hat{\mathcal{X}}^{\text{test}}$ reconstruye los valores verdaderos $\mathcal{X}_{\text{orig}}^{\text{test}}$ exclusivamente en las posiciones indicadas por la máscara artificial $\mathbf{M}_{\text{artificial}}^{\text{test}}$ (o $\mathbf{M}_{\text{indicating}}^{\text{test}}$):
+\[ \text{Error} = \text{Metric}(\hat{\mathcal{X}}^{\text{test}}, \mathcal{X}_{\text{orig}}^{\text{test}}, M_{artificial}^{test}) \]
+Se busca la función $f$ que minimice este error (medido por MAE, MSE, RMSE, MRE) en el conjunto de test.
+\end{definition}
+
+\section{Implementación de las Funciones de Imputación}
+\label{sec:impl_method_details_revised}
+
+Las siguientes subsecciones describen la implementación conceptual de cada función de imputación $f$, gestionada por el módulo \texttt{pampaneira\_imputation.imputation\_methods}, aplicada sobre $\mathcal{X}_{\text{missing}}^{\text{test}}$.
+
+\subsection{Métodos Baseline o Estadísticos Simples}
+
+\subsubsection*{Imputación por Media/Mediana Sample-Wise}
+Procesa cada muestra $\mathbf{X}^{(k)}$ de 24 horas independientemente. Para cada característica, calcula la media/mediana usando solo los valores observados dentro de esa muestra y rellena los \texttt{NaN} de esa característica en esa muestra con el valor calculado. Implementa una lógica de fallback (usar estadística global del training set o $0$) si una característica es completamente \texttt{NaN} dentro de una muestra.
+
+\subsection{Métodos Basados en Propagación e Interpolación}
+
+Estos métodos también operan independientemente sobre cada muestra $\mathbf{X}^{(k)}$ utilizando técnicas estándar de series temporales (implementadas internamente con ayuda de bibliotecas como \texttt{pandas}).
+
+\subsubsection*{Imputación Hacia Adelante (Forward Fill / LOCF)}
+Propaga la última observación válida hacia adelante en el tiempo (\texttt{axis=0}). Los \texttt{NaN} iniciales o persistentes se rellenan con $0$.
+
+\subsubsection*{Imputación Hacia Atrás (Backward Fill / NOCB)}
+Propaga la siguiente observación válida hacia atrás en el tiempo (\texttt{axis=0}). Los \texttt{NaN} finales o persistentes se rellenan con $0$.
+
+\subsubsection*{Imputación por Interpolación Lineal}
+Estima los valores faltantes mediante interpolación lineal entre los puntos observados vecinos más cercanos en el tiempo (\texttt{axis=0}), extrapolando en los extremos si es posible. Los \texttt{NaN} restantes se rellenan con $0$.
+
+\subsection{Métodos Basados en Modelos Predictivos (Deep Learning)}
+
+\subsubsection*{Imputación con Transformer y SAITS}
+Se utilizan las arquitecturas Transformer y SAITS implementadas en la biblioteca \texttt{PyPOTS} \citep{du2023pypots}, cuyas funcionalidades detalladas se pueden consultar en su documentación \footnote{\url{https://docs.pypots.com/en/latest/pypots.imputation.html}}. El proceso se divide en:
+\begin{enumerate}
+    \item \textit{Entrenamiento:} Una función dentro de \texttt{imputation\_methods} instancia el modelo \texttt{PyPOTS} seleccionado (SAITS o Transformer) con hiperparámetros específicos. 
+    El modelo se entrena sobre los conjuntos de entrenamiento y validación $(\mathcal{X}_{\text{missing}}^{\text{train/val}}, \mathbf{M}^{\text{train/val}})$, utilizando un optimizador estándar (Adam), un planificador de tasa de aprendizaje (ReduceLROnPlateau) y una función de pérdida apropiada (SmoothL1Loss). El resultado es un modelo con parámetros $\theta^*$ optimizados.
+    \item \textit{Imputación (Inferencia):} Otra función del módulo toma el modelo entrenado $f_{\theta^*}$ y lo aplica al conjunto de test $(\mathcal{X}_{\text{missing}}^{\text{test}}, \mathbf{M}^{\text{test}})$ para generar la predicción completada $\hat{\mathcal{X}}^{\text{test}}$.
+\end{enumerate}
+
+
+\section{Visualización de Series Temporales Imputadas}
+
+A continuación, se presentan las series temporales para algunas de las variables de contaminación clave, mostrando los datos originales (ground truth), los puntos donde se introdujo la ausencia de datos artificialmente, y los valores imputados por el método Saits.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Imputacion/ebc_ff.png}
+    \caption{Comparación de imputación para la variable eBC\_ff.}
+    \label{fig:imputacion_ebc_ff}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Imputacion/no2.png}
+    \caption{Comparación de imputación para la variable NO2.}
+    \label{fig:imputacion_no2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Imputacion/o3.png}
+    \caption{Comparación de imputación para la variable O3.}
+    \label{fig:imputacion_o3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Imputacion/pm10.png}
+    \caption{Comparación de imputación para la variable PM10.}
+    \label{fig:imputacion_pm10}
+\end{figure}
+
+En estas figuras, la línea continua negra representa el \textit{ground truth} (datos originales escalados), los puntos rojos indican los valores que fueron ocultados artificialmente para la prueba del modelo, y la línea punteada verde corresponde a los valores imputados por el modelo Saits. Se puede observar cómo el modelo de imputación sigue las tendencias generales de los datos originales y la precisión con la que reconstruye los valores en los puntos ocultados.
+
+\section{Evaluación del Rendimiento}
+\label{sec:impl_evaluation_summary_revised}
+El rendimiento final de cada método se evalúa utilizando el módulo \\ \texttt{pampaneira\_imputation.evaluation}. Este calcula las métricas MAE, MSE, RMSE y MRE comparando las predicciones $\hat{\mathcal{X}}^{\text{test}}$ con el ground truth $\mathcal{X}_{\text{orig}}^{\text{test}}$ únicamente en las posiciones indicadas por la máscara artificial $\mathbf{M}_{\text{artificial}}^{\text{test}}$.
+
+
+Las siguientes tablas presentan los resultados de la evaluación de siete métodos de imputación de datos (Median, Mean, Linear, Ffill, Bfill, Transformer, Saits) en dos periodos distintos, utilizando cuatro métricas de error: RMSE (Error Cuadrático Medio Raíz), MSE (Error Cuadrático Medio), MAE (Error Absoluto Medio) y MRE (Error Relativo Medio).
+
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados de Evaluación - Periodo 1}
+\label{tab:resultados_periodo1_actualizado}
+\begin{tabular}{l*{7}{S[table-format=1.4]}}
+\toprule
+\textbf{Métrica} & \textbf{Median} & \textbf{Mean} & \textbf{Linear} & \textbf{Ffill} & \textbf{Bfill} & \textbf{Transformer} & \textbf{Saits} \\
+\midrule
+RMSE & 1.1342 & 1.0521 & 0.8796 & 1.0604 & 1.0487 & 0.6471 & 0.6370 \\
+MSE  & 1.2865 & 1.1069 & 0.7737 & 1.1244 & 1.0997 & 0.4187 & 0.4057 \\
+MAE  & 0.6910 & 0.7346 & 0.4621 & 0.5618 & 0.5554 & 0.3378 & 0.3291 \\
+MRE  & 0.9311 & 0.9898 & 0.6226 & 0.7569 & 0.7484 & 0.4552 & 0.4434 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados de Evaluación - Periodo 2}
+\label{tab:resultados_periodo2_actualizado}
+\begin{tabular}{l*{7}{S[table-format=1.4]}}
+\toprule
+\textbf{Métrica} & \textbf{Median} & \textbf{Mean} & \textbf{Linear} & \textbf{Ffill} & \textbf{Bfill} & \textbf{Transformer} & \textbf{Saits} \\
+\midrule
+RMSE & 1.1103 & 1.0609 & 0.9252 & 1.0754 & 1.1018 & 0.7361 & 0.7345 \\
+MSE  & 1.2329 & 1.1255 & 0.8559 & 1.1565 & 1.2140 & 0.5419 & 0.5395 \\
+MAE  & 0.7177 & 0.7637 & 0.4915 & 0.5836 & 0.5894 & 0.4048 & 0.3962 \\
+MRE  & 0.9161 & 0.9747 & 0.6273 & 0.7470 & 0.7544 & 0.5167 & 0.5057 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section*{Interpretación de los Resultados}
+
+ Para todas estas métricas, \textbf{valores más bajos indican un mejor rendimiento} del método de imputación, ya que representan un menor error entre los valores imputados y los valores reales.
+
+\subsection*{Discusión General del Rendimiento de los Métodos}
+\begin{itemize}
+    \item \textbf{Dominio de Modelos Avanzados:} Los modelos basados en arquitecturas Transformer, específicamente \textbf{Saits} y \textbf{Transformer}, demostraron consistentemente una precisión superior en la imputación de datos faltantes en comparación con todos los demás métodos. Esto se reflejó en errores notablemente inferiores en todas las métricas y en ambos periodos de estudio.
+
+    \item \textbf{Liderazgo de Saits:} Dentro del grupo de modelos avanzados, \textbf{Saits} se destacó por ofrecer el rendimiento más preciso de manera generalizada, obteniendo los errores más bajos en la mayoría de las evaluaciones, aunque seguido de cerca por el modelo \textbf{Transformer}.
+
+    \item \textbf{Eficacia de Métodos Tradicionales y Simples:}
+        \begin{itemize}
+            \item Entre los enfoques más convencionales, la imputación \textbf{Linear} (interpolación lineal) se posicionó como la más efectiva, superando consistentemente a los métodos basados en la mediana, la media, y las técnicas de propagación de valores (forward fill y backward fill).
+            \item El rendimiento de los métodos \textbf{Ffill} y \textbf{Bfill} fue inconsistente entre sí y en comparación con la imputación por media (\textbf{Mean}) y mediana (\textbf{Median}), variando su efectividad relativa entre los periodos analizados.
+            \item Por lo general, los métodos más simples, como la imputación por \textbf{Mean} y \textbf{Median}, tendieron a registrar los errores más elevados, indicando una menor capacidad para reconstruir con precisión los datos faltantes.
+        \end{itemize}
+\end{itemize}
+
+\subsection*{Análisis Comparativo entre Periodos de Estudio}
+\begin{itemize}
+    \item \textbf{Variación del Error entre Periodos:} Se observó una tendencia general hacia errores de imputación ligeramente mayores durante el Periodo 2 en comparación con el Periodo 1 para la mayoría de los métodos, especialmente los de mejor rendimiento. Esta diferencia podría deberse a que el Periodo 2 es mucho más reducido.
+
+    \item \textbf{Estabilidad en la Jerarquía de Métodos:} A pesar de las fluctuaciones en los niveles de error absoluto entre los dos periodos, la jerarquía de rendimiento relativo entre los modelos se mantuvo en gran medida estable. Los modelos \textbf{Saits} y \textbf{Transformer} continuaron siendo los más precisos, seguidos por la imputación \textbf{Linear}.
+\end{itemize}
+
+\subsection*{Observaciones Clave por Tipo de Métrica de Error}
+\begin{itemize}
+    \item \textbf{Impacto de Errores Grandes (RMSE y MSE):} Las métricas que magnifican el impacto de errores grandes, como RMSE y MSE, confirmaron la robustez de \textbf{Saits} y \textbf{Transformer}. Sus bajos valores en estas métricas sugieren que estos modelos no solo son precisos en promedio, sino que también son menos propensos a cometer errores de gran magnitud.
+    \item \textbf{Error Promedio Absoluto (MAE):} El MAE, que mide la desviación promedio absoluta, también resaltó la superioridad de \textbf{Saits} y \textbf{Transformer}, indicando que sus imputaciones se encuentran, en promedio, más próximas a los valores verdaderos.
+    \item \textbf{Error Relativo (MRE):} Al considerar el error desde una perspectiva porcentual a través del MRE, se reafirmó la mayor precisión de los modelos \textbf{Saits} y \textbf{Transformer} en comparación con los otros métodos evaluados.
+\end{itemize}
+w
