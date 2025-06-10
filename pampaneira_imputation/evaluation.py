@@ -57,7 +57,7 @@ def calculate_imputation_metrics(y_true: np.ndarray,
 
 def evaluate_all_methods(preprocessed_data: Dict,
                          imputed_results: Dict[str, np.ndarray],
-                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill', 'bfill', 'transformer', 'saits']) -> pd.DataFrame:
+                         methods_to_evaluate: list = ['median', 'mean', 'linear', 'ffill', 'bfill', 'hankel', 'transformer', 'saits']) -> pd.DataFrame:
     """
     Evalúa múltiples métodos de imputación usando los resultados del conjunto de prueba.
 

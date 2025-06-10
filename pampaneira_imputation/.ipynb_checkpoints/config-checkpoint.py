@@ -3,9 +3,14 @@ import pandas as pd
 
 # --- Rutas de archivos ---
 DATA_DIR = "../data"
+DATA_DIR_REL = "../../../data"
 RESULTS_DIR = "../results"
 TRAFFIC_FILE = f"{DATA_DIR}/trafico_feb22_ago23.csv"
 INTERSECTION_FILE = f"{DATA_DIR}/trafico_contamina_intersección.csv"
+
+TRAFFIC_FILE_REL = f"{DATA_DIR_REL}/trafico_feb22_ago23.csv"
+INTERSECTION_FILE_REL = f"{DATA_DIR_REL}/trafico_contamina_intersección.csv"
+
 SAITS_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/saits"
 TRANSFORMER_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/transformer"
 
@@ -67,21 +72,17 @@ TARGET_TRUCK_POS = "PAM_2"
 TIMEZONE = "UTC"
 
 # Fechas del Periodo 1 para los datos de camiones
-PERIOD_1_START = pd.to_datetime("2023-01-17 00:00:00+00:00", utc=True)
-PERIOD_1_END = pd.to_datetime("2023-03-14 23:00:00+00:00", utc=True)
-PERIOD_1_PADDING_START = pd.to_datetime("2023-01-17 00:00:00", utc=True)
-PERIOD_1_PADDING_END = pd.to_datetime("2023-03-14 23:00:00", utc=True)
+PERIOD_1_START = pd.to_datetime("2023-01-18 00:00:00+00:00", utc=True)
+PERIOD_1_END = pd.to_datetime("2023-03-14 11:00:00+00:00", utc=True)
 
 
 # Fechas del Periodo 2 para los datos de camiones
-PERIOD_2_START = pd.to_datetime("2023-06-06 13:00:00+00:00", utc=True)
-PERIOD_2_END = pd.to_datetime("2023-06-27 00:00:00+00:00", utc=True)
-PERIOD_2_PADDING_START = pd.to_datetime("2023-06-06 00:00:00", utc=True)
-PERIOD_2_PADDING_END = pd.to_datetime("2023-06-27 23:00:00", utc=True)
+PERIOD_2_START = pd.to_datetime("2023-06-07 00:00:00+00:00", utc=True)
+PERIOD_2_END = pd.to_datetime("2023-06-26 23:00:00+00:00", utc=True)
 
 
 # Fechas de división Entrenamiento/Validación/Prueba para el Periodo 1
-TRAIN_START_DATE = "2023-01-17"
+TRAIN_START_DATE = "2023-01-18"
 TRAIN_END_DATE = "2023-02-22"  # Exclusivo
 VAL_START_DATE = "2023-02-22"
 VAL_END_DATE = "2023-03-03"    # Exclusivo
@@ -89,12 +90,12 @@ TEST_START_DATE = "2023-03-03"
 TEST_END_DATE = "2023-03-15"    # Exclusivo (cubre hasta 2023-03-14 23:00)
 
 # Fechas de división Entrenamiento/Validación/Prueba para el Periodo 2
-TRAIN_2_START_DATE = "2023-06-06"
+TRAIN_2_START_DATE = "2023-06-07"
 TRAIN_2_END_DATE = "2023-06-20"  # Exclusivo
 VAL_2_START_DATE = "2023-06-20"
-VAL_2_END_DATE = "2023-06-24"    # Exclusivo
-TEST_2_START_DATE = "2023-06-24"
-TEST_2_END_DATE = "2023-06-28"    # Exclusivo (cubre hasta 2023-06-27 23:00)
+VAL_2_END_DATE = "2023-06-23"    # Exclusivo
+TEST_2_START_DATE = "2023-06-23"
+TEST_2_END_DATE = "2023-06-27"    # Exclusivo (cubre hasta 2023-06-26 23:00)
 
 
 # --- Parámetros de preprocesamiento ---
@@ -106,17 +107,17 @@ MISSING_PATTERN = "point"  # o "subseq", "block"
 SAITS_PARAMS = {
     "n_steps": N_STEPS,
     # n_features se establecerá dinámicamente
-    "n_layers": 4,
-    "d_model": 192,
+    "n_layers": 3,
+    "d_model": 128,
     "d_ffn": 256,
     "n_heads": 4,
     "d_k": 32,
     "d_v": 32,
-    "dropout": 0.3,
-    "attn_dropout": 0.2,
+    "dropout": 0.2,
+    "attn_dropout": 0.1,
     "diagonal_attention_mask": True,
-    "ORT_weight": 0.8,
-    "MIT_weight": 1.2,
+    "ORT_weight": 1.0,
+    "MIT_weight": 1.0,
     "batch_size": 64,
     "epochs": 50,  # Considera reducir para pruebas/depuración más rápidas
     "patience": 5,
@@ -144,8 +145,8 @@ TRANSFORMER_PARAMS = {
     'd_k': 32,                   # Dimension of key
     'd_v': 32,                   # Dimension of value
     'd_ffn': 256,                # Dimension of feed-forward network
-    'dropout': 0.3,              # Dropout rate
-    'attn_dropout': 0.2,         # Attention dropout rate
+    'dropout': 0.2,              # Dropout rate
+    'attn_dropout': 0.1,         # Attention dropout rate
     'ORT_weight': 1.0,           # Weight for ORT (Observed Reconstruction Term)
     'MIT_weight': 1.0,           # Weight for MIT (Missing Imputation Term)
     'batch_size': 64,            # Batch size for training

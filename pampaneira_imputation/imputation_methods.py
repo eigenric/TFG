@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 import warnings
 
+from scipy.linalg import hankel, svd
+import warnings
+
 from typing import Optional, Tuple
 from .config import *
 from .utils import timeit_factory
@@ -14,6 +17,59 @@ from torch.nn import SmoothL1Loss
 
 imputation_times = {}
 timeit = timeit_factory(imputation_times)
+
+# Usaremos una versión de create_hankel_matrix que maneje NaNs
+# y que no dependa de scipy.linalg.hankel directamente para flexibilidad con NaNs,
+# pero el concepto es el mismo que subyace a scipy.linalg.hankel.
+def _create_hankel_from_flattened(X_flat, k_rows):
+    """
+    Crea una matriz de Hankel a partir de una serie temporal 1D (aplanada).
+    La implementación se centra en manejar correctamente los NaNs presentes en X_flat
+    y construir la matriz de Hankel esperada para la completación.
+    
+    Args:
+        X_flat (np.ndarray): Serie temporal 1D aplanada, puede contener NaNs.
+        k_rows (int): Número de filas de la matriz de Hankel (lag).
+    Returns:
+        np.ndarray: La matriz de Hankel.
+    Raises:
+        ValueError: Si k_rows es inválido.
+    """
+    T_flat = len(X_flat)
+    if not (1 <= k_rows <= T_flat):
+        raise ValueError(f"El número de filas de Hankel (k_rows) debe estar entre 1 y la longitud aplanada ({T_flat}), pero k_rows={k_rows}")
+    
+    num_cols_H = T_flat - k_rows + 1
+    
+    H = np.full((k_rows, num_cols_H), np.nan, dtype=X_flat.dtype) # Asegurar el tipo de dato
+    for i in range(k_rows):
+        H[i, :] = X_flat[i : i + num_cols_H]
+    return H
+
+def _reconstruct_from_hankel_to_flattened(H_imputed, T_flat):
+    """
+    Reconstruye una serie temporal 1D aplanada a partir de una matriz de Hankel imputada
+    promediando los valores superpuestos.
+    """
+    k_rows, num_cols = H_imputed.shape
+    
+    X_flat_reconstructed = np.zeros(T_flat, dtype=H_imputed.dtype)
+    counts = np.zeros(T_flat, dtype=int) # Usamos int para los contadores
+
+    for i in range(k_rows):
+        for j in range(num_cols):
+            idx = i + j
+            if idx < T_flat: # Asegurar que no se exceda el tamaño original
+                X_flat_reconstructed[idx] += H_imputed[i, j]
+                counts[idx] += 1
+    
+    # Evitar divisiones por cero donde no hay datos
+    counts_safe = np.where(counts == 0, 1, counts) # Reemplazar 0 por 1 para evitar ZeroDivisionError
+    X_flat_reconstructed = X_flat_reconstructed / counts_safe
+    
+    return X_flat_reconstructed
+
+# --- Métodos de Imputación Existentes (sin cambios) ---
 
 @timeit
 def impute_median_sample_wise(data):
@@ -211,6 +267,122 @@ def impute_linear(X_missing: np.ndarray) -> np.ndarray:
         X_interpolated[i, :, :] = interpolated_df.to_numpy()
 
     return X_interpolated
+
+@timeit
+def impute_hankel(X_missing: np.ndarray, k: Optional[int] = None, max_iter: int = 1, tol: float = 1e-1, tau_scaling: float = 0.1) -> np.ndarray:
+    """
+    Imputa valores faltantes en un array 3D usando Hankel Imputation (HI)
+    basado en la completación de matrices de bajo rango mediante Singular Value Thresholding (SVT).
+
+    Aplica este método a cada muestra (sample_idx) del array 3D de entrada.
+
+    Args:
+        X_missing (np.ndarray): Array NumPy 3D de entrada con valores faltantes (NaNs).
+                                 Forma: (n_samples, n_steps, n_features).
+        k (int, optional): Número de filas para la construcción de la matriz de Hankel
+                           para la serie aplanada de cada muestra. Si es None, se calcula
+                           automáticamente: k = floor((T_flat + 1) / 2), donde T_flat es
+                           la longitud aplanada de la muestra (n_steps * n_features).
+        max_iter (int): Número máximo de iteraciones para el algoritmo SVT.
+        tol (float): Tolerancia para la convergencia del algoritmo SVT (cambio relativo en la norma de Frobenius).
+        tau_scaling (float): Factor de escalado para el parámetro de umbral suave (tau).
+                             tau = tau_scaling * max_singular_value. Un valor más alto
+                             fuerza un rango más bajo (más imputación suavizada).
+
+    Returns:
+        np.ndarray: Array NumPy 3D con valores NaN imputados.
+    """
+    print("Iniciando Hankel Imputation (HI) para imputación.")
+    
+    if not isinstance(X_missing, np.ndarray) or X_missing.ndim != 3:
+        print("ERROR: X_missing debe ser un array NumPy 3D. Devolviendo entrada original.")
+        return X_missing # Devolver original si el formato es incorrecto
+
+    imputed_data = X_missing.copy()
+    n_samples, n_steps, n_features = X_missing.shape
+
+    print(f"Procesando {n_samples} muestras. Cada muestra tiene forma ({n_steps}, {n_features}).")
+
+    for sample_idx in range(n_samples):
+        current_sample = X_missing[sample_idx, :, :]
+        X_sample_flat = current_sample.flatten()
+        T_flat_sample = len(X_sample_flat)
+
+        k_rows_sample = k
+        if k_rows_sample is None:
+            k_rows_sample = int(np.floor((T_flat_sample + 1) / 2))
+            if k_rows_sample < 1:
+                k_rows_sample = 1
+            print(f"    Muestra {sample_idx}/{n_samples-1}: Lag k no especificado. Calculado como {k_rows_sample} para longitud aplanada {T_flat_sample}.")
+        else:
+             print(f"    Muestra {sample_idx}/{n_samples-1}: Usando lag k especificado: {k_rows_sample}.")
+        
+        if not (1 <= k_rows_sample <= T_flat_sample):
+             print(f"    ADVERTENCIA: Lag k={k_rows_sample} inválido para muestra {sample_idx} (longitud aplanada {T_flat_sample}). Ajustando k a {T_flat_sample // 2 if T_flat_sample > 1 else 1}.")
+             k_rows_sample = T_flat_sample // 2 if T_flat_sample > 1 else 1
+             if k_rows_sample == 0: k_rows_sample = 1
+
+        try:
+            H_missing_true_nan = _create_hankel_from_flattened(X_sample_flat, k_rows_sample)
+        except ValueError as e:
+            print(f"    ERROR: No se pudo crear la matriz de Hankel para muestra {sample_idx} (k={k_rows_sample}, T_flat={T_flat_sample}): {e}. Saltando esta muestra.")
+            continue 
+
+        H_mask = ~np.isnan(H_missing_true_nan)
+
+        H_imputed_current = H_missing_true_nan.copy()
+        initial_fill_value = np.nanmean(X_sample_flat)
+        if np.isnan(initial_fill_value):
+            initial_fill_value = 0
+        H_imputed_current[~H_mask] = initial_fill_value
+
+        print(f"    Muestra {sample_idx}/{n_samples-1}: Iniciando SVT (max_iter={max_iter}, tol={tol:.1e}, tau_scaling={tau_scaling}).")
+        
+        # Algoritmo SVT iterativo
+        for iteration in range(max_iter):
+            H_prev = H_imputed_current.copy()
+
+            U, s, Vh = svd(H_imputed_current, full_matrices=False)
+            
+            tau = tau_scaling * s[0] if len(s) > 0 else 0
+            s_thresholded = np.maximum(0, s - tau)
+            
+            H_new = U @ np.diag(s_thresholded) @ Vh
+            
+            H_imputed_current = H_new
+            H_imputed_current[H_mask] = H_missing_true_nan[H_mask]
+
+            norm_diff = np.linalg.norm(H_imputed_current - H_prev, 'fro')
+            norm_prev = np.linalg.norm(H_prev, 'fro')
+            
+            # Evitar ZeroDivisionError si norm_prev es muy pequeño
+            if norm_prev < 1e-10: # Usamos un umbral pequeño en lugar de == 0
+                if norm_diff < 1e-10: # Si ambos son casi cero, consideramos convergido
+                    print(f"        Iteración {iteration + 1}/{max_iter}: Norma previa muy pequeña. Convergencia asumida.")
+                    break
+                else: 
+                    # Si norm_prev es ~0 pero norm_diff es grande, algo va mal o es el inicio y el cambio es grande.
+                    # Continuamos, pero quizás una advertencia aquí podría ser útil.
+                    pass # Para evitar el log spam en las primeras iteraciones
+
+            change = norm_diff / norm_prev
+            
+            if (iteration + 1) % 10 == 0 or iteration == 0 or change < tol: # Log cada 10 iteraciones o al inicio/convergencia
+                print(f"        Iteración {iteration + 1}/{max_iter}: Cambio relativo (Frobenius) = {change:.4e}. Tau = {tau:.4e}. Valores singulares: {s_thresholded.round(2) if len(s_thresholded) > 0 else '[]'}")
+            
+            if change < tol:
+                print(f"    Muestra {sample_idx}/{n_samples-1}: SVT convergió en la iteración {iteration + 1}.")
+                break
+        else: # Este else se ejecuta si el bucle no se rompe con 'break'
+            print(f"    ADVERTENCIA: Muestra {sample_idx}/{n_samples-1}: SVT no convergió después de {max_iter} iteraciones (tol={tol:.1e}).")
+        
+        # Reconstruir y asignar la muestra imputada
+        X_sample_imputed_flat = _reconstruct_from_hankel_to_flattened(H_imputed_current, T_flat_sample)
+        imputed_data[sample_idx, :, :] = X_sample_imputed_flat.reshape(n_steps, n_features)
+
+    print("Hankel Imputation (HI) completada para todas las muestras.")
+    return imputed_data
+
 
 @timeit
 def fit_transformer(dataset_for_training, dataset_for_validating):

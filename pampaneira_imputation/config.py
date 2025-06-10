@@ -3,9 +3,14 @@ import pandas as pd
 
 # --- Rutas de archivos ---
 DATA_DIR = "../data"
+DATA_DIR_REL = "../../../data"
 RESULTS_DIR = "../results"
 TRAFFIC_FILE = f"{DATA_DIR}/trafico_feb22_ago23.csv"
 INTERSECTION_FILE = f"{DATA_DIR}/trafico_contamina_intersección.csv"
+
+TRAFFIC_FILE_REL = f"{DATA_DIR_REL}/trafico_feb22_ago23.csv"
+INTERSECTION_FILE_REL = f"{DATA_DIR_REL}/trafico_contamina_intersección.csv"
+
 SAITS_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/saits"
 TRANSFORMER_MODEL_SAVE_PATH = f"{RESULTS_DIR}/imputation/transformer"
 
