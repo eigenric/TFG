@@ -37,5 +37,5 @@ Cada milestone representa un PMV (Producto Mínimamente Viable).
 ## [M6] Elaboración de la presentación
 
 - **Mínimo**: No sobrepasar los 20 minutos de exposición.
-- **Entregable**: Documento PDF Beamer de Presentación LaTeX.
+- **Entregable**: Documento PDF/Powerpoint de Presentación.
   
