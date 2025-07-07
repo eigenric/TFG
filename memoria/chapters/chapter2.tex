@@ -2,20 +2,21 @@
 \part{BLOQUE II: FUNDAMENTOS TEÓRICOS}
 
 % --- Capítulo de Fundamentos Matemáticos ---
-\chapter{Fundamentos Matemáticos}
+\chapter{Principios Matemáticos}
 \label{ch:math_foundations}
+\glsresetall
 
-Este capítulo establece el marco conceptual y las herramientas matemáticas esenciales que servirán de base para comprender los modelos y métodos que presentaremos en los capítulos posteriores. Abordaremos las ramas fundamentales del Álgebra Lineal, el Análisis Matemático, la Probabilidad y Estadística, y los Métodos Numéricos, proporcionando las definiciones y propiedades necesarias de una manera abstracta y general.
+Este capítulo establece el marco conceptual y las herramientas matemáticas esenciales que servirán de base para comprender los modelos y métodos que presentaremos en los capítulos posteriores. Abordaremos las ramas fundamentales del Álgebra Lineal, el Análisis Matemático, la Probabilidad y Estadística, y los Métodos Numéricos, proporcionando las definiciones y propiedades necesarias.
 
 \section{Álgebra Lineal y Geometría}
 \label{sec:linear_algebra_geometry}
 
-Nosotros utilizamos el Álgebra Lineal, un área extensamente tratada en textos como los de \citet{Strang2016} y \citet{Noble1988}, para representar y manipular datos, así como para describir transformaciones y relaciones en espacios multidimensionales. Estudiamos como objetos centrales los vectores, las matrices y, de forma más general, los tensores, junto con las operaciones que definimos sobre ellos.
+El Álgebra Lineal constituye un campo ampliamente desarrollado en obras como  \citet{Strang2016} y \citet{Noble1988}. Esta disciplina provee las herramientas necesarias para representar y manipular datos, así como para describir transformaciones y relaciones en espacios multidimensionales. Nos enfocamos en vectores, matrices y, en un sentido más general, tensores, junto con las operaciones que sobre ellos definimos.
 
 \subsection{Vectores y Espacios Vectoriales}
 \label{subsec:vectors_vector_spaces}
 
-Comenzamos formalizando el concepto de vector, y posteriormente el de matriz, que generaliza la noción de vector y escalar.
+Comenzamos esta sección formalizando el concepto de vector, y posteriormente el de matriz, que generaliza la noción de vector y escalar.
 
 \begin{definition}[Vector]
 \label{def:vector}
@@ -28,30 +29,33 @@ Llamamos \textbf{componentes} del vector a los elementos $v_i \in \mathbb{K}$. E
 
 Sobre los vectores en $\mathbb{K}^n$ definimos la suma y el producto por un escalar componente a componente, operaciones que le confieren la estructura de espacio vectorial \citep{Noble1988}.
 
-\paragraph{Ejemplo numérico en $\mathbb{R}^3$:}
+\begin{example}[Vector tridimensional]
+
 Consideremos un vector $\mathbf{u}$ en el espacio tridimensional $\mathbb{R}^3$ (es decir, $n=3$ y $\mathbb{K}=\mathbb{R}$). Si sus componentes son $u_1 = 2$, $u_2 = -1$, y $u_3 = 5$, entonces escribimos el vector columna como:
 \[ \mathbf{u} = \begin{pmatrix} 2 \\ -1 \\ 5 \end{pmatrix} \]
 Y su vector traspuesto (vector fila) es:
 \[ \mathbf{u}^T = \begin{pmatrix} 2 & -1 & 5 \end{pmatrix} \]
 
+\end{example}
+
 \subsection{Matrices y Operaciones Matriciales}
 \label{subsec:matrices_operations}
 
-Las matrices son arreglos rectangulares de elementos que nos permiten organizar datos de manera estructurada y representar transformaciones lineales entre espacios vectoriales \citep{Strang2016}.
+Una matriz consiste en una disposición rectangular de elementos que organiza datos de forma estructurada y describe transformaciones lineales entre espacios vectoriales \citep{Strang2016}.
 
 \begin{definition}[Matriz]
 \label{def:matrix_general}
 Definimos una \textbf{matriz} $\mathbf{A}$ de tamaño $m \times n$, con entradas en un cuerpo $\mathbb{K}$ (típicamente $\mathbb{R}$ o $\mathbb{C}$), como una disposición rectangular de $m$ filas y $n$ columnas de elementos de $\mathbb{K}$. Denotamos una matriz por $\mathbf{A} = (a_{ij})$ o $[\mathbf{A}]_{ij} = a_{ij}$, donde $a_{ij} \in \mathbb{K}$ es la entrada en la fila $i$ y la columna $j$, para $1 \leq i \leq m$ y $1 \leq j \leq n$. Denotamos el conjunto de todas estas matrices como $M_{m \times n}(\mathbb{K})$ o $\mathbb{K}^{m \times n}$ \citep{Bishop2006}.
 \end{definition}
 
-Definimos la igualdad entre matrices a partir de la igualdad de sus elementos.
+Definimos la igualdad entre matrices a partir de la equivalencia uno a uno de sus elementos.
 
 \begin{definition}[Igualdad de Matrices]
 \label{def:matrix_equality_general}
 Decimos que dos matrices $\mathbf{A} = (a_{ij})$ y $\mathbf{B} = (b_{ij})$ son \textbf{iguales} si pertenecen al mismo espacio $\mathbb{K}^{m \times n}$ (tienen el mismo tamaño) y $a_{ij} = b_{ij}$ para todos $1 \leq i \leq m$, $1 \leq j \leq n$.
 \end{definition}
 
-Las operaciones básicas que definimos para matrices de igual tamaño son la suma y el producto por un escalar, que realizamos entrada a entrada \citep{Strang2016}.
+Las operaciones básicas que definimos para matrices de igual tamaño son la suma y el producto por un escalar, que realizamos elemento a elemento \citep{Strang2016}.
 
 \begin{definition}[Suma de Matrices]
 \label{def:matrix_sum_general}
@@ -112,20 +116,18 @@ Sean $\mathbf{A}, \mathbf{B}, \mathbf{C}$ matrices de tamaños compatibles para 
 
 Además del producto matricial estándar, a menudo resulta útil realizar operaciones elemento a elemento.
 
-\begin{definition}[Producto Elemento a Elemento - Hadamard]
+\begin{definition}[Producto Hadamard]
 \label{def:hadamard_product_general}
 Dadas $\mathbf{A}, \mathbf{B} \in \mathbb{K}^{m \times n}$ (mismo tamaño), definimos su \textbf{producto elemento a elemento} o \textbf{producto de Hadamard} como la matriz $\mathbf{A} \odot \mathbf{B} \in \mathbb{K}^{m \times n}$ mediante:
 \[ [\mathbf{A} \odot \mathbf{B}]_{ij} = a_{ij} \cdot b_{ij} \]
-Este producto es mencionado en contextos de aprendizaje profundo \citep{GBC16}.
 \end{definition}
 
 Otra operación fundamental es la transposición, que intercambia filas por columnas.
 
 \begin{definition}[Matriz Traspuesta]
 \label{def:transpose_general}
-Dada $\mathbf{A} \in \mathbb{K}^{m \times n}$, definimos su \textbf{matriz traspuesta}, $\mathbf{A}^T \in \mathbb{K}^{n \times m}$, mediante:
+Dada $\mathbf{A} \in \mathbb{K}^{m \times n}$, definimos su \textbf{matriz traspuesta} \citep{Strang2016}, $\mathbf{A}^T \in \mathbb{K}^{n \times m}$, mediante:
 \[ [\mathbf{A}^T]_{ij} = a_{ji} \]
-\citep{Strang2016}.
 \end{definition}
 
 La transposición tiene propiedades que interactúan con las operaciones matriciales.
@@ -141,19 +143,42 @@ Sean $\mathbf{A}, \mathbf{B}$ matrices de tamaños compatibles para que las oper
 \end{enumerate}
 \end{proposition}
 
+% --- Introducción a matrices estructuradas ---
+Para este trabajo es importante definir las matrices de Toeplitz \citep{gray2006toeplitz} y Hankel \citep{widom1966hankel}, las cuales son matrices con patrones de elementos no  arbitrarios. 
+
+\begin{definition}[Matriz de Toeplitz]
+\label{def:toeplitz_matrix}
+Sea $(t_k)_{k=-(m-1)}^{n-1}$ una secuencia de elementos en $\mathbb{K}$. Definimos la \textbf{matriz de Toeplitz} asociada como la matriz $\mathbf{T}\in\mathbb{K}^{m\times n}$ mediante
+\[
+[\mathbf{T}]_{ij} \;=\; t_{\,j - i},
+\quad 1 \le i \le m,\; 1 \le j \le n,
+\]
+de modo que cada diagonal constante paralela a la diagonal principal tiene el mismo valor.
+\end{definition}
+
+\begin{definition}[Matriz de Hankel]
+\label{def:hankel_matrix}
+Sea $(h_k)_{k=1}^{m+n-1}$ una secuencia de elementos en $\mathbb{K}$. Definimos la \textbf{matriz de Hankel} asociada como la matriz $\mathbf{H}\in\mathbb{K}^{m\times n}$ mediante
+\[
+[\mathbf{H}]_{ij} \;=\; h_{\,i+j-1},
+\quad 1 \le i \le m,\; 1 \le j \le n.
+\]
+\end{definition}
+
+
 \subsection{Tensores y Normas}
 \label{subsec:tensors_norms}
 
-Expandiendo la noción de matrices, los tensores nos permiten representar datos y operaciones en dimensiones arbitrarias, un concepto fundamental en el aprendizaje automático moderno. Para un tratamiento más formal sobre tensores y sus descomposiciones, se puede consultar a \citet{KoldaBader2009}.
+Así como las matrices organizan números en filas y columnas (dos dimensiones), los tensores son una generalización que nos permite organizar datos en un mayor número de dimensiones. Pueden visualizarse como 'cubos de datos' o estructuras aún más complejas si tienen más de tres dimensiones. Para una exploración matemática rigurosa de los tensores y cómo se pueden 'descomponer' en partes más simples, una referencia útil es el trabajo de \citet{KoldaBader2009}.
 
 \begin{definition}[Tensor y Orden]
-Un \textbf{tensor} $\mathbf{A}$ de \textbf{orden} $k$ (o grado $k$) sobre el campo de los números reales $\mathbb{R}$ es una generalización de escalares ($k=0$), vectores ($k=1$) y matrices ($k=2$). Lo podemos representar como un array multidimensional cuyos elementos direccionamos usando $k$ índices. Si las dimensiones a lo largo de cada índice son $d_1, d_2, \dots, d_k$, entonces el tensor pertenece al espacio $\mathbb{R}^{d_1 \times d_2 \times \dots \times d_k}$. Denotamos un elemento del tensor $\mathbf{A}$ usando la notación de índices como $[\mathbf{A}]_{i_1 i_2 \dots i_k}$, donde cada índice $i_j$ varía sobre la extensión de la $j$-ésima dimensión (i.e., $1 \le i_j \le d_j$) \citep{GBC16}.
+Un \textbf{tensor} $\mathbf{A}$ de \textbf{orden} $k$ (o grado $k$) sobre el campo de los números reales $\mathbb{R}$ es una generalización de escalares ($k=0$), vectores ($k=1$) y matrices ($k=2$). Lo podemos representar como un array multidimensional cuyos elementos direccionamos usando $k$ índices. Si las dimensiones a lo largo de cada índice son $d_1, d_2, \dots, d_k$, entonces el tensor pertenece al espacio $\mathbb{R}^{d_1 \times d_2 \times \dots \times d_k}$. Denotamos un elemento del tensor $\mathbf{A}$ usando la notación de índices como $[\mathbf{A}]_{i_1 i_2 \dots i_k}$, donde cada índice $i_j$ varía sobre la extensión de la $j$-ésima dimensión (i.e., $1 \le i_j \le d_j$).
 \end{definition}
 
 Extendemos de manera natural a los tensores las operaciones elemento a elemento definidas para matrices.
 
 \begin{definition}[Operaciones Elemento a Elemento para Tensores]
-Sean $\mathbf{A}, \mathbf{B}$ dos tensores del mismo orden $k$ y con idénticas dimensiones $d_1 \times \dots \times d_k$. Sea $c \in \mathbb{R}$ un escalar y $f: \mathbb{R} \to \mathbb{R}$ una función escalar. Definimos \citep{GBC16}:
+Sean $\mathbf{A}, \mathbf{B}$ dos tensores del mismo orden $k$ y con idénticas dimensiones $d_1 \times \dots \times d_k$. Sea $c \in \mathbb{R}$ un escalar y $f: \mathbb{R} \to \mathbb{R}$ una función escalar. Definimos:
 \begin{itemize}
     \item \textbf{Suma/Resta:} $\mathbf{C} = \mathbf{A} \pm \mathbf{B}$ con $[\mathbf{C}]_{i_1 \dots i_k} = [\mathbf{A}]_{i_1 \dots i_k} \pm [\mathbf{B}]_{i_1 \dots i_k}$.
     \item \textbf{Multiplicación por Escalar:} $\mathbf{C} = c\mathbf{A}$ con $[\mathbf{C}]_{i_1 \dots i_k} = c \cdot [\mathbf{A}]_{i_1 \dots i_k}$.
@@ -162,7 +187,7 @@ Sean $\mathbf{A}, \mathbf{B}$ dos tensores del mismo orden $k$ y con idénticas 
 \end{itemize}
 \end{definition}
 
-Para medir la "magnitud" de un tensor o de los errores entre tensores, utilizamos el concepto de norma \citep{GBC16}.
+Cuando necesitamos comparar tensores o medir cuán diferentes son (por ejemplo, para evaluar un error de aproximación), recurrimos al concepto de norma. La norma nos proporciona una medida cuantitativa de la 'distancia' o discrepancia entre ellos, o del 'tamaño' general de un tensor individual.
 
 \begin{definition}[Norma $L_p$ de un Tensor]
 \label{def:lp_norm}
@@ -178,9 +203,10 @@ La norma $L_1$ suma los valores absolutos de los elementos. La norma $L_2$ (o no
 \[ ||\mathbf{A}||_2^2 = \sum_{i_1=1}^{d_1} \dots \sum_{i_k=1}^{d_k} ([\mathbf{A}]_{i_1 \dots i_k})^2 = \langle \text{vec}(\mathbf{A}), \text{vec}(\mathbf{A}) \rangle \]
 Para una matriz $\mathbf{M} \in \mathbb{R}^{m \times n}$, la norma de Frobenius al cuadrado también puede expresarse como la traza del producto de la matriz por su traspuesta \citep{GolubVanLoan2013}:
 \[ ||\mathbf{M}||_F^2 = ||\mathbf{M}||_2^2 = \sum_{i=1}^{m} \sum_{j=1}^{n} ([\mathbf{M}]_{ij})^2 = \text{Tr}(\mathbf{M}^T \mathbf{M}) = \text{Tr}(\mathbf{M} \mathbf{M}^T) \]
-Ambas normas, $L_1$ y $L_2$, son cruciales cuando definimos métricas de error y funciones de regularización en aprendizaje automático \citep{Bishop2006}.
+Ambas normas, $L_1$ y $L_2$, son fundamentales cuando definimos métricas de error y funciones de regularización.
 
-\paragraph{Ejemplo de cálculo de la norma $L_2$ (Norma de Frobenius):}
+\begin{example}[Norma de Frobenius]
+
 Consideremos la siguiente matriz $\mathbf{B} \in \mathbb{R}^{2 \times 3}$:
 \[ \mathbf{B} = \begin{pmatrix} 1 & -2 & 0 \\ 3 & 4 & -1 \end{pmatrix} \]
 Calculamos la norma $L_2$ (o norma de Frobenius) de $\mathbf{B}$ como:
@@ -190,11 +216,14 @@ Calculamos la norma $L_2$ (o norma de Frobenius) de $\mathbf{B}$ como:
 &= \sqrt{1 + 4 + 0 + 9 + 16 + 1} \\
 &= \sqrt{31}
 \end{align*}
+\end{example}
+
+\newpage
 
 \section{Análisis Matemático}
 \label{sec:mathematical_analysis}
 
-El Análisis Matemático, particularmente el cálculo diferencial, nos proporciona herramientas para estudiar la variación y el cambio, lo cual es esencial para comprender cómo se comportan las funciones y cómo optimizarlas. Textos clásicos como los de \citet{Rudin1976} y \citet{Apostol1974} cubren estos temas en profundidad.
+El Análisis Matemático, y en particular el cálculo diferencial, desarrolla un conjunto de técnicas formales para investigar cómo las funciones se transforman y evolucionan. A través de conceptos como el límite, la continuidad y la derivada, podemos determinar con exactitud la 'velocidad' con la que una función cambia en cada uno de sus puntos. Esta 'velocidad de cambio' no solo describe el comportamiento local de la función (si aumenta o disminuye), sino que también es la base para identificar sus puntos extremos (máximos o mínimos), lo cual es el objetivo central de los problemas de optimización. Los trabajos de \citet{Rudin1976} y \citet{Apostol1974} ofrecen una exposición detallada y formal de estas herramientas y sus aplicaciones.
 
 \subsection{Funciones y Continuidad}
 \label{subsec:functions_continuity}
@@ -229,7 +258,8 @@ Es importante destacar que la mera existencia de todas las derivadas parciales d
 
 Una condición suficiente común para la diferenciabilidad es que la función sea de \textbf{clase $C^1$}. Decimos que una función $f$ es de clase $C^1$ en un conjunto abierto $U$ si todas sus derivadas parciales $\frac{\partial f}{\partial x_i}$ existen en $U$ y son, además, funciones continuas en $U$. Si las derivadas parciales de $f$ existen en un entorno de $\mathbf{a}$ y son continuas en $\mathbf{a}$ mismo, entonces $f$ es diferenciable en $\mathbf{a}$ \citep{Apostol1974}.
 
-\paragraph{Contraejemplo:}
+\begin{counterexample}[Función parcialmente derivable no diferenciable]
+
 Consideremos la función $f: \mathbb{R}^2 \to \mathbb{R}$ definida por:
 \[ f(x,y) = \begin{cases} \frac{xy}{x^2+y^2} & \text{si } (x,y) \neq (0,0) \\ 0 & \text{si } (x,y) = (0,0) \end{cases} \]
 Calculamos las derivadas parciales en el origen $(0,0)$:
@@ -240,6 +270,7 @@ Calculamos las derivadas parciales en el origen $(0,0)$:
 Ambas derivadas parciales existen en $(0,0)$ y son iguales a cero. Sin embargo, la función $f$ no es continua en $(0,0)$, como se discute en \citet{Apostol1974} o \citet{Rudin1976} para ejemplos similares. Si nos acercamos al origen a lo largo de la recta $y=mx$, obtenemos:
 \[ \lim_{x \to 0} f(x,mx) = \lim_{x \to 0} \frac{x(mx)}{x^2+(mx)^2} = \lim_{x \to 0} \frac{mx^2}{x^2(1+m^2)} = \frac{m}{1+m^2} \]
 Dado que este límite depende de la pendiente $m$ de la trayectoria de aproximación, el límite general $\lim_{(x,y) \to (0,0)} f(x,y)$ no existe. Como la función no es continua en $(0,0)$, no puede ser diferenciable en $(0,0)$, a pesar de que todas sus derivadas parciales existan en ese punto.
+\end{counterexample}
 
 Para funciones de $\mathbb{R}^n$ a $\mathbb{R}$, podemos agrupar todas las derivadas parciales en un vector llamado gradiente.
 
@@ -278,11 +309,10 @@ Notar que si $m=1$, entonces $\mathbf{f}$ es una función real-valorada $f$, y l
 
 Una regla fundamental para derivar funciones compuestas es la regla de la cadena \citep{Apostol1974, Rudin1976}.
 
-\begin{theorem}[Regla de la Cadena Multivariable]
+\begin{theorem}[Regla de la Cadena Multivariable] \citep{Apostol1974}.
 \label{thm:chain_rule_general}
 Sean $U \subseteq \mathbb{R}^n$, $V \subseteq \mathbb{R}^m$ conjuntos abiertos. Sean $\mathbf{g}: U \to V$ diferenciable en $\mathbf{x}_0 \in U$, y $\mathbf{f}: V \to \mathbb{R}^p$ diferenciable en $\mathbf{y}_0 = \mathbf{g}(\mathbf{x}_0) \in V$. La composición $\mathbf{h} = \mathbf{f} \circ \mathbf{g}: U \to \mathbb{R}^p$ es diferenciable en $\mathbf{x}_0$, y su matriz Jacobiana en $\mathbf{x}_0$ es el producto de las matrices Jacobianas de $\mathbf{f}$ y $\mathbf{g}$:
 \[ \mathbf{J}_{\mathbf{h}}(\mathbf{x}_0) = \mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0) \]
-\citep{Apostol1974}.
 \end{theorem}
 
 \begin{proof}
@@ -296,19 +326,18 @@ La suma $\sum_{l=1}^{m} [\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0)]_{kl} [\mathbf{J}
 Por lo tanto, hemos demostrado que:
 \[ [\mathbf{J}_{\mathbf{h}}(\mathbf{x}_0)]_{kj} = \frac{\partial h_k}{\partial x_j}(\mathbf{x}_0) = [\mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)]_{kj} \]
 Como esto es válido para todo $1 \le k \le p$ y $1 \le j \le n$, las matrices son iguales: $\mathbf{J}_{\mathbf{h}}(\mathbf{x}_0) = \mathbf{J}_{\mathbf{f}}(\mathbf{y}_0) \mathbf{J}_{\mathbf{g}}(\mathbf{x}_0)$.
-(Nota: Esta prueba asume la validez de la regla de la cadena para derivar una función escalar $f_k$ compuesta con una función vectorial $\mathbf{g}$. Una prueba más rigurosa se basa en la definición de diferenciabilidad mediante aproximaciones lineales y el manejo cuidadoso de los términos de error, como se encuentra en \citet{Apostol1974} o \citet{Rudin1976}).
+(Nota: Esta prueba asume la validez de la regla de la cadena para derivar una función escalar $f_k$ compuesta con una función vectorial $\mathbf{g}$. Una prueba más rigurosa se basa en la definición de diferenciabilidad mediante aproximaciones lineales y el manejo cuidadoso de los términos de error, como se encuentra en \citet{Apostol1974} o \citet{Rudin1976}.
 \end{proof}
 
-Esta regla es crucial para el cálculo de gradientes en funciones compuestas, una operación recurrente en algoritmos de optimización, como el de retropropagación \citep{Rumelhart1986, GBC16}.
+Esta regla es fundamental para el cálculo de gradientes en funciones compuestas, una operación recurrente en algoritmos de optimización, como el de retropropagación \citep{rumelhart_learning_1986, goodfellow_deep_2016}.
 
 \section{Análisis Funcional}
 
-Introducimos algunos conceptos del Análisis Funcional, que son cruciales para la demostración del Teorema de Aproximación Universal. Textos de referencia para esta área son \citet{Kreyszig1989} y \citet{Rudin1991}.
+Introducimos algunos conceptos del Análisis Funcional, que son importantes para la demostración del Teorema de Aproximación Universal. Textos de referencia para esta área son \citet{Kreyszig1989} y \citet{Rudin1991}.
 
 \begin{definition}[Espacio de Funciones Continuas $C(K)$]
-Sea $K$ un espacio topológico compacto Hausdorff (en nuestro caso, $I_n = [0,1]^n \subset \mathbb{R}^n$). Definimos el espacio $C(K)$ como el conjunto de todas las funciones continuas $f: K \to \mathbb{R}$ (o $\mathbb{C}$). Dotamos a $C(K)$ de la estructura de espacio de Banach con la \textbf{norma del supremo} (o norma uniforme):
+Sea $K$ un espacio topológico compacto Hausdorff (en nuestro caso, $I_n = [0,1]^n \subset \mathbb{R}^n$). Definimos el espacio $C(K)$ como el conjunto de todas las funciones continuas $f: K \to \mathbb{R}$ (o $\mathbb{C}$). Dotamos a $C(K)$ de la estructura de espacio de Banach con la \textbf{norma del supremo} (o norma uniforme) \citep{Kreyszig1989}:
 \[ \norm{f}_{\infty} = \sup_{\mathbf{x} \in K} \abs{f(\mathbf{x})} \]
-\citep{Kreyszig1989}.
 \end{definition}
 
 \begin{definition}[Densidad]
@@ -429,7 +458,7 @@ Decimos que una variable aleatoria $X$ es \textbf{discreta} si su conjunto de po
 Decimos que una variable aleatoria $X$ es \textbf{continua} si toma valores en un intervalo de números reales (o $\mathbb{R}$). Describimos la distribución de probabilidad de una v.a. continua mediante su \textbf{función de densidad de probabilidad} (FDP), $f_X(x)$, tal que $P(a \le X \le b) = \int_a^b f_X(x) dx$ para cualesquiera $a \le b$. La FDP satisface $f_X(x) \ge 0$ para todo $x$ y $\int_{-\infty}^\infty f_X(x) dx = 1$ \citep{DeGrootSchervish2012}.
 \end{definition}
 
-Un concepto crucial es cómo la información sobre un evento afecta la probabilidad de otro.
+Un concepto clave es cómo la información sobre un evento afecta la probabilidad de otro.
 
 \begin{definition}[Probabilidad Condicionada]
 \label{def:conditional_prob_general}
@@ -444,27 +473,6 @@ Relacionamos la probabilidad condicionada con el concepto de independencia.
 \label{def:independence_general}
 Decimos que dos eventos $A, B \in \mathcal{F}$ son \textbf{estadísticamente independientes} si la ocurrencia de uno no altera la probabilidad del otro. Formalizamos esto como $P(A \cap B) = P(A)P(B)$. Si $P(B)>0$, una definición equivalente es $P(A|B) = P(A)$. Decimos que dos variables aleatorias $X$ e $Y$ son independientes si para cualesquiera conjuntos medibles $A, B \subseteq \mathbb{R}$, los eventos $\{X \in A\}$ e $\{Y \in B\}$ son independientes \citep{CasellaBerger2002}.
 \end{definition}
-
-\begin{proof}[Demostración de la equivalencia de las definiciones de independencia (si $P(B) > 0$)]
-Queremos demostrar que $P(A \cap B) = P(A)P(B) \iff P(A|B) = P(A)$, asumiendo $P(B)>0$.
-
-$(\Rightarrow)$: Supongamos que $P(A \cap B) = P(A)P(B)$.
-Por la definición de probabilidad condicionada (\Cref{def:conditional_prob_general}), tenemos:
-\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
-Sustituyendo la hipótesis $P(A \cap B) = P(A)P(B)$:
-\[ P(A|B) = \frac{P(A)P(B)}{P(B)} \]
-Como $P(B) > 0$, podemos cancelar $P(B)$ en el numerador y denominador:
-\[ P(A|B) = P(A) \]
-
-$(\Leftarrow)$: Supongamos que $P(A|B) = P(A)$.
-Por la definición de probabilidad condicionada (\Cref{def:conditional_prob_general}):
-\[ P(A|B) = \frac{P(A \cap B)}{P(B)} \]
-Sustituyendo la hipótesis $P(A|B) = P(A)$:
-\[ P(A) = \frac{P(A \cap B)}{P(B)} \]
-Multiplicando ambos lados por $P(B)$ (que es positivo y, por lo tanto, no cero):
-\[ P(A)P(B) = P(A \cap B) \]
-Esto completa la demostración de la equivalencia, como se puede encontrar en textos estándar de probabilidad \citep{Ross2014}.
-\end{proof}
 
 \subsection{Distribuciones de Probabilidad Discretas Comunes}
 
@@ -519,10 +527,10 @@ Las condiciones son:
 
 Estos fundamentos probabilísticos son indispensables para que comprendamos la aleatoriedad inherente en los datos y en los procesos de modelado.
 
-\section{Funciones Específicas: La Función Softmax}
+\section{La Función Softmax}
 \label{subsec:softmax_general}
 
-Presentamos funciones no lineales con propiedades particulares que son relevantes en diversas aplicaciones, como la función Softmax, ampliamente utilizada en clasificación multiclase \citep{Bishop2006}. La \textbf{Softmax} (también llamada función Softmax) transforma un vector de números reales en un vector de números positivos que suman 1.
+Presentamos la función Softmax, ampliamente utilizada en clasificación multiclase \citep{Bishop2006}. La \textbf{Softmax} (también llamada función Softmax) transforma un vector de números reales en un vector de números positivos que suman 1.
 
 \begin{definition}[Softmax]
 \label{def:softmax_general}
@@ -557,7 +565,7 @@ Esto completa la demostración.
 \end{proof}
 
 \subsection{Apunte sobre estabilidad numérica}
-Para mejorar la estabilidad numérica al calcular la Softmax, especialmente cuando los valores de entrada $x_i$ son grandes (lo que podría llevar a que $e^{x_i}$ cause un desbordamiento), restamos el valor máximo del vector de entrada de cada elemento \textit{antes} de aplicar la exponencial. Esta es una práctica común \citep[Capítulo 4].
+Para mejorar la estabilidad numérica al calcular la Softmax, especialmente cuando los valores de entrada $x_i$ son grandes (lo que podría llevar a que $e^{x_i}$ cause un desbordamiento), restamos el valor máximo del vector de entrada de cada elemento \textit{antes} de aplicar la exponencial.
 
 Definimos $m = \max \{x_1, x_2, \dots, x_N \}$.
 Entonces, calculamos:
@@ -567,7 +575,8 @@ Entonces, calculamos:
 Esto es matemáticamente equivalente pero numéricamente estable.
 Al restar $m$, el exponente más grande será $0$ (ya que para algún $k$, $x_k = m$, entonces $x_k - m = 0$), y $e^0 = 1$. Todos los demás exponentes serán negativos, resultando en valores $e^{x_j-m}$ entre $(0, 1]$. Esto evita el desbordamiento de los términos exponenciales y también ayuda a prevenir el subdesbordamiento en el denominador (ya que al menos un término en la suma será 1).
 
-\subsection*{Ejemplo numérico breve con K=3}
+\begin{example}[Estabilidad de Softmax con $K=3$]
+
 Consideremos un vector de logits (valores de entrada) $\mathbf{x} = (1, 2, 5)^T$.
 \begin{itemize}
     \item \textbf{Cálculo estándar (potencialmente inestable):}
@@ -601,7 +610,10 @@ Consideremos un vector de logits (valores de entrada) $\mathbf{x} = (1, 2, 5)^T$
     \end{align*}
     Vector de salida: $(0.017, 0.047, 0.936)^T$. (Suma $\approx 1.000$)
 \end{itemize}
+\end{example}
 Ambos métodos producen el mismo resultado (dentro de la precisión de redondeo). Sin embargo, si los valores de entrada fueran, por ejemplo, $(100, 102, 105)^T$, $e^{105}$ excedería el límite de flotantes estándar, mientras que el método estable operaría con $e^0, e^{-3}, e^{-5}$, que son numéricamente manejables.
+
+
 
 \vspace{1em}
 \noindent El vector de salida de la función Softmax, que denotamos como $\mathbf{y} = (y_1, \ldots, y_K)^T$ donde cada componente $y_i = \operatorname{softmax}(x_i) = \frac{e^{x_i-m}}{\sum_{j=1}^{K} e^{x_j-m}}$, tiene elementos $y_i$ que son no negativos ($y_i \ge 0$) y suman a uno ($\sum_{i=1}^K y_i = 1$). Estas propiedades fundamentales (no negatividad y suma igual a uno) permiten que interpretemos el vector $\mathbf{y}$ como los parámetros de una distribución de probabilidad categórica (\Cref{def:categorical_distribution}) sobre $K$ posibles resultados mutuamente excluyentes \citep{Bishop2006}.
@@ -649,18 +661,22 @@ La fórmula interpola correctamente los puntos dados.
 Utilizamos este método comúnmente para estimar valores intermedios cuando solo conocemos puntos discretos.
 
 \subsection{Limitaciones de la Interpolación Lineal}
-Si bien la interpolación lineal es simple y computacionalmente económica, presenta varias limitaciones \citep{BurdenFaires2011, KincaidCheney2002}:
+Pese a su simplicidad, la interpolación lineal presenta varias limitaciones \citep{BurdenFaires2011, KincaidCheney2002}:
+
 \begin{itemize}
-    \item \textbf{No es suave (diferenciable en los nodos):} La función interpolada resulta continua, pero su derivada es discontinua en los puntos de datos originales ($x_0, x_1, \ldots, x_n$). Esto significa que la función resultante no es suave y puede presentar esquinas o quiebres en los nodos. Esto puede ser problemático si requerimos derivadas de orden superior.
-    \item \textbf{Presupone linealidad:} El método asume que la función subyacente se comporta de manera lineal entre los puntos de datos conocidos. Si la función real tiene una curvatura significativa o variaciones no lineales entre los puntos, la interpolación lineal producirá una aproximación pobre.
-    \item \textbf{Pobre para la extrapolación:} Diseñamos la interpolación lineal para estimar valores \textit{dentro} del rango de los datos conocidos ($[x_0, x_1]$ en el caso de dos puntos, o $[\min(x_i), \max(x_i)]$ para múltiples puntos). Usarla para extrapolar valores \textit{fuera} de este rango puede llevar a errores muy grandes, ya que no tenemos información sobre el comportamiento de la función más allá de los puntos observados.
-    \item \textbf{Fenómeno de Runge (con interpolación polinómica de alto grado, no lineal directa):} Aunque la interpolación lineal simple entre dos puntos no sufre directamente del fenómeno de Runge, si intentamos construir un único polinomio de alto grado que pase por \textit{muchos} puntos de datos (en lugar de interpolar linealmente por partes), pueden aparecer oscilaciones espurias entre los puntos, especialmente cerca de los extremos del intervalo. La interpolación lineal por partes evita este problema específico \citep{BurdenFaires2011}.
-    \item \textbf{Error de aproximación:} El error de la interpolación lineal depende de la distancia entre los puntos de datos y de la segunda derivada de la función subyacente. Si los puntos están muy espaciados o la función tiene una curvatura alta, el error puede ser considerable.
+    \item \textbf{No diferenciabilidad en nodos:} La función interpolante $P(x)$ es $C^0$ pero no $C^1$ en los nodos $x_i$, resultando en quiebres de pendiente.
+
+    \item \textbf{Linealidad local asumida:} Presupone linealidad de la función subyacente $f(x)$ entre nodos; es imprecisa si $f''(x)$ es significativa.
+
+    \item \textbf{Imprecisión en extrapolación:} Inadecuada para estimar valores fuera del rango de datos $[\min(x_i), \max(x_i)]$, pudiendo generar errores grandes.
+
+    \item \textbf{Error proporcional a $h^2 \max|f''(x)|$:} El error depende del espaciado $h$ entre puntos y de la curvatura de $f(x)$.
+
+    \item \textbf{Evita el fenómeno de Runge:} A diferencia de polinomios globales de alto grado, la interpolación lineal por partes no sufre de oscilaciones espurias \citep{BurdenFaires2011}.
 \end{itemize}
-A pesar de estas limitaciones, su simplicidad la hace una herramienta útil para aproximaciones rápidas o cuando sabemos que la función subyacente es aproximadamente lineal entre los puntos muestreados. Para funciones más complejas o cuando requerimos mayor suavidad, solemos preferir métodos de interpolación de orden superior como la interpolación polinómica (e.g., Lagrange, Newton), splines, o interpolación trigonométrica \citep{KincaidCheney2002}.
+A pesar de ello, es útil para aproximaciones rápidas si la función es localmente lineal. Para mayor suavidad o complejidad, se prefieren métodos de orden superior (polinomios globales, splines, interpolación trigonométrica) \citep{KincaidCheney2002}.
 
-
-\section{Teorema de Aproximación Universal (Cybenko)}
+\section{Teorema de Aproximación Universal}
 
 Establecemos el Teorema de Aproximación Universal de \citet{Cybenko1989}, que es un resultado fundamental en la teoría de redes neuronales.
 Sea $I_n = [0,1]^n$ el hipercubo unitario n-dimensional.
@@ -707,9 +723,9 @@ implica que $\mu = 0$ (la medida nula).
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}[Teorema 1 de Cybenko - Teorema de Aproximación Universal]
+\begin{theorem}[Teorema de Aproximación Universal]
 \label{thm:uat_cybenko}
-\citep[Theorem 1]{Cybenko1989}. Sea $\sigma: \mathbb{R} \to \mathbb{R}$ una función continua y discriminatoria (por Lema \ref{lem:sigmoidal_is_discriminatory}, esto incluye a las sigmoides continuas). Entonces, las sumas finitas de la forma
+\citep{Cybenko1989}. Sea $\sigma: \mathbb{R} \to \mathbb{R}$ una función continua y discriminatoria (por Lema \ref{lem:sigmoidal_is_discriminatory}, esto incluye a las sigmoides continuas). Entonces, las sumas finitas de la forma
 \[ G(\mathbf{x}) = \sum_{j=1}^{N} \alpha_j \sigma(\mathbf{y}_j^T \mathbf{x} + \theta_j) \]
 son densas en $C(I_n)$ con respecto a la norma del supremo.
 \end{theorem}

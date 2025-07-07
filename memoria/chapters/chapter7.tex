@@ -1,0 +1,83 @@
+\part{BLOQUE IV: Conclusiones y Trabajo Futuro}
+% --- CAPÍTULO 7: CONCLUSIONES Y TRABAJO FUTURO ---
+\chapter{Conclusiones y Trabajo Futuro}
+\label{chap:conclusiones}
+\glsresetall
+
+\textit{Este capítulo final presenta las principales conclusiones derivadas del desarrollo de este Trabajo de Fin de Grado, centrado en la imputación de datos faltantes en series temporales de tráfico y contaminación mediante modelos Transformer. Se resumirán los hallazgos más significativos, se evaluará el cumplimiento de los objetivos planteados y se discutirán las limitaciones del estudio. Finalmente, se propondrán diversas líneas de investigación futuras que podrían surgir como continuación o extensión de este trabajo.}
+
+\section{Conclusiones Principales}
+\label{sec:conclusiones_principales}
+
+La investigación llevada a cabo y los resultados experimentales obtenidos permiten extraer una serie de conclusiones relevantes sobre la eficacia de los modelos basados en autoatención, y en particular SAITS, para la tarea de imputación de datos en series temporales multivariantes complejas, como las provenientes del sistema IoT del proyecto Smart Poqueira.
+
+\begin{enumerate}
+    \item \textbf{Superioridad de los Modelos Basados en Transformer para Imputación:}
+    Los resultados de la evaluación comparativa, presentados en las \Cref{tab:resultados_periodo1_10_point} del \Cref{chap:eda_imputacion}, demuestran que los modelos basados en arquitecturas Transformer, específicamente el modelo SAITS \citep{Du2023SAITS} y un Transformer estándar adaptado para imputación, ofrecen una capacidad de recuperación de valores faltantes sustancialmente mejor que los métodos tradicionales (media, mediana, propagación), la interpolación lineal y el reciente método basado en matrices conocido como Imputación Hankel \citep{PoudevigneJones24Hankel}. En todas las métricas de error evaluadas (RMSE, MSE, MAE y MRE) y para los dos periodos de estudio analizados, SAITS y Transformer lograron consistentemente los errores más bajos, indicando una mayor precisión en la estimación de los datos ausentes. Particularmente, el modelo SAITS mostró una notable mejora en la métrica MAE (Error Absoluto Medio) en comparación con la interpolación lineal, logrando una reducción del error de aproximadamente un \textbf{28,78\%} en el Periodo 1 y un \textbf{19,39\%} en el Periodo 2. Esta reducción significativa del error subraya la mayor precisión de SAITS en la estimación de los datos ausentes.
+
+    \item \textbf{Eficacia de la Interpolación Lineal entre Métodos Simples:}
+    Entre los métodos de imputación más simples y tradicionales evaluados, la interpolación lineal se destacó como la opción preferible, superando consistentemente a la imputación por media, mediana y a las técnicas de propagación (forward fill y backward fill). Esto sugiere que, en ausencia de modelos predictivos complejos, aprovechar la información local de los puntos adyacentes de forma lineal es más beneficioso que utilizar estadísticas globales o la simple persistencia del último valor.
+
+    \item \textbf{Influencia de las Características del Periodo en la Imputación:}
+    Se observó una ligera degradación en el rendimiento de todos los métodos de imputación durante el Periodo 2 en comparación con el Periodo 1. Aunque la jerarquía de rendimiento entre modelos se mantuvo estable, esta variación sugiere que las características intrínsecas de los datos (posiblemente diferentes patrones de variabilidad, estacionalidad o interacciones en el periodo más corto) pueden influir en la dificultad de la tarea de imputación y en la precisión alcanzable.
+
+    \item \textbf{Viabilidad de la Imputación en Variables con Alta Incidencia de Faltantes:}
+    A pesar de la considerable proporción de datos faltantes en variables clave como \texttt{eBC\_tot}, \texttt{SO2} y \texttt{PM10} (ver \Cref{fig:porcentajes_nulos}), los modelos avanzados como SAITS demostraron capacidad para generar imputaciones coherentes, como se ilustra en las \Cref{fig:imputacion_ebc_ff,fig:imputacion_no2,fig:imputacion_o3,fig:imputacion_pm10}. Esto es fundamental para poder realizar análisis posteriores más completos sobre la calidad del aire y sus fuentes.
+
+    \item \textbf{Rendimiento Generalizado para otros Escenarios de Ausencia (Dataset de Beijing):}
+    La evaluación complementaria realizada con el dataset de calidad del aire de Beijing (Air-Quality) (\Cref{tab:resultados_pekin_eval_20_subseq_5} a \Cref{tab:resultados_pekin_eval_50_subseq_5}) confirmó la robustez y superioridad de los modelos \glsentryshort{transformer} y \glsentryshort{saits} en una variedad de escenarios de datos faltantes. Se observó que una eliminación artificial de ráfagas de datos incrementa el error para todos los métodos. No obstante, \glsentryshort{saits} y \glsentryshort{transformer} mantuvieron consistentemente el mejor rendimiento, demostrando su resiliencia y mayor capacidad para inferir valores ausentes en contextos más complejos, como las ausencias estructuradas y extensas.
+\end{enumerate}
+
+\section{Cumplimiento de Objetivos}
+\label{sec:cumplimiento_objetivos}
+
+A continuación, se evalúa el grado de consecución de los objetivos generales y específicos planteados en la \Cref{sec:objetivos_tfg} de este TFG:
+
+\begin{itemize}
+    \item \textbf{Objetivo General:} (Investigar y aplicar modelos avanzados de aprendizaje profundo, basados en Transformers, para la imputación de datos faltantes en series temporales multivariantes del sistema IoT de Poqueira, evaluando su eficacia y desarrollando un prototipo funcional)
+    \textit{Este objetivo se considera cumplido.} Se ha realizado una investigación exhaustiva, se ha implementado y evaluado el modelo SAITS y un Transformer, y se ha desarrollado el paquete \texttt{pampaneira\_imputation}.
+    \clearpage
+     \item \textbf{Objetivos Específicos:}
+     \begin{enumerate} 
+        \item \textit{Establecer una Fundamentación Teórica:} Se ha revisado y consolidado la base matemática y conceptual necesaria, como se detalla en el \Cref{ch:math_foundations} y el \Cref{chap:FundamentosMLDL}.
+        \item \textit{Analizar el Estado del Arte en Imputación de Series Temporales:} Se ha realizado una revisión de la literatura científica sobre los modelos y técnicas estadísticas de imputación más utilizadas, y se ha aportado una formalización matemática homogénea para el problema de series temporales.
+        
+        \item \textit{Aplicar un Modelo de Vanguardia a un Problema Real:} El modelo SAITS se aplicó a los datos del IoT de Poqueira, como se describe en el \Cref{chap:eda_imputacion}.
+        
+        \item \textit{Desarrollar un Prototipo de Software Funcional y Abierto:} Se ha diseñado e implementado un paquete de software en Python que encapsula la lógica necesaria para la implementación, aplicación y evaluación sistemática de modelos de imputación, abarcando desde métodos elementales e intermedios, como Hankel Imputation,  hasta arquitecturas avanzadas como Transformer y SAITS. Este paquete, \texttt{pampaneira\_imputation}, está disponible en GitHub, detallado en la \Cref{sec:desarrollo_entorno}.
+        
+        \item \textit{Evaluar el Desempeño del Modelo Implementado:} Se ha realizado una evaluación cuantitativa (\Cref{sec:impl_evaluation_summary_revised}) utilizando múltiples métricas y periodos.
+    \end{enumerate}
+\end{itemize}
+
+En general, se considera que los objetivos propuestos para este Trabajo de Fin de Grado han sido alcanzados satisfactoriamente, proporcionando tanto una comprensión teórica como una aplicación práctica y una evaluación de la imputación de datos con modelos Transformer.
+
+\section{Limitaciones del Estudio}
+\label{sec:limitaciones}
+A pesar de los resultados positivos, es importante reconocer ciertas limitaciones inherentes a este estudio:
+\begin{itemize}
+    \item \textbf{Alcance de los Datos:} El análisis se centró en dos periodos específicos de operación del camión de medición. Una mayor extensión temporal y variabilidad de los datos podría ofrecer una visión más completa del rendimiento de los modelos.
+    \item \textbf{Hiperparámetros de los Modelos:} Aunque se utilizaron configuraciones razonables para los modelos de aprendizaje profundo, una búsqueda  de hiperparámetros (hyperparameter tuning) mejorarían aún más su rendimiento.
+    \item \textbf{Patrones de Datos Faltantes Artificiales:} Aunque se exploraron algunos patrones de eliminación de datos artificiales ("point", "subseq", "block"), estos son una simplificación que intenta reproducir los complejos mecanismos de ausencia que pueden ocurrir en el mundo real.
+    \item \textbf{Evaluación en Tareas Posteriores (Downstream Tasks):} Si bien el objetivo era la imputación precisa, no se evaluó formalmente el impacto de las diferentes calidades de imputación en tareas posteriores específicas, como el modelado predictivo de la contaminación o el análisis causal.
+    \item \textbf{Comparativa con Modelos No Neuronales Avanzados:} La comparativa se centró en métodos simples y modelos de aprendizaje profundo. La inclusión de otros métodos estadísticos avanzados para series temporales (e.g., imputación multivariante con otros modelos de series temporales) podría enriquecer la perspectiva.
+\end{itemize}
+
+
+\section{Trabajo Futuro}
+\label{sec:trabajo_futuro_resumen}
+Este TFG abre diversas vías para futuras investigaciones:
+\begin{enumerate}
+    \item \textbf{Mejora y Adaptación de Modelos Transformer para Imputación:} Incluye explorar arquitecturas más eficientes, mejores encodings posicionales, funciones de pérdida específicas para series temporales.
+    \item \textbf{Integración con Tareas de Análisis Posteriores:} Se propone evaluar el impacto de la imputación en modelos predictivos o explicativos (e.g., pronóstico de contaminación) y desarrollar pipelines integrados de imputación y análisis.
+    \item \textbf{Desarrollo de Herramientas de Software Robustas:} Continuar el desarrollo del paquete \texttt{pampaneira\_imputation} (con más métodos, visualizaciones, optimización de hiperparámetros) y contribuir a bibliotecas como PyPOTS \citep{du2023pypots}.
+    \item \textbf{Aplicación para Objetivos de Desarrollo Sostenible (ODS):} Investigar cómo la imputación de datos de monitorización ambiental y movilidad contribuye a ODS como el 11 (Ciudades Sostenibles), 3 (Salud) y 13 (Acción por el Clima), y desarrollar estudios de caso para indicadores de sostenibilidad.
+\end{enumerate}
+
+\section{Conclusión Final}
+
+Este trabajo ha demostrado la superioridad de los modelos basados en Transformers,
+particularmente SAITS, para la imputación precisa de datos faltantes en series temporales
+complejas del sistema IoT de Poqueira, superando a métodos tradicionales. Se constató la
+eficacia de la interpolación lineal entre los enfoques más simples y se observó la influencia
+de las características del periodo en la dificultad de la imputación. Se han logrado los objetivos propuestos, sentando bases para futuras investigaciones en la mejora de la calidad de datos orientada a la sostenibilidad.

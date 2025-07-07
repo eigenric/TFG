@@ -95,6 +95,11 @@ line-length = 88 # Default
 profile = "black" # Use black-compatible settings
 line_length = 88  # Match black
 
+[tool.uv.workspace]
+members = [
+    "presentacion/guion",
+]
+
 # Configuration for Ruff (linter) - uncomment and configure if using
 # [tool.ruff]
 # line-length = 88

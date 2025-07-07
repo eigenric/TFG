@@ -1,0 +1,36 @@
+% --- Página del Resumen en Español ---
+\chapter*{Resumen}
+\label{chap:resumen}
+\glsresetall
+
+Este \glsp{tfg} se centra en la generación de datos sintéticos para sustituir valores faltantes, en series temporales multivariantes, en el contexto de sistemas \gls{iot} . El propósito es implementar y evaluar la eficacia de arquitecturas de aprendizaje profundo, especialmente modelos transformer como \gls{saits}, para la imputación de datos. La investigación se aplica a un caso de estudio de monitorización de tráfico y contaminación del proyecto Smart Poqueira, buscando restaurar la completitud de los datos.
+
+La metodología se fundamenta en las siguiente ramas de las \textbf{matemáticas}:  álgebra lineal, métodos numéricos, análisis, probabilidad y estadística; y \textbf{\glsp{dl}}, complementada con un estudio del estado del arte en imputación. En la parte práctica, se ha elaborado un Jupyter Notebook y un paquete de Python, \textbf{\code{pampaneira\_imputation}}, que integra diversos métodos de imputación, desde elementales hasta transformer y \gls{saits}. El flujo experimental incluye preprocesamiento, generación controlada de datos perdidos y evaluación. El código, gestionado con Git, está disponible con licencia de código abierto en GitHub para fomentar la transparencia y reproducibilidad.
+
+%Las tecnologías clave son Python, su ecosistema científico (Pandas, NumPy, Seaborn) y PyPOTS. El código, gestionado con Git, está disponible con licencia de código abierto en GitHub para fomentar la transparencia y reproducibilidad.
+
+Los resultados experimentales, mediante métricas estándar de error, demuestran la superioridad de los modelos Transformer sobre los convencionales, logrando una reducción notable y consistente del error de imputación. % en los dos períodos de estudio analizados.
+
+En conclusión, este estudio confirma que los modelos basados en autoatención, y \gls{saits} en particular, son herramientas precisas y potentes para la imputación en series temporales, generando datos más completos. El trabajo aporta una solución contrastada y sienta bases para futuras investigaciones en IoT, orientadas a la gestión ambiental y la sostenibilidad.
+
+\vspace*{\fill}
+\textbf{Términos Clave:} Imputación de Datos, Series Temporales, Modelos Transformer, \gls{saits}, Aprendizaje Profundo, \gls{iot}, Datos Faltantes, Calidad del Aire, Monitorización de Tráfico, Smart Poqueira, Python, PyPOTS.
+\newpage %
+
+\chapter*{Abstract}
+\label{chap:abstract}
+
+This Final Degree Project focuses on the generation of synthetic data to replace missing values in multivariate time series within the context of \gls{iot} systems. Its purpose is to implement and evaluate the efficacy of deep learning architectures - especially Transformer models like \gls{saits} - for data imputation. The research is applied to a case study of traffic and pollution monitoring from the Smart Poqueira project, aiming to restore data completeness.
+
+The methodology is based on the following branches of \textbf{mathematics}: linear algebra, numerical methods, analysis, probability and statistics; and \textbf{\glsp{dl}}, complemented by a state-of-the-art review in imputation. Practically, a Jupyter Notebook and a Python package, \textbf{pampaneira\_imputation}, were developed, integrating various imputation methods, ranging from elementary to Transformer and SAITS models. The experimental workflow includes preprocessing and controlled generation of missingness for rigorous evaluation.
+
+% Key technologies include Python, its scientific ecosystem (Pandas, NumPy, Seaborn), and PyPOTS. The code, managed with Git, is available under an open-source license on GitHub to foster transparency and reproducibility.
+
+Experimental results, using standard error metrics, demonstrate the superiority of Transformer models over conventional ones, achieving a notable and consistent reduction in imputation error across the two study periods analyzed.
+
+In conclusion, this study confirms that self-attention-based models, particularly SAITS, are accurate and powerful tools for imputing complex time series, yielding more complete data. The objectives related to theoretical foundation, analysis, application, development, and evaluation were all successfully met. This work not only provides a validated solution but also lays the groundwork for future research in IoT, oriented towards environmental management and sustainability.
+
+\vspace*{\fill}
+
+\textbf{Keywords:} Data Imputation, Time Series, Transformer Models, SAITS, Deep Learning, Internet of Things (IoT), Missing Data, Air Quality, Traffic Monitoring, Smart Poqueira, Python, PyPOTS.
+\newpage %

@@ -35,45 +35,81 @@ cleardoublepage=empty,abstractoff,BCOR=5mm,paper=a4,fontsize=12pt,main=spanish]{
 \usepackage{rotating}
 \usepackage[normalem]{ulem}
 \usepackage{amsmath}
+
+
+% --- Carga cleveref DESPUÉS de babel y amsthm (si usas definition) ---
+\usepackage{hyperref} % hyperref generalmente antes de cleveref
+\usepackage[spanish,capitalise,nameinlink]{cleveref} 
+% Para capítulos (si tu clase de documento los tiene, como 'report' o 'book')
+\crefname{chapter}{capítulo}{capítulos}
+\Crefname{chapter}{Capítulo}{Capítulos}
+
+% Para secciones
+\crefname{section}{sección}{secciones}
+\Crefname{section}{Sección}{Secciones}
+
+% Para subsecciones
+\crefname{subsection}{subsección}{subsecciones}
+\Crefname{subsection}{Subsección}{Subsecciones}
+
+% Para subsubsecciones
+\crefname{subsubsection}{subsubsección}{subsubsecciones}
+\Crefname{subsubsection}{Subsubsección}{Subsubsecciones}
+
+% Para figuras
+\crefname{figure}{figura}{figuras}
+\Crefname{figure}{Figura}{Figuras}
+
+% Para tablas
+\crefname{table}{tabla}{tablas}
+\Crefname{table}{Tabla}{Tablas}
+
+% Para ecuaciones
+\crefname{equation}{ecuación}{ecuaciones}
+\Crefname{equation}{Ecuación}{Ecuaciones}
+
+\crefname{definition}{definición}{definiciones}
+\Crefname{definition}{Definición}{Definiciones}
+
+% Para algoritmos (si usas el paquete 'algorithm' o 'algorithmicx')
+% \crefname{algorithm}{algoritmo}{algoritmos}
+% \Crefname{algorithm}{Algoritmo}{Algoritmos}
+
+% Para listados (si usas el paquete 'listings' y referencias a ellos)
+% \crefname{lstlisting}{listado}{listados}
+% \Crefname{lstlisting}{Listado}{Listados}
+
+% --- Fin de definiciones para cleveref ---
+
+
 \usepackage{textcomp}
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{listings} % Para el comando \code
-\usepackage[colorlinks=true]{hyperref} % Cargar hyperref DESPUÉS de la mayoría de los paquetes, especialmente natbib si hay problemas
-\usepackage{tikz} % Diagramas conmutativos.
+\usepackage{hyperref} 
 \usepackage{minted} % Código fuente.
 % \usepackage[T1]{fontenc} % Ya cargado arriba
-\usepackage[sort&compress]{natbib} % Opciones para natbib (ej. citas numéricas, comprimidas)
-                                         % Si quieres estilo autor-año, podrías usar [authoryear]
+\usepackage[authoryear, round]{natbib} 
 \usepackage{pdfpages}
 % \usepackage{graphicx} % Ya cargado arriba
 \usepackage{float}    % Opcional: para un control más estricto de la posición con [H]
-\usepackage{cleveref} % Cargar cleveref DESPUÉS de hyperref y natbib si es posible
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode} % noend para no mostrar los 'end if', 'end for'
 \usepackage{booktabs} % Para líneas de tabla más profesionales
 \usepackage{caption}  % Para captions de tablas
 \usepackage{siunitx}  % Para formateo de números en tablas
+\usepackage[acronyms, automake]{glossaries-extra} % automake es clave para Overleaf
 
-
-\hypersetup{
-    unicode=true,  % Permite que los bookmarks sean unicode
-    pdftitle={Tu Título}, % Título del documento PDF
-    pdfauthor={Tu Nombre}, % Autor del PDF
-    % Opciones adicionales para mejorar la interacción con hyperref y natbib
-    pdfstartview=FitH, % Ajustar página al ancho al abrir
-    bookmarksnumbered=true, % Numerar bookmarks
-    bookmarksopen=true, % Abrir bookmarks
-    linktocpage=true, % Hacer que los números de página en ToC sean enlaces
-    colorlinks=true, % Colorear enlaces
-    linkcolor=blue, % Color de enlaces internos
-    citecolor=blue, % Color de enlaces de citas
-    urlcolor=blue % Color de enlaces URL
-}
+% --- NUEVO COMANDO PARA ACRÓNIMOS CON EXPANSION FORZADA Y ADICIÓN AL GLOSARIO ---
+% Este comando es robusto para versiones antiguas de glossaries.
+\newcommand{\glsp}[1]{\glsadd{#1}\glsentrydesc{#1} (\glsentryshort{#1})}
+% --------------------------------------------------------s
 
 % Plantilla classicthesis
 \usepackage[beramono,eulerchapternumbers,linedheaders,parts,a5paper,dottedtoc,
 manychapters,pdfspacing]{classicthesis}
+
+
 
 % Geometría y espaciado de párrafos.
 % \setcounter{secnumdepth}{0} % Esto oculta la numeración de secciones, ¿estás seguro?
@@ -84,6 +120,8 @@ manychapters,pdfspacing]{classicthesis}
 \setlength\itemsep{0em}
 \setlength{\parindent}{0pt}
 \usepackage{parskip}
+\usepackage{amsthm}
+\usepackage[automake]{glossaries-extra}
 
 % Profundidad de la tabla de contenidos.
 \setcounter{secnumdepth}{3} % Esto numera hasta subsubsecciones
@@ -134,6 +172,11 @@ manychapters,pdfspacing]{classicthesis}
 % Definir el comando \code
 \newcommand{\code}[1]{\texttt{#1}}
 
+
+\newtheorem{example}{Ejemplo}
+\newtheorem{counterexample}{Contraejemplo}
+
+
 % Archivos de configuración.
 \input{macros}  % En macros.tex se almacenan las opciones y comandos para escribir matemáticas.
 \input{classicthesis-config} % En classicthesis-config.tex se almacenan las opciones propias de la plantilla.
@@ -147,23 +190,64 @@ manychapters,pdfspacing]{classicthesis}
 \usepackage{titling} % Facilita los datos de la portada
 \author{Ricardo Ruiz Fernández de Alba}
 \date{\today}
-\title{Generación de datos sintéticos a partir de un \\  sistema IoT de detección
-de vehículos utilizando \\ modelos Transformer con atención en Python}
+\title{Imputación de Datos Faltantes \\ de Variables Meteorológicas y de Contaminación \\ en Series  Temporales Multivariantes IoT \\ con Modelos Transformer}
 
 % Portada
 \include{titlepage}
 \usepackage{wallpaper}
-\usepackage[main=spanish]{babel} % Cargar babel DESPUÉS de paquetes de fuentes y antes de classicthesis si es posible
+\usepackage[main=spanish]{babel} 
+
+\hypersetup{
+    unicode=true,  % Permite que los bookmarks sean unicode
+    pdftitle={Imputación de Datos Faltantes de Variables Meteorológicas y de Contaminación en Series  Temporales Multivariantes IoT con Modelos Transformer}, % Título del documento PDF
+    pdfauthor={Ricardo Ruiz Fernández de Alba}, % Autor del PDF
+    % Opciones adicionales para mejorar la interacción con hyperref y natbib
+    pdfstartview=FitH, % Ajustar página al ancho al abrir
+    bookmarksnumbered=true, % Numerar bookmarks
+    bookmarksopen=true, % Abrir bookmarks
+    linktocpage=true, % Hacer que los números de página en ToC sean enlaces
+    colorlinks=true, % Colorear enlaces
+    linkcolor=blue, % Color de enlaces internos
+    citecolor=imagegreenframe, % Color de enlaces de citas
+    urlcolor=blue % Color de enlaces URL
+}
+
+% --- GLOSARIO DE ACRÓNIMOS ---
+
+\setglossarystyle{long} % Estilo visual
+\glsdisablehyper % Deshabilita enlaces en el glosario
+
+
+% --- CARGA LAS DEFINICIONES DE ACRÓNIMOS ---
+\input{preliminares/glossary.tex} % Aquí se carga el archivo con los \newacronyms
+
+
+\makeglossaries % Este comando debe ir DESPUÉS de todos los \newacronyms
 
 
 \begin{document}
 
 \ThisULCornerWallPaper{1}{ugrA4.pdf}
 \maketitle
+
+\include{preliminares/titulo.tex}
+
+\include{preliminares/licencia.tex}
+
+\include{preliminares/declaracion-originalidad.tex}
+
+\include{preliminares/agradecimientos.tex}
+
 \tableofcontents
 
+\cleardoublepage % Inicia el glosario en una página nueva
+\phantomsection % Para que hyperref apunte correctamente a esta sección
+\printglossary[type=acronym, title={Glosario de Acrónimos}]
+\cleardoublepage % Para que el siguiente capítulo/sección empiece en una nueva página
 
-\chapter*{Resumen}
+
+\include{chapters/abstract.tex}
+
 
 
 % Inclusión de capítulos
@@ -173,14 +257,12 @@ de vehículos utilizando \\ modelos Transformer con atención en Python}
 \include{chapters/chapter3}
 \include{chapters/chapter4}
 \include{chapters/chapter5}
+\include{chapters/chapter6}
+\include{chapters/chapter7}
 
 % Colocar la bibliografía ANTES de los apéndices si así se desea
 \bibliographystyle{apalike} % Estilo de bibliografía para natbib (ej. apalike, plainnat, unsrtnat)
 \bibliography{research}    % Tu archivo .bib
-
-\appendix
-
-\input{chapters/anexos.tex}
 
 %\section*{Appendix C: Documentación del paquete de Python}
 % \addcontentsline{toc}{section}{Appendix C: Documentación del paquete de Python}

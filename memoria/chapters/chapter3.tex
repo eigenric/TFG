@@ -1,422 +1,514 @@
-\chapter{Del Aprendizaje Automático al Aprendizaje Profundo: Fundamentos}
+\chapter{Del Aprendizaje Automático al Aprendizaje Profundo}
 \label{chap:FundamentosMLDL}
+\glsresetall
 
-En este capítulo sentaremos las bases conceptuales necesarias para comprender el Aprendizaje Profundo (Deep Learning), comenzando por los fundamentos del campo más amplio al que pertenece: el Aprendizaje Automático (Machine Learning). Exploraremos qué significa aprender para una máquina, los diferentes modos en que puede hacerlo y algunos de los modelos y algoritmos más elementales que sirvieron de inspiración para desarrollos posteriores.
+Este capítulo define inicialmente el ámbito del \glsentryshort{ml} y lo sitúa como marco de referencia para el \glsentryshort{dl}. A continuación, explica qué implica que una máquina aprenda y expone los principales paradigmas de aprendizaje. Después, presenta los modelos y algoritmos fundamentales que han servido de cimiento a las técnicas modernas. Por último, examina la evolución de estos fundamentos hasta dar origen a arquitecturas actuales, como los Transformers.
 
 \section{¿Qué es el Aprendizaje Automático?}
 \label{sec:QueEsML}
-El Aprendizaje Automático (Machine Learning, ML) es una rama de la inteligencia artificial y de las ciencias de la computación que se centra en el uso de datos y algoritmos para imitar la forma en que los humanos aprenden, mejorando gradualmente su precisión. Dicho de otro modo, dota a los sistemas de la capacidad de aprender y mejorar a partir de la experiencia (datos) sin ser explícitamente programados para cada tarea específica.
+El \glsentryshort{ml} es una rama de la \glsentryshort{ia} y de las ciencias de la computación que se centra en el uso de datos y algoritmos para imitar la forma en que los humanos aprenden, mejorando gradualmente su precisión. Dicho de otro modo, dota a los sistemas de la capacidad de aprender y mejorar a partir de la experiencia (conjuntos de datos) sin ser explícitamente programados para cada tarea específica \citep{Goodfellow2016}.
 
-La esencia del aprendizaje automático reside en descubrir patrones subyacentes en los datos. Dada una tarea y un conjunto de datos relevantes, el objetivo es desarrollar un modelo matemático que pueda generalizar su aprendizaje a nuevos datos no vistos previamente, permitiendo realizar predicciones o tomar decisiones informadas. Los componentes fundamentales de un problema de aprendizaje son, como se detalla en \citet{abu-mostafa_learning_2012}:
+La esencia del \glsentryshort{ml} reside en descubrir patrones subyacentes en los datos. Dada una tarea y un conjunto de datos relevantes, el objetivo es desarrollar un modelo matemático que pueda generalizar su aprendizaje a nuevos datos no vistos previamente, permitiendo realizar predicciones o tomar decisiones informadas. Los componentes fundamentales de un problema de aprendizaje son, como se detalla en \citet{abu-mostafa_learning_2012}:
 \begin{itemize}
-    \item El \textbf{conjunto de datos (Dataset)}: Colección de ejemplos (observaciones, instancias) que sirven como base empírica para el aprendizaje. Cada ejemplo suele consistir en un conjunto de características (features) y, en algunos paradigmas, una etiqueta o valor objetivo asociado.
-    \item El \textbf{modelo o hipótesis (Model/Hypothesis)}: Una representación matemática (por ejemplo, una función o una distribución de probabilidad) que intenta capturar la relación entre las entradas y las salidas, o la estructura inherente de los datos. El modelo pertenece a un conjunto predefinido de posibles modelos, denominado \textit{espacio de hipótesis} ($\mathcal{H}$).
-    \item El \textbf{algoritmo de aprendizaje (Learning Algorithm)}: El procedimiento utilizado para ajustar los parámetros del modelo (o seleccionar la mejor hipótesis dentro del espacio $\mathcal{H}$) basándose en los patrones identificados en los datos de entrenamiento.
+    \item El \textbf{conjunto de datos (\textit{dataset})}: Colección de ejemplos (observaciones, instancias) que sirven como base empírica para el aprendizaje. Cada ejemplo suele consistir en un conjunto de características (\textit{features}) y, en algunos paradigmas, una etiqueta o valor objetivo asociado.
+    \item El \textbf{modelo o hipótesis (\textit{model/hypothesis})}: Una representación matemática (por ejemplo, una función o una distribución de probabilidad) que intenta capturar la relación entre las entradas y las salidas, o la estructura inherente de los datos. El modelo pertenece a un conjunto predefinido de posibles modelos, denominado espacio de hipótesis ($\mathcal{H}$).
+    \item El \textbf{algoritmo de aprendizaje (\textit{learning algorithm})}: El procedimiento utilizado para ajustar los parámetros del modelo (o seleccionar la mejor hipótesis dentro del espacio $\mathcal{H}$) basándose en los patrones identificados en los datos de entrenamiento.
 \end{itemize}
-Este capítulo se centrará en los fundamentos de estos componentes, estableciendo el marco necesario para comprender técnicas más avanzadas.
+Este capítulo se centrará en los fundamentos de estos componentes, estableciendo el marco necesario para comprender técnicas aprendizaje automático.
 
 \section{Paradigmas del Aprendizaje Automático}
 \label{sec:ParadigmasML}
-Existen diferentes enfoques o paradigmas dentro del aprendizaje automático, clasificados principalmente según la naturaleza de los datos de entrenamiento y el tipo de retroalimentación disponible durante el aprendizaje. Los dos paradigmas más extendidos son el aprendizaje supervisado y el no supervisado.
+El \glsentryshort{ml} comprende diversos enfoques o paradigmas, clasificados según la naturaleza de los datos de entrenamiento y el tipo de retroalimentación disponible. La taxonomía más extendida distingue tres categorías principales: aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo \citep{Bishop2006}. Este trabajo se centrará predominantemente en los dos primeros, que son los más relevantes para el problema de imputación de datos.
 
 \subsection{Aprendizaje Supervisado}
 \label{subsec:Supervisado}
-En el aprendizaje supervisado, el algoritmo aprende a partir de un conjunto de datos de entrenamiento donde cada ejemplo $(\mathbf{x}_n, y_n)$ consiste en un vector de características de entrada $\mathbf{x}_n$ y una \textit{etiqueta} o \textit{valor objetivo} deseado $y_n$. Es decir, se proporciona la respuesta correcta para cada entrada del entrenamiento. El objetivo es aprender una función de mapeo $g: \mathcal{X} \to \mathcal{Y}$ que se aproxime a la función objetivo desconocida $f$ y que pueda predecir la salida para nuevas entradas $\mathbf{x}$ no vistas previamente.
+En el aprendizaje supervisado, el algoritmo aprende a partir de un conjunto de datos de entrenamiento donde cada instancia $(\mathbf{x}_n, y_n)$ se compone de un vector de características de entrada $\mathbf{x}_n \in \mathcal{X}$ y una etiqueta o valor objetivo conocido $y_n \in \mathcal{Y}$ \citep{Goodfellow2016, Hastie2009}. Se proporciona, por tanto, el resultado esperado para cada entrada durante la fase de entrenamiento. El objetivo principal es inferir una función de mapeo $g: \mathcal{X} \to \mathcal{Y}$ que aproxime de manera óptima la función objetivo subyacente $f$ (desconocida) y que sea capaz de generalizar, prediciendo la salida para nuevas entradas $\mathbf{x}$ no observadas previamente.
 
-Dentro del aprendizaje supervisado, distinguimos principalmente dos tipos de tareas:
+Dentro del aprendizaje supervisado, se distinguen principalmente dos tipos de tareas \citep{Alpaydin2020}:
 \begin{itemize}
-    \item \textbf{Clasificación}: La salida deseada $y$ es una etiqueta categórica discreta perteneciente a un conjunto finito de clases. El objetivo es asignar nuevas entradas a una de estas categorías predefinidas. Ejemplos incluyen la detección de spam (spam/no spam) o el reconocimiento de dígitos escritos a mano (clases 0 a 9).
-    \item \textbf{Regresión}: La salida deseada $y$ es un valor continuo o real. El objetivo es predecir un valor numérico para nuevas entradas. Ejemplos son la predicción del precio de una acción o la estimación de la temperatura.
+    \item \textbf{Clasificación}: La variable objetivo $y_n$ es una etiqueta categórica discreta, perteneciente a un conjunto finito de clases predefinidas. El modelo aprende a asignar nuevas instancias a una de estas categorías.
+    Ejemplos de algoritmos son:
+    \begin{itemize}
+        \item \textbf{Regresión Logística}: A pesar de su nombre, es un modelo lineal para clasificación binaria (y extensible a multiclase) que modela la probabilidad de pertenencia a una clase mediante una función logística (sigmoide) \citep{Cox1958, Hosmer2013}.
+        \item \textbf{Máquinas de Soporte Vectorial (SVM)}: Buscan encontrar un hiperplano óptimo que separe las clases en el espacio de características, maximizando el margen entre ellas. Pueden usar el truco del kernel para manejar datos no separables linealmente \citep{Cortes1995, Boser1992}.
+        \item \textbf{Árboles de Decisión y Bosques Aleatorios (Random Forests)}: Los árboles de decisión construyen un modelo predictivo basado en una serie de reglas de división jerárquicas. Los Bosques Aleatorios son un conjunto (ensemble) de múltiples árboles de decisión, que mejoran la robustez y reducen el sobreajuste \citep{Breiman1984cart, Breiman2001random}.
+        \item \textbf{K-Vecinos más Cercanos (K-NN)}: Un método no paramétrico que clasifica una nueva instancia basándose en la clase mayoritaria de sus $k$ vecinos más cercanos en el espacio de características \citep{Cover1967nearest}.
+        \item \textbf{Redes Neuronales Artificiales (ANN)}: Incluyendo Perceptrones Multicapa (MLP) y arquitecturas más profundas, que aprenden representaciones jerárquicas para mapear entradas a clases \citep[e.g.,][]{Rumelhart1986learning, LeCun2015deep}.
+    \end{itemize}
+
+
+    \item \textbf{Regresión}: La variable objetivo $y_n$ es un valor continuo o real. El modelo aprende a predecir un valor numérico para nuevas instancias.
+     Algoritmos representativos de regresión son:
+    \begin{itemize}
+        \item \textbf{Regresión Lineal}: Asume una relación lineal entre las características de entrada y la variable objetivo. Sus parámetros se estiman típicamente mediante mínimos cuadrados \citep{Galton1886regression, Montgomery2021}.
+        \item \textbf{Regresión Polinomial}: Una extensión de la regresión lineal que permite modelar relaciones no lineales añadiendo términos polinomiales de las características de entrada \citep{Hastie2009}.
+        \item \textbf{Árboles de Regresión y Bosques Aleatorios de Regresión}: Análogos a sus contrapartes de clasificación, pero adaptados para predecir valores continuos \citep{Breiman1984cart, Breiman2001random}.
+        \item \textbf{Máquinas de Soporte Vectorial para Regresión (SVR)}: Una adaptación de las SVM para tareas de regresión, que intenta ajustar una función a los datos dentro de un cierto margen de error \citep{Drucker1997support}.
+        \item \textbf{Redes Neuronales Artificiales (ANN)}: También aplicables a regresión, donde la capa de salida predice un valor continuo \citep[e.g.,][]{Goodfellow2016}.
+    \end{itemize}
 \end{itemize}
-Los modelos como la Regresión Logística o las Máquinas de Soporte Vectorial (SVM) son ejemplos típicos aplicados a clasificación, mientras que la Regresión Lineal lo es para tareas de regresión.
 
 \subsection{Aprendizaje No Supervisado}
 \label{subsec:NoSupervisado}
-En el aprendizaje no supervisado, el algoritmo trabaja con datos de entrada $\{\mathbf{x}_n\}$ que \textit{no tienen etiquetas} u objetivos predefinidos. El objetivo es descubrir patrones, estructuras o relaciones inherentes en los propios datos sin una guía explícita sobre cuál debería ser la "salida correcta".
+En el aprendizaje no supervisado, el algoritmo procesa un conjunto de datos de entrada $\{\mathbf{x}_n\}$ que carecen de etiquetas o valores objetivo predefinidos asociados \citep{Barlow1989, Hastie2009}. El propósito fundamental es descubrir patrones intrínsecos, estructuras latentes, o relaciones inherentes en los propios datos sin una guía explícita sobre cuál debería ser la salida esperada.
 
-Las tareas más comunes dentro del aprendizaje no supervisado incluyen:
+Las tareas más comunes dentro del aprendizaje no supervisado incluyen \citep{Bishop2006, James2013}:
 \begin{itemize}
-    \item \textbf{Clustering (Agrupamiento)}: Agrupar los datos en clústeres basados en su similitud intrínseca, de forma que los puntos dentro de un mismo clúster sean más similares entre sí que con los puntos de otros clústeres.
-    \item \textbf{Reducción de Dimensionalidad}: Encontrar una representación de los datos en un espacio de menor dimensión, preservando la mayor cantidad de información relevante posible. El Análisis de Componentes Principales (PCA) es un ejemplo clásico.
-    \item \textbf{Estimación de Densidad}: Construir un modelo de la distribución de probabilidad subyacente de los datos.
-\end{itemize}
-El aprendizaje no supervisado es fundamental para explorar datos y puede servir como paso previo para tareas supervisadas.
+    \item \textbf{Agrupamiento (Clustering)}: Consiste en organizar los datos en grupos o clústeres, de manera que las instancias dentro de un mismo clúster presenten una alta similitud entre sí y una baja similitud con las instancias de otros clústeres.
+    Ejemplos de algoritmos y aplicaciones son:
+    \begin{itemize}
+        \item El algoritmo K-Means \citep{MacQueen1967, Lloyd1982}, utilizado para segmentar clientes según su comportamiento de compra.
+        \item DBSCAN (Density-Based Spatial Clustering of Applications with Noise) \citep{Ester1996}, capaz de encontrar clústeres de forma arbitraria y manejar ruido, útil en la detección de anomalías geoespaciales.
+        \item Agrupamiento jerárquico \citep{Johnson1967}, que construye una jerarquía de clústeres, aplicado en taxonomías biológicas.
+    \end{itemize}
 
-%(Opcional: Podría añadirse una breve mención al Aprendizaje por Refuerzo aquí si se considera fundamental para el contexto general del trabajo, aunque no fue explícitamente pedido).
+    \item \textbf{Reducción de Dimensionalidad}: Busca transformar los datos desde un espacio de alta dimensionalidad a uno de menor dimensión, intentando preservar la máxima cantidad de información relevante o la estructura esencial de los datos originales.
+    Técnicas destacadas son:
+    \begin{itemize}
+        \item Análisis de Componentes Principales (PCA) \citep{Pearson1901, Hotelling1933}, ampliamente usado para compresión de datos y visualización.
+        \item t-distributed Stochastic Neighbor Embedding (t-SNE) \citep{vanderMaaten2008}, una técnica popular para la visualización de datos de alta dimensión en espacios de baja dimensión (generalmente 2D o 3D).
+        \item Autoencoders \citep{Hinton1987autoencoders, Bengio2009learning}, redes neuronales entrenadas para reconstruir su entrada, cuya capa intermedia aprende una representación comprimida.
+    \end{itemize}
+
+    \item \textbf{Estimación de Densidad}: Persigue construir un modelo de la distribución de probabilidad subyacente a partir de la cual se generaron los datos observados.
+    Enfoques comunes incluyen:
+    \begin{itemize}
+        \item Estimación de Densidad por Kernel (KDE) \citep{Parzen1962, Rosenblatt1956}, un método no paramétrico para estimar la función de densidad de probabilidad.
+        \item Modelos de Mezcla Gaussiana (GMM) \citep{Dempster1977}, que asumen que los datos son generados a partir de una mezcla de varias distribuciones gaussianas.
+    \end{itemize}
+\end{itemize}
+
 
 \section{Evaluación de Modelos y Tratamiento de Datos Faltantes}
 \label{sec:EvaluacionImputacion}
-Una vez que un algoritmo de aprendizaje ha generado una hipótesis final $g$, es crucial evaluar su rendimiento para entender su capacidad de generalización a datos nuevos. Además, en la práctica, es común encontrar datos incompletos, lo que requiere técnicas específicas para su manejo.
+Una vez que un algoritmo de aprendizaje ha generado una hipótesis final $g$, es importante evaluar su rendimiento. Esta evaluación se centra en la \textbf{generalización}, que se refiere a la capacidad del modelo para realizar predicciones precisas sobre datos nuevos y no vistos previamente, en lugar de simplemente ajustarse bien a los datos con los que fue entrenado \citep{Goodfellow2016}. Una buena generalización es el objetivo último de la mayoría de los modelos de \glsentryshort{ml} . 
 
 \subsection{Métricas de Evaluación}
 \label{subsec:Metricas}
-La elección de la métrica de evaluación depende intrínsecamente de la tarea (clasificación o regresión) y de los objetivos específicos del problema. Un buen modelo no solo debe ajustarse bien a los datos de entrenamiento (minimizar el error \textit{in-sample}, $E_{in}$), sino, y más importante, generalizar bien a datos no vistos (minimizar el error \textit{out-of-sample}, $E_{out}$). Algunas métricas comunes son:
+La elección de la métrica de evaluación depende de la tarea (clasificación o regresión) y de los objetivos específicos del problema \citep{Bishop2006}. Un buen modelo no solo debe ajustarse bien a los datos de entrenamiento (minimizar el error \textit{in-sample}, $E_{in}$), sino, y más importante, generalizar bien a datos no vistos (minimizar el error \textit{out-of-sample}, $E_{out}$) \citep{abu-mostafa_learning_2012}.
 
-\textbf{Para Clasificación:}
+\subsubsection*{Métricas para clasificación}
+
+En tareas de clasificación (especialmente binaria: clases positiva/negativa), el rendimiento se evalúa a partir de cuatro resultados posibles, resumidos en la matriz de confusión \citep{Fawcett2006}:
 \begin{itemize}
-    \item \textit{Accuracy} (Exactitud): Proporción de predicciones correctas. Simple pero potencialmente engañosa en datasets desbalanceados.
-    \item \textit{Matriz de Confusión}: Tabla que desglosa los aciertos y errores por clase (Verdaderos Positivos/Negativos, Falsos Positivos/Negativos).
-    \item \textit{Precisión, Recall (Sensibilidad) y F1-Score}: Métricas derivadas de la matriz de confusión, más informativas en casos desbalanceados. La precisión mide la fracción de predicciones positivas que fueron correctas. El recall mide la fracción de positivos reales que se identificaron correctamente. El F1-Score es la media armónica de ambas.
-    \item \textit{Área Bajo la Curva ROC (AUC-ROC)}: Evalúa la capacidad del modelo para discriminar entre clases a diferentes umbrales de decisión.
+    \item \textbf{Verdadero Positivo (VP o TP)}: Clase positiva correctamente clasificada como positiva.
+    \item \textbf{Verdadero Negativo (VN o TN)}: Clase negativa correctamente clasificada como negativa.
+    \item \textbf{Falso Positivo (FP)}: También denominado error de Tipo I. Clase negativa incorrectamente clasificada como positiva.
+    \item \textbf{Falso Negativo (FN)}: También denominado error de Tipo II. Clase positiva incorrectamente clasificada como negativa.
 \end{itemize}
 
-\textbf{Para Regresión:}
+Algunas métricas comunes, presentadas aquí con sus formulaciones básicas, son:
+
 \begin{itemize}
-    \item \textit{Error Cuadrático Medio} (MSE): Promedio de los errores al cuadrado. Sensible a outliers.
-    \item \textit{Raíz del Error Cuadrático Medio} (RMSE): Raíz cuadrada del MSE, expresada en las mismas unidades que la variable objetivo.
-    \item \textit{Error Absoluto Medio} (MAE): Promedio de los errores absolutos. Más robusto a outliers que el MSE.
-    \item \textit{Coeficiente de Determinación} ($R^2$): Proporción de la varianza de la variable objetivo explicada por el modelo.
+
+ \item \textit{Matriz de Confusión}: Tabla que desglosa los aciertos y errores por clase (VP, VN, FP, FN), proporcionando una visión detallada del rendimiento del clasificador \citep{Fawcett2006}. 
+ 
+    \item \textit{Accuracy} (Exactitud): Proporción de predicciones correctas sobre el total de predicciones. Simple pero potencialmente engañosa en datasets desbalanceados \citep{Powers2011}.
+    \[
+    \text{Accuracy} = \frac{\text{VP} + \text{VN}}{\text{VP} + \text{VN} + \text{FP} + \text{FN}}
+    \]
+
+    \item \textit{Precisión}: Fracción de predicciones positivas que fueron correctas \citep{Goutte2005}.
+        \[
+        \text{Precisión} = \frac{\text{VP}}{\text{VP} + \text{FP}}
+        \]
+        \item \textit{Recall} (Sensibilidad o Exhaustividad): Fracción de positivos reales que se identificaron correctamente \citep{Goutte2005}.
+        \[
+        \text{Recall} = \frac{\text{VP}}{\text{VP} + \text{FN}}
+        \]
+        \item \textit{F1-Score}: Media armónica de la precisión y el recall, buscando un balance entre ambas \citep{Goutte2005}.
+        \[
+        \text{F1-Score} = 2 \cdot \frac{\text{Precisión} \cdot \text{Recall}}{\text{Precisión} + \text{Recall}}
+        \]
+
+    \item \textit{Área Bajo la Curva ROC (AUC-ROC)}: Evalúa la capacidad del modelo para discriminar entre clases a diferentes umbrales de decisión. Un valor cercano a 1 indica un excelente poder discriminatorio \citep{Bradley1997}. La curva ROC representa la Tasa de Verdaderos Positivos frente a la Tasa de Falsos Positivos a varios umbrales, como se ilustra en la Figura~\ref{fig:roc_curve_example}.
+    
 \end{itemize}
-La selección y correcta interpretación de estas métricas es fundamental para el desarrollo y despliegue de modelos de ML.
 
-
-
-
-\section{Modelos Lineales Fundamentales}
-\label{sec:ModelosLinealesFundamentales}
-Los modelos lineales son un pilar fundamental del aprendizaje automático. Su simplicidad matemática permite un análisis profundo y, a menudo, soluciones analíticas, sirviendo además como base para modelos más complejos como las redes neuronales profundas.
-
-\subsection{El Perceptrón}
-\label{subsec:Perceptron}
-El Perceptrón es un modelo histórico para clasificación binaria. Representa una neurona artificial que calcula una suma ponderada de sus entradas y aplica una función de activación escalón (la función signo) para producir una salida binaria (+1 o -1). Para una entrada $\mathbf{x}$ (aumentada con $x_0=1$), la hipótesis es:
-\[ h(\mathbf{x}) = \text{sign}(\mathbf{w}^T \mathbf{x}) \]
-El \textit{Algoritmo de Aprendizaje del Perceptrón} (PLA) ajusta iterativamente el vector de pesos $\mathbf{w}$ para corregir ejemplos mal clasificados, convergiendo a una solución si los datos son linealmente separables \citep{abu-mostafa_learning_2012}. Aunque limitado, el Perceptrón introdujo conceptos clave como el aprendizaje iterativo basado en errores \citep{abu-mostafa_learning_2012}.
-
-\subsection{Regresión Lineal}
-\label{subsec:RegresionLineal}
-La regresión lineal busca modelar una variable objetivo real $y$ como una combinación lineal de las características de entrada $\mathbf{x}$:
-\[ h(\mathbf{x}) = \mathbf{w}^T \mathbf{x} \]
-El objetivo es encontrar el vector de pesos $\mathbf{w}$ que minimice el error cuadrático medio (MSE) en el conjunto de entrenamiento:
-\[ E_{in}(\mathbf{w}) = \frac{1}{N} \sum_{n=1}^{N} ( \mathbf{w}^T \mathbf{x}_n - y_n )^2 \]
-Como vimos, esta minimización tiene una solución analítica en forma cerrada dada por las \textit{ecuaciones normales} \citep{Bishop2006}:
-\[ \mathbf{w}_{lin} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \]
-donde $\mathbf{X}$ es la matriz de diseño (datos de entrada por filas) y $\mathbf{y}$ el vector de valores objetivo. La regresión lineal es fundamental en estadística y ML, y variantes como la regresión regularizada (Ridge, Lasso) abordan problemas como la multicolinealidad o la selección de características.
-
-\subsection{Descenso del Gradiente}
-\label{subsec:GradienteDescendente}
-Para muchos modelos, incluyendo la regresión logística y las redes neuronales, no existe una solución analítica cerrada para minimizar la función de error. El \textit{descenso del gradiente} es un algoritmo iterativo de optimización que busca el mínimo moviéndose en la dirección opuesta al gradiente del error $E(\mathbf{w})$:
-\[ \mathbf{w}^{(t+1)} \leftarrow \mathbf{w}^{(t)} - \eta \nabla E(\mathbf{w}^{(t)}) \]
-La \textit{tasa de aprendizaje} $\eta$ controla el tamaño de los pasos. El \textit{descenso del gradiente estocástico} (SGD) utiliza el gradiente calculado sobre un único ejemplo o un pequeño lote (mini-batch) en cada iteración, siendo computacionalmente eficiente para grandes datasets y útil para navegar paisajes de error complejos con múltiples mínimos locales, una característica esencial en el entrenamiento de modelos de Aprendizaje Profundo.
+\begin{figure}[htbp]
+        \centering 
+        \includegraphics[width=0.5\textwidth]{images/roc.png} % 
+        \caption{Ejemplo de una curva ROC \citep{MediumAUCROC}}
+        \label{fig:roc_curve_example}
+\end{figure}
 
 \newpage
 
-\section{Introducción a los Modelos Transformer}
+\subsubsection*{Métricas para regresión}
+\label{subsec:Metricas}
+Sea $y_i$ el valor real y $\hat{y}_i$ el valor predicho para la $i$-ésima observación, con $N$ observaciones en total.
+\begin{itemize}
+    \item \textit{Error Cuadrático Medio} (MSE, Mean Squared Error): Promedio de los errores al cuadrado. Penaliza fuertemente los errores grandes y es sensible a outliers \citep{Lehmann1998}.
+    \[
+    \text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+    \]
 
-Los modelos Transformer irrumpieron en el panorama del aprendizaje automático como una auténtica disrupción, marcando un antes y un después en el procesamiento de secuencias, especialmente en el ámbito del lenguaje natural (NLP). Su concepción representó un avance paradigmático, superando las limitaciones inherentes a las arquitecturas recurrentes (RNNs) y convolucionales (CNNs) que hasta entonces dominaban el campo. La esencia de su revolución reside en dos pilares fundamentales: su capacidad intrínseca para el \textbf{procesamiento en paralelo} y la introducción de un mecanismo de atención sumamente potente y flexible. Mientras que las RNNs procesaban la información de manera secuencial, limitando la eficiencia y la capacidad de capturar dependencias a largo alcance, los Transformers abordan la secuencia de entrada como un todo, operando simultáneamente sobre todos sus elementos. Este enfoque, orquestado por el mecanismo de atención, dota al modelo de la habilidad de discernir y ponderar la importancia relativa de cada parte de la entrada con respecto a las demás. En lugar de procesar la información paso a paso, el Transformer evalúa la relevancia contextual de cada elemento, optimizando el flujo de información y, en última instancia, potenciando significativamente su capacidad de aprendizaje y comprensión. Este capítulo se adentra en el corazón de la arquitectura Transformer, desglosando sus componentes esenciales y trazando un camino que culmina en SAITS (Self-Attention-based Imputation for Time Series), un modelo especializado que adapta la potencia del Transformer a la imputación de datos faltantes en series temporales. A través de este recorrido, demostraremos la versatilidad y el alcance de esta arquitectura, extendiéndose mucho más allá de sus orígenes en el procesamiento del lenguaje natural.
+
+    \item \textit{Raíz del Error Cuadrático Medio} (RMSE, Root Mean Squared Error): Raíz cuadrada del MSE, expresada en las mismas unidades que la variable objetivo, lo que facilita su interpretación \citep{Chai2014}.
+    \[
+    \text{RMSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2} = \sqrt{\text{MSE}}
+    \]
+
+    \item \textit{Error Absoluto Medio} (MAE, Mean Absolute Error): Promedio de los errores absolutos. Más robusto a outliers que el MSE \citep{Willmott2005}.
+    \[
+    \text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+    \]
+
+    \item \textit{Error Relativo Medio} (MRE, Mean Relative Error): Calcula el error como una proporción del valor real, útil para entender la magnitud del error respecto a la escala de los datos \citep{Hyndman2006another}. Para estabilidad numérica, se añade una pequeña constante $\epsilon$ al denominador. Una formulación común es:
+
+    \[
+    \text{MRE} = \frac{1}{N} \sum_{i=1}^{N} \frac{|y_i - \hat{y}_i|}{|y_i| + \epsilon}\]
+
+
+    \item \textit{Coeficiente de Determinación} ($R^2$): Proporción de la varianza de la variable objetivo que es predecible a partir de las variables independientes. Varía entre 0 y 1 (o incluso negativo para modelos muy malos) \citep{Nagelkerke1991}.
+    \[
+    R^2 = 1 - \frac{\sum_{i=1}^{N} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{N} (y_i - \bar{y})^2} = 1 - \frac{\text{MSE}}{\text{Var}(y)}
+    \]
+    donde $\bar{y}$ es la media de los valores reales $y_i$.
+\end{itemize}
+La selección y correcta interpretación de estas métricas es fundamental para el desarrollo y despliegue de modelos de \glsentryshort{ml}
+\citep{Japkowicz2011}.
+
+\section{De Modelos Lineales a Arquitecturas de Atención Profunda}
+\label{sec:EvolucionModelos}
+
+Los modelos lineales, aunque fundamentales, a menudo no capturan la complejidad inherente de muchos problemas del mundo real, especialmente aquellos con relaciones no lineales o interacciones complejas entre variables \citep{Bishop2006, Hastie2009}. Esta sección traza una evolución desde estos modelos básicos hacia arquitecturas más sofisticadas, capaces de aprender representaciones jerárquicas y manejar dependencias complejas en los datos, como las que se encuentran en secuencias.
+
+\subsection{Modelos Lineales Fundamentales}
+\label{subsec:ModelosLinealesFundamentalesRepaso}
+Los modelos lineales son un pilar fundamental del \glsentryshort{ml} y la estadística \citep{Montgomery2021, Weisberg2005}. Su simplicidad matemática permite un análisis profundo, una interpretación relativamente sencilla de los coeficientes y, a menudo, soluciones analíticas o algoritmos de optimización convexos con garantías de convergencia \citep{Boyd2004}. Sirven además como bloques de construcción y puntos de referencia esenciales para el desarrollo y la evaluación de modelos más complejos \citep{Goodfellow2016}.
+
+\subsubsection*{El Perceptrón}
+\label{subsubsec:PerceptronRepaso}
+El Perceptrón es un modelo histórico para clasificación binaria \citep{abu-mostafa_learning_2012}. Representa una neurona artificial que calcula una suma ponderada de sus entradas $\mathbf{x}$ y aplica una función de activación escalón (la función signo) para producir una salida binaria: $h(\mathbf{x}) = \text{sign}(\mathbf{w}^T \mathbf{x})$. Aunque limitado a problemas linealmente separables, introdujo conceptos clave como el aprendizaje iterativo basado en errores.
+
+\subsubsection*{Regresión Lineal}
+\label{subsubsec:RegresionLinealRepaso}
+La regresión lineal modela una variable objetivo real $y$ como una combinación lineal de características: $h(\mathbf{x}) = \mathbf{w}^T \mathbf{x}$. Los pesos $\mathbf{w}$ se encuentran minimizando el error cuadrático medio (MSE), lo que tiene una solución analítica mediante las ecuaciones normales \citep{Bishop2006}.
+
+\subsubsection*{Descenso del Gradiente}
+\label{subsubsec:GradienteDescendenteRepaso}
+Para modelos donde no existe solución analítica, como la regresión logística o las redes neuronales, el \textit{descenso del gradiente} es un algoritmo iterativo clave. Actualiza los pesos $\mathbf{w}$ en la dirección opuesta al gradiente del error: $\mathbf{w}^{(t+1)} \leftarrow \mathbf{w}^{(t)} - \eta \nabla E(\mathbf{w}^{(t)})$. El descenso de gradiente estocástico (SGD) es una variante eficiente, esencial para el entrenamiento de modelos de AP.
+
+\subsection{De Perceptrones Simples a Redes Neuronales Profundas}
+\label{subsec:RedesNeuronalesEvolucionRepaso} 
+
+El modelo del Perceptrón se enfrenta a un muro con datos no linealmente separables. La necesidad de modelar relaciones más complejas impulsó la idea de combinar múltiples perceptrones, dando origen al \textbf{Perceptrón Multicapa (MLP)}. En un MLP, las salidas de una capa de unidades (neuronas) se convierten en las entradas de otra. Esta arquitectura, donde la información fluye unidireccionalmente desde la entrada hacia la salida, sin ciclos, se conoce formalmente como una \textbf{\glsp{ffnn}}, como se ilustra en la Figura~\ref{fig:ffn_diagram_main}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.6\textwidth]{images/transformer_architecture.png} % Replace with the actual path
-\caption{Diagrama conceptual de un bloque Transformer típico (Encoder y Decoder).}
-\label{fig:transformer_block_diagram}
+\includegraphics[width=0.6\textwidth]{images/ffnn.png} % Asegúrate que la ruta es correcta
+\caption{Diagrama de una Red Neuronal Feed-Forward (FFNN) \citep{RGFigureGradientesRetropropagacion} }
+\label{fig:ffn_diagram_main}
 \end{figure}
 
+En una \glsentryshort{ffnn}, cada neurona típicamente reemplaza la función escalón por una función de activación no lineal suave y diferenciable (e.g., sigmoide, ReLU). Esta diferenciabilidad permite aplicar el Descenso del Gradiente para ajustar todos los pesos de la red mediante el algoritmo de \textbf{retropropagación (backpropagation)}, una aplicación eficiente de la regla de la cadena. La profundidad 
+ (número de capas ocultas) permite aprender jerarquías de características, siendo la base del \textbf{Deep Learning}.
 
-\subsection{Mecanismo de Atención Escalonada (Scaled Dot-Product Attention)}
+Si bien las \glsentryshort{ffnn} son potentes, su estructura totalmente conectada puede no ser óptima para datos secuenciales, donde arquitecturas como las Redes Neuronales Recurrentes (RNNs) fueron inicialmente preferidas. Sin embargo, las RNNs tenían dificultades con secuencias largas, tendiendo a olvidar el inicio y su naturaleza recurrente impide la paralelización, haciéndolas lentas de entrenar. Estas limitaciones prepararon el terreno para una nueva arquitectura.
 
-El mecanismo de atención constituye el núcleo operativo y la innovación distintiva de los Transformers, siendo el principal artífice de su excepcional rendimiento. Dentro del espectro de mecanismos de atención existentes, la \textbf{atención escalonada por producto punto} (Scaled Dot-Product Attention) emerge como la piedra angular, el bloque constructivo esencial. Este ingenioso mecanismo habilita al modelo para discernir y cuantificar la similitud o relevancia entre diferentes posiciones dentro de la secuencia de entrada. De esta forma, determina con precisión qué fragmentos de la información entrante merecen una mayor ponderación al procesar cada elemento en particular. En términos prácticos, la atención confiere al modelo la capacidad de enfocar su "mirada" selectivamente sobre la información más crucial y pertinente en cada instante del procesamiento, emulando, en cierto modo, la atención selectiva humana.
+\subsection{Redes Neuronales Profundas con atención: Transformer}
+\label{subsec:ModelosTransformerIntro}
 
+Los modelos \textbf{Transformer} \citep{Vaswani_attentionis_2017} surgieron como una solución disruptiva, especialmente en el Procesamiento del Lenguaje Natural (NLP), al solo basarse en mecanismos de atención para recordar, abandonando la recurrencia. La \textbf{atención} se refiere a la capacidad de un modelo para prestar atención a la parte importante de una entrada. Esto permite que el modelo alimente todas las palabras de la oración al mismo tiempo a la red, facilitando una paralelización y eficiencia sin precedentes. La Figura~\ref{fig:transformer_block_diagram_main} ilustra la arquitectura conceptual.
 
-\subsubsection{Matrices de Consulta, Clave y Valor (Query, Key, Value)}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{images/transformer_architecture.png} % Asegúrate que la ruta es correcta
+\caption{Diagrama conceptual de la arquitectura Transformer \citep{Vaswani_attentionis_2017}}
+\label{fig:transformer_block_diagram_main}
+\end{figure}
 
-La orquestación de la atención escalonada se basa en la interacción estratégica de tres matrices fundamentales: \textbf{Consulta (Query)}, \textbf{Clave (Key)} y \textbf{Valor (Value)}. 
+\newpage
 
-La esencia matemática del mecanismo de atención escalonada se encapsula en la Ecuación \ref{eq:scaled_dot_product_attention}:
+\subsubsection*{Componentes Fundamentales del Transformer}
+\label{subsubsec:TransformerComponents}
 
+Antes de detallar la arquitectura Encoder-Decoder, definiremos las diferentes capas que la componen: Embeddings y Encodings Posicionales, Mecanismo de Auto-Atención, Atención Multi-Cabeza, Redes Feed-Forward, Conexiones Residuales y Normalización de Capas.
+
+\paragraph{Embeddings y Encodings Posicionales} \
+
+En el procesamiento del lenguaje natural con Transformers, las secuencias de entrada, típicamente palabras o tokens, primero se transforman en representaciones vectoriales densas y de dimensión fija.
+
+Los \textbf{embeddings de palabras} (o \textit{tokens}) convierten cada palabra de un vocabulario $V$ en un vector de alta dimensionalidad, usualmente $d_{\text{model}}$. Si $w$ es una palabra, su embedding se representa como $\mathbf{e}_w \in \mathbb{R}^{d_{\text{model}}}$. Estos embeddings se aprenden durante el entrenamiento y están diseñados para capturar información semántica y sintáctica sobre las palabras \citep{Mikolov2013word2vec, Pennington2014glove}. Así, una secuencia de entrada de $L$ tokens $(x_1, x_2, \ldots, x_L)$ se mapea a una secuencia de vectores de embedding $(\mathbf{e}_{x_1}, \mathbf{e}_{x_2}, \ldots, \mathbf{e}_{x_L})$.
+
+Dado que la arquitectura Transformer, a diferencia de las Redes Neuronales Recurrentes (RNN) o las Redes Convolucionales (CNN), no procesa los tokens secuencialmente ni posee una noción inherente del orden o la posición de los tokens en la secuencia, es necesario inyectar explícitamente esta información. Para este fin, se utilizan los \textbf{encodings posicionales} (PE, Positional Encodings). Estos encodings se suman a los embeddings de los tokens correspondientes antes de ser alimentados a la primera capa del codificador o decodificador \citep{Vaswani2017}.
+
+El encoding posicional para un token en la posición $pos$ de la secuencia y para la dimensión $i$ del vector de embedding se define mediante funciones seno y coseno de diferentes frecuencias, como sigue:
+\begin{align}
+PE_{(pos, 2i)} &= \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right) \label{eq:pe_sin} \\
+PE_{(pos, 2i+1)} &= \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right) \label{eq:pe_cos}
+\end{align}
+donde $pos$ es la posición del token en la secuencia (desde $0$ hasta $L-1$), $i$ es el índice de la dimensión dentro del vector de encoding posicional (desde $0$ hasta $d_{\text{model}}/2 - 1$), y $d_{\text{model}}$ es la dimensionalidad de los embeddings (y, por tanto, de los encodings posicionales). Cada dimensión del encoding posicional corresponde a una sinusoide. Las longitudes de onda forman una progresión geométrica desde $2\pi$ hasta $10000 \cdot 2\pi$.
+
+Esta elección de funciones sinusoidales permite al modelo aprender a atender a posiciones relativas, ya que para cualquier desfase fijo $k$, $PE_{pos+k}$ puede ser representado como una función lineal de $PE_{pos}$ \citep{Vaswani2017}. Además, estas funciones permiten al modelo extrapolar a longitudes de secuencia mayores que las vistas durante el entrenamiento.
+
+El vector de embedding posicional $\mathbf{p}_{pos} \in \mathbb{R}^{d_{\text{model}}}$ para la posición $pos$ se obtiene concatenando o intercalando estas componentes. La representación final del token $x_t$ en la posición $pos_t$ antes de entrar en la primera capa del Transformer es la suma de su embedding de palabra y su encoding posicional:
+\begin{equation}
+\mathbf{x}_{input, t} = \mathbf{e}_{x_t} + \mathbf{p}_{pos_t}
+\label{eq:input_representation}
+\end{equation}
+Esta suma permite que la información posicional se integre directamente con la representación semántica del token.
+
+\paragraph{Mecanismo de Auto-Atención (Self-Attention)} \
+
+La otra idea clave es la auto-atención, específicamente la \textbf{Scaled Dot-Product Attention}. Para cada palabra (embedding + encoding posicional), se generan tres vectores aprendibles: \textbf{Consulta (Query, Q)}, \textbf{Clave (Key, K)} y \textbf{Valor (Value, V)} mediante proyecciones lineales. La atención se calcula como:
 \begin{equation}
     \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-    \label{eq:scaled_dot_product_attention}
+    \label{eq:scaled_dot_product_attention_main}
 \end{equation}
+donde $d_k$ es la dimensión de las claves. El producto $QK^T$ calcula puntuaciones de similitud, el escalado por $\sqrt{d_k}$ estabiliza los gradientes, softmax normaliza estas puntuaciones a pesos de atención, y finalmente estos pesos ponderan los vectores $V$ para producir una representación contextualizada de cada palabra.
 
-donde:
+\paragraph{Atención Multi-Cabeza (Multi-Head Attention)} \
 
-\begin{itemize}
-    \item $Q \in \mathbb{R}^{n \times d_k}$ representa la matriz de Consulta, con $n$ siendo la longitud de la secuencia y $d_k$ la dimensión de las consultas y claves.
-    \item $K \in \mathbb{R}^{m \times d_k}$ es la matriz de Clave, con $m$ siendo la longitud de la secuencia (que puede ser diferente de $n$ en algunos casos, como la atención Encoder-Decoder) y $d_k$ la dimensión de las claves.
-    \item $V \in \mathbb{R}^{m \times d_v}$ denota la matriz de Valor, con $m$ siendo la longitud de la secuencia de valores y $d_v$ la dimensión de los valores.
-    \item $d_k$ es el factor de escala, específicamente la raíz cuadrada de la dimensión de las claves ($d_k$), que se utiliza para mitigar el problema del desvanecimiento del gradiente, especialmente con dimensiones elevadas.
-    \item $\text{softmax}$ es la función softmax, encargada de normalizar las puntuaciones de similitud, transformándolas en una distribución de probabilidad que representa los pesos de atención.
-\end{itemize}
-s
+En lugar de realizar una única función de atención con consultas $Q$, claves $K$ y valores $V$ de dimensión $d_{\text{model}}$, el mecanismo de Atención Multi-Cabeza (MHA) proyecta linealmente estas entradas $h$ veces (donde $h$ es el número de cabezas de atención) con diferentes conjuntos de pesos aprendidos. Luego, la función de atención (Scaled Dot-Product Attention) se aplica en paralelo a cada una de estas proyecciones. Este enfoque permite al modelo atender conjuntamente a información de diferentes subespacios de representación y en diferentes posiciones \citep{Vaswani2017}.
 
-Estas matrices, representadas convencionalmente como $Q$, $K$ y $V$ respectivamente, no son entidades independientes, sino que se derivan de la secuencia de entrada original a través de proyecciones lineales individuales y dedicadas. Para comprender mejor su función, podemos recurrir a una analogía conceptual:
+Formalmente, para cada cabeza $j \in \{1, \ldots, h\}$, se calculan las proyecciones:
+\begin{align}
+Q_j &= Q W_j^Q \label{eq:mha_q_proj} \\
+K_j &= K W_j^K \label{eq:mha_k_proj} \\
+V_j &= V W_j^V \label{eq:mha_v_proj}
+\end{align}
+donde $Q, K, V \in \mathbb{R}^{L \times d_{\text{model}}}$ son las matrices de entrada (con $L$ como la longitud de la secuencia), y las matrices de pesos de proyección son $W_j^Q \in \mathbb{R}^{d_{\text{model}} \times d_q}$, $W_j^K \in \mathbb{R}^{d_{\text{model}} \times d_k}$, y $W_j^V \in \mathbb{R}^{d_{\text{model}} \times d_v}$. Típicamente, las dimensiones de las proyecciones para cada cabeza son menores que la dimensión del modelo: $d_q = d_k = d_v = d_{\text{model}}/h$.
 
-\begin{itemize}
-    \item \textbf{Consulta (Q):} La matriz de Consulta ($Q$) personifica la pregunta o la necesidad de información del elemento que se está procesando en un momento dado. Cada fila de $Q$ representa un elemento de la secuencia de entrada y encapsula la consulta o la búsqueda de información relevante en el resto de la secuencia que emana de dicho elemento. Imaginemos que cada palabra en una frase es una consulta buscando entender su contexto.
-    \item \textbf{Clave (K):} La matriz de Clave ($K$) actúa como un catálogo de claves o etiquetas descriptivas que identifican las diferentes partes de la secuencia de entrada. Al igual que $Q$, cada fila de $K$ corresponde a un elemento de la secuencia de entrada, pero en este caso, representa la clave que describe la información contenida en ese elemento y que podría ser relevante para responder a las consultas. Siguiendo con la analogía, cada palabra en la frase también proporciona una clave que describe su propio significado y rol en la oración.
-    \item \textbf{Valor (V):} La matriz de Valor ($V$) almacena la información concreta o el valor asociado a cada clave. De nuevo, cada fila de $V$ se corresponde con un elemento de la secuencia de entrada y contiene la información que realmente se utilizará para construir la salida final, una vez ponderada por la atención. En nuestra analogía, la matriz de valor contendría la representación vectorial del significado de cada palabra, lista para ser combinada y ponderada para formar una representación contextualizada de la frase.
-\end{itemize}
+Luego, la función de atención (ecuación~\ref{eq:scaled_dot_product_attention_main}) se aplica independientemente a cada cabeza:
+\begin{equation}
+\text{head}_j = \text{Attention}(Q_j, K_j, V_j) = \text{softmax}\left(\frac{Q_j K_j^T}{\sqrt{d_k}}\right)V_j
+\label{eq:mha_head_j}
+\end{equation}
+donde $\text{head}_j \in \mathbb{R}^{L \times d_v}$.
 
+Las salidas de las $h$ cabezas de atención se concatenan para formar una única matriz:
+\begin{equation}
+\text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h) = [\text{head}_1 || \text{head}_2 || \ldots || \text{head}_h]
+\label{eq:mha_concat}
+\end{equation}
+donde la matriz concatenada tiene dimensiones $L \times (h \cdot d_v)$. Dado que $h \cdot d_v = h \cdot (d_{\text{model}}/h) = d_{\text{model}}$, la dimensión de la matriz concatenada es $L \times d_{\text{model}}$.
 
+Finalmente, esta matriz concatenada se proyecta linealmente una vez más mediante otra matriz de pesos aprendida $W^O \in \mathbb{R}^{(h \cdot d_v) \times d_{\text{model}}}$ (es decir, $W^O \in \mathbb{R}^{d_{\text{model}} \times d_{\text{model}}}$) para producir la salida final del bloque de atención multi-cabeza:
+\begin{equation}
+\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O
+\label{eq:mha_final}
+\end{equation}
+El resultado, $\text{MultiHead}(Q, K, V)$, tiene dimensiones $L \times d_{\text{model}}$.
 
-El proceso computacional que subyace a la atención escalonada se desarrolla en los siguientes pasos:
+Este mecanismo permite al modelo, como se mencionó, prestar atención no solo a una palabra o aspecto, sino a múltiples palabras o, más precisamente, a diferentes subespacios de representación y tipos de relaciones de forma simultánea, enriqueciendo la capacidad del modelo para capturar dependencias complejas.
 
+\paragraph{Redes Feed-Forward Posicionales} \ 
+
+Cada capa del Transformer, tanto en el codificador como en el decodificador, incluye una subcapa de red neuronal feed-forward (FFNN) (Ver Sección ~\ref{subsec:RedesNeuronalesEvolucionRepaso} ) completamente conectada, que se aplica de forma idéntica e independiente a cada posición (token) de la secuencia tras el mecanismo de atención \citep{Vaswani2017}.
+
+Esta \glsentryshort{ffnn} consiste típicamente en dos transformaciones lineales con una función de activación no lineal entre ellas. La entrada $\mathbf{x} \in \mathbb{R}^{d_{\text{model}}}$ (para cada posición) se transforma según:
+\begin{equation}
+\text{FFNN}(\mathbf{x}) = \text{ReLU}(\mathbf{x}W_1 + \mathbf{b}_1)W_2 + \mathbf{b}_2
+\label{eq:ffn_transformer_sintetizado}
+\end{equation}
+donde $W_1 \in \mathbb{R}^{d_{\text{model}} \times d_{ff}}$, $\mathbf{b}_1 \in \mathbb{R}^{d_{ff}}$, $W_2 \in \mathbb{R}^{d_{ff} \times d_{\text{model}}}$, y $\mathbf{b}_2 \in \mathbb{R}^{d_{\text{model}}}$ son parámetros aprendibles, y $d_{ff}$ es la dimensionalidad interna (e.g., $4 \cdot d_{\text{model}}$).
+
+La función de activación comúnmente empleada es la Unidad Lineal Rectificada (ReLU) \citep{Nair2010relu, Glorot2011deep}, definida como $\text{ReLU}(z) = \text{max}(0, z)$. ReLU es computacionalmente eficiente y ayuda a mitigar el desvanecimiento de gradientes. Aunque los pesos de la \glsentryshort{ffnn} son compartidos entre posiciones, esta opera sobre representaciones de tokens individuales, añadiendo capacidad de modelado no lineal a cada capa del Transformer.
+
+\paragraph{Conexiones Residuales y Normalización de Capas} \
+
+Para facilitar el entrenamiento de arquitecturas profundas como los Transformers y mitigar problemas como el desvanecimiento o explosión de gradientes, cada subcapa (ya sea la de atención multi-cabeza o la red neuronal feed-forward) dentro de un bloque del codificador o decodificador está envuelta por una \textbf{conexión residual} \citep{He2016deepresidual} seguida de una \textbf{normalización de capas} (Layer Normalization, LN) \citep{Ba2016layer}.
+
+\textbf{Conexión Residual:}
+Si $\mathbf{x}$ es la entrada a una subcapa y $\text{SubLayer}(\mathbf{x})$ es la función implementada por la propia subcapa (por ejemplo, el mecanismo de atención multi-cabeza o la red feed-forward), la salida de la conexión residual es:
+\begin{equation}
+\mathbf{x}_{\text{residual}} = \mathbf{x} + \text{SubLayer}(\mathbf{x})
+\label{eq:residual_connection}
+\end{equation}
+Esta estructura permite que los gradientes fluyan más directamente a través de la red durante la retropropagación, facilitando el aprendizaje de funciones de identidad si es necesario y ayudando al modelo a no olvidar información de capas anteriores. La dimensionalidad de $\mathbf{x}$ y $\text{SubLayer}(\mathbf{x})$ debe ser la misma para permitir la suma directa, lo cual se cumple en la arquitectura Transformer estándar donde todas las subcapas y embeddings operan con la dimensión $d_{\text{model}}$.
+
+\textbf{Normalización de Capas (Layer Normalization):}
+Después de la conexión residual, se aplica la normalización de capas. A diferencia de la normalización por lotes (Batch Normalization), la normalización de capas calcula la media y la varianza a lo largo de las características (dimensiones del embedding) para cada muestra de entrenamiento individualmente, lo que la hace independiente del tamaño del lote y adecuada para datos secuenciales de longitud variable \citep{Ba2016layer}.
+
+Para un vector de entrada $\mathbf{z} = (z_1, z_2, \ldots, z_{d_{\text{model}}})$ (que en este caso sería $\mathbf{x}_{\text{residual}}$ de la ecuación~\ref{eq:residual_connection}), la normalización de capas se calcula de la siguiente manera:
+Primero, se calculan la media ($\mu$) y la varianza ($\sigma^2$) sobre todas las $d_{\text{model}}$ componentes del vector $\mathbf{z}$ para esa muestra específica:
+\begin{align}
+\mu &= \frac{1}{d_{\text{model}}} \sum_{j=1}^{d_{\text{model}}} z_j \label{eq:ln_mean} \\
+\sigma^2 &= \frac{1}{d_{\text{model}}} \sum_{j=1}^{d_{\text{model}}} (z_j - \mu)^2 \label{eq:ln_variance}
+\end{align}
+Luego, cada componente $z_j$ del vector se normaliza:
+\begin{equation}
+\hat{z}_j = \frac{z_j - \mu}{\sqrt{\sigma^2 + \epsilon}}
+\label{eq:ln_normalize}
+\end{equation}
+donde $\epsilon$ es una constante pequeña (e.g., $10^{-5}$) añadida a la varianza para mejorar la estabilidad numérica y evitar la división por cero.
+
+Finalmente, la salida de la normalización de capas se obtiene aplicando una transformación afín con dos parámetros aprendibles por capa, una ganancia (scale) $\boldsymbol{\gamma} \in \mathbb{R}^{d_{\text{model}}}$ y un sesgo (bias) $\boldsymbol{\beta} \in \mathbb{R}^{d_{\text{model}}}$:
+\begin{equation}
+\text{LayerNorm}(\mathbf{z})_j = \gamma_j \hat{z}_j + \beta_j
+\label{eq:ln_final_output_j}
+\end{equation}
+O en forma vectorial:
+\begin{equation}
+\text{LayerNorm}(\mathbf{z}) = \boldsymbol{\gamma} \odot \frac{\mathbf{z} - \boldsymbol{\mu}_{\text{vec}}}{\sqrt{\boldsymbol{\sigma}^2_{\text{vec}} + \epsilon}} + \boldsymbol{\beta}
+\label{eq:ln_final_output_vector}
+\end{equation}
+donde $\odot$ denota la multiplicación elemento a elemento, y $\boldsymbol{\mu}_{\text{vec}}$ y $\boldsymbol{\sigma}^2_{\text{vec}}$ son vectores donde cada componente es la media y varianza calculadas respectivamente (se replican para la operación vectorial). Los parámetros $\boldsymbol{\gamma}$ y $\boldsymbol{\beta}$ permiten a la capa de normalización aprender a escalar y desplazar las activaciones normalizadas, preservando la capacidad representacional de la red.
+
+En resumen, la salida de un bloque que contiene una subcapa se puede expresar como:
+\begin{equation}
+\text{SalidaBloque}(\mathbf{x}) = \text{LayerNorm}(\mathbf{x} + \text{SubLayer}(\mathbf{x}))
+\label{eq:block_output}
+\end{equation}
+Este proceso se repite para cada subcapa dentro de los bloques del codificador y del decodificador, contribuyendo significativamente a la estabilidad y el rendimiento de los modelos Transformer profundos.
+
+\paragraph{Arquitectura Encoder-Decoder} \
+
+La arquitectura Transformer canónica utiliza una pila de seis encoders y seis decoders.
+
+\textbf{Encoder:} Cada encoder consta de dos subcapas principales: una capa de auto-atención multi-cabeza y una red feed-forward posicional. Cada subcapa tiene una conexión residual y normalización de capa. El encoder procesa la secuencia de entrada completa en paralelo, generando representaciones enriquecidas contextualizadas.
+
+\textbf{Decoder:} El decoder también tiene una estructura similar, pero con una subcapa adicional:
 \begin{enumerate}
-    \item \textbf{Cálculo de Similitud (Producto Punto):} Inicialmente, se evalúa la similitud entre cada consulta y cada clave mediante el \textbf{producto punto matricial} $QK^T$. Este producto punto cuantifica el grado de correspondencia o alineamiento entre las consultas y las claves, generando una matriz de \textbf{puntuaciones de similitud}.
-    \item \textbf{Escalado:} Las puntuaciones de similitud obtenidas se someten a un proceso de \textbf{escalado}, dividiéndolas por $\sqrt{d_k}$. Este paso de escalado es de vital importancia para la \textbf{estabilidad del entrenamiento}, ya que previene que las puntuaciones se disparen a valores excesivamente grandes, lo cual podría conducir a \textbf{gradientes extremadamente pequeños} tras la aplicación de la función softmax, dificultando el \textbf{aprendizaje efectivo}.
-    \item \textbf{Normalización (Softmax):} A continuación, la \textbf{función softmax} entra en juego para \textbf{normalizar} las puntuaciones escaladas. La softmax transforma estas puntuaciones en \textbf{pesos de atención probabilísticos}, que oscilan entre 0 y 1 y suman 1 para cada consulta. Estos \textbf{pesos de atención} reflejan la \textbf{importancia relativa} de cada valor con respecto a cada consulta, indicando en qué medida cada valor debe contribuir a la representación final.
-    \item \textbf{Ponderación y Agregación (Ponderación por Valores):} Finalmente, los pesos de atención normalizados se utilizan para \textbf{ponderar} la matriz de Valor $V$. Esta ponderación se materializa multiplicando los pesos de atención por los valores correspondientes y agregando los resultados mediante una \textbf{suma ponderada}. La \textbf{salida resultante} de este proceso es una matriz que representa la secuencia de entrada, pero ahora \textbf{enriquecida con información contextualizada}, donde cada elemento se ha refinado y ajustado en función de su relevancia con respecto a los demás elementos de la secuencia, guiado por el mecanismo de atención.
+    \item \textbf{Auto-Atención Multi-Cabeza Enmascarada:} Similar a la del encoder, pero con un enmascaramiento para asegurar que, al predecir una palabra, solo se pueda atender a las palabras previas en la secuencia de salida (naturaleza auto-regresiva).
+    \item \textbf{Atención Encoder-Decoder Multi-Cabeza:} Esta capa permite al decoder atender a la salida del encoder. Las consultas (Q) provienen de la capa de auto-atención enmascarada del decoder, mientras que las claves (K) y valores (V) provienen de la salida del último encoder. Es aquí donde la información de la secuencia de entrada se integra para guiar la generación de la secuencia de salida.
+    \item \textbf{Red Feed-Forward Posicional.}
 \end{enumerate}
+Igualmente, se utilizan conexiones residuales y normalización de capas.
 
-\subsection{Estructura de Capas en un Transformer}
+\paragraph{Flujo de Información y Salida} \
 
-Un Transformer típico se compone de varias capas de codificación (\textbf{Encoder}) y decodificación (\textbf{Decoder}). Estas capas se apilan secuencialmente, creando una arquitectura profunda capaz de aprender representaciones complejas de los datos. Cada capa, tanto en el Encoder como en el Decoder, está construida con un conjunto específico de subcapas interconectadas, diseñadas para extraer información relevante y transformar los datos de entrada. Las subcapas fundamentales incluyen la \textbf{atención multi-cabeza} (Multi-Head Attention), \textbf{redes neuronales feed-forward}, \textbf{normalización de capas} (Layer Normalization) y \textbf{conexiones residuales}. A continuación, se detalla la estructura y función de cada componente.
+La secuencia de entrada (embeddings + encodings posicionales) pasa por la pila de encoders. La salida del último encoder se alimenta a todas las capas de atención encoder-decoder en cada uno de los decoders. El decoder genera la secuencia de salida palabra por palabra. La salida final del decoder pasa por una capa lineal y una función softmax para producir una distribución de probabilidad sobre el vocabulario para la siguiente palabra.
 
-\subsubsection{Capas del Encoder}
+\subsubsection*{Entrenamiento del Transformer}
+\label{subsubsec:TransformerTraining}
+El entrenamiento de un Transformer, como cualquier modelo de \glsentryshort{dl} $f_{\theta}$, se basa en minimizar una función de pérdida $L(\theta)$ (e.g., entropía cruzada para clasificación de palabras) utilizando descenso de gradiente. Los parámetros $\theta$ (pesos $\weights$ y sesgos $\biases$ de todas las capas lineales, incluyendo las de las proyecciones Q, K, V y las \glsentryshort{ffnn}) se actualizan mediante $\theta^{(t+1)} = \theta^{(t)} - \eta \nabla L(\theta^{(t)})$. El gradiente $\nabla L(\theta)$ se calcula eficientemente mediante \textbf{retropropagación}, como se describe en el Algoritmo~\ref{alg:backpropagation_main}.
 
-Cada capa del Encoder está diseñada para procesar la secuencia de entrada y extraer características relevantes. Típicamente, una capa de Encoder consta de las siguientes subcapas principales:
-
-\begin{enumerate}
-    \item \textbf{Atención Multi-Cabeza (Multi-Head Attention):} Esta es la subcapa central del Transformer. Permite al modelo ponderar la importancia de diferentes partes de la secuencia de entrada al procesar cada posición. En lugar de una única atención, la atención multi-cabeza utiliza múltiples "cabezas" de atención en paralelo. Cada cabeza aprende a atender a diferentes aspectos de la información, capturando una variedad más rica de relaciones y dependencias dentro de la secuencia. La salida de todas las cabezas se concatena y se proyecta linealmente para producir la salida final de esta subcapa.
-    \item \textbf{Añadir y Normalizar (Add \& Norm) - Conexión Residual y Normalización de Capas:} Después de la subcapa de atención multi-cabeza, se aplica una \textbf{conexión residual}. Esto significa que la entrada original a la subcapa de atención se suma a la salida de la atención multi-cabeza. Esta conexión residual ayuda a mitigar el problema del desvanecimiento del gradiente en redes profundas, facilitando el entrenamiento de modelos más profundos. A continuación, se aplica la \textbf{normalización de capas} (Layer Normalization) \citep{ba_layer_2016}. La normalización de capas ayuda a estabilizar el aprendizaje normalizando las salidas de las subcapas, lo que acelera el entrenamiento y mejora la generalización.
-    \item \textbf{Red Neuronal Feed-Forward (Feed-Forward Network):} Tras la subcapa de atención y la normalización, la salida se pasa a través de una \textbf{red neuronal feed-forward}. Esta red es aplicada de forma idéntica e independiente a cada posición en la secuencia. Consiste típicamente en dos capas lineales con una función de activación no lineal (como ReLU) entre ellas. La red feed-forward ayuda a procesar la información aprendida por la atención, proporcionando no linealidad y permitiendo al modelo aprender transformaciones más complejas.
-  \item \textbf{Añadir y Normalizar (Add \& Norm) - Conexión Residual y Normalización de Capas:} Similar al paso anterior, se aplica otra conexión residual y normalización de capas después de la red neuronal feed-forward. La entrada a la red feed-forward se suma a su salida, y el resultado se normaliza.
-\end{enumerate}
-
-\subsubsection{Capas del Decoder}
-
-Las capas del Decoder tienen la función de generar la secuencia de salida, utilizando la información codificada por el Encoder. Una capa de Decoder es similar a una capa de Encoder, pero incluye una subcapa de atención adicional para interactuar con la salida del Encoder. Las subcapas típicas de una capa de Decoder son:
-
-\begin{enumerate}
-    \item \textbf{Atención Multi-Cabeza Enmascarada (Masked Multi-Head Attention):} Similar a la atención multi-cabeza del Encoder, pero con una modificación crucial: el \textbf{enmascaramiento}. En el contexto del Decoder, especialmente en tareas de generación secuencial, es importante que al predecir la salida en una posición dada, el modelo solo pueda atender a las posiciones \textit{anteriores} en la secuencia de salida (ya generada) y no a las posiciones futuras. El enmascaramiento se implementa para evitar que el modelo "vea" la respuesta durante el entrenamiento, asegurando que aprenda a generar la secuencia de forma autoregresiva.
-    \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la atención multi-cabeza enmascarada, de la misma manera que en el Encoder.
-\item \textbf{Atención Encoder-Decoder (Encoder-Decoder Attention o Multi-Head Attention):} Esta subcapa es específica del Decoder y es fundamental para la interacción entre el Encoder y el Decoder. En esta subcapa, el Decoder atiende a la salida del \textit{Encoder}. Las "queries" provienen de la salida de la subcapa de atención enmascarada del Decoder, mientras que las "keys" y "values" provienen de la salida del \textit{Encoder}. Esto permite al Decoder enfocar su atención en las partes relevantes de la secuencia de entrada codificada por el Encoder al generar cada elemento de la secuencia de salida.
-     \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la atención Encoder-Decoder.
-    \item \textbf{Red Neuronal Feed-Forward (Feed-Forward Network):} Idéntica a la red neuronal feed-forward utilizada en las capas del Encoder.
-    \item \textbf{Añadir y Normalizar (Add \& Norm):} Conexión residual y normalización de capas aplicada después de la red neuronal feed-forward.
-\end{enumerate}
-
-\subsubsection{Diagrama Conceptual de un Bloque Transformer}
-
-Un diagrama de un bloque Transformer típico mostraría:
-
-\begin{itemize}
-    \item \textbf{Para un bloque Encoder:}
-        \begin{itemize}
-            \item Un bloque etiquetado Entrada que representa la secuencia de entrada (o la salida de la capa Encoder anterior).
-            \item Una flecha que lleva a un bloque etiquetado Multi-Head Attention.
-            \item Una conexión residual que salta la subcapa "Multi-Head Attention" y se suma a la salida de esta subcapa.
-            \item Un bloque etiquetado Add \& Norm después de la suma de la conexión residual.
-            \item Una flecha desde Add \& Norm a un bloque etiquetado Feed-Forward Network.
-            \item Otra conexión residual que salta la subcapa Feed-Forward Network y se suma a la salida de esta subcapa.
-            \item Un bloque etiquetado Add \& Norm después de la segunda suma de la conexión residual, representando la salida de la capa Encoder.
-        \end{itemize}
-    \item \textbf{Para un bloque Decoder:}
-        \begin{itemize}
-            \item Un bloque etiquetado Entrada que representa la secuencia de entrada al Decoder (o la salida de la capa Decoder anterior).
-          \item Una flecha que lleva a un bloque etiquetado Masked Multi-Head Attention.
-            \item Una conexión residual y Add \& Norm después de la atención enmascarada.
-        \item Una flecha a un bloque etiquetado Encoder-Decoder Attention (o simplemente Multi-Head Attention si se entiende el contexto). Este bloque también recibiría una conexión de la salida del Encoder (en un diagrama para la arquitectura completa).
-           \item Una conexión residual y Add \& Norm después de la atención Encoder-Decoder.
-            \item Una flecha a un bloque etiquetado Feed-Forward Network.
-        \item Una conexión residual y Add \& Norm después de la red feed-forward, representando la salida de la capa Decoder.
-        \end{itemize}
-\end{itemize}
-
-
-En resumen, la estructura de capas de un Transformer, con sus componentes de atención multi-cabeza, redes feed-forward, normalización de capas y conexiones residuales, proporciona un marco robusto y eficiente para el modelado de secuencias complejas, tanto en tareas de codificación como de decodificación. La atención multi-cabeza es el mecanismo central que permite al modelo capturar dependencias ricas, mientras que las otras subcapas facilitan el entrenamiento y mejoran la capacidad de aprendizaje de la red.
-
-
-
-
-
-\section{Entrenamiento del Transformer}
-\label{sec:math_transformer_training}
-
-El entrenamiento de un Transformer \cite{Vaswani_attentionis_2017}, como modelo predictivo $f_{\theta}$, se basa en minimizar una función de pérdida $L(\theta)$ utilizando descenso de gradiente.
-
-\begin{itemize}
-    \item \textbf{Parámetros $\theta$:} Incluyen matrices de pesos $\mathbf{W}$ y vectores de sesgo $\mathbf{b}$ (\Cref{subsec:linear_algebra}).
-    \item \textbf{Función de Pérdida $L(\theta)$:} Mide el error entre la salida $\hat{\mathbf{Y}} = f_{\theta}(\mathbf{X})$ y la referencia $\mathbf{Y}$ (ej. MSE usando normas matriciales).
-    \item \textbf{Descenso de Gradiente:} Actualiza $\theta^{(t+1)} = \theta^{(t)} - \eta \nabla L(\theta^{(t)})$.
-    \item \textbf{Gradiente $\nabla L(\theta)$:} Es la colección de derivadas parciales $\frac{\partial L}{\partial w_{ij}}, \frac{\partial L}{\partial b_i}$ para todos los parámetros. Se calcula mediante \textbf{Backpropagation}, que aplica eficientemente la Regla de la Cadena (\Cref{thm:chain_rule}) a través de las operaciones del modelo (producto matricial, suma, Softmax, etc.).
-\end{itemize}
-El proceso requiere herramientas del cálculo diferencial multivariable (\Cref{subsec:multivariable_calculus}) y álgebra lineal (\Cref{subsec:linear_algebra}).
-
-
+% Tu algoritmo de retropropagación puede ir aquí, asegurándote que la etiqueta sea única.
 \begin{algorithm}[H]
-\caption{Algoritmo de Retropropagación}
-\label{alg:backpropagation}
+\caption{Algoritmo de Retropropagación Generalizado}
+\label{alg:backpropagation_main}
 \begin{algorithmic}[1]
     \State \textbf{Entrada:} Lote de datos de entrada $\inputdata = \activation^0$, Lote de datos objetivo $\targetdata$, Parámetros actuales $\params = \{ \weights^l, \biases^l \}_{l=1}^{N_L}$, Funciones de activación $\{ \activationfunc^l \}_{l=1}^{N_L}$, Función de Pérdida $\loss$.
     \State \textbf{Salida:} Gradiente $\grad_{\params} \loss = \{ \grad_{\weights^l} \loss, \grad_{\biases^l} \loss \}_{l=1}^{N_L}$.
-
     \vspace{5pt}
     \Statex \textit{// --- Fase 1: Pase Hacia Adelante (Forward Pass) ---}
-    \For{$l = 1$ \textbf{to} $N_L$} \Comment{Iterar sobre las capas hacia adelante}
-        \State Calcular pre-activación: $\preactivation^l \leftarrow f_{\text{linear}}(\activation^{l-1}, \weights^l, \biases^l)$ \Comment{Ej: $\weights^l \activation^{l-1} + \biases^l$}
-        \State Calcular activación: $\activation^l \leftarrow \activationfunc^l(\preactivation^l)$
-        \State \textit{Almacenar} $\activation^{l-1}$ y $\preactivation^l$ para la fase hacia atrás. 
+    \For{$l = 1$ \textbf{to} $N_L$}
+        \State $\preactivation^l \leftarrow f_{\text{op}}^l(\activation^{l-1}, \text{params}^l)$ \Comment{Operación de la capa $l$}
+        \State $\activation^l \leftarrow \activationfunc^l(\preactivation^l)$ \Comment{Función de activación (si aplica)}
+        \State \textit{Almacenar} $\activation^{l-1}$ y $\preactivation^l$.
     \EndFor
-    \State Calcular la predicción final: $\prediction \leftarrow \activation^{N_L}$
-    \State Calcular la pérdida: $L \leftarrow \loss(\prediction, \targetdata)$
-
+    \State $\prediction \leftarrow \activation^{N_L}$
+    \State $L \leftarrow \loss(\prediction, \targetdata)$
     \vspace{5pt}
     \Statex \textit{// --- Fase 2: Pase Hacia Atrás (Backward Pass) ---}
-    \State Inicializar el error retropropagado (gradiente respecto a la última pre-activación):
-    \State $\delta^{N_L} \leftarrow \frac{\partial \loss}{\partial \prediction} \hadamard (\activationfunc^{N_L})'(\preactivation^{N_L})$ \Comment{Aplicar regla de la cadena en la última capa}
-    \For{$l = N_L$ \textbf{down to} $1$} \Comment{Iterar sobre las capas hacia atrás}
-        \State \textit{// Calcular gradientes para los parámetros de la capa l}
-        \State Recuperar $\activation^{l-1}$ (almacenada en el forward pass).
-        \State $\grad_{\weights^l} \loss \leftarrow \frac{\partial \loss}{\partial \weights^l}$ \Comment{Ej: $\delta^l (\activation^{l-1})^T$ para capa lineal}
-        \State $\grad_{\biases^l} \loss \leftarrow \frac{\partial \loss}{\partial \biases^l}$ \Comment{Ej: suma de $\delta^l$ sobre el batch para capa lineal}
-
-        \State \textit{// Propagar el error a la capa anterior (si no es la primera capa)}
+    \State $\delta^{N_L} \leftarrow \frac{\partial \loss}{\partial \prediction} \hadamard (\activationfunc^{N_L})'(\preactivation^{N_L})$ \Comment{O $\frac{\partial \loss}{\partial \preactivation^{N_L}}$ si no hay activación final explícita}
+    \For{$l = N_L$ \textbf{down to} $1$}
+        \State $\grad_{\text{params}^l} \loss \leftarrow \frac{\partial \loss}{\partial \text{params}^l}$ \Comment{Usando $\delta^l$ y $\activation^{l-1}$}
         \If{$l > 1$}
-            \State Calcular gradiente respecto a la activación de la capa anterior:
-            \State $\grad_{\activation^{l-1}} \loss \leftarrow (\frac{\partial \preactivation^l}{\partial \activation^{l-1}})^T \delta^l$ \Comment{Ej: $(\weights^l)^T \delta^l$ para capa lineal}
-            \State Recuperar $\preactivation^{l-1}$ (almacenada en el forward pass).
-            \State Calcular el error para la capa anterior:
-            \State $\delta^{l-1} \leftarrow \grad_{\activation^{l-1}} \loss \hadamard (\activationfunc^{l-1})'(\preactivation^{l-1})$
+            \State $\grad_{\activation^{l-1}} \loss \leftarrow (\frac{\partial \preactivation^l}{\partial \activation^{l-1}})^T \delta^l$
+            \State $\delta^{l-1} \leftarrow \grad_{\activation^{l-1}} \loss \hadamard (\activationfunc^{l-1})'(\preactivation^{l-1})$ \Comment{O $\grad_{\activation^{l-1}} \loss$ si $\preactivation^{l-1}$ es la entrada a una op. no lineal}
         \EndIf
     \EndFor
-
     \vspace{5pt}
-    \State \textbf{Devolver} los gradientes acumulados $\{ \grad_{\weights^l} \loss, \grad_{\biases^l} \loss \}_{l=1}^{N_L}$
+    \State \textbf{Devolver} $\{ \grad_{\text{params}^l} \loss \}_{l=1}^{N_L}$
 \end{algorithmic}
 \end{algorithm}
+\paragraph{Notas sobre el Algoritmo de Retropropagación:}
+El Algoritmo~\ref{alg:backpropagation_main} presenta una visión generalizada. Las expresiones exactas para las derivadas parciales dependen de las operaciones específicas de cada capa del Transformer (atención, \glsentryshort{ffnn}, normalización). $\delta^l$ representa $\frac{\partial \loss}{\partial \preactivation^l}$, el error retropropagado antes de la activación de la capa $l$. La eficiencia radica en reutilizar los valores del pase hacia adelante.
 
-\paragraph{Notas sobre el Algoritmo:}
-\begin{itemize}
-    \item Las expresiones exactas para $\frac{\partial \loss}{\partial \weights^l}$, $\frac{\partial \loss}{\partial \biases^l}$, $\frac{\partial \preactivation^l}{\partial \activation^{l-1}}$ y $\frac{\partial \loss}{\partial \prediction}$ dependen de la forma específica de las capas lineales (o convolucionales, de atención, etc.) y de la función de pérdida utilizada. El algoritmo presenta la estructura general.
-    \item $\delta^l$ representa $\frac{\partial \loss}{\partial \preactivation^l}$, que es el error retropropagado justo antes de la función de activación de la capa $l$.
-    \item $(\activationfunc^l)'(\preactivation^l)$ denota la derivada de la función de activación $g^l$ evaluada en la pre-activación $\preactivation^l$.
-
-    \item La eficiencia del algoritmo reside en el cálculo y almacenamiento de los valores intermedios durante el pase hacia adelante y su reutilización durante el pase hacia atrás para aplicar la regla de la cadena de forma secuencial.
-    \item En implementaciones reales (PyTorch, TensorFlow), este proceso es automatizado por el sistema de diferenciación automática (autograd), pero sigue esta lógica subyacente.
-\end{itemize}
+\paragraph{Consideraciones de Entrenamiento para Transformers:}
+El costo computacional de la atención es cuadrático con la longitud de la secuencia ($O(L^2)$), siendo un cuello de botella para secuencias muy largas. Las conexiones residuales y la normalización de capas son esenciales para la estabilidad del gradiente. La paralelización inherente tanto en el pase hacia adelante como en el de retropropagación es una ventaja clave.
 
 
-\begin{itemize}
-  \item \textbf{Costo Computacional de la Atención:} El cálculo de la atención, especialmente en secuencias largas, puede ser computacionalmente costoso tanto en el paso forward como en el backward. La complejidad de la atención escalonada es cuadrática con respecto a la longitud de la secuencia ($O(L^2)$, donde $L$ es la longitud de la secuencia). Esto puede ser un cuello de botella durante el entrenamiento, especialmente para secuencias muy largas. Técnicas como la atención dispersa (sparse attention) o la atención lineal se han propuesto para mitigar este problema.
-    \item \textbf{Estabilidad del Gradiente:} Las conexiones residuales y la normalización de capas en los Transformers ayudan a mejorar la estabilidad del gradiente durante la retropropagación, facilitando el entrenamiento de redes profundas y reduciendo problemas como el desvanecimiento o la explosión del gradiente.
+\subsection{Self-Attention-based Imputation for Time Series (SAITS)}
+\label{subsec:SAITS}
 
+\glsentryshort{SAITS} \citep{Du2023SAITS} es un modelo de aprendizaje profundo propuesto específicamente para la imputación de valores faltantes en series temporales multivariantes. Se fundamenta en el mecanismo de autoatención de la arquitectura Transformer \citep{Vaswani2017}, pero introduce un enfoque de optimización conjunta y modificaciones estructurales para abordar eficazmente esta tarea. El modelo está diseñado para aprender a estimar los valores faltantes a partir de una combinación ponderada de dos bloques de autoatención con enmascaramiento diagonal, \glsp{dmsa}, como se ilustra en la Figura~\ref{fig:saits_block_diagram_main}.
 
-    \item \textbf{Paralelización:} Aunque el mecanismo de atención permite la paralelización en el paso forward, la retropropagación también se puede paralelizar en gran medida, especialmente en hardware como GPUs, lo que acelera significativamente el entrenamiento de los Transformers.
-\end{itemize}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{images/saits.png} % Asegúrate que esta es la imagen correcta
+\caption{Diagrama conceptual de la arquitectura SAITS, mostrando los dos bloques \glsentryshort{dmsa} y el bloque de combinación ponderada. Adaptado de \citet{Du2023SAITS}.}
+\label{fig:saits_block_diagram_main}
+\end{figure}
 
+Las diferencias y adaptaciones clave de SAITS respecto a un Transformer estándar, así como sus componentes matemáticos, se detallan a continuación, siguiendo la metodología propuesta en \citet{Du2023SAITS}:
 
-% --- Dentro del Capítulo de Fundamentos Matemáticos ---
+\subsubsection*{Enfoque de Optimización Conjunta (Joint-Optimization Training Approach)}
+SAITS se entrena mediante un enfoque de optimización conjunta que involucra dos tareas de aprendizaje principales, con el objetivo de forzar al modelo a predecir con precisión los valores faltantes y, al mismo tiempo, preservar la distribución de los datos observados:
 
-\section{Self-Attention-based Imputation for Time Series (SAITS)}
-
-SAITS (Self-Attention-based Imputation for Time Series) es un modelo Transformer específicamente diseñado para la imputación de datos faltantes en series temporales. Aprovecha el mecanismo de auto-atención para capturar dependencias temporales y espaciales en los datos de series temporales, lo que permite una imputación más precisa en comparación con los métodos tradicionales. A diferencia de los modelos de imputación clásicos que a menudo se basan en suposiciones simplificadas sobre la estructura temporal de los datos, SAITS aprende directamente estas dependencias de los propios datos, ofreciendo una solución más flexible y robusta.
-
-
-\subsection{Arquitectura del Modelo SAITS}
-
-SAITS adapta la arquitectura Transformer estándar para la tarea de imputación de series temporales, principalmente utilizando una estructura de \textbf{Encoder Transformer}. Dado que el objetivo principal es la imputación y no la generación secuencial, la arquitectura Decoder no es estrictamente necesaria en este contexto, aunque variaciones podrían incluirla. Las adaptaciones clave en la arquitectura de SAITS para la imputación de series temporales son:
-
-
-\begin{itemize}
-    \item \textbf{Entrada de Series Temporales:} SAITS toma como entrada series temporales con posibles valores faltantes. Típicamente, la serie temporal se representa como una secuencia de vectores, donde cada vector representa un punto de tiempo y contiene las mediciones de diferentes variables en ese instante. Para manejar los valores faltantes, se pueden emplear \textbf{máscaras de entrada} que indican las posiciones donde los datos son desconocidos. Estas máscaras pueden ser utilizadas por el modelo para enfocar la atención en las partes observadas de la serie temporal durante la imputación.
-    \item \textbf{Encoder Transformer para Imputación:} SAITS utiliza un stack de capas Encoder Transformer. Cada capa Encoder, como se describió anteriormente, contiene subcapas de atención multi-cabeza, redes feed-forward, normalización de capas y conexiones residuales. Estas capas procesan la serie temporal de entrada para aprender representaciones latentes que capturan las dependencias temporales y las relaciones entre las variables. La \textbf{auto-atención} dentro del Encoder permite que cada punto de tiempo en la serie temporal atienda a todos los demás puntos, ponderando su importancia relativa para la imputación en la posición actual.
-    \item \textbf{Codificación Posicional Adaptada (Opcional):} Si bien la codificación posicional es crucial en NLP para indicar el orden secuencial de las palabras, su uso en series temporales puede ser adaptado. En algunos casos, la posición temporal relativa ya está implícita en la secuencia de entrada. Sin embargo, se pueden utilizar codificaciones posicionales para explicitar la posición temporal y potencialmente codificar información adicional como el tiempo transcurrido desde el inicio de la serie o patrones temporales cíclicos (e.g., día de la semana, mes del año). La decisión de incluir o adaptar la codificación posicional puede depender de las características específicas del conjunto de datos de series temporales.
-    \item \textbf{Capa de Salida para Imputación:} La salida del Encoder Transformer, tras pasar por las capas Encoder, se utiliza para generar los valores imputados. Típicamente, esto se realiza mediante una \textbf{capa lineal} final que proyecta la representación latente de cada punto de tiempo a la dimensión del espacio de características original. Esta capa lineal aprende a mapear las representaciones aprendidas por el Transformer a los valores imputados para cada variable en cada punto de tiempo donde falta información.
-\end{itemize}
-
-
-\subsection{Función de Pérdida para SAITS}
-
-
-La función de pérdida comúnmente utilizada para entrenar SAITS en tareas de imputación es el \textbf{Error Cuadrático Medio (MSE)} o variantes del mismo, aplicadas \textbf{solo a las posiciones donde los datos estaban originalmente faltantes}. Esto se debe a que el objetivo es minimizar el error en la predicción de los valores faltantes, sin penalizar al modelo por los valores ya observados. Formalmente, si $Y$ es la serie temporal original (con valores faltantes), $\hat{Y}$ es la serie temporal imputada por SAITS y $M$ es una matriz máscara binaria donde $M_{ij} = 1$ si el valor $Y_{ij}$ estaba faltante y $M_{ij} = 0$ si estaba observado, la función de pérdida MSE puede definirse como:
-
-
+\begin{enumerate}
+     \item \textbf{Tarea de Imputación Enmascarada (Masked Imputation Task, MIT):}
+    Esta tarea fuerza explícitamente al modelo a predecir valores que fueron artificialmente enmascarados a partir de los datos observados. Dada una serie de entrada $\mathbf{X}$ (ground truth) y su máscara de ausencia original $\mathbf{M}$ (donde $M_{td}=1$ si $X_{td}$ es observado, $0$ si es faltante), se introduce una máscara indicadora $\mathbf{I}$ donde $I_{td}=1$ si $X_{td}$ fue observado y se enmascaró artificialmente, y $0$ en caso contrario. Si $\hat{\mathbf{X}}_c$ es la serie completada (imputada) por el modelo, la pérdida para esta tarea ($L_{\text{MIT}}$) se calcula como el Error Absoluto Medio (MAE) entre los valores originales $\mathbf{X}$ y los imputados $\hat{\mathbf{X}}_c$, únicamente en las posiciones artificialmente enmascaradas:
+    \begin{equation}
+    L_{\text{MIT}} = \text{MAE}(\hat{\mathbf{X}}_c, \mathbf{X}, \mathbf{I}) = \frac{|| (\hat{\mathbf{X}}_c - \mathbf{X}) \odot \mathbf{I} ||_1}{|| \mathbf{I} ||_1}
+    \label{eq:saits_l_mit_norma_consistente}
+    \end{equation}
+    Esto es análogo al modelado de lenguaje enmascarado (MLM) en NLP.
+    \item \textbf{Tarea de Reconstrucción Observada (Observed Reconstruction Task, ORT):}
+    Esta tarea asegura que el modelo reconstruya correctamente los valores que ya estaban observados en la entrada. La pérdida para esta tarea ($L_{\text{ORT}}$) se calcula como el MAE entre los valores originales observados $\mathbf{X}$ y sus correspondientes reconstrucciones en $\hat{\mathbf{X}}_c$, utilizando la máscara original $\mathbf{M}$:
+    \begin{equation}
+    L_{\text{ORT}} = \text{MAE}(\hat{\mathbf{X}}_c, \mathbf{X}, \mathbf{M})
+    \label{eq:saits_l_ort_individual} % Para una sola representación
+    \end{equation}
+    En SAITS, la $L_{\text{ORT}}$ final es un promedio de las pérdidas de reconstrucción de tres representaciones aprendidas internas ($\mathbf{X}_1, \mathbf{X}_2, \mathbf{X}_3$, que se describen más adelante):
+    \begin{equation}
+    L_{\text{ORT}} = \frac{1}{3} \left( \text{MAE}(\mathbf{X}_1, \mathbf{X}, \mathbf{M}) + \text{MAE}(\mathbf{X}_2, \mathbf{X}, \mathbf{M}) + \text{MAE}(\mathbf{X}_3, \mathbf{X}, \mathbf{M}) \right)
+    \label{eq:saits_l_ort_total}
+    \end{equation}
+\end{enumerate}
+La función de pérdida total ($L$) es una suma ponderada de estas dos pérdidas:
 \begin{equation}
-\mathcal{L}_{MSE} = \frac{1}{\sum_{i,j} M_{ij}} \sum_{i,j} M_{ij} (Y_{ij} - \hat{Y}_{ij})^2
+L = L_{\text{ORT}} + \lambda L_{\text{MIT}}
+\label{eq:saits_l_total}
 \end{equation}
+donde $\lambda$ es un hiperparámetro que balancea la importancia de ambas tareas.
 
-
-Esta función de pérdida asegura que el modelo se centre en aprender a imputar los valores faltantes con precisión, ignorando el error en las posiciones donde ya se disponía de información. Otras funciones de pérdida robustas, como el Mean Absolute Error (MAE) o funciones de pérdida basadas en cuantiles, también podrían ser consideradas dependiendo de las características de los datos y los objetivos específicos de la imputación.
-
-
-\subsection{Ventajas de Self-Attention para Imputación de Series Temporales}
-
-El uso del mecanismo de auto-atención en SAITS ofrece varias ventajas significativas para la imputación de series temporales en comparación con métodos tradicionales:
+\subsubsection*{Arquitectura SAITS: Bloques \glsentryshort{dmsa} y Combinación Ponderada}
+La arquitectura de SAITS se compone de dos bloques principales de Autoatención con Enmascaramiento Diagonal (DMSA) y un bloque de combinación ponderada:
 
 \begin{itemize}
-\item \textbf{Modelado de Dependencias a Largo Plazo:} La auto-atención permite a SAITS capturar dependencias temporales a largo plazo de manera efectiva. A diferencia de métodos como ARIMA o RNNs que pueden tener dificultades para recordar información a través de largos periodos de tiempo, la atención permite a SAITS acceder directamente a cualquier punto en la serie temporal al imputar un valor, sin importar la distancia temporal. Esto es crucial para series temporales con patrones complejos y dependencias que se extienden a lo largo del tiempo.
-    \item \textbf{Captura de Dependencias Espaciales y Temporales Conjuntas:} En series temporales multivariadas, donde se miden múltiples variables a lo largo del tiempo, la auto-atención puede capturar tanto las dependencias temporales dentro de cada variable como las dependencias espaciales (correlaciones) entre diferentes variables en diferentes puntos de tiempo. El modelo aprende a imputar un valor faltante considerando la información de todas las variables en todos los puntos de tiempo relevantes.
-    \item \textbf{Flexibilidad y Adaptabilidad:} La arquitectura Transformer es inherentemente flexible y adaptable a diferentes tipos de series temporales y patrones de datos faltantes. SAITS no requiere suposiciones fuertes sobre la estacionariedad de la serie temporal o la naturaleza de las dependencias temporales. Puede aprender patrones complejos directamente de los datos y adaptarse a diferentes tipos de series temporales sin necesidad de ingeniería de características manual extensiva.
- \item \textbf{Robustez ante Datos Irregulares y Valores Atípicos:} La atención puede ayudar a SAITS a ser más robusto ante datos irregulares y valores atípicos en las series temporales. Al ponderar la importancia de diferentes partes de la secuencia, la atención puede dar menos peso a los valores atípicos o a las regiones ruidosas de la serie temporal durante la imputación, enfocándose en la información más consistente y relevante.
+    \item \textbf{Autoatención con Enmascaramiento Diagonal:}
+    A diferencia de la autoatención estándar, \glsentryshort{dmsa} aplica una máscara diagonal a la matriz de atención antes de la función softmax. Esto evita que un punto temporal $t$ se atienda a sí mismo directamente al calcular su propia representación imputada, forzándolo a depender de otros puntos temporales $(T-1)$.
+    La atención con enmascaramiento diagonal se formula como:
+    \begin{equation}
+    \text{DiagMaskedSelfAttention}(Q, K, V) = \text{softmax}\left(\text{DiagMask}\left( \frac{QK^T}{\sqrt{d_k}} \right)\right)V
+    \label{eq:dmsa}
+    \end{equation}
+    donde $[\text{DiagMask}(\mathbf{x})]_{ij} = -\infty$ si $i=j$ y $x_{ij}$ si $i \neq j$. Esto asegura que los pesos de atención diagonales tiendan a cero después del softmax. Cada bloque \glsentryshort{dmsa}, al igual que un encoder Transformer, contiene capas de \glsentryshort{dmsa} Multi-Cabeza y redes feed-forward posicionales, con conexiones residuales y normalización de capa.
+
+    \item \textbf{Primer Bloque \glsentryshort{dmsa}:}
+    La entrada a este bloque es la concatenación de la serie temporal original $\mathbf{X}$ (con faltantes usualmente rellenados con ceros o un valor específico) y su máscara de ausencia $\mathbf{M}$. Esta entrada combinada se proyecta linealmente y se le suma el encoding posicional $\mathbf{p}$ para formar $\mathbf{e}$:
+    \begin{equation}
+    \mathbf{e} = [\text{Concat}(\mathbf{X}, \mathbf{M})W_e + \mathbf{b}_e] + \mathbf{p}
+    \label{eq:saits_input_e}
+    \end{equation}
+    Luego, $\mathbf{e}$ pasa a través de $N$ capas de {FFNN(DiagMaskedMHA($\cdot$))} para producir $\mathbf{z}$. Finalmente, $\mathbf{z}$ se proyecta linealmente para obtener la primera representación aprendida $\mathbf{X}_1$:
+    \begin{align}
+    \mathbf{z} &= \{\text{FFNN}(\text{DiagMaskedMHA}(\mathbf{e}))\}^N \label{eq:saits_z_block1} \\
+    \mathbf{X}_1 &= \mathbf{z}W_z + \mathbf{b}_z \label{eq:saits_x1}
+    \end{align}
+    La serie completada después de este bloque, $\mathbf{X}'$, se obtiene reemplazando los valores faltantes en $\mathbf{X}$ (según $\mathbf{M}$) con los valores correspondientes de $\mathbf{X}_1$:
+    \begin{equation}
+    \mathbf{X}' = \mathbf{M} \odot \mathbf{X} + (1-\mathbf{M}) \odot \mathbf{X}_1
+    \label{eq:saits_x_prime}
+    \end{equation}
+    donde $\odot$ es el producto de Hadamard (elemento a elemento).
+
+    \item \textbf{Segundo Bloque DMSA:}
+    Toma como entrada la serie completada $\mathbf{X}'$ del primer bloque, concatenada nuevamente con la máscara $\mathbf{M}$, y sigue un proceso similar para producir $\boldsymbol{\alpha}$ y luego la segunda representación aprendida $\mathbf{X}_2$:
+    \begin{align}
+    \boldsymbol{\alpha} &= [\text{Concat}(\mathbf{X}', \mathbf{M})W_a + \mathbf{b}_a] + \mathbf{p} \label{eq:saits_input_alpha} \\
+    \boldsymbol{\beta} &= \{\text{FFNN}(\text{DiagMaskedMHA}(\boldsymbol{\alpha}))\}^N \label{eq:saits_beta_block2} \\
+    \mathbf{X}_2 &= \text{ReLU}(\boldsymbol{\beta}W_{\beta} + \mathbf{b}_{\beta})W_y + \mathbf{b}_y \label{eq:saits_x2}
+    \end{align}
+    Nótese la capa ReLU adicional en la proyección para $\mathbf{X}_2$, lo que hace este bloque ligeramente más profundo que el primero.
+
+    \item \textbf{Bloque de Combinación Ponderada (Weighted Combination Block):}
+    Para obtener la representación final $\mathbf{X}_3$, SAITS combina dinámicamente $\mathbf{X}_1$ y $\mathbf{X}_2$ usando pesos $\boldsymbol{\eta}$ derivados del promedio de los mapas de atención $\mathbf{A}$ de la última capa del segundo bloque DMSA y la máscara $\mathbf{M}$:
+    \begin{align}
+    \bar{\mathbf{A}} &= \frac{1}{h} \sum_{i=1}^{h} \mathbf{A}_i \label{eq:saits_avg_attention} \\
+    \boldsymbol{\eta} &= \text{Sigmoid}(\text{Concat}(\bar{\mathbf{A}}, \mathbf{M})W_{\eta} + \mathbf{b}_{\eta}) \label{eq:saits_eta_weights} \\
+    \mathbf{X}_3 &= (1-\boldsymbol{\eta}) \odot \mathbf{X}_1 + \boldsymbol{\eta} \odot \mathbf{X}_2 \label{eq:saits_x3}
+    \end{align}
+    Finalmente, la serie imputada $\hat{\mathbf{X}}_c$ se obtiene reemplazando los valores faltantes en $\mathbf{X}$ con los de $\mathbf{X}_3$:
+    \begin{equation}
+    \hat{\mathbf{X}}_c = \mathbf{M} \odot \mathbf{X} + (1-\mathbf{M}) \odot \mathbf{X}_3
+    \label{eq:saits_x_c_final}
+    \end{equation}
 \end{itemize}
 
-
-En resumen, SAITS representa un avance significativo en la imputación de series temporales al aplicar la poderosa arquitectura Transformer y el mecanismo de auto-atención. Su capacidad para modelar dependencias complejas, su flexibilidad y robustez lo convierten en una herramienta valiosa para el análisis de datos de series temporales con valores faltantes en diversos dominios.
-
-\subsection{Imputación de Datos Faltantes}
-\label{subsec:Imputacion}
-Los conjuntos de datos del mundo real frecuentemente contienen valores faltantes (\textit{missing data}). Abordar incorrectamente estos datos puede introducir sesgos significativos o reducir drásticamente la cantidad de datos utilizables \cite[Capítulo 8]{Bishop2006}. La \textbf{imputación} es el proceso de rellenar estos valores ausentes con valores estimados, restaurando así la completitud del conjunto de datos y mitigando los efectos negativos de la ausencia de información.
-
-Las estrategias de imputación para series temporales se pueden clasificar según la información que utilizan y los supuestos subyacentes. Adoptaremos una taxonomía centrada en enfoques locales, estacionarios y predictivos:
-
-\begin{itemize}
-    \item \textbf{Métodos de Imputación con Información Local}: Estos métodos estiman los valores faltantes basándose principalmente en los puntos de datos cercanos temporalmente. Explotan la autocorrelación temporal, asumiendo que las observaciones cercanas en el tiempo tienden a tener valores similares.
-        \begin{itemize}
-            \item \textit{Forward Fill (ffill)} o Última Observación Llevada Adelante (LOCF): Rellena un valor faltante con el último valor conocido válido que lo precede en la secuencia. Simple y útil si los valores tienden a persistir.
-            \item \textit{Backward Fill (bfill)} o Próxima Observación Llevada Atrás (NOCB): Rellena utilizando el siguiente valor conocido válido en la secuencia.
-            \item \textit{Interpolación Lineal}: Estima valores asumiendo una relación lineal entre los puntos conocidos inmediatamente anterior y posterior al hueco. Es eficiente pero limitada para capturar patrones no lineales o cambios abruptos.
-            \item \textit{Interpolación Spline}: Ajusta polinomios por partes (generalmente cúbicos) a los datos existentes para crear una curva suave que pasa por los puntos conocidos, imputando los valores faltantes a lo largo de esta curva \cite[Sección 3.1]{Bishop2006}. Captura mejor patrones no lineales que la interpolación lineal, pero puede ser computacionalmente más intensiva.
-        \end{itemize}
-        Los métodos locales son efectivos para rellenar huecos cortos, pero su rendimiento decrece con lagunas más grandes y pueden ser sensibles al ruido.
-
-    \item \textbf{Métodos de Imputación Estacionarios}: Estos métodos se basan en el supuesto de que las propiedades estadísticas de la serie temporal (o segmentos de ella), como la media o la varianza, son constantes a lo largo del tiempo. Utilizan estadísticas globales o segmentadas de los datos observados.
-        \begin{itemize}
-            \item \textit{Media}: Reemplaza los valores faltantes con la media aritmética de toda la serie observada (o de un segmento relevante). Preserva la media global pero reduce la varianza y distorsiona las correlaciones y la estructura temporal \cite[Capítulo 1]{Bishop2006}.
-            \item \textit{Mediana}: Similar a la imputación por media, pero utiliza la mediana. Es más robusta a valores atípicos en distribuciones sesgadas, pero comparte las limitaciones de la imputación por media respecto a la estructura temporal y la varianza.
-            \item \textit{Moda}: Reemplaza los valores faltantes con el valor más frecuente. Se utiliza principalmente para datos categóricos o discretos.
-        \end{itemize}
-        Estos métodos son simples pero fallan en capturar tendencias, estacionalidad y dependencias temporales, y son sensibles a violaciones del supuesto de estacionariedad.
-
-    \item \textbf{Métodos de Imputación Predictivos}: Utilizan modelos estadísticos o de aprendizaje automático para predecir los valores faltantes, aprendiendo patrones de los datos observados. Pueden capturar relaciones más complejas \cite{abu-mostafa_learning_2012}.
-        \begin{itemize}
-            \item \textit{Modelos de Regresión}: Se ajusta un modelo (lineal o no lineal) usando el tiempo u otras variables (en caso multivariante) como predictores para estimar los valores faltantes \cite[Capítulo 3]{Bishop2006}.
-            \item \textit{Modelos de Aprendizaje Automático (Convencionales)}: Algoritmos como K-Vecinos Más Cercanos (KNN) o Bosques Aleatorios (Random Forests) pueden usarse. KNN imputa basándose en un promedio de los valores de los K vecinos más similares \cite[Sección 2.5.2]{Bishop2006}.
-            \item \textit{Modelos de Aprendizaje Profundo}: Arquitecturas como Redes Neuronales Recurrentes (RNNs, incluyendo LSTM y GRU) o Transformers son especialmente potentes para series temporales, ya que pueden capturar dependencias temporales complejas y de largo alcance \cite[Capítulos 10 y 12]{GBC16}.
-        \end{itemize}
-        Estos métodos son generalmente más potentes y flexibles, capaces de manejar patrones complejos y datos multivariantes. Sin embargo, suelen requerir más datos, son computacionalmente más costosos y conllevan un riesgo de sobreajuste.
-\end{itemize}
-La elección del método de imputación adecuado depende crucialmente de las características de los datos (estacionariedad, linealidad, presencia de outliers, estacionalidad), del patrón y porcentaje de valores faltantes, y de los recursos computacionales disponibles \cite{GBC16}. Un manejo y elección cuidadosos son fundamentales para la validez de cualquier análisis o modelo posterior construido sobre los datos imputados.
-% --- Inicio de la sección que usa las referencias ---
-\section{Métricas de Evaluación para Imputación}
-\label{sec:evaluation_metrics_hadamard}
-
-Para cuantificar el rendimiento de los métodos de imputación, utilizamos métricas de error estándar que comparan los valores imputados $\hat{\mathcal{X}}^{\text{test}}$ con los valores verdaderos $\mathcal{X}_{\text{orig}}^{\text{test}}$ \textit{únicamente} en las posiciones indicadas por la máscara $\mathbf{M}_{\text{artificial}}^{\text{test}}$. Estas cantidades se representan como tensores (generalizaciones de matrices, ver \Cref{def:matrix}).
-
-Sean:
-\begin{itemize}
-    \item $\hat{\mathcal{X}} = \hat{\mathcal{X}}^{\text{test}} \in \mathbb{R}^{N \times T \times D}$: Tensor de valores imputados (test).
-    \item $\mathbf{X}_{\text{orig}} = \mathcal{X}_{\text{orig}}^{\text{test}} \in \mathbb{R}^{N \times T \times D}$: Tensor de valores verdaderos originales (test).
-    \item $\mathbf{M}_{\text{ind}} = \mathbf{M}_{\text{artificial}}^{\text{test}} \in \{0, 1\}^{N \times T \times D}$: Máscara binaria que indica las posiciones imputadas ($1$ si fue imputada/artificialmente eliminada, $0$ si no)
-\end{itemize}
-
-Las métricas se definen como:
-
-\begin{definition}[Error Absoluto Medio (MAE)]
-\label{def:mae_hadamard}
-\begin{equation}
-\text{MAE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \frac{||\lvert \hat{\mathcal{X}} - \mathbf{X}_{\text{orig}} \rvert \odot \mathbf{M}_{\text{ind}}||_1}{||\mathbf{M}_{\text{ind}}||_1}
-\label{eq:mae_hadamard}
-\end{equation}
-Aquí, $\lvert \hat{\mathcal{X}} - \mathbf{X}_{\text{orig}} \rvert$ calcula la diferencia absoluta elemento a elemento. El término $\odot \mathbf{M}_{\text{ind}}$ selecciona solo las posiciones indicadas por la máscara mediante el producto de Hadamard (\Cref{def:hadamard_product}), y $||\cdot||_1$ suma estos errores absolutos. El denominador $||\mathbf{M}_{\text{ind}}||_1$ normaliza por el número de puntos imputados.
-\end{definition}
-
-\begin{definition}[Raíz del Error Cuadrático Medio (RMSE)]
-\label{def:rmse_hadamard}
-\begin{equation}
-\text{RMSE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \sqrt{\frac{||(\hat{\mathcal{X}} - \mathbf{X}_{\text{orig}})^{\odot 2} \odot \mathbf{M}_{\text{ind}}||_1}{||\mathbf{M}_{\text{ind}}||_1}}
-\label{eq:rmse_hadamard}
-\end{equation}
-Similarmente, $(\hat{\mathcal{X}} - \mathbf{X}_{\text{orig}})^{\odot 2}$ calcula el error cuadrático elemento a elemento (usando el producto de Hadamard consigo mismo, \Cref{def:hadamard_product}). El término $\odot \mathbf{M}_{\text{ind}}$ lo enmascara (nuevamente con \Cref{def:hadamard_product}), y $||\cdot||_1$ suma los errores cuadráticos. Se divide por el número de puntos y se toma la raíz cuadrada.
-\end{definition}
-
-\begin{definition}[Error Relativo Medio (MRE)]
-\label{def:mre_hadamard}
-\begin{equation}
-\text{MRE}(\hat{\mathcal{X}}, \mathbf{X}_{\text{orig}}, \mathbf{M}_{\text{ind}}) = \frac{||\lvert \hat{\mathcal{X}} - \mathbf{X}_{\text{orig}} \rvert \odot \mathbf{M}_{\text{ind}}||_1}{||\lvert \mathbf{X}_{\text{orig}} \rvert \odot \mathbf{M}_{\text{ind}}||_1 + \epsilon}
-\label{eq:mre_hadamard}
-\end{equation}
-El numerador es la suma de los errores absolutos enmascarados (usando $\odot \mathbf{M}_{\text{ind}}$, \Cref{def:hadamard_product}). El denominador es la suma de los valores absolutos verdaderos originales en las posiciones enmascaradas, aplicando también el producto de Hadamard (\Cref{def:hadamard_product}), con una pequeña constante $\epsilon > 0$ para evitar la división por cero.
-\end{definition}
-
-% --- Fin de la sección ---
+En conclusión, SAITS especializa la arquitectura Transformer para la imputación mediante el uso de \glsentryshort{dmsa} para evitar que un punto se atienda a sí mismo, un enfoque de optimización conjunta con pérdidas específicas de imputación y reconstrucción, y un mecanismo de combinación ponderada de representaciones aprendidas de dos bloques DMSA. Esto le permite capturar eficazmente dependencias temporales y entre características para una imputación precisa.

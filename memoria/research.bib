@@ -13,7 +13,28 @@
     year={2004}
 }
 
-@article{Rumelhart_learning_1986,
+@article{widom1966hankel,
+  title={Hankel matrices},
+  author={Widom, Harold},
+  journal={Transactions of the American Mathematical Society},
+  volume={121},
+  number={1},
+  pages={1--35},
+  year={1966}
+}
+
+@article{gray2006toeplitz,
+  title={Toeplitz and circulant matrices: A review},
+  author={Gray, Robert M and others},
+  journal={Foundations and Trends{\textregistered} in Communications and Information Theory},
+  volume={2},
+  number={3},
+  pages={155--239},
+  year={2006},
+  publisher={Now Publishers, Inc.}
+}
+
+@article{rumelhart_learning_1986,
     title={Learning representations by back-propagating errors},
     author={Rumelhart, David E and Hinton, Geoffrey E and Williams, Ronald J},
     journal={Nature},
@@ -444,11 +465,12 @@
 }
 
 @misc{smartpoqueira_project,
-    title={SmartPoqueira: Experimentación de tecnologías inteligentes para la gestión sostenible de las visitas a zonas rurales y parques nacionales},
-    author={{Universidad de Granada}},
-    year={2023},
-    howpublished={Proyecto de investigación},
-    url={https://wpd.ugr.es/~smartpoqueira/}
+  author       = {{Universidad de Granada}}, 
+  title        = {{SmartPoqueira: Experimentación de tecnologías inteligentes para la gestión sostenible de las visitas a zonas rurales y parques nacionales}},
+  year         = {2021}, 
+  
+  howpublished = {Sitio web oficial del proyecto}, 
+  note         = {https://wpd.ugr.es/~smartpoqueira/}, 
 }
 
 @article{dosovitskiy_image_2020,
@@ -548,13 +570,13 @@
 }
 
 @article{du2023pypots,
-    title={PyPOTS: a Python toolbox for data mining on Partially-Observed Time Series},
-    author={Du, Wenjie},
-    journal={arXiv preprint arXiv:2305.18811},
-    year={2023},
-    eprint={2305.18811},
-    archiveprefix={arXiv},
-    primaryclass={cs.LG}
+ title={{PyPOTS: a Python toolbox for data mining on Partially-Observed Time Series}},
+ author={Wenjie Du},
+ journal={arXiv preprint arXiv:2305.18811},
+ year={2023},
+ eprint={2305.18811},
+ archiveprefix={arXiv},
+ primaryclass={cs.LG}
 }
 
 @book{little_statistical_2019,
@@ -587,38 +609,19 @@
 % Referencias adicionales que estaban en el texto LaTeX y que pueden ser útiles (no estaban en la lista original que me pediste exportar, pero las añado aquí por si las necesitas en tu .bib general):
 
 @book{Strang2016,
-    title={Introduction to Linear Algebra},
-    author={Strang, Gilbert},
-    publisher={Wellesley-Cambridge Press},
-    year={2016},
-    edition={5th}
+  title     = {Introduction to Linear Algebra},
+  author    = {Strang, Gilbert},
+  publisher = {Wellesley-Cambridge Press},
+  year      = {2016},
+  edition   = {5th}
 }
 
 @book{Noble1988,
-    title={Applied Linear Algebra},
-    author={Noble, Ben and Daniel, James W.},
-    publisher={Prentice Hall},
-    year={1988},
-    edition={3rd}
-}
-
-@book{GBC16,
-    title={Deep Learning},
-    author={Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
-    publisher={MIT Press},
-    year={2016},
-    url={http://www.deeplearningbook.org}
-}
-
-@article{Rumelhart1986,
-    title={Learning representations by back-propagating errors},
-    author={Rumelhart, David E and Hinton, Geoffrey E and Williams, Ronald J},
-    journal={Nature},
-    volume={323},
-    number={6088},
-    pages={533--536},
-    year={1986},
-    publisher={Nature Publishing Group}
+  title     = {Applied Linear Algebra},
+  author    = {Noble, Ben and Daniel, James W.},
+  publisher = {Prentice Hall},
+  year      = {1988},
+  edition   = {3rd}
 }
 
 @article{KoldaBader2009,
@@ -728,4 +731,775 @@
   pages   = {303--314},
   year    = {1989},
   doi     = {10.1007/BF02551274}
+}
+
+@book{Goodfellow2016,
+  author    = {Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
+  title     = {Deep Learning},
+  publisher = {MIT Press},
+  year      = {2016}
+}
+
+@article{Gubbi2013,
+  author    = {Gubbi, Jayavardhana and Buyya, Rajkumar and Marusic, Slaven and Palaniswami, Marimuthu},
+  title     = {Internet of Things (IoT): A vision, architectural elements, and future directions},
+  journal   = {Future Generation Computer Systems},
+  volume    = {29},
+  number    = {7},
+  pages     = {1645--1660},
+  year      = {2013},
+  doi       = {10.1016/j.future.2013.01.010}
+}
+
+@book{LittleRubin2002,
+  author    = {Little, Roderick J. A. and Rubin, Donald B.},
+  title     = {Statistical Analysis with Missing Data},
+  publisher = {John Wiley \& Sons},
+  year      = {2002},
+  edition   = {2nd}
+}
+
+@article{de_brouwer_deep_2019, 
+  title={Deep generative models for imputation of missing data},
+  author={De Brouwer, Edward and De Vil, Matisse and Van der Donck, Simon and De Caluwe, Jonas and Verbeke, Wouter and De Weerdt, Jochen},
+  journal={arXiv preprint arXiv:1911.06475}, 
+  year={2019}
+}
+
+@inproceedings{Vaswani2017,
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, \L{}ukasz and Polosukhin, Illia},
+  title     = {Attention is All You Need},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NIPS 2017)},
+  pages     = {5998--6008},
+  year      = {2017}
+}
+
+@article{Du2023SAITS,
+  author    = {Du, Wenjie and Cote, David and Liu, Yan and Wang, Xun and An, Sun},
+  title     = {{SAITS}: Self-Attention based Imputation for {Time Series}},
+  journal   = {Expert Systems with Applications},
+  volume    = {219},
+  pages     = {119119},
+  year      = {2023},
+  doi       = {10.1016/j.eswa.2022.119119}
+}
+@book{Hastie2009,
+  author    = {Trevor Hastie and Robert Tibshirani and Jerome Friedman},
+  title     = {The Elements of Statistical Learning: Data Mining, Inference, and Prediction},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {2009}
+}
+
+@book{Alpaydin2020,
+  author    = {Ethem Alpaydin},
+  title     = {Introduction to Machine Learning},
+  edition   = {4th},
+  publisher = {MIT Press},
+  year      = {2020}
+}
+
+@inproceedings{Sahami1998,
+  author    = {Mehran Sahami and Susan Dumais and David Heckerman and Eric Horvitz},
+  title     = {A Bayesian approach to filtering junk e-mail},
+  booktitle = {AAAI Workshop on Learning for Text Categorization},
+  year      = {1998},
+  pages     = {98--105}
+}
+
+@article{LeCun1998mnist,
+  author    = {Yann LeCun and L{\'e}on Bottou and Yoshua Bengio and Patrick Haffner},
+  title     = {Gradient-based learning applied to document recognition},
+  journal   = {Proceedings of the IEEE},
+  volume    = {86},
+  number    = {11},
+  pages     = {2278--2324},
+  year      = {1998}
+}
+
+@article{Esteva2017,
+  author    = {Andre Esteva and Brett Kuprel and Roberto A. Novoa and Justin Ko and Susan M. Swetter and Helen M. Blau and Sebastian Thrun},
+  title     = {Dermatologist-level classification of skin cancer with deep neural networks},
+  journal   = {Nature},
+  volume    = {542},
+  number    = {7639},
+  pages     = {115--118},
+  year      = {2017}
+}
+
+@article{Harrison1978,
+  author    = {David Harrison, Jr. and Daniel L. Rubinfeld},
+  title     = {Hedonic housing prices and the demand for clean air},
+  journal   = {Journal of Environmental Economics and Management},
+  volume    = {5},
+  number    = {1},
+  pages     = {81--102},
+  year      = {1978}
+}
+
+@article{Makridakis1982,
+  author    = {Spyros Makridakis and others},
+  title     = {The accuracy of extrapolation (time series) methods: Results of a forecasting competition},
+  journal   = {Journal of Forecasting},
+  volume    = {1},
+  number    = {2},
+  pages     = {111--153},
+  year      = {1982}
+}
+
+@article{Reichstein2019,
+  author    = {Markus Reichstein and Gustau Camps-Valls and Bjorn Stevens and Martin P. Jung and Joachim Denzler and Nuno Carvalhais and Prabhat},
+  title     = {Deep learning and process understanding for data-driven Earth system science},
+  journal   = {Nature},
+  volume    = {566},
+  number    = {7743},
+  pages     = {195--204},
+  year      = {2019}
+}
+
+@article{Cox1958,
+  author    = {D. R. Cox},
+  title     = {The regression analysis of binary sequences (with discussion)},
+  journal   = {Journal of the Royal Statistical Society, Series B (Methodological)},
+  volume    = {20},
+  number    = {2},
+  pages     = {215--242},
+  year      = {1958}
+}
+
+@article{Cortes1995,
+  author    = {Corinna Cortes and Vladimir Vapnik},
+  title     = {Support-vector networks},
+  journal   = {Machine Learning},
+  volume    = {20},
+  number    = {3},
+  pages     = {273--297},
+  year      = {1995}
+}
+
+@article{Barlow1989,
+  author    = {H. B. Barlow},
+  title     = {Unsupervised learning},
+  journal   = {Neural Computation},
+  volume    = {1},
+  number    = {3},
+  pages     = {295--311},
+  year      = {1989}
+}
+
+@book{James2013,
+  author    = {Gareth James and Daniela Witten and Trevor Hastie and Robert Tibshirani},
+  title     = {An Introduction to Statistical Learning: with Applications in R},
+  publisher = {Springer},
+  year      = {2013}
+}
+
+@article{MacQueen1967,
+  author    = {J. MacQueen},
+  title     = {Some methods for classification and analysis of multivariate observations},
+  journal = {Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability, Volume 1: Statistics},
+  pages     = {281--297},
+  year      = {1967},
+  publisher = {University of California Press}
+}
+
+@article{Lloyd1982,
+  author    = {Stuart P. Lloyd},
+  title     = {Least squares quantization in {PCM}},
+  journal   = {IEEE Transactions on Information Theory},
+  volume    = {28},
+  number    = {2},
+  pages     = {129--137},
+  year      = {1982}
+}
+
+@inproceedings{Ester1996,
+  author    = {Martin Ester and Hans-Peter Kriegel and J{\"o}rg Sander and Xiaowei Xu},
+  title     = {A density-based algorithm for discovering clusters in large spatial databases with noise},
+  booktitle = {Proceedings of the Second International Conference on Knowledge Discovery and Data Mining (KDD-96)},
+  pages     = {226--231},
+  year      = {1996}
+}
+
+@article{Johnson1967,
+  author    = {S. C. Johnson},
+  title     = {Hierarchical clustering schemes},
+  journal   = {Psychometrika},
+  volume    = {32},
+  number    = {3},
+  pages     = {241--254},
+  year      = {1967}
+}
+
+@article{Pearson1901,
+  author    = {Karl Pearson},
+  title     = {On lines and planes of closest fit to systems of points in space},
+  journal   = {Philosophical Magazine Series 6},
+  volume    = {2},
+  number    = {11},
+  pages     = {559--572},
+  year      = {1901}
+}
+
+@article{Hotelling1933,
+  author    = {Harold Hotelling},
+  title     = {Analysis of a complex of statistical variables into principal components},
+  journal   = {Journal of Educational Psychology},
+  volume    = {24},
+  number    = {6},
+  pages     = {417--441},
+  year      = {1933}
+}
+
+@article{vanderMaaten2008,
+  author    = {Laurens van der Maaten and Geoffrey Hinton},
+  title     = {Visualizing data using t-SNE},
+  journal   = {Journal of Machine Learning Research},
+  volume    = {9},
+  pages     = {2579--2605},
+  year      = {2008}
+}
+
+@incollection{Hinton1987autoencoders,
+  author    = {Geoffrey E. Hinton and R. Salakhutdinov},
+  title     = {Reducing the Dimensionality of Data with Neural Networks},
+  booktitle = {Science},
+  volume    = {313},
+  number    = {5786},
+  pages     = {504--507},
+  year      = {2006} 
+}
+
+@article{Rumelhart1986,
+   author    = {David E. Rumelhart and Geoffrey E. Hinton and Ronald J. Williams},
+   title     = {Learning representations by back-propagating errors},
+   journal   = {Nature},
+   volume    = {323},
+   pages     = {533--536},
+   year      = {1986}
+}
+
+
+@article{Bengio2009learning,
+  author    = {Yoshua Bengio},
+  title     = {Learning deep architectures for AI},
+  journal   = {Foundations and Trends® in Machine Learning},
+  volume    = {2},
+  number    = {1},
+  pages     = {1--127},
+  year      = {2009}
+}
+
+
+@article{Parzen1962,
+  author    = {Emanuel Parzen},
+  title     = {On estimation of a probability density function and mode},
+  journal   = {The Annals of Mathematical Statistics},
+  volume    = {33},
+  number    = {3},
+  pages     = {1065--1076},
+  year      = {1962}
+}
+
+@article{Rosenblatt1956,
+  author    = {Murray Rosenblatt},
+  title     = {Remarks on some nonparametric estimates of a density function},
+  journal   = {The Annals of Mathematical Statistics},
+  volume    = {27},
+  number    = {3},
+  pages     = {832--837},
+  year      = {1956}
+}
+
+@article{Dempster1977,
+  author    = {Arthur P. Dempster and Nan M. Laird and Donald B. Rubin},
+  title     = {Maximum likelihood from incomplete data via the {EM} algorithm},
+  journal   = {Journal of the Royal Statistical Society, Series B (Methodological)},
+  volume    = {39},
+  number    = {1},
+  pages     = {1--38},
+  year      = {1977}
+}
+
+@article{Powers2011,
+  author    = {David M. W. Powers},
+  title     = {Evaluation: From Precision, Recall and F-Measure to ROC, Informedness, Markedness \& Correlation},
+  journal   = {Journal of Machine Learning Technologies},
+  volume    = {2},
+  number    = {1},
+  pages     = {37--63},
+  year      = {2011}
+}
+@article{Fawcett2006,
+  author    = {Tom Fawcett},
+  title     = {An introduction to ROC analysis},
+  journal   = {Pattern Recognition Letters},
+  volume    = {27},
+  number    = {8},
+  pages     = {861--874},
+  year      = {2006}
+}
+@inproceedings{Goutte2005,
+  author    = {Cyril Goutte and Eric Gaussier},
+  title     = {A Probabilistic Interpretation of Precision, Recall and F-Score, with Implication for Evaluation},
+  booktitle = {Advances in Information Retrieval, 27th European Conference on IR Research, ECIR 2005},
+  year      = {2005},
+  pages     = {345--359}
+}
+@article{Bradley1997,
+  author    = {Andrew P. Bradley},
+  title     = {The use of the area under the ROC curve in the evaluation of machine learning algorithms},
+  journal   = {Pattern Recognition},
+  volume    = {30},
+  number    = {7},
+  pages     = {1145--1159},
+  year      = {1997}
+}
+@book{Lehmann1998,
+  author    = {E. L. Lehmann and George Casella},
+  title     = {Theory of Point Estimation},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {1998}
+}
+@article{Chai2014,
+  author    = {Tianfeng Chai and Roland R. Draxler},
+  title     = {Root mean square error (RMSE) or mean absolute error (MAE)? – Arguments against avoiding RMSE in the literature.},
+  journal   = {Geoscientific Model Development},
+  volume    = {7},
+  number    = {3},
+  pages     = {1247--1250},
+  year      = {2014}
+}
+@article{Willmott2005,
+  author    = {Cort J. Willmott and Kenji Matsuura},
+  title     = {Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in model performance evaluation},
+  journal   = {Climate Research},
+  volume    = {30},
+  pages     = {79--82},
+  year      = {2005}
+}
+@article{Nagelkerke1991,
+  author    = {N. J. D. Nagelkerke},
+  title     = {A note on a general definition of the coefficient of determination},
+  journal   = {Biometrika},
+  volume    = {78},
+  number    = {3},
+  pages     = {691--692},
+  year      = {1991}
+}
+@book{Japkowicz2011,
+  author    = {Nathalie Japkowicz and Mohak Shah},
+  title     = {Evaluating Learning Algorithms: A Classification Perspective},
+  publisher = {Cambridge University Press},
+  year      = {2011}
+}
+@book{Montgomery2021,
+  author    = {Douglas C. Montgomery and Elizabeth A. Peck and G. Geoffrey Vining},
+  title     = {Introduction to Linear Regression Analysis},
+  edition   = {6th},
+  publisher = {Wiley},
+  year      = {2021}
+}
+@book{Weisberg2005,
+  author    = {Sanford Weisberg},
+  title     = {Applied Linear Regression},
+  edition   = {3rd},
+  publisher = {Wiley},
+  year      = {2005}
+}
+@book{Boyd2004,
+  author    = {Stephen Boyd and Lieven Vandenberghe},
+  title     = {Convex Optimization},
+  publisher = {Cambridge University Press},
+  year      = {2004}
+}
+
+@online{MediumAUCROC,
+  author = {Ameena Badat},
+  title  = {A Quick Guide to AUC-ROC in Machine Learning Models},
+  year   = {2020}
+}
+
+@online{RGFigureGradientesRetropropagacion,
+  title        = {Representaciones del aprendizaje reutilizando los gradientes de la retropropagacion},
+  author       = {{Reyes-Ochoa}}, 
+  year         = {2020},
+  url          = {https://www.researchgate.net/figure/Analogia-entre-el-modelo-biologico-y-el-matematico-de-una-neurona-En-b-se-observa-como_fig1_346702022},
+}
+
+@inproceedings{Mikolov2013word2vec,
+  author    = {Tomas Mikolov and Kai Chen and Greg Corrado and Jeffrey Dean},
+  title     = {Efficient Estimation of Word Representations in Vector Space},
+  booktitle = {Proceedings of the 1st International Conference on Learning Representations (ICLR 2013), Workshop Track},
+  year      = {2013}
+}
+
+@inproceedings{Pennington2014glove,
+  author    = {Jeffrey Pennington and Richard Socher and Christopher D. Manning},
+  title     = {{GloVe}: Global Vectors for Word Representation},
+  booktitle = {Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {1532--1543},
+  year      = {2014}
+}
+
+@inproceedings{He2016deepresidual,
+  author    = {Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun},
+  title     = {Deep Residual Learning for Image Recognition},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {770--778},
+  year      = {2016}
+}
+
+@article{Ba2016layer,
+  author    = {Jimmy Lei Ba and Jamie Ryan Kiros and Geoffrey E. Hinton},
+  title     = {Layer Normalization},
+  journal   = {arXiv preprint arXiv:1607.06450},
+  year      = {2016}
+}
+
+@article{Hochreiter1997lstm,
+  author    = {Sepp Hochreiter and J{\"u}rgen Schmidhuber},
+  title     = {Long Short-Term Memory},
+  journal   = {Neural Computation},
+  volume    = {9},
+  number    = {8},
+  pages     = {1735--1780},
+  year      = {1997}
+}
+
+@article{Cho2014gru,
+  author    = {Kyunghyun Cho and Bart van Merri{\"e}nboer and Caglar Gulcehre and Dzmitry Bahdanau and Fethi Bougares and Holger Schwenk and Yoshua Bengio},
+  title     = {Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation},
+  journal   = {arXiv preprint arXiv:1406.1078},
+  year      = {2014}
+}
+
+@article{Bengio1994learning,
+  author    = {Yoshua Bengio and Patrice Simard and Paolo Frasconi},
+  title     = {Learning long-term dependencies with gradient descent is difficult},
+  journal   = {IEEE Transactions on Neural Networks},
+  volume    = {5},
+  number    = {2},
+  pages     = {157--166},
+  year      = {1994}
+}
+
+@inproceedings{Pascanu2013difficulty,
+  author    = {Razvan Pascanu and Tomas Mikolov and Yoshua Bengio},
+  title     = {On the difficulty of training recurrent neural networks},
+  booktitle = {Proceedings of the 30th International Conference on Machine Learning (ICML 2013)},
+  pages     = {1310--1318},
+  year      = {2013}
+}
+
+@book{Box2015time,
+  author    = {George E. P. Box and Gwilym M. Jenkins and Gregory C. Reinsel and Greta M. Ljung},
+  title     = {Time Series Analysis: Forecasting and Control},
+  edition   = {5th},
+  publisher = {Wiley},
+  year      = {2015}
+}
+
+@book{Little2019statistical,
+  title={Statistical analysis with missing data},
+  author={Little, Roderick JA and Rubin, Donald B},
+  year={2019},
+  edition={3rd},
+  publisher={John Wiley \& Sons}
+}
+@book{Schafer1997analysis,
+  title={Analysis of incomplete multivariate data},
+  author={Schafer, Joseph L},
+  year={1997},
+  publisher={CRC press}
+}
+@book{Molenberghs2015handbook,
+  editor={Geert Molenberghs and Garrett Fitzmaurice and Marina Kenward and Anastasios Tsiatis and Geert Verbeke},
+  title={Handbook of Missing Data Methodology},
+  year={2015},
+  publisher={CRC Press}
+}
+@article{Shao1992handling,
+  title={Handling systematically missing data by the new-observation-carried-forward method in longitudinal clinical trials},
+  author={Shao, Jun and Zhong, Bob},
+  journal={Statistics in medicine},
+  volume={11},
+  number={16},
+  pages={2075--2085},
+  year={1992}
+}
+@book{Allison2001missing,
+  title={Missing data},
+  author={Allison, Paul D},
+  volume={136},
+  year={2001},
+  publisher={Sage publications}
+}
+@article{Donders2006review,
+  title={Review of methods for estimating missing data in comparative longitudinal research},
+  author={Donders, A Rogier T and van der Heijden, Geert JMG and Stijnen, Theo and Moons, Karel GM},
+  journal={BMC medical research methodology},
+  volume={6},
+  number={1},
+  pages={1--13},
+  year={2006}
+}
+@book{Enders2010applied,
+  title={Applied missing data analysis},
+  author={Enders, Craig K},
+  year={2010},
+  publisher={Guilford press}
+}
+@book{AbuMostafa2012,
+  author    = {Yaser S. Abu-Mostafa and Malik Magdon-Ismail and Hsuan-Tien Lin},
+  title     = {Learning From Data},
+  publisher = {AMLBook},
+  year      = {2012}
+}
+@book{Gelman2006data,
+  title={Data analysis using regression and multilevel/hierarchical models},
+  author={Gelman, Andrew and Hill, Jennifer},
+  year={2006},
+  publisher={Cambridge university press}
+}
+@book{Brockwell2002introduction,
+  title={Introduction to time series and forecasting},
+  author={Brockwell, Peter J and Davis, Richard A},
+  year={2002},
+  edition={2nd},
+  publisher={Springer}
+}
+
+@article{Rubin1976inference,
+  title={Inference and missing data},
+  author={Rubin, Donald B},
+  journal={Biometrika},
+  volume={63},
+  number={3},
+  pages={581--592},
+  year={1976}
+}
+@book{VanBuuren2018flexible,
+  title={Flexible imputation of missing data},
+  author={Van Buuren, Stef},
+  year={2018},
+  edition={2nd},
+  publisher={CRC press}
+}
+
+@article{BolanosMartinez2024clustering,
+  author    = {Bola{\~n}os-Martinez, D. and Bermudez-Edo, M. and Garrido, J. L.},
+  title     = {Clustering pipeline for vehicle behavior in smart villages},
+  journal   = {Information Fusion},
+  volume    = {104},
+  pages     = {102164},
+  year      = {2024},
+  doi       = {10.1016/j.inffus.2023.102164},
+  publisher = {Elsevier}
+}
+
+@online{GoogleMapsPoqueiraLPR,
+  author       = {{Google Maps}},
+  title        = {Vista de mapa de la zona de Poqueira con capa de tráfico}, 
+  year         = {2024}, 
+  month        = {may}, 
+  howpublished = {Servicio de mapas en línea},
+  url          = {https://www.google.com/maps/@36.9492281,-3.3631816,14z/data=!5m1!1e4?entry=ttu&g_ep=EgoyMDI1MDUyNy4wIKXMDSoASAFQAw%3D%3D},
+  urldate      = {2024-05-06}, 
+  note         = {Mapa centrado en las coordenadas aproximadas de la zona de estudio del Barranco de Poqueira, mostrando la capa de información de tráfico. Accedido el [Misma fecha que urldate, en formato legible, e.g., 6 de mayo de 2024].}
+}
+
+@book{Wallace2006atmospheric,
+  title={Atmospheric science: an introductory survey},
+  author={Wallace, John M. and Hobbs, Peter V.},
+  volume={92},
+  year={2006},
+  edition={2nd},
+  publisher={Elsevier Academic Press}
+}
+
+@book{Seinfeld2016atmospheric,
+  title={Atmospheric chemistry and physics: from air pollution to climate change},
+  author={Seinfeld, John H. and Pandis, Spyros N.},
+  year={2016},
+  edition={3rd},
+  publisher={John Wiley \& Sons}
+}
+
+
+
+@book{Hosmer2013,
+  author    = {David W. Hosmer Jr. and Stanley Lemeshow and Rodney X. Sturdivant},
+  title     = {Applied Logistic Regression},
+  edition   = {3rd},
+  publisher = {Wiley},
+  year      = {2013}
+}
+
+@inproceedings{Boser1992,
+  author    = {Bernhard E. Boser and Isabelle M. Guyon and Vladimir N. Vapnik},
+  title     = {A training algorithm for optimal margin classifiers},
+  booktitle = {Proceedings of the fifth annual workshop on Computational learning theory (COLT '92)},
+  pages     = {144--152},
+  year      = {1992}
+}
+@book{Breiman1984cart,
+  author    = {Leo Breiman and Jerome H. Friedman and Richard A. Olshen and Charles J. Stone},
+  title     = {Classification and Regression Trees},
+  publisher = {Wadsworth \& Brooks/Cole Advanced Books \& Software},
+  year      = {1984}
+}
+@article{Breiman2001random,
+  author    = {Leo Breiman},
+  title     = {Random Forests},
+  journal   = {Machine Learning},
+  volume    = {45},
+  number    = {1},
+  pages     = {5--32},
+  year      = {2001}
+}
+@article{Cover1967nearest,
+  author    = {Thomas M. Cover and Peter E. Hart},
+  title     = {Nearest neighbor pattern classification},
+  journal   = {IEEE Transactions on Information Theory},
+  volume    = {IT-13},
+  number    = {1},
+  pages     = {21--27},
+  year      = {1967}
+}
+@article{Rumelhart1986learning,
+  author    = {David E. Rumelhart and Geoffrey E. Hinton and Ronald J. Williams},
+  title     = {Learning representations by back-propagating errors},
+  journal   = {Nature},
+  volume    = {323},
+  number    = {6088},
+  pages     = {533--536},
+  year      = {1986}
+}
+@article{LeCun2015deep,
+  author    = {Yann LeCun and Yoshua Bengio and Geoffrey Hinton},
+  title     = {Deep learning},
+  journal   = {Nature},
+  volume    = {521},
+  number    = {7553},
+  pages     = {436--444},
+  year      = {2015}
+}
+@article{Galton1886regression,
+  author    = {Francis Galton},
+  title     = {Regression towards mediocrity in hereditary stature},
+  journal   = {The Journal of the Anthropological Institute of Great Britain and Ireland},
+  volume    = {15},
+  pages     = {246--263},
+  year      = {1886}
+}
+
+@inproceedings{Drucker1997support,
+  author    = {Harris Drucker and Christopher J. C. Burges and Linda Kaufman and Alex J. Smola and Vladimir Vapnik},
+  title     = {Support vector regression machines},
+  booktitle = {Advances in Neural Information Processing Systems 9 (NIPS 1996)},
+  pages     = {155--161},
+  year      = {1997}
+}
+
+@inproceedings{Nair2010relu,
+  author    = {Vinod Nair and Geoffrey E. Hinton},
+  title     = {Rectified Linear Units Improve Restricted Boltzmann Machines},
+  booktitle = {Proceedings of the 27th International Conference on Machine Learning (ICML-10)},
+  pages     = {807--814},
+  year      = {2010}
+}
+
+@inproceedings{Glorot2011deep,
+  author    = {Xavier Glorot and Antoine Bordes and Yoshua Bengio},
+  title     = {Deep Sparse Rectifier Neural Networks},
+  booktitle = {Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics (AISTATS-11)},
+  pages     = {315--323},
+  year      = {2011}
+}
+
+@article{Chai2014rmse,
+  author    = {Tianfeng Chai and Roland R. Draxler},
+  title     = {Root mean square error ({RMSE}) or mean absolute error ({MAE})? – Arguments against avoiding {RMSE} in the literature},
+  journal   = {Geoscientific Model Development},
+  volume    = {7},
+  number    = {3},
+  pages     = {1247--1250},
+  year      = {2014},
+  doi       = {10.5194/gmd-7-1247-2014}
+}
+
+@inproceedings{Cao2018brits,
+  author    = {Wei Cao and Dong Wang and Jian Li and Hao Zhou and Lei Li and Yitan Li},
+  title     = {{BRITS}: Bidirectional Recurrent Imputation for Time Series},
+  booktitle = {Advances in Neural Information Processing Systems 31 (NeurIPS 2018)},
+  pages     = {6775--6785},
+  year      = {2018}
+}
+
+@article{Che2018recurrent,
+  author    = {Zhengping Che and Sanjay Purushotham and Kyunghyun Cho and David Sontag and Yan Liu},
+  title     = {Recurrent Neural Networks for Multivariate Time Series with Missing Values},
+  journal   = {Scientific Reports},
+  volume    = {8},
+  number    = {1},
+  pages     = {6085},
+  year      = {2018},
+  doi       = {10.1038/s41598-018-24271-9}
+}
+
+@inproceedings{Luo2018multivariate_e2gan,
+  author    = {Yonghong Luo and Xiangrui Cai and Ying Zhang and Jun Xu and Xiaojie Yuan},
+  title     = {{E$^2$GAN}: End-to-End Generative Adversarial Network for Multivariate Time Series Imputation},
+  booktitle = {Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence (IJCAI-18)},
+  pages     = {3094--3100},
+  year      = {2018}
+}
+
+
+@article{Hyndman2006another,
+  title={Another look at measures of forecast accuracy},
+  author={Hyndman, Rob J and Koehler, Anne B},
+  journal={International journal of forecasting},
+  volume={22},
+  number={4},
+  pages={679--688},
+  year={2006},
+  publisher={Elsevier}
+}
+
+@article{PoudevigneJones24Hankel,
+  author        = {Poudevigne, Thomas and Jones, Owen},
+  title         = {Time-series imputation using low-rank matrix completion},
+  year          = {2024},
+  month         = {aug},
+  eprint        = {2408.02594},
+  archiveprefix = {arXiv},
+  primaryclass  = {stat.ME},
+  url           = {https://arxiv.org/abs/2408.02594},
+  note          = {Preprint},
+}
+
+@misc{MemoriaTFG,
+year = {2025},
+month = {2},
+url = {https://hdl.handle.net/10481/102499},
+abstract = {Los autores de este libro somos profesores y profesoras de informática y llevamos mucho tiempo tiempo
+tutorizando estudiantes y evaluando TFG. En este tiempo, hemos visto que la tarea que más os cuesta es la escritura de la memoria del TFG. Es por ello que hemos desarrolladoo este manual, en el que nos enfocamos en guiarte a través del proceso de elaborar con éxito una memoria de TFG.
+
+Para facilitar este proceso, hemos acompañado este texto con una serie de vídeos cortos de cada capítulo con el objetivo de ofrecer las ideas principales de los mismos en un formato complementario y resumido al libro.
+
+Pretendemos que este texto sea un documento vivo, en el que todos los miembros de la comunidad académica puedan participar de forma colaborativa en la mejora del mismo. Te invitamos a que hagas aportaciones al texto, detectando erratas, añadiendo cosas que se nos han pasado y que consideras importantes, proponiendo nuevos temas sobre los que hablar, etc.},
+publisher = {Universidad de Granada},
+keywords = {TFG},
+keywords = {Trabajo fin de grado},
+keywords = {Escritura de la memoria},
+keywords = {Grado en Ingeniería Informática},
+keywords = {Informática},
+keywords = {Proyecto fin de carrera},
+keywords = {Ciencias de la Computación},
+title = {Cómo escribir la memoria de tu TFG del Grado en Ingeniería Informática y presentarlo sin morir en el intento},
+doi = {10.5281/zenodo.14887022},
+author = {Guillén Perales, Alberto and Martínez Cámara, Eugenio and Fernández Luna, Juan Manuel and García Sánchez, Pablo and Noguera García, Manuel and Rodríguez Fórtiz, María José and Romero Zaliz, Rocio Celeste},
 }

@@ -1,53 +1,66 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+A level-1 auxiliary file: preliminares/titulo.aux
+A level-1 auxiliary file: preliminares/licencia.aux
+A level-1 auxiliary file: preliminares/declaracion-originalidad.aux
+A level-1 auxiliary file: preliminares/agradecimientos.aux
+A level-1 auxiliary file: chapters/abstract.aux
 A level-1 auxiliary file: chapters/chapter1.aux
 A level-1 auxiliary file: chapters/chapter2.aux
 A level-1 auxiliary file: chapters/chapter3.aux
 A level-1 auxiliary file: chapters/chapter4.aux
 A level-1 auxiliary file: chapters/chapter5.aux
+A level-1 auxiliary file: chapters/chapter6.aux
+A level-1 auxiliary file: chapters/chapter7.aux
 The style file: apalike.bst
 Database file #1: research.bib
-Warning--I didn't find a database entry for "."
-You've used 26 entries,
+Warning--entry type for "MediumAUCROC" isn't style-file defined
+--line 1118 of file research.bib
+Warning--entry type for "RGFigureGradientesRetropropagacion" isn't style-file defined
+--line 1124 of file research.bib
+Warning--can't use both volume and number fields in Hinton1987autoencoders
+Warning--empty publisher in Hinton1987autoencoders
+Warning--empty journal in PoudevigneJones24Hankel
+You've used 106 entries,
             1935 wiz_defined-function locations,
-            633 strings with 7115 characters,
-and the built_in function-call counts, 8880 in all, are:
-= -- 841
-> -- 362
-< -- 20
-+ -- 120
-- -- 118
-* -- 706
-:= -- 1606
-add.period$ -- 78
-call.type$ -- 26
-change.case$ -- 185
-chr.to.int$ -- 26
-cite$ -- 26
-duplicate$ -- 362
-empty$ -- 630
-format.name$ -- 160
-if$ -- 1715
-int.to.chr$ -- 1
+            1115 strings with 20417 characters,
+and the built_in function-call counts, 41389 in all, are:
+= -- 4066
+> -- 1592
+< -- 84
++ -- 552
+- -- 524
+* -- 3378
+:= -- 7109
+add.period$ -- 316
+call.type$ -- 106
+change.case$ -- 777
+chr.to.int$ -- 100
+cite$ -- 109
+duplicate$ -- 1662
+empty$ -- 2979
+format.name$ -- 687
+if$ -- 8183
+int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 42
-newline$ -- 133
-num.names$ -- 78
-pop$ -- 200
+missing$ -- 140
+newline$ -- 531
+num.names$ -- 319
+pop$ -- 783
 preamble$ -- 1
-purify$ -- 189
+purify$ -- 791
 quote$ -- 0
-skip$ -- 260
+skip$ -- 1245
 stack$ -- 0
-substring$ -- 451
-swap$ -- 26
-text.length$ -- 1
+substring$ -- 2835
+swap$ -- 242
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 122
-warning$ -- 0
-while$ -- 62
+type$ -- 558
+warning$ -- 3
+while$ -- 336
 width$ -- 0
-write$ -- 333
-(There was 1 warning)
+write$ -- 1356
+(There were 5 warnings)

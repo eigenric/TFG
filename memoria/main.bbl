@@ -1,34 +1,158 @@
 \begin{thebibliography}{}
 
-\bibitem[Abu-Mostafa et~al., 2012]{abu-mostafa_learning_2012}
-Abu-Mostafa, Y.~S., Magdon-Ismail, M., and Lin, H.-T. (2012).
+\bibitem[Abu-Mostafa et~al., 2012a]{abu-mostafa_learning_2012}
+Abu-Mostafa, Y.~S., Magdon-Ismail, M., and Lin, H.-T. (2012a).
 \newblock {\em Learning from Data}.
 \newblock AMLBook.
+
+\bibitem[Abu-Mostafa et~al., 2012b]{AbuMostafa2012}
+Abu-Mostafa, Y.~S., Magdon-Ismail, M., and Lin, H.-T. (2012b).
+\newblock {\em Learning From Data}.
+\newblock AMLBook.
+
+\bibitem[Ahmed et~al., 2017]{ahmed_big_2017}
+Ahmed, E., Yaqoob, I., Gani, A., Imran, M., and Guizani, M. (2017).
+\newblock {Big data fusion in {IoT} for smart cities applications: challenges
+  and opportunities}.
+\newblock {\em IEEE Access}, 5:13848--13864.
+
+\bibitem[Allison, 2001]{Allison2001missing}
+Allison, P.~D. (2001).
+\newblock {\em Missing data}, volume 136.
+\newblock Sage publications.
+
+\bibitem[Alpaydin, 2020]{Alpaydin2020}
+Alpaydin, E. (2020).
+\newblock {\em Introduction to Machine Learning}.
+\newblock MIT Press, 4th edition.
 
 \bibitem[Apostol, 1974]{Apostol1974}
 Apostol, T.~M. (1974).
 \newblock {\em Mathematical Analysis}.
 \newblock Addison-Wesley, 2nd edition.
 
-\bibitem[Ba et~al., 2016]{ba_layer_2016}
+\bibitem[Ba et~al., 2016]{Ba2016layer}
 Ba, J.~L., Kiros, J.~R., and Hinton, G.~E. (2016).
-\newblock {Layer normalization}.
+\newblock Layer normalization.
 \newblock {\em arXiv preprint arXiv:1607.06450}.
+
+\bibitem[Badat, 2020]{MediumAUCROC}
+Badat, A. (2020).
+\newblock A quick guide to auc-roc in machine learning models.
+
+\bibitem[Barlow, 1989]{Barlow1989}
+Barlow, H.~B. (1989).
+\newblock Unsupervised learning.
+\newblock {\em Neural Computation}, 1(3):295--311.
+
+\bibitem[Bengio, 2009]{Bengio2009learning}
+Bengio, Y. (2009).
+\newblock Learning deep architectures for ai.
+\newblock {\em Foundations and Trends® in Machine Learning}, 2(1):1--127.
+
+\bibitem[Bengio et~al., 1994]{Bengio1994learning}
+Bengio, Y., Simard, P., and Frasconi, P. (1994).
+\newblock Learning long-term dependencies with gradient descent is difficult.
+\newblock {\em IEEE Transactions on Neural Networks}, 5(2):157--166.
 
 \bibitem[Bishop, 2006]{Bishop2006}
 Bishop, C.~M. (2006).
 \newblock {\em Pattern Recognition and Machine Learning}.
 \newblock Springer.
 
+\bibitem[Bola{\~n}os-Martinez et~al., 2024]{BolanosMartinez2024clustering}
+Bola{\~n}os-Martinez, D., Bermudez-Edo, M., and Garrido, J.~L. (2024).
+\newblock Clustering pipeline for vehicle behavior in smart villages.
+\newblock {\em Information Fusion}, 104:102164.
+
+\bibitem[Boser et~al., 1992]{Boser1992}
+Boser, B.~E., Guyon, I.~M., and Vapnik, V.~N. (1992).
+\newblock A training algorithm for optimal margin classifiers.
+\newblock In {\em Proceedings of the fifth annual workshop on Computational
+  learning theory (COLT '92)}, pages 144--152.
+
+\bibitem[Box et~al., 2015]{Box2015time}
+Box, G. E.~P., Jenkins, G.~M., Reinsel, G.~C., and Ljung, G.~M. (2015).
+\newblock {\em Time Series Analysis: Forecasting and Control}.
+\newblock Wiley, 5th edition.
+
+\bibitem[Boyd and Vandenberghe, 2004]{Boyd2004}
+Boyd, S. and Vandenberghe, L. (2004).
+\newblock {\em Convex Optimization}.
+\newblock Cambridge University Press.
+
+\bibitem[Bradley, 1997]{Bradley1997}
+Bradley, A.~P. (1997).
+\newblock The use of the area under the roc curve in the evaluation of machine
+  learning algorithms.
+\newblock {\em Pattern Recognition}, 30(7):1145--1159.
+
+\bibitem[Breiman, 2001]{Breiman2001random}
+Breiman, L. (2001).
+\newblock Random forests.
+\newblock {\em Machine Learning}, 45(1):5--32.
+
+\bibitem[Breiman et~al., 1984]{Breiman1984cart}
+Breiman, L., Friedman, J.~H., Olshen, R.~A., and Stone, C.~J. (1984).
+\newblock {\em Classification and Regression Trees}.
+\newblock Wadsworth \& Brooks/Cole Advanced Books \& Software.
+
 \bibitem[Burden and Faires, 2011]{BurdenFaires2011}
 Burden, R.~L. and Faires, J.~D. (2011).
 \newblock {\em Numerical Analysis}.
 \newblock Brooks/Cole, 9th edition.
 
+\bibitem[Cao et~al., 2018]{Cao2018brits}
+Cao, W., Wang, D., Li, J., Zhou, H., Li, L., and Li, Y. (2018).
+\newblock {BRITS}: Bidirectional recurrent imputation for time series.
+\newblock In {\em Advances in Neural Information Processing Systems 31 (NeurIPS
+  2018)}, pages 6775--6785.
+
 \bibitem[Casella and Berger, 2002]{CasellaBerger2002}
 Casella, G. and Berger, R.~L. (2002).
 \newblock {\em Statistical Inference}.
 \newblock Duxbury Press, 2nd edition.
+
+\bibitem[Chai and Draxler, 2014a]{Chai2014}
+Chai, T. and Draxler, R.~R. (2014a).
+\newblock Root mean square error (rmse) or mean absolute error (mae)? –
+  arguments against avoiding rmse in the literature.
+\newblock {\em Geoscientific Model Development}, 7(3):1247--1250.
+
+\bibitem[Chai and Draxler, 2014b]{Chai2014rmse}
+Chai, T. and Draxler, R.~R. (2014b).
+\newblock Root mean square error ({RMSE}) or mean absolute error ({MAE})? –
+  arguments against avoiding {RMSE} in the literature.
+\newblock {\em Geoscientific Model Development}, 7(3):1247--1250.
+
+\bibitem[Che et~al., 2018]{Che2018recurrent}
+Che, Z., Purushotham, S., Cho, K., Sontag, D., and Liu, Y. (2018).
+\newblock Recurrent neural networks for multivariate time series with missing
+  values.
+\newblock {\em Scientific Reports}, 8(1):6085.
+
+\bibitem[Cho et~al., 2014]{Cho2014gru}
+Cho, K., van Merri{\"e}nboer, B., Gulcehre, C., Bahdanau, D., Bougares, F.,
+  Schwenk, H., and Bengio, Y. (2014).
+\newblock Learning phrase representations using rnn encoder-decoder for
+  statistical machine translation.
+\newblock {\em arXiv preprint arXiv:1406.1078}.
+
+\bibitem[Cortes and Vapnik, 1995]{Cortes1995}
+Cortes, C. and Vapnik, V. (1995).
+\newblock Support-vector networks.
+\newblock {\em Machine Learning}, 20(3):273--297.
+
+\bibitem[Cover and Hart, 1967]{Cover1967nearest}
+Cover, T.~M. and Hart, P.~E. (1967).
+\newblock Nearest neighbor pattern classification.
+\newblock {\em IEEE Transactions on Information Theory}, IT-13(1):21--27.
+
+\bibitem[Cox, 1958]{Cox1958}
+Cox, D.~R. (1958).
+\newblock The regression analysis of binary sequences (with discussion).
+\newblock {\em Journal of the Royal Statistical Society, Series B
+  (Methodological)}, 20(2):215--242.
 
 \bibitem[Cybenko, 1989]{Cybenko1989}
 Cybenko, G. (1989).
@@ -47,21 +171,165 @@ DeGroot, M.~H. and Schervish, M.~J. (2012).
 \newblock {\em Probability and Statistics}.
 \newblock Addison-Wesley, 4th edition.
 
+\bibitem[Dempster et~al., 1977]{Dempster1977}
+Dempster, A.~P., Laird, N.~M., and Rubin, D.~B. (1977).
+\newblock Maximum likelihood from incomplete data via the {EM} algorithm.
+\newblock {\em Journal of the Royal Statistical Society, Series B
+  (Methodological)}, 39(1):1--38.
+
+\bibitem[Donders et~al., 2006]{Donders2006review}
+Donders, A. R.~T., van~der Heijden, G.~J., Stijnen, T., and Moons, K.~G.
+  (2006).
+\newblock Review of methods for estimating missing data in comparative
+  longitudinal research.
+\newblock {\em BMC medical research methodology}, 6(1):1--13.
+
+\bibitem[Drucker et~al., 1997]{Drucker1997support}
+Drucker, H., Burges, C. J.~C., Kaufman, L., Smola, A.~J., and Vapnik, V.
+  (1997).
+\newblock Support vector regression machines.
+\newblock In {\em Advances in Neural Information Processing Systems 9 (NIPS
+  1996)}, pages 155--161.
+
 \bibitem[Du, 2023]{du2023pypots}
 Du, W. (2023).
-\newblock Pypots: a python toolbox for data mining on partially-observed time
-  series.
+\newblock {PyPOTS: a Python toolbox for data mining on Partially-Observed Time
+  Series}.
 \newblock {\em arXiv preprint arXiv:2305.18811}.
+
+\bibitem[Du et~al., 2023a]{Du_saits_2023}
+Du, W., Cote, D., and Liu, Y. (2023a).
+\newblock {SAITS: Self-Attention-based Imputation for Time Series}.
+\newblock {\em Expert Systems with Applications}, 219:119619.
+
+\bibitem[Du et~al., 2023b]{Du2023SAITS}
+Du, W., Cote, D., Liu, Y., Wang, X., and An, S. (2023b).
+\newblock {SAITS}: Self-attention based imputation for {Time Series}.
+\newblock {\em Expert Systems with Applications}, 219:119119.
+
+\bibitem[Enders, 2010]{Enders2010applied}
+Enders, C.~K. (2010).
+\newblock {\em Applied missing data analysis}.
+\newblock Guilford press.
+
+\bibitem[Ester et~al., 1996]{Ester1996}
+Ester, M., Kriegel, H.-P., Sander, J., and Xu, X. (1996).
+\newblock A density-based algorithm for discovering clusters in large spatial
+  databases with noise.
+\newblock In {\em Proceedings of the Second International Conference on
+  Knowledge Discovery and Data Mining (KDD-96)}, pages 226--231.
+
+\bibitem[Fawcett, 2006]{Fawcett2006}
+Fawcett, T. (2006).
+\newblock An introduction to roc analysis.
+\newblock {\em Pattern Recognition Letters}, 27(8):861--874.
+
+\bibitem[Galton, 1886]{Galton1886regression}
+Galton, F. (1886).
+\newblock Regression towards mediocrity in hereditary stature.
+\newblock {\em The Journal of the Anthropological Institute of Great Britain
+  and Ireland}, 15:246--263.
+
+\bibitem[Glorot et~al., 2011]{Glorot2011deep}
+Glorot, X., Bordes, A., and Bengio, Y. (2011).
+\newblock Deep sparse rectifier neural networks.
+\newblock In {\em Proceedings of the Fourteenth International Conference on
+  Artificial Intelligence and Statistics (AISTATS-11)}, pages 315--323.
 
 \bibitem[Golub and Van~Loan, 2013]{GolubVanLoan2013}
 Golub, G.~H. and Van~Loan, C.~F. (2013).
 \newblock {\em Matrix Computations}.
 \newblock Johns Hopkins University Press, 4th edition.
 
-\bibitem[Goodfellow et~al., 2016]{GBC16}
-Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\bibitem[Goodfellow et~al., 2016a]{Goodfellow2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016a).
 \newblock {\em Deep Learning}.
 \newblock MIT Press.
+
+\bibitem[Goodfellow et~al., 2016b]{goodfellow_deep_2016}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016b).
+\newblock {\em Deep Learning}.
+\newblock MIT Press.
+
+\bibitem[Goutte and Gaussier, 2005]{Goutte2005}
+Goutte, C. and Gaussier, E. (2005).
+\newblock A probabilistic interpretation of precision, recall and f-score, with
+  implication for evaluation.
+\newblock In {\em Advances in Information Retrieval, 27th European Conference
+  on IR Research, ECIR 2005}, pages 345--359.
+
+\bibitem[Gray et~al., 2006]{gray2006toeplitz}
+Gray, R.~M. et~al. (2006).
+\newblock Toeplitz and circulant matrices: A review.
+\newblock {\em Foundations and Trends{\textregistered} in Communications and
+  Information Theory}, 2(3):155--239.
+
+\bibitem[Gubbi et~al., 2013]{Gubbi2013}
+Gubbi, J., Buyya, R., Marusic, S., and Palaniswami, M. (2013).
+\newblock Internet of things (iot): A vision, architectural elements, and
+  future directions.
+\newblock {\em Future Generation Computer Systems}, 29(7):1645--1660.
+
+\bibitem[Guillén~Perales et~al., 2025]{MemoriaTFG}
+Guillén~Perales, A., Martínez~Cámara, E., Fernández~Luna, J.~M.,
+  García~Sánchez, P., Noguera~García, M., Rodríguez~Fórtiz, M.~J., and
+  Romero~Zaliz, R.~C. (2025).
+\newblock Cómo escribir la memoria de tu tfg del grado en ingeniería
+  informática y presentarlo sin morir en el intento.
+
+\bibitem[Hastie et~al., 2009]{Hastie2009}
+Hastie, T., Tibshirani, R., and Friedman, J. (2009).
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference,
+  and Prediction}.
+\newblock Springer, 2nd edition.
+
+\bibitem[He et~al., 2016]{He2016deepresidual}
+He, K., Zhang, X., Ren, S., and Sun, J. (2016).
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 770--778.
+
+\bibitem[Hinton and Salakhutdinov, 2006]{Hinton1987autoencoders}
+Hinton, G.~E. and Salakhutdinov, R. (2006).
+\newblock Reducing the dimensionality of data with neural networks.
+\newblock In {\em Science}, volume 313, pages 504--507.
+
+\bibitem[Hochreiter and Schmidhuber, 1997]{Hochreiter1997lstm}
+Hochreiter, S. and Schmidhuber, J. (1997).
+\newblock Long short-term memory.
+\newblock {\em Neural Computation}, 9(8):1735--1780.
+
+\bibitem[Hotelling, 1933]{Hotelling1933}
+Hotelling, H. (1933).
+\newblock Analysis of a complex of statistical variables into principal
+  components.
+\newblock {\em Journal of Educational Psychology}, 24(6):417--441.
+
+\bibitem[Hyndman and Koehler, 2006]{Hyndman2006another}
+Hyndman, R.~J. and Koehler, A.~B. (2006).
+\newblock Another look at measures of forecast accuracy.
+\newblock {\em International journal of forecasting}, 22(4):679--688.
+
+\bibitem[James et~al., 2013]{James2013}
+James, G., Witten, D., Hastie, T., and Tibshirani, R. (2013).
+\newblock {\em An Introduction to Statistical Learning: with Applications in
+  R}.
+\newblock Springer.
+
+\bibitem[Japkowicz and Shah, 2011]{Japkowicz2011}
+Japkowicz, N. and Shah, M. (2011).
+\newblock {\em Evaluating Learning Algorithms: A Classification Perspective}.
+\newblock Cambridge University Press.
+
+\bibitem[Johnson, 1967]{Johnson1967}
+Johnson, S.~C. (1967).
+\newblock Hierarchical clustering schemes.
+\newblock {\em Psychometrika}, 32(3):241--254.
+
+\bibitem[Jr. et~al., 2013]{Hosmer2013}
+Jr., D. W.~H., Lemeshow, S., and Sturdivant, R.~X. (2013).
+\newblock {\em Applied Logistic Regression}.
+\newblock Wiley, 3rd edition.
 
 \bibitem[Kincaid and Cheney, 2002]{KincaidCheney2002}
 Kincaid, D.~R. and Cheney, E.~W. (2002).
@@ -78,20 +346,135 @@ Kreyszig, E. (1989).
 \newblock {\em Introductory Functional Analysis with Applications}.
 \newblock Wiley.
 
+\bibitem[LeCun et~al., 2015]{LeCun2015deep}
+LeCun, Y., Bengio, Y., and Hinton, G. (2015).
+\newblock Deep learning.
+\newblock {\em Nature}, 521(7553):436--444.
+
+\bibitem[Lehmann and Casella, 1998]{Lehmann1998}
+Lehmann, E.~L. and Casella, G. (1998).
+\newblock {\em Theory of Point Estimation}.
+\newblock Springer, 2nd edition.
+
+\bibitem[Little and Rubin, 2019]{Little2019statistical}
+Little, R.~J. and Rubin, D.~B. (2019).
+\newblock {\em Statistical analysis with missing data}.
+\newblock John Wiley \& Sons, 3rd edition.
+
+\bibitem[Little and Rubin, 2002]{LittleRubin2002}
+Little, R. J.~A. and Rubin, D.~B. (2002).
+\newblock {\em Statistical Analysis with Missing Data}.
+\newblock John Wiley \& Sons, 2nd edition.
+
+\bibitem[Lloyd, 1982]{Lloyd1982}
+Lloyd, S.~P. (1982).
+\newblock Least squares quantization in {PCM}.
+\newblock {\em IEEE Transactions on Information Theory}, 28(2):129--137.
+
+\bibitem[Luo et~al., 2018]{Luo2018multivariate_e2gan}
+Luo, Y., Cai, X., Zhang, Y., Xu, J., and Yuan, X. (2018).
+\newblock {E$^2$GAN}: End-to-end generative adversarial network for
+  multivariate time series imputation.
+\newblock In {\em Proceedings of the Twenty-Seventh International Joint
+  Conference on Artificial Intelligence (IJCAI-18)}, pages 3094--3100.
+
+\bibitem[MacQueen, 1967]{MacQueen1967}
+MacQueen, J. (1967).
+\newblock Some methods for classification and analysis of multivariate
+  observations.
+\newblock {\em Proceedings of the Fifth Berkeley Symposium on Mathematical
+  Statistics and Probability, Volume 1: Statistics}, pages 281--297.
+
+\bibitem[Mikolov et~al., 2013]{Mikolov2013word2vec}
+Mikolov, T., Chen, K., Corrado, G., and Dean, J. (2013).
+\newblock Efficient estimation of word representations in vector space.
+\newblock In {\em Proceedings of the 1st International Conference on Learning
+  Representations (ICLR 2013), Workshop Track}.
+
+\bibitem[Molenberghs et~al., 2015]{Molenberghs2015handbook}
+Molenberghs, G., Fitzmaurice, G., Kenward, M., Tsiatis, A., and Verbeke, G.,
+  editors (2015).
+\newblock {\em Handbook of Missing Data Methodology}.
+\newblock CRC Press.
+
+\bibitem[Montgomery et~al., 2021]{Montgomery2021}
+Montgomery, D.~C., Peck, E.~A., and Vining, G.~G. (2021).
+\newblock {\em Introduction to Linear Regression Analysis}.
+\newblock Wiley, 6th edition.
+
+\bibitem[Nagelkerke, 1991]{Nagelkerke1991}
+Nagelkerke, N. J.~D. (1991).
+\newblock A note on a general definition of the coefficient of determination.
+\newblock {\em Biometrika}, 78(3):691--692.
+
+\bibitem[Nair and Hinton, 2010]{Nair2010relu}
+Nair, V. and Hinton, G.~E. (2010).
+\newblock Rectified linear units improve restricted boltzmann machines.
+\newblock In {\em Proceedings of the 27th International Conference on Machine
+  Learning (ICML-10)}, pages 807--814.
+
 \bibitem[Noble and Daniel, 1988]{Noble1988}
 Noble, B. and Daniel, J.~W. (1988).
 \newblock {\em Applied Linear Algebra}.
 \newblock Prentice Hall, 3rd edition.
+
+\bibitem[Parzen, 1962]{Parzen1962}
+Parzen, E. (1962).
+\newblock On estimation of a probability density function and mode.
+\newblock {\em The Annals of Mathematical Statistics}, 33(3):1065--1076.
+
+\bibitem[Pascanu et~al., 2013]{Pascanu2013difficulty}
+Pascanu, R., Mikolov, T., and Bengio, Y. (2013).
+\newblock On the difficulty of training recurrent neural networks.
+\newblock In {\em Proceedings of the 30th International Conference on Machine
+  Learning (ICML 2013)}, pages 1310--1318.
+
+\bibitem[Pearson, 1901]{Pearson1901}
+Pearson, K. (1901).
+\newblock On lines and planes of closest fit to systems of points in space.
+\newblock {\em Philosophical Magazine Series 6}, 2(11):559--572.
+
+\bibitem[Pennington et~al., 2014]{Pennington2014glove}
+Pennington, J., Socher, R., and Manning, C.~D. (2014).
+\newblock {GloVe}: Global vectors for word representation.
+\newblock In {\em Proceedings of the 2014 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 1532--1543.
+
+\bibitem[Poudevigne and Jones, 2024]{PoudevigneJones24Hankel}
+Poudevigne, T. and Jones, O. (2024).
+\newblock Time-series imputation using low-rank matrix completion.
+\newblock Preprint.
+
+\bibitem[Powers, 2011]{Powers2011}
+Powers, D. M.~W. (2011).
+\newblock Evaluation: From precision, recall and f-measure to roc,
+  informedness, markedness \& correlation.
+\newblock {\em Journal of Machine Learning Technologies}, 2(1):37--63.
+
+\bibitem[{Reyes-Ochoa}, 2020]{RGFigureGradientesRetropropagacion}
+{Reyes-Ochoa} (2020).
+\newblock Representaciones del aprendizaje reutilizando los gradientes de la
+  retropropagacion.
 
 \bibitem[Rohatgi and Saleh, 2015]{rohatgi_introduction_nodate}
 Rohatgi, V.~K. and Saleh, A. K. M.~E. (2015).
 \newblock {\em {An Introduction to Probability and Statistics}}.
 \newblock Wiley, 3rd edition.
 
+\bibitem[Rosenblatt, 1956]{Rosenblatt1956}
+Rosenblatt, M. (1956).
+\newblock Remarks on some nonparametric estimates of a density function.
+\newblock {\em The Annals of Mathematical Statistics}, 27(3):832--837.
+
 \bibitem[Ross, 2014]{Ross2014}
 Ross, S.~M. (2014).
 \newblock {\em A First Course in Probability}.
 \newblock Pearson, 9th edition.
+
+\bibitem[Rubin, 1976]{Rubin1976inference}
+Rubin, D.~B. (1976).
+\newblock Inference and missing data.
+\newblock {\em Biometrika}, 63(3):581--592.
 
 \bibitem[Rudin, 1976]{Rudin1976}
 Rudin, W. (1976).
@@ -108,8 +491,13 @@ Rudin, W. (1991).
 \newblock {\em Functional Analysis}.
 \newblock McGraw-Hill, 2nd edition.
 
-\bibitem[Rumelhart et~al., 1986]{Rumelhart1986}
-Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1986).
+\bibitem[Rumelhart et~al., 1986a]{rumelhart_learning_1986}
+Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1986a).
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323(6088):533--536.
+
+\bibitem[Rumelhart et~al., 1986b]{Rumelhart1986learning}
+Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1986b).
 \newblock Learning representations by back-propagating errors.
 \newblock {\em Nature}, 323(6088):533--536.
 
@@ -120,22 +508,79 @@ Sandradewi, J., Prévôt, A. S.~H., Szidat, S., Perron, N., Alfarra, M.~R.,
   model}.
 \newblock {\em Atmospheric Chemistry and Physics}, 8(11):2749--2760.
 
+\bibitem[Schafer, 1997]{Schafer1997analysis}
+Schafer, J.~L. (1997).
+\newblock {\em Analysis of incomplete multivariate data}.
+\newblock CRC press.
+
+\bibitem[Seinfeld and Pandis, 2016]{Seinfeld2016atmospheric}
+Seinfeld, J.~H. and Pandis, S.~N. (2016).
+\newblock {\em Atmospheric chemistry and physics: from air pollution to climate
+  change}.
+\newblock John Wiley \& Sons, 3rd edition.
+
+\bibitem[Shao and Zhong, 1992]{Shao1992handling}
+Shao, J. and Zhong, B. (1992).
+\newblock Handling systematically missing data by the
+  new-observation-carried-forward method in longitudinal clinical trials.
+\newblock {\em Statistics in medicine}, 11(16):2075--2085.
+
 \bibitem[Strang, 2016]{Strang2016}
 Strang, G. (2016).
 \newblock {\em Introduction to Linear Algebra}.
 \newblock Wellesley-Cambridge Press, 5th edition.
 
-\bibitem[{Universidad de Granada}, 2023]{smartpoqueira_project}
-{Universidad de Granada} (2023).
-\newblock Smartpoqueira: Experimentación de tecnologías inteligentes para la
-  gestión sostenible de las visitas a zonas rurales y parques nacionales.
-\newblock Proyecto de investigación.
+\bibitem[{Universidad de Granada}, 2021]{smartpoqueira_project}
+{Universidad de Granada} (2021).
+\newblock {SmartPoqueira: Experimentación de tecnologías inteligentes para la
+  gestión sostenible de las visitas a zonas rurales y parques nacionales}.
+\newblock Sitio web oficial del proyecto.
+\newblock https://wpd.ugr.es/~smartpoqueira/.
 
-\bibitem[Vaswani et~al., 2017]{Vaswani_attentionis_2017}
+\bibitem[Van~Buuren, 2018]{VanBuuren2018flexible}
+Van~Buuren, S. (2018).
+\newblock {\em Flexible imputation of missing data}.
+\newblock CRC press, 2nd edition.
+
+\bibitem[van~der Maaten and Hinton, 2008]{vanderMaaten2008}
+van~der Maaten, L. and Hinton, G. (2008).
+\newblock Visualizing data using t-sne.
+\newblock {\em Journal of Machine Learning Research}, 9:2579--2605.
+
+\bibitem[Vaswani et~al., 2017a]{Vaswani2017}
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
-  Kaiser, {\L}., and Polosukhin, I. (2017).
+  Kaiser, L., and Polosukhin, I. (2017a).
+\newblock Attention is all you need.
+\newblock In {\em Advances in Neural Information Processing Systems 30 (NIPS
+  2017)}, pages 5998--6008.
+
+\bibitem[Vaswani et~al., 2017b]{Vaswani_attentionis_2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I. (2017b).
 \newblock Attention is all you need.
 \newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
   volume~30.
+
+\bibitem[Wallace and Hobbs, 2006]{Wallace2006atmospheric}
+Wallace, J.~M. and Hobbs, P.~V. (2006).
+\newblock {\em Atmospheric science: an introductory survey}, volume~92.
+\newblock Elsevier Academic Press, 2nd edition.
+
+\bibitem[Weisberg, 2005]{Weisberg2005}
+Weisberg, S. (2005).
+\newblock {\em Applied Linear Regression}.
+\newblock Wiley, 3rd edition.
+
+\bibitem[Widom, 1966]{widom1966hankel}
+Widom, H. (1966).
+\newblock Hankel matrices.
+\newblock {\em Transactions of the American Mathematical Society},
+  121(1):1--35.
+
+\bibitem[Willmott and Matsuura, 2005]{Willmott2005}
+Willmott, C.~J. and Matsuura, K. (2005).
+\newblock Advantages of the mean absolute error (mae) over the root mean square
+  error (rmse) in model performance evaluation.
+\newblock {\em Climate Research}, 30:79--82.
 
 \end{thebibliography}
